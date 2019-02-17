@@ -1,0 +1,46 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   To enable the merge cells feature, set the
+   <code>
+    content1
+   </code>
+   option to be
+   <code>
+    content2
+   </code>
+   or an
+      array. To initialize Handsontable with predefined merged cells, provide merged cells details in form of an
+      array:
+   <code>
+    content3
+   </code>
+  </p>
+  <div class="scroll-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content4
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/merged-cells.html" target="_blank">
+   content5
+  </a>
+ </p>
+</div>

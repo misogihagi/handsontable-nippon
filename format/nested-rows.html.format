@@ -1,0 +1,243 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <div class="notification warning dark-text">
+   <strong>
+    content1
+   </strong>
+   this feature is in an early development stage. It may not work with some of the plugins and core features.
+    It's not ready for production use.
+  </div>
+  <ul>
+   <li>
+    <a href="#overview">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#quick-setup">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#data-source">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#ui">
+     content5
+    </a>
+   </li>
+   <!--<li><a href="#configuration">Additional plugin configuration</a></li>-->
+  </ul>
+  <h3 id="overview">
+   content6
+  </h3>
+  <p>
+   The
+   <strong>
+    <i>
+     content7
+    </i>
+   </strong>
+   plugin extends Handsontable with a new functionality - displaying nested structures in a two-dimensional data table.
+  </p>
+  <h3 id="quick-setup">
+   content8
+  </h3>
+  <p>
+   To enable the plugin, simply set the
+   <code>
+    content9
+   </code>
+   property to
+   <code>
+    content10
+   </code>
+   .
+  </p>
+  <pre><code class="lang-js hljs javascript">content11</code></pre>
+  <p>
+   Note that using all the functionalities provided by the plugin requires setting
+   <code>
+    content12
+   </code>
+   (enables the row headers)
+      and
+   <code>
+    content13
+   </code>
+   (enables the Handsontable’s context menu) to
+   <code>
+    content14
+   </code>
+   , as the
+   <i>
+    content15
+   </i>
+   /
+   <i>
+    content16
+   </i>
+   buttons are located in the row headers and row modification options (
+   <i>
+    content17
+   </i>
+   ,
+   <i>
+    content18
+   </i>
+   etc.) are in the Context Menu.
+  </p>
+  <h3 id="data-source">
+   content19
+  </h3>
+  <p>
+   The data source has to have a certain structure to be used with the
+   <i>
+    content20
+   </i>
+   plugin.
+  </p>
+  <p>
+   The plugin requires the data source to be an
+   <strong>
+    content21
+   </strong>
+   . Each object in the array represents a single
+   <i>
+    content22
+   </i>
+   entry. By
+   <i>
+    content23
+   </i>
+   I mean an entry which is not a child to any other entry.
+   <br/>
+   If an entry has any child entries, we need to declare them (again) as an
+   <i>
+    content24
+   </i>
+   . To assign them to a row, we need to create a
+   <code>
+    content25
+   </code>
+   property in the parent element.
+   <br/>
+   <br/>
+   Take a look at this example:
+  </p>
+  <div class="scroll-container fixed-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content26
+   </script>
+  </div>
+  <p>
+   In the example above we’ve created a data object consisting of 2016’s Grammy nominees of the “Rock” genre. As you can see, each
+   <i>
+    content27
+   </i>
+   entry declares a category, while their children declare nominees - they’re assigned under the
+   <code>
+    content28
+   </code>
+   properties.
+   <br/>
+   <br/>
+   Another thing to mention - the
+   <b>
+    content29
+   </b>
+   0-level object in the array needs to have all columns defined to display the table properly. They can be declared as
+   <code>
+    content30
+   </code>
+   or
+   <code>
+    content31
+   </code>
+   (an empty string), but they need to be defined. This is optional for the other objects.
+  </p>
+  <h3 id="ui">
+   content32
+  </h3>
+  <p>
+   The
+   <i>
+    content33
+   </i>
+   plugin user interface is placed in the row headers and the Handsontable’s context menu.
+  </p>
+  <h4>
+   content34
+  </h4>
+  <p>
+   Each
+   <i>
+    content35
+   </i>
+   row header contains a
+   <code>
+    content36
+   </code>
+   /
+   <code>
+    content37
+   </code>
+   button. It is used to collapse or expand its child rows.
+   <br/>
+   <br/>
+   Moreover, the child rows’ headers had been given a bigger indentation, so the user can clearly recognize the child and parent elements.
+  </p>
+  <h4>
+   content38
+  </h4>
+  <p>
+   content39
+  </p>
+  <ul>
+   <li>
+    content40
+   </li>
+   <li>
+    content41
+   </li>
+  </ul>
+  <p>
+   content42
+  </p>
+  <!--<h3 id="configuration">Additional plugin configuration examples</h3>-->
+  <!--<h4>Marking the <i>parents</i></h4>-->
+  <!--To mark the parents (for example, with a different colors) we’ll need to apply some css styling to the table.<br>-->
+  <!--The css class responsible for styling the parents is <code>.ht_nestingParent</code>. It’s added to every <code>TH</code> element which represents the row header of the parent entry.-->
+  <!--<br><br>-->
+  <!--For example - if we want to mark all the cells in the parent row light grey, we can assign this style to the table:-->
+  <!--<pre><code>-->
+  <!--.handsontable .ht_nestingParent ~ TD {-->
+  <!--background-color: #f7f5f5;-->
+  <!--}-->
+  <!--</code></pre>-->
+  <!--You can see the effect in this example: <a href="http://jsfiddle.net/js_ziggle/fr86eLnL/2/">http://jsfiddle.net/js_ziggle/fr86eLnL/2/</a>.-->
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/nested-rows.html" target="_blank">
+   content43
+  </a>
+ </p>
+</div>

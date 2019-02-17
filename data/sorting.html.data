@@ -1,0 +1,282 @@
+content1="Overview"
+content2="Basic plugin configuration"
+content3="Extended plugin configuration"
+content4="Default compare functions (sorting different kinds of data)"
+content5="Custom compare functions"
+content6="Plugin options for certain columns only"
+content7="Custom sort implementation"
+content8="Plugin hooks"
+content9="Plugin API"
+content10="Overview"
+content11="stable sort alghoritm"
+content12="columnSorting"
+content13="multiColumnSorting"
+content14="Basic plugin configuration"
+content15="columnSorting"
+content16="true"
+content17="the API methods"
+content18="click on the header to sort"
+content19="no column will be sorted initially,"
+content20="a sorting indicator will be enabled,"
+content21="empty cells won't be sorted,"
+content22="here"
+content23="
+        var arrayOfArrays = [
+          ["Tesla", "Model 3", "BlueStar", "USA", "★★★★"],
+          ["Tesla", "Model S", "WhiteStar", "USA", "★★★★★"],
+          ["Mitsubishi", "iMiEV", "", "Japan", "★★"],
+          ["Ford", "Focus EV", "", "USA", "★★"],
+          ["Mitsubishi", "iMiEV Sport", "", "Japan", "★★"],
+          ["Tesla", "Roadster", "DarkStar", "USA", "★★★★★"],
+          ["Volkswagen", "e-Golf","", "Germany", "★★"],
+          ["Volkswagen", "E-Up!", "", "Germany", "★★"],
+          ["Ford", "C-Max Energi", "", "USA", "★"],
+          ["BYD", "Denza", "", "China", "★★★"],
+          ["BYD", "e5", "", "China", "★★★"],
+          ["BYD", "e6", "", "China", "★★★★"]
+        ];
+      "
+content24="
+        var exampleContainer1 = document.getElementById('example1');
+
+        new Handsontable(exampleContainer1, {
+          data: arrayOfArrays,
+          colHeaders: ["Brand", "Model", "Code name", "Country of origin", "Rank"],
+          columnSorting: true
+        });"
+content25="Extended plugin configuration"
+content26="object"
+content27="initialConfig"
+content28="Object"
+content29="column"
+content30="Number"
+content31="sortOrder"
+content32="String"
+content33="'asc'"
+content34="'desc'"
+content35="indicator"
+content36="Boolean"
+content37="sortEmptyCells"
+content38="Boolean"
+content39="headerAction"
+content40="Boolean"
+content41="compareFunctionFactory"
+content42="Function"
+content43="this section"
+content44="
+      Please take a look at the example plugin configuration below.
+    "
+content45="
+        var arrayOfArrays = [
+          ["Tesla", "Model 3", "BlueStar", "USA", "★★★★"],
+          ["Tesla", "Model S", "WhiteStar", "USA", "★★★★★"],
+          ["Mitsubishi", "iMiEV", "", "Japan", "★★"],
+          ["Ford", "Focus EV", "", "USA", "★★"],
+          ["Mitsubishi", "iMiEV Sport", "", "Japan", "★★"],
+          ["Tesla", "Roadster", "DarkStar", "USA", "★★★★★"],
+          ["Volkswagen", "e-Golf","", "Germany", "★★"],
+          ["Volkswagen", "E-Up!", "", "Germany", "★★"],
+          ["Ford", "C-Max Energi", "", "USA", "★"],
+          ["BYD", "Denza", "", "China", "★★★"],
+          ["BYD", "e5", "", "China", "★★★"],
+          ["BYD", "e6", "", "China", "★★★★"]
+        ];
+      "
+content46="
+        var exampleContainer2 = document.getElementById('example2');
+
+        new Handsontable(exampleContainer2, {
+          data: arrayOfArrays,
+          colHeaders: ["Brand", "Model", "Code name", "Country of origin", "Rank"],
+          columnSorting: {
+            sortEmptyCells: true,
+            initialConfig: {
+              column: 2,
+              sortOrder: 'asc'
+            }
+          }
+        });"
+content47="columnSorting"
+content48="this section"
+content49="Default compare functions (sorting different kinds of data)"
+content50="Array.sort"
+content51="compare function"
+content52="comparator"
+content53="date, numeric, text"
+content54="Handsontable"
+content55="
+          var arrayOfObjects = [
+            { brand: "Tesla", model: "Model 3", maxSpeed: 141, range: 215, seats: 5, price: 32750, productionDate: "06/29/2007" },
+            { brand: "Tesla", model: "Model S", maxSpeed: 139, range: 275, seats: 7, price: 71788, productionDate: "04/02/2012" },
+            { brand: "Mitsubishi", model: "iMiEV", maxSpeed: 81, range: 99, seats: 4, price: 31426.9, productionDate: "09/11/2009" },
+            { brand: "Ford", model: "Focus EV", maxSpeed: 85, range: 100, seats: 4, price: 12000, productionDate: "10/01/2011" },
+            { brand: "Mitsubishi", model: "iMiEV Sport", maxSpeed: 84, range: 124, seats: 4, price: 15000, productionDate: "05/11/2007" },
+            { brand: "Tesla", model: "Roadster", maxSpeed: 125, range: 244, seats: 2, price: 113904.5, productionDate: "02/17/2008" },
+            { brand: "Volkswagen", model: "e-Golf", maxSpeed: 87, range: 118, seats: 5, price: 33012, productionDate: "10/05/2011" },
+            { brand: "Volkswagen", model: "E-Up!", maxSpeed: 85, range: 80, seats: 3, price: 32258.75, productionDate: "11/09/2009" },
+            { brand: "Ford", model: "C-Max Energi", maxSpeed: 115, range: 18, seats: 5, price: 27120, productionDate: "11/25/2014" },
+            { brand: "BYD", model: "Denza", maxSpeed: 93, range: 157, seats: 5, price: 47600, productionDate: "10/01/2011" },
+            { brand: "BYD", model: "e5", maxSpeed: 93, range: 136, seats: 5, price: 22966.92, productionDate: "07/19/2015" },
+            { brand: "BYD", model: "e6", maxSpeed: 87, range: 199, seats: 5, price: 31440, productionDate: "06/22/2009" }
+          ];
+        "
+content56="
+          var exampleContainer3 = document.getElementById('example3');
+          new Handsontable(exampleContainer3, {
+            data: arrayOfObjects,
+            colHeaders: ["Brand", "Model", "Max speed<br>(in miles per hour)", "Range<br>(in miles)", "Seats", "Price", "Start of<br>production"],
+            columns: [{
+              data: 'brand' // 1st column is simple text, no special options here
+            }, {
+              data: 'model'// 2nd column is simple text, no special options here
+            }, {
+              data: 'maxSpeed',
+              type: 'numeric'
+            }, {
+              data: 'range',
+              type: 'numeric'
+            }, {
+              data: 'seats',
+              type: 'numeric'
+            }, {
+              data: 'price',
+              type: 'numeric',
+              numericFormat: {
+                pattern: '$ 0,0.00',
+                culture: 'en-US'
+              }
+            }, {
+              data: 'productionDate',
+              type: 'date',
+              dateFormat: 'MM/DD/YYYY',
+              correctFormat: true,
+              defaultDate: '01/01/1900'
+            }],
+            columnSorting: true
+          });"
+content57="Custom compare functions"
+content58="Array.sort"
+content59="description here"
+content60="compareFunctionFactory"
+content61="compare function factory"
+content62="sortOrder"
+content63="columnMeta"
+content64="Please take a look at the example below which shows how the custom compare function factory should look."
+content65="function compareFunctionFactory(sortOrder, columnMeta) {
+ return function comparator(value, nextValue) {
+   // Some value comparisons which will return -1, 0 or 1...
+ };
+};"
+content66="In the next section we’ll take a look how it may be used just for certain columns."
+content67="Plugin options for certain columns only"
+content68="compareFunctionFactory"
+content69="sortEmptyCells"
+content70="headerAction"
+content71="indicator"
+content72="columns"
+content73="completely block sorting action for the first column"
+content74="
+            var arrayOfObjects = [
+              { brand: "Tesla", model: "Model 3", maxSpeed: 141, range: 215, seats: 5, price: 32750, productionDate: "06/29/2007" },
+              { brand: "Tesla", model: "Model S", maxSpeed: 139, range: 275, seats: 7, price: 71788, productionDate: "04/02/2012" },
+              { brand: "Mitsubishi", model: "iMiEV", maxSpeed: 81, range: 99, seats: 4, price: 31426.9, productionDate: "09/11/2009" },
+              { brand: "Ford", model: "Focus EV", maxSpeed: 85, range: 100, seats: 4, price: 12000, productionDate: "10/01/2011" },
+              { brand: "Mitsubishi", model: "iMiEV Sport", maxSpeed: 84, range: 124, seats: 4, price: 15000, productionDate: "05/11/2007" },
+              { brand: "Tesla", model: "Roadster", maxSpeed: 125, range: 244, seats: 2, price: 113904.5, productionDate: "02/17/2008" },
+              { brand: "Volkswagen", model: "e-Golf", maxSpeed: 87, range: 118, seats: 5, price: 33012, productionDate: "10/05/2011" },
+              { brand: "Volkswagen", model: "E-Up!", maxSpeed: 85, range: 80, seats: 3, price: 32258.75, productionDate: "11/09/2009" },
+              { brand: "Ford", model: "C-Max Energi", maxSpeed: 115, range: 18, seats: 5, price: 27120, productionDate: "11/25/2014" },
+              { brand: "BYD", model: "Denza", maxSpeed: 93, range: 157, seats: 5, price: 47600, productionDate: "10/01/2011" },
+              { brand: "BYD", model: "e5", maxSpeed: 93, range: 136, seats: 5, price: 22966.92, productionDate: "07/19/2015" },
+              { brand: "BYD", model: "e6", maxSpeed: 87, range: 199, seats: 5, price: 31440, productionDate: "06/22/2009" }
+            ];
+          "
+content75="
+            var exampleContainer4 = document.getElementById('example4');
+            new Handsontable(exampleContainer4, {
+              data: arrayOfObjects,
+              colHeaders: ["Brand<br><b>(non-sortable)</b>", "Model", "Max speed<br>(in miles per hour)", "Range<br>(in miles)", "Seats", "Price", "Start of<br>production"],
+              columns: [{
+                data: 'brand', // 1st column is simple text, no special options here
+                columnSorting: {
+                  indicator: false,
+                  headerAction: false,
+                  compareFunctionFactory: function compareFunctionFactory() {
+                    return function comparator() {
+                      return 0; // Don't sort the first visual column.
+                    };
+                  }
+                }
+              }, {
+                data: 'model'// 2nd column is simple text, no special options here
+              }, {
+                data: 'maxSpeed',
+                type: 'numeric'
+              }, {
+                data: 'range',
+                type: 'numeric'
+              }, {
+                data: 'seats',
+                type: 'numeric'
+              }, {
+                data: 'price',
+                type: 'numeric',
+                numericFormat: {
+                  pattern: '$ 0,0.00',
+                  culture: 'en-US'
+                }
+              }, {
+                data: 'productionDate',
+                type: 'date',
+                dateFormat: 'MM/DD/YYYY',
+                correctFormat: true,
+                defaultDate: '01/01/1900'
+              }],
+              columnSorting: true
+            });"
+content76="Custom sort implementation"
+content77="setSortConfig"
+content78="won't be sorted"
+content79="isSorted"
+content80="getSortConfig"
+content81="beforeColumnSort"
+content82="false"
+content83="sort data by yourself (for example, on the server side),"
+content84="setSortConfig"
+content85="
+            Please take a look at the custom sort implementation in the snippet below.
+          "
+content86="beforeColumnSort: function(currentSortConfig, destinationSortConfigs) {
+  const columnSortPlugin = this.getPlugin('columnSorting');
+
+  columnSortPlugin.setSortConfig(destinationSortConfigs);
+
+  // const newData = ... // Calculated data set, ie. from an AJAX call.
+
+  // this.loadData(newData); // Load a new data set.
+
+  return false; // The blockade for the default sort action.
+}"
+content87="Plugin hooks"
+content88="
+            The plugin provides two hooks:
+          "
+content89="beforeColumnSort"
+content90="getSortConfig"
+content91="beforeColumnSort"
+content92="false"
+content93="afterColumnSort"
+content94="afterColumnSort"
+content95="beforeColumnSort"
+content96="false"
+content97="clearSort"
+content98="Plugin API"
+content99="List of methods exposed by the plugin:"
+content100="clearSort"
+content101="getSortConfig"
+content102="isSorted"
+content103="setSortConfig"
+content104="sort"
+content105="
+            Help us improve this page
+          "

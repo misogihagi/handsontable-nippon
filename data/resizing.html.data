@@ -1,0 +1,24 @@
+content1="manualColumnResize: true"
+content2="manualRowResize: true"
+content3="The draggable resize handle appears:"
+content4="in the right part of the column header,"
+content5="in the bottom part of the row header."
+content6="Double click on the resize handle automatically adjusts size of the row or column."
+content7="For the selected rows or columns works simultaneously resizing."
+content8="
+        var
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: Handsontable.helper.createSpreadsheetData(200, 10),
+          rowHeaders: true,
+          colHeaders: true,
+          colWidths: [45, 100, 160, 60, 80, 80, 80],
+          rowHeights: [50, 40, 100],
+          manualColumnResize: true,
+          manualRowResize: true
+        });"
+content9="
+      Help us improve this page
+    "

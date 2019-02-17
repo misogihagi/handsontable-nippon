@@ -1,0 +1,171 @@
+<div class="static-content">
+  <div class="index-list">
+    <ul>
+      <li>
+          <a href="#copy-cut">Copy & Cut</a>
+          <ul>
+            <li><a href="#copy-cut-end-user-usage">End-user usage</a></li>
+            <li><a href="#copy-cut-context-menu">Context menu</a></li>
+            <li><a href="#copy-cut-trigger-paste-programmatically">Trigger copy & cut programmatically</a></li>
+            <li><a href="#copy-cut-hooks">Hooks</a></li>
+          </ul>
+        </li>
+      <li>
+        <a href="#paste">Paste</a>
+        <ul>
+          <li><a href="#paste-end-user-usage">End-user usage</a></li>
+          <li><a href="#paste-context-menu">Context menu</a></li>
+          <li><a href="#paste-trigger-paste-programmatically">Trigger paste programmatically</a></li>
+          <li><a href="#paste-hooks">Hooks</a></li>
+        </ul>
+      </li>
+      <li><a href="#limitations">Limitations</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="copy-cut">Copy & Cut</h3>
+    <p>Copy & Cut actions allows exporting data from Handsontable into the system clipboard.
+      The <i>CopyPaste</i> plugin copies and cuts data as a <code>taxt/plain</code> and a <code>text/html</code> mime-type.</p>
+
+    <h4 id="copy-cut-end-user-usage">End-user usage</h4>
+    <p>Available keyboard shortcuts:</p>
+    <ul>
+      <li><kbd>CTRL/CMD + C</kbd> - copies the content of the last selected cells range</li>
+      <li><kbd>CTRL/CMD + X</kbd> - cuts the content of the last selected cells range</li>
+    </ul>
+    <p>Available options in the browser's toolbar:</p>
+    <ul>
+      <li><code>Edit > Copy</code> - copies the content of the last selected cells range</li>
+      <li><code>Edit > Cut</code> - cuts the content of the last selected cells range</li>
+    </ul>
+
+    <h4 id="copy-cut-context-menu">Context menu</h4>
+    <p>When the context menu is enabled, it includes default items among which you will find copy and cut options.</p>
+    <ul>
+      <li>Copy - as a predefined key <code>copy</code></li>
+      <li>Cut - as a predefined key <code>cut</code></li>
+    </ul>
+    <p><a href="./demo-context-menu.html#page-custom">You can use them in the same way as the rest of the predefined items</a>.
+      These operations are executed by <code>document.execCommand()</code>.</p>
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2"><i class="fa fa-jsfiddle"></i> Edit</button>
+      </div>
+      <script data-jsfiddle="example2">
+        var container2 = document.getElementById('example2');
+        var hot2 = new Handsontable(container2, {
+          data: Handsontable.helper.createSpreadsheetData(5, 5),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: ['copy', 'cut'],
+        });
+      </script>
+    </div>
+
+    <h4 id="copy-cut-trigger-paste-programmatically">Trigger copy & cut programmatically</h4>
+    <p>Firstly, you need to select a cell range to copy or cut.</p>
+    <pre><code>hot.selectCell(0, 0);</code></pre>
+    <p>Then you can use one of the following commands:</p>
+    <ul>
+      <li><code>document.execCommand('copy')</code></li>
+      <li><code>document.execCommand('cut')</code></li>
+    </ul>
+    <p>The <i>CopyPaste</i> plugin listens to the browser's <code>cop</code> and <code>cut</code> events, so if they are triggered,
+      our implementation will copy or cut the selected data into the system clipboard.</p>
+    <div data-jsfiddle="example1">
+      <p>
+        <button id="copy">Copy</button>
+        <button id="cut">Cut</button>
+      </p>
+      <div id="example1" class="hot"></div>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1"><i class="fa fa-jsfiddle"></i> Edit</button>
+      </div>
+      <script data-jsfiddle="example1">
+        var container = document.getElementById('example1');
+        var copyBtn = document.getElementById('copy');
+        var cutBtn = document.getElementById('cut');
+
+        var hot = new Handsontable(container, {
+          rowHeaders: true,
+          colHeaders: true,
+          data: Handsontable.helper.createSpreadsheetData(5, 5),
+          outsideClickDeselects: false,
+        });
+
+        hot.selectCell(0, 0);
+
+        Handsontable.dom.addEvent(copyBtn, 'click', function () {
+          document.execCommand('copy');
+        });
+
+        Handsontable.dom.addEvent(cutBtn, 'click', function () {
+          document.execCommand('cut');
+        });
+      </script>
+    </div>
+
+    <h4 id="copy-cut-hooks">Hooks</h4>
+    <p>The <i>CopyPaste</i> plugin exposes following hooks to manipulate data during copy or cut operations:</p>
+    <ul>
+      <li><a href="./Hooks.html#event:beforeCopy"><i>beforeCopy</i></a></li>
+      <li><a href="./Hooks.html#event:afterCopy"><i>afterCopy</i></a></li>
+      <li><a href="./Hooks.html#event:beforeCut"><i>beforeCut</i></a></li>
+      <li><a href="./Hooks.html#event:afterCut"><i>afterCut</i></a></li>
+    </ul>
+    <p>In their descriptions, you can find examples of how to use them.</p>
+
+    <h3 id="paste">Paste</h3>
+    <p>Paste action allows importing data from external sources using the user's system clipboard.
+      The <i>CopyPaste</i> firstly looks for <code>taxt/html</code> in the system clipboard, otherwise it looks for <code>text/plain</code>.</p>
+
+    <h4 id="paste-end-user-usage">End-user usage</h4>
+    <p>Available keyboard shortcuts:</p>
+    <ul>
+      <li><kbd>CTRL/CMD + V</kbd> - paste the content into the last selected cell range</li>
+    </ul>
+    <p>Available options in the browser's toolbar:</p>
+    <ul>
+      <li><code>Edit > Paste</code> - paste the content into the last selected cell range</li>
+    </ul>
+
+    <h4 id="paste-context-menu">Context menu</h4>
+    <p><a href="https://www.w3.org/TR/clipboard-apis/#privacy" rel="nofollow">Due to security reason, modern browsers disallow to read from the system clipboard.</a></p>
+
+    <h4 id="paste-trigger-paste-programmatically">Trigger paste programmatically</h4>
+    <p><a href="https://www.w3.org/TR/clipboard-apis/#privacy" rel="nofollow">Due to security reason, modern browsers disallow to read from the system clipboard.</a></p>
+
+    <h4 id="paste-hooks">Hooks</h4>
+    <p>The <i>CopyPaste</i> plugin exposes following hooks to manipulate data data during the pasting operation:</p>
+    <ul>
+      <li><a href="./Hooks.html#event:beforePaste"><i>beforePaste</i></a></li>
+      <li><a href="./Hooks.html#event:afterPaste"><i>afterPaste</i></a></li>
+    </ul>
+    <p>In their descriptions, you can find examples of how to use them.</p>
+
+    <h3 id="limitations">Limitations</h3>
+    <ol>
+      <li>The <i>CopyPaste</i> plugin doesn't copy, cut or paste cells' appearance.</li>
+      <li>The data copied from Handsontable will always be kept as plain text.
+        For instance, if you copy a checked checkbox, the input will be kept as a value of <code>"true"</code>.</li>
+      <li><code>document.execCommand</code> can be called only during an immediate-execute event, such as a <code>MouseEvent</code> or a <code>KeyboardEvent</code>.</li>
+      <li>Internet Explorer supports only <code>Text</code> mime-type - what is an equivalent of <code>text/plain</code>.</li>
+      <li>Internet Explorer prompts a confirm window to allow/disallow at the first time user tries to call <code>document.execCommand</code>.
+        Unfortunately, if user disallows access to the system clipboard, no exceptions will be thrown and <code>copy</code> and <code>cut</code>
+        actions will be disabled for end-user. You can read more about this behavior of the browser
+        <a href="https://github.com/zenorocha/clipboard.js/issues/77" rel="nofollow">here</a></li>
+    </ol>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/copy-paste.html" class="edit-doc" target="_blank">
+      Help us improve this page
+    </a>
+  </p>
+</div>
+  

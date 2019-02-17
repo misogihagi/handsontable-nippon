@@ -1,0 +1,394 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#setup">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#custom-variables">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#advanced-example">
+     content4
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <div class="alert-box secondary" data-alert="">
+   <strong>
+    content5
+   </strong>
+  </div>
+  <h3 id="overview">
+   content6
+  </h3>
+  <p>
+   The
+   <i>
+    content7
+   </i>
+   plugin allows Handsontable to process formula expressions defined in the provided data.
+
+      This plugin uses a
+   <a href="https://github.com/handsontable/formula-parser">
+    content8
+   </a>
+   library which takes most of functions from
+   <a href="https://github.com/handsontable/formula.js">
+    content9
+   </a>
+   .
+   <p>
+    <strong>
+     content10
+    </strong>
+   </p>
+   <ul>
+    <li>
+     content11
+    </li>
+    <li>
+     Arithmetic operations such as:
+     <code>
+      content12
+     </code>
+     ,
+     <code>
+      content13
+     </code>
+     ,
+     <code>
+      content14
+     </code>
+     ,
+     <code>
+      content15
+     </code>
+     ,
+     <code>
+      content16
+     </code>
+     ,
+     <code>
+      content17
+     </code>
+     ;
+    </li>
+    <li>
+     Logical operations such as:
+     <code>
+      content18
+     </code>
+     ,
+     <code>
+      content19
+     </code>
+     ,
+     <code>
+      content20
+     </code>
+     ,
+     <code>
+      content21
+     </code>
+     ;
+    </li>
+    <li>
+     Comparison operations such as:
+     <code>
+      content22
+     </code>
+     ,
+     <code>
+      content23
+     </code>
+     ,
+     <code>
+      content24
+     </code>
+     ,
+     <code>
+      content25
+     </code>
+     ,
+     <code>
+      content26
+     </code>
+     ,
+     <code>
+      content27
+     </code>
+     ;
+    </li>
+    <li>
+     All JavaScript Math constants such as:
+     <code>
+      content28
+     </code>
+     ,
+     <code>
+      content29
+     </code>
+     ,
+     <code>
+      content30
+     </code>
+     ,
+     <code>
+      content31
+     </code>
+     ,
+     <code>
+      content32
+     </code>
+     ,
+     <code>
+      content33
+     </code>
+     ,
+     <code>
+      content34
+     </code>
+     ,
+     <code>
+      content35
+     </code>
+     ;
+    </li>
+    <li>
+     Error handling:
+     <code>
+      content36
+     </code>
+     ,
+     <code>
+      content37
+     </code>
+     ,
+     <code>
+      content38
+     </code>
+     ,
+     <code>
+      content39
+     </code>
+     ,
+     <code>
+      content40
+     </code>
+     ,
+     <code>
+      content41
+     </code>
+     ,
+     <code>
+      content42
+     </code>
+     ;
+    </li>
+    <li>
+     String operations such as:
+     <code>
+      content43
+     </code>
+     (concatenation eq.
+     <code>
+      content44
+     </code>
+     will return
+     <code>
+      content45
+     </code>
+     );
+    </li>
+    <li>
+     All excel formulas defined in
+     <a href="https://github.com/handsontable/formula.js">
+      content46
+     </a>
+     ;
+    </li>
+    <li>
+     Relative and absolute cell references such as:
+     <code>
+      content47
+     </code>
+     ,
+     <code>
+      content48
+     </code>
+     ,
+     <code>
+      content49
+     </code>
+     ,
+     <code>
+      content50
+     </code>
+     ;
+    </li>
+    <li>
+     Build-in variables such as:
+     <code>
+      content51
+     </code>
+     ,
+     <code>
+      content52
+     </code>
+     ,
+     <code>
+      content53
+     </code>
+     ;
+    </li>
+    <li>
+     content54
+    </li>
+    <li>
+     content55
+    </li>
+    <li>
+     content56
+    </li>
+   </ul>
+   <p>
+    <strong>
+     content57
+    </strong>
+   </p>
+   <ul>
+    <li>
+     content58
+    </li>
+    <li>
+     content59
+    </li>
+   </ul>
+  </p>
+  <h3 id="setup">
+   content60
+  </h3>
+  <p>
+   To enable the plugin you need to set the
+   <code>
+    content61
+   </code>
+   property to
+   <code>
+    content62
+   </code>
+   . Cells that are dependent on the edited value will be dynamically recalculated.
+  </p>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="example1">
+    content63
+   </script>
+   <script data-jsfiddle="example1">
+    content64
+   </script>
+  </div>
+  <h3 id="custom-variables">
+   content65
+  </h3>
+  <p>
+   You can pass your custom variables which can be ready to use in your formula expressions. To set custom variables pass
+      an object with key:value pairs to the
+   <code>
+    content66
+   </code>
+   property.
+  </p>
+  <div data-jsfiddle="example2">
+   <div>
+    <div class="hot" id="example2">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="example2">
+    content67
+   </script>
+   <script data-jsfiddle="example2">
+    content68
+   </script>
+  </div>
+  <h3 id="advanced-example">
+   content69
+  </h3>
+  <p>
+   content70
+  </p>
+  <div data-jsfiddle="example3">
+   <div>
+    <div class="hot scroll-container" id="example3">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example3">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="example3">
+    content71
+   </script>
+   <script data-jsfiddle="example3">
+    content72
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/formula-support.html" target="_blank">
+   content73
+  </a>
+ </p>
+</div>

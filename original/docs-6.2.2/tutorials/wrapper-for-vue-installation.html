@@ -1,0 +1,70 @@
+<div class="static-content">
+  <div class="example-container clearfix">
+      <p>
+        <strong>Handsontable for Vue</strong> is the official wrapper for Handsontable, a JavaScript data grid
+        component with a spreadsheet look & feel. It easily integrates with any data source and comes with lots of
+        useful features like data binding, validation, sorting or powerful context menu.
+      </p>
+
+      <h3>Installation</h3>
+      <p>
+        This component needs the Handsontable library to work. We suggest using <a href="https://www.npmjs.com/">npm</a> to install the package.
+      </p>
+      <p>
+        <code>npm install handsontable-pro @handsontable-pro/vue</code>
+      </p>
+      for Handsontable Community Edition
+      <p>
+        <code>npm install handsontable @handsontable/vue</code>
+      </p>
+
+      <h3>Basic usage</h3>
+      <p>
+        Vue Component
+        <pre>
+        <code>&lt;template&gt;
+  &lt;hot-table :settings="settings"&gt;&lt;/hot-table&gt;
+&lt;/template&gt;
+
+&lt;script&gt;
+  import { HotTable } from '@handsontable-pro/vue';
+
+  export default {
+    data: function() {
+      return {
+        settings: {
+          data: [
+            ["", "Ford", "Volvo", "Toyota", "Honda"],
+            ["2016", 10, 11, 12, 13],
+            ["2017", 20, 11, 14, 13],
+            ["2018", 30, 15, 12, 13]
+          ],
+          colHeaders: true,
+          rowHeaders: true,
+        }
+      };
+    },
+    components: {
+      HotTable
+    }
+  }
+&lt;/script&gt;
+
+&lt;style src="../node_modules/handsontable-pro/dist/handsontable.full.css"&gt;&lt;/style&gt;
+        </code>
+        </pre>
+      </p>
+
+      <h3>License</h3>
+      <p>
+          Handsontable for Vue is an open source library released free under the MIT license.
+      </p>
+      <p>
+          <a href="https://github.com/handsontable/vue-handsontable/blob/master/LICENSE" target="_blank">The MIT license</a>
+      </p>
+  </div>
+    <p>
+      <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/wrapper-for-vue-installation.html"
+         class="edit-doc" target="_blank">Help us improve this page</a>
+    </p>
+</div>

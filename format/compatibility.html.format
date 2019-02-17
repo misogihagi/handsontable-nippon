@@ -1,0 +1,80 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   Every release is tested in the most popular browsers..
+          This version (
+   <?js= version ?>
+   ) was tested in the following browsers:
+  </p>
+  <table class="static-data">
+   <thead>
+    <tr>
+     <th>
+      content1
+     </th>
+     <th>
+      content2
+     </th>
+     <th>
+      content3
+     </th>
+     <th>
+      content4
+     </th>
+     <th>
+      content5
+     </th>
+     <th>
+      content6
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>
+      content7
+     </td>
+     <td>
+      content8
+     </td>
+     <td>
+      content9
+     </td>
+     <td>
+      content10
+     </td>
+     <td>
+      content11
+     </td>
+     <td>
+      content12
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <h5>
+   <strong>
+    content13
+   </strong>
+  </h5>
+  <ul>
+   <li>
+    content14
+   </li>
+   <li>
+    content15
+   </li>
+   <li>
+    content16
+   </li>
+   <li>
+    content17
+   </li>
+  </ul>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/compatibility.html" target="_blank">
+   content18
+  </a>
+ </p>
+</div>

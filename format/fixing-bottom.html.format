@@ -1,0 +1,43 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   You can fix the bottom rows of the table, by using the
+   <code>
+    content1
+   </code>
+   config option. This way, when you're scrolling the table,
+    the fixed rows will stay at the bottom edge of the table's container.
+  </p>
+  <p>
+   content2
+  </p>
+  <strong id="positions">
+  </strong>
+  <div class="scroll-container fixed-container" data-jsfiddle="example">
+   <div class="hot" id="example">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example">
+    content3
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/fixing.html" target="_blank">
+   content4
+  </a>
+ </p>
+</div>

@@ -1,0 +1,194 @@
+content1="With every cell in the Handsontable there are 3 associated functions:"
+content2="renderer"
+content3="editor"
+content4="validator"
+content5="cell type"
+content6="Renderer"
+content7="renderer"
+content8="HTMLTableCellElement"
+content9="Renderer"
+content10="Renderer"
+content11="htInvalid"
+content12="Native cell renderers"
+content13="Handsontable comes with 5 predefined renderers that you can extend, when writing your own renderers. "
+content14="TextRenderer"
+content15="NumericRenderer"
+content16="AutocompleteRenderer"
+content17="CheckboxRenderer"
+content18="PasswordRenderer"
+content19="TextRenderer"
+content20="read only"
+content21="invalid"
+content22="TextRenderer"
+content23="Adding event listeners in cell renderer function"
+content24="renderer"
+content25="This is because Handsontable:"
+content26="renderer"
+content27="reuses table cell nodes during table scrolling and adding/removing new rows/columns - this can lead to having
+        event listeners attached to the wrong cell
+      "
+content28="Handsontable event"
+content29="Handsontable events"
+content30="Handsontable event"
+content31="
+      <div>"
+content32="Performance"
+content33="renderer"
+content34="Renerer templates"
+content35="Editor"
+content36="Cell editors are the most complex cell functions. We have prepared a [[separate page|Custom-cell-editor]] explaining
+      how cell edit works and how to write your own cell editor."
+content37="Validator"
+content38="callback"
+content39="validator"
+content40="true"
+content41="test()"
+content42="true"
+content43="callback"
+content44="validator"
+content45="renderer"
+content46="editor"
+content47="validator"
+content48="validator"
+content49="Cell type"
+content50="renderer"
+content51="editor"
+content52="validator"
+content53="dd/mm/yyy"
+content54="yyy-mm-dd"
+content55="cell types"
+content56=""text""
+content57=""numeric""
+content58="
+      "date""
+content59="
+      "numeric""
+content60="Handsontable.renderers.NumericRenderer"
+content61="Handsontable.editors.TextEditor"
+content62="Handsontable.validators.NumericValidator"
+content63="so instead of writing"
+content64="var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      renderer: Handsontable.renderers.NumericRenderer,
+      editor: Handsontable.editors.TextEditor,
+      validator: Handsontable.validators.NumericValidator
+    }
+  ]
+});"
+content65="you can simply write"
+content66="var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      type: 'numeric'
+    }
+  ]
+});"
+content67="type"
+content68="Native types"
+content69="Handsontable comes with 9 types:"
+content70="text"
+content71="numeric"
+content72="date"
+content73="checkbox"
+content74="password"
+content75="select"
+content76="dropdown"
+content77="autocomplete"
+content78="handsontable"
+content79="text"
+content80="Precedence"
+content81="type"
+content82="renderer"
+content83="editor"
+content84="validator"
+content85="var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+  {
+    type: 'numeric',
+    validator: customValidator // validator function defined elsewhere
+  }
+]
+});"
+content86="type"
+content87="numeric"
+content88="var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      renderer: Handsontable.renderers.NumericRenderer,
+      editor: Handsontable.editors.TextEditor,
+      validator: customValidator
+    }
+  ]
+});"
+content89="There is one more way you can define the configuration using types:"
+content90="var hot = new Handsontable(document.getElementById('container'), {
+  validator: customValidator, // validator function defined elsewhere
+  columns: [
+    {
+      type: 'password'
+    },
+    {}
+  ]
+});"
+content91="cascade
+      configuration"
+content92="validator"
+content93="customValidator"
+content94="type"
+content95="password"
+content96="Password"
+content97="renderer: Handsontable.renderers.PasswordRenderer,
+editor: Handsontable.editors.PasswordEditor,
+validator: undefined"
+content98="type: 'password'"
+content99="validator: customValidator"
+content100="password"
+content101="var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      renderer: Handsontable.renderers.PasswordRenderer,
+      editor: Handsontable.editors.PasswordEditor,
+      validator: undefined
+    }
+    {
+      renderer: Handsontable.renderers.TextRenderer, // text cell type is the default one
+      editor: Handsontable.editors.TextEditor, // text cell type is the default one
+      validator: customValidator
+    }
+  ]
+});"
+content102="Cell functions getters"
+content103="renderer"
+content104="editor"
+content105="validator"
+content106="getCellMeta(row, col)"
+content107="var cellProperties = $('#container').handsontable('getCellMeta', 0, 0);
+// get cell properties for cell [0, 0]
+cellProperties.renderer; // get cell renderer
+cellProperties.editor; // get cell editor
+cellProperties.validator; // get cell validator"
+content108="getCellMeta()"
+content109="undefined"
+content110="var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      type: 'numeric'
+    }
+  ]
+});
+
+var cellProperties = hot.getCellMeta(0, 0); // get cell properties for cell [0, 0]
+cellProperties.renderer; // undefined
+cellProperties.editor; // undefined
+cellProperties.validator; // undefined
+cellProperties.type; // "numeric""
+content111="cell function getter"
+content112="getCellRenderer(row, col)"
+content113="getCellEditor(row, col)"
+content114="getCellValidator(row, col)"
+content115="Those functions will always return an appropriate value, regardless of whether cell functions have been defined
+      directly or using a cell type."
+content116="
+      Help us improve this page
+    "

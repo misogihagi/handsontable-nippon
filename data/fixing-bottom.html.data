@@ -1,0 +1,17 @@
+content1="fixedRowsBottom"
+content2="Example below shows a table with two bottom rows fixed."
+content3="
+        var
+        myData = Handsontable.helper.createSpreadsheetData(100, 50),
+        container = document.getElementById('example'),
+        hot;
+
+        hot = new Handsontable(container, {
+          data: myData,
+          rowHeaders: true,
+          colHeaders: true,
+          fixedRowsBottom: 2
+        });"
+content4="
+      Help us improve this page
+    "

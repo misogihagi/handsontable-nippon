@@ -1,0 +1,216 @@
+content1="The search plugin provides an easy interface to search data across Handsontable."
+content2="search"
+content3="true"
+content4="searchPlugin"
+content5="query(queryStr)"
+content6="queryStr"
+content7="query(queryStr, [callback], [queryMethod])"
+content8="row"
+content9="col"
+content10="data"
+content11="query"
+content12="isSearchResult"
+content13="isSearchResult"
+content14="true"
+content15="false"
+content16="query()"
+content17="Search result class"
+content18="searchPlugin"
+content19="htSearchResult"
+content20="isSearchResult"
+content21="true"
+content22="searchResultClass"
+content23="var searchPlugin = hot.getPlugin('search'); searchPlugin.setSearchResultClass(className);"
+content24="queryMethod"
+content25="queryMethod"
+content26="queryStr"
+content27="queryStr"
+content28="cellData"
+content29="query()"
+content30="getDataAtCell()"
+content31="queryMethod"
+content32="true"
+content33="queryMethod"
+content34="const DEFAULT_QUERY_METHOD = function(query, value) {
+    if (isUndefined(query) || query === null || !query.toLowerCase || query.length === 0) {
+      return false;
+    }
+    if (isUndefined(value) || value === null) {
+      return false;
+    }
+
+    return value.toString().toLowerCase().indexOf(query.toLowerCase()) !== -1;
+  };
+};
+      "
+content35="queryMethod"
+content36="queryMethod"
+content37="queryMethod"
+content38="query()"
+content39="queryMethod"
+content40="var searchPlugin = hot.getPlugin('search'); searchPlugin.setQueryMethod(myNewQueryMethod);"
+content41="Custom result callback"
+content42="queryMethod"
+content43="searchPlugin"
+content44="
+      callback(instance, rowIndex, colIndex, cellData, testResult)"
+content45="queryMethod"
+content46="var searchPlugin = hot.getPlugin('search'); searchPlugin.setCallback(myNewCallbackFunction);"
+content47="callback"
+content48="query()"
+content49="callback"
+content50="isSearchResult"
+content51="const DEFAULT_CALLBACK = function(instance, row, col, data, testResult) {
+  instance.getCellMeta(row, col).isSearchResult = testResult;
+};
+      "
+content52="Find the following examples below:"
+content53="Simplest use case"
+content54="Custom search result class"
+content55="Custom query method"
+content56="Custom callback"
+content57="
+      Help us improve this page
+    "
+content58="Simplest use case"
+content59="
+        var
+          data = [
+            ['Tesla', 2017, 'black', 'black'],
+            ['Nissan', 2018, 'blue', 'blue'],
+            ['Chrysler', 2019, 'yellow', 'black'],
+            ['Volvo', 2020, 'yellow', 'gray']
+          ],
+          example = document.getElementById('example1'),
+          searchFiled = document.getElementById('search_field'),
+          hot;
+
+        hot = new Handsontable(example, {
+          data: data,
+          colHeaders: true,
+          search: true
+        });
+
+        Handsontable.dom.addEvent(searchFiled, 'keyup', function (event) {
+          var search = hot.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+          hot.render();
+        });"
+content60="Custom search result class"
+content61="
+        .htCore td.customClass {
+          color: #f8f8ff;
+          background: #1E90FF;
+        }
+      "
+content62="
+        var
+          data = [
+            ["Tesla", 2017, "black", "black"],
+            ["Nissan", 2018, "blue", "blue"],
+            ["Chrysler", 2019, "yellow", "black"],
+            ["Volvo", 2020, "white", "gray"]
+          ],
+          example2 = document.getElementById("example2"),
+          hot2, searchFiled2;
+
+        hot2 = new Handsontable(example2,{
+          data: data,
+          colHeaders: true,
+          search: {
+            searchResultClass: 'customClass'
+          }
+        });
+        searchFiled2 = document.getElementById('search_field2');
+
+        Handsontable.dom.addEvent(searchFiled2, 'keyup', function (event) {
+          var search = hot2.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+          hot2.render();
+        });"
+content63="Custom query method"
+content64="
+        var
+          data = [
+            ["Tesla", 2017, "black", "black"],
+            ["Nissan", 2018, "blue", "blue"],
+            ["Chrysler", 2019, "yellow", "black"],
+            ["Volvo", 2020, "white", "gray"]
+          ],
+          example3 = document.getElementById("example3"),
+          hot3, searchFiled3;
+
+        function onlyExactMatch(queryStr, value) {
+          return queryStr.toString() === value.toString();
+        };
+
+        hot3 = new Handsontable(example3,{
+          data: data,
+          colHeaders: true,
+          search: {
+            queryMethod: onlyExactMatch
+          }
+        });
+        searchFiled3 = document.getElementById('search_field3');
+
+        Handsontable.dom.addEvent(searchFiled3, 'keyup', function(event) {
+          var search = hot3.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+
+          hot3.render();
+        });"
+content65="Custom callback"
+content66="0"
+content67="
+        var
+          data = [
+            ["Tesla", 2017, "black", "black"],
+            ["Nissan", 2018, "blue", "blue"],
+            ["Chrysler", 2019, "yellow", "black"],
+            ["Volvo", 2020, "white", "gray"]
+          ],
+          example4 = document.getElementById("example4"),
+          hot4, searchFiled4, resultCount,
+          searchResultCount = 0;
+
+        function searchResultCounter(instance, row, col, value, result) {
+          const DEFAULT_CALLBACK = function(instance, row, col, data, testResult) {
+            instance.getCellMeta(row, col).isSearchResult = testResult;
+          };
+
+          DEFAULT_CALLBACK.apply(this, arguments);
+
+          if (result) {
+            searchResultCount++;
+          }
+        }
+
+        hot4 = new Handsontable(example4,{
+          data: data,
+          colHeaders: true,
+          search: {
+            callback: searchResultCounter
+          }
+        });
+        searchFiled4 = document.getElementById('search_field4');
+        resultCount = document.getElementById('resultCount');
+
+        Handsontable.dom.addEvent(searchFiled4, 'keyup', function(event) {
+          searchResultCount = 0;
+
+          var search = hot4.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+          resultCount.innerText = searchResultCount.toString();
+          hot4.render();
+        });"
+content68="
+      Help us improve this page
+    "

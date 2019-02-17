@@ -1,0 +1,21 @@
+content1="manualColumnMove: true"
+content2="manualRowMove: true"
+content3="The draggable move handle appears:"
+content4="in the right part of the column header,"
+content5="in the top part of the row header."
+content6="
+        var
+          example1 = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(200, 20),
+          rowHeaders: true,
+          colHeaders: true,
+          colWidths: 100,
+          manualColumnMove: true,
+          manualRowMove: true
+        });"
+content7="
+      Help us improve this page
+    "

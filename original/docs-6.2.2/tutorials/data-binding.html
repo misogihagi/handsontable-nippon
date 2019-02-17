@@ -1,0 +1,104 @@
+<div class="static-content">
+  <div class="example-container clearfix">
+    <div class="index-list">
+      <ul>
+        <li><a href="#page-reference">Understand binding as reference</a></li>
+        <li><a href="#page-copy">Working with copy of data</a></li>
+      </ul>
+    </div>
+
+    <div class="example-container clearfix" name="reference">
+      <h3 id="page-reference">Understand binding as a reference</h3>
+      <p>
+        Handsontable binds to your data source (list of arrays or list of objects) by reference. Therefore, all the data entered
+        in the grid will alter the original data source. In complex applications, you may want to change
+        the data source from outside Handsontable. A change being made will not be presented
+        on the screen unless you refresh the grid on the screen using the <a href="/docs/<?js= version ?>/Core.html#render">render</a> method.
+      </p>
+
+      <div data-jsfiddle="example1">
+        <div id="example1" class="hot"></div>
+      </div>
+
+      <div class="codeLayout">
+        <div class="buttons">
+          <button class="jsFiddleLink" data-runfiddle="example1">
+            <i class="fa fa-jsfiddle"></i>
+            Edit
+          </button>
+          <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                  title="Print current data source to console">
+            <i class="fa fa-terminal"></i>
+            Dump data to console
+          </button>
+        </div>
+        <script data-jsfiddle="example1">
+          var
+            data1 = [
+              ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+              ['2017', 10, 11, 12, 13, 15, 16],
+              ['2018', 10, 11, 12, 13, 15, 16],
+              ['2019', 10, 11, 12, 13, 15, 16],
+              ['2020', 10, 11, 12, 13, 15, 16],
+              ['2021', 10, 11, 12, 13, 15, 16]
+            ],
+            container1 = document.getElementById('example1'),
+            settings1 = {
+              data: data1
+            },
+            hot1;
+
+          hot1 = new Handsontable(container1, settings1);
+          data1[0][1] = 'Ford'; // change "Tesla" to "Ford" programmatically
+          hot1.render();</script>
+      </div>
+    </div>
+
+    <div class="example-container clearfix head-gap" name="rendering">
+      <h3 id="page-copy">Working with copy of data</h3>
+      <p>
+        In case you want to keep a separate working copy of data for Handsontable, it is suggested
+        to clone the data source before loading it into Handsontable. This can be done with
+        <code>JSON.parse(JSON.stringify(data))</code> or another deep-cloning function.
+      </p>
+      <div data-jsfiddle="example2">
+        <div id="example2" class="hot"></div>
+      </div>
+
+      <div class="codeLayout">
+        <div class="buttons">
+          <button class="jsFiddleLink" data-runfiddle="example2">
+            <i class="fa fa-jsfiddle"></i>
+            Edit
+          </button>
+          <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                  title="Print current data source to console">
+            <i class="fa fa-terminal"></i>
+            Dump data to console
+          </button>
+        </div>
+        <script data-jsfiddle="example2">
+          var
+            data2 = [
+              ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+              ['2017', 10, 11, 12, 13, 15, 16],
+              ['2018', 10, 11, 12, 13, 15, 16],
+              ['2019', 10, 11, 12, 13, 15, 16],
+              ['2020', 10, 11, 12, 13, 15, 16],
+              ['2021', 10, 11, 12, 13, 15, 16]
+            ],
+            container2 = document.getElementById('example2'),
+            hot2;
+
+          hot2 = new Handsontable(container2, {
+            data: JSON.parse(JSON.stringify(data2))
+          });</script>
+      </div>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/data-binding.html" class="edit-doc" target="_blank">
+      Help us improve this page
+    </a>
+  </p>
+</div>

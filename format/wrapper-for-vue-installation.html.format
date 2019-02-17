@@ -1,0 +1,58 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   <strong>
+    content1
+   </strong>
+   is the official wrapper for Handsontable, a JavaScript data grid
+        component with a spreadsheet look &amp; feel. It easily integrates with any data source and comes with lots of
+        useful features like data binding, validation, sorting or powerful context menu.
+  </p>
+  <h3>
+   content2
+  </h3>
+  <p>
+   This component needs the Handsontable library to work. We suggest using
+   <a href="https://www.npmjs.com/">
+    content3
+   </a>
+   to install the package.
+  </p>
+  <p>
+   <code>
+    content4
+   </code>
+  </p>
+  for Handsontable Community Edition
+  <p>
+   <code>
+    content5
+   </code>
+  </p>
+  <h3>
+   content6
+  </h3>
+  <p>
+   Vue Component
+   <pre>
+        <code>content7</code>
+        </pre>
+  </p>
+  <h3>
+   content8
+  </h3>
+  <p>
+   content9
+  </p>
+  <p>
+   <a href="https://github.com/handsontable/vue-handsontable/blob/master/LICENSE" target="_blank">
+    content10
+   </a>
+  </p>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-vue-installation.html" target="_blank">
+   content11
+  </a>
+ </p>
+</div>

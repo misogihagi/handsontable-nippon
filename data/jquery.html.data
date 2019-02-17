@@ -1,0 +1,34 @@
+content1="
+    // add jquery to the jsfiddle example
+    var jqueryImport = document.querySelector('script[src*="jquery.min.js"]');
+    jqueryImport.setAttribute('data-jsfiddle','common');"
+content2="
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }"
+content3="
+      Help us improve this page
+    "
+content4="handsontable()"
+content5="
+        // Instead of creating a new Handsontable instance
+        // with the container element passed as an argument,
+        // you can simply call .handsontable method on a jQuery DOM object.
+        var $container = $("#example1");
+
+        $container.handsontable({
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true
+        });
+
+        // This way, you can access Handsontable api methods by passing their names as an argument, e.g.:
+        var hotInstance = $("#example1").handsontable('getInstance');"

@@ -1,0 +1,61 @@
+content1="
+    function getCarData() {
+      return [
+        ["Mercedes", "A 160", 1332284400000, 6999.95],
+        ["Citroen", "C4 Coupe", '10 30', 8330],
+        ["Audi", "A4 Avant", "8:00 PM", 33900],
+        ["Opel", "Astra", 1332284400000, 7000],
+        ["BMW", "320i Coupe", 1332284400000, 30500]
+      ];
+    }"
+content2="type: 'time'"
+content3="columns"
+content4="cells"
+content5="Moment.js"
+content6="<head>"
+content7="/dist/moment/moment.js"
+content8="h:mm:ss a"
+content9="9:30:00 am"
+content10="timeFormat"
+content11="correctFormat"
+content12="not"
+content13="hot.validateCells()"
+content14="
+        var container = document.getElementById('example1'),
+                hot;
+
+        hot = new Handsontable(container, {
+          data: getCarData(),
+          startRows: 7,
+          startCols: 4,
+          colHeaders: ['Car', 'Model', 'Registration time', 'Price'],
+          columnSorting: true,
+          contextMenu: true,
+          minSpareRows: 1,
+          columns: [
+            {
+              type: 'autocomplete',
+              source: ['Audi', 'BMW', 'Chrysler', 'Citroen', 'Mercedes', 'Nissan', 'Opel', 'Suzuki', 'Toyota', 'Volvo'],
+              strict: false
+            },
+            {
+              // 2nd cell is simple text, no special options here
+            },
+            {
+              type: 'time',
+              timeFormat: 'h:mm:ss a',
+              correctFormat: true
+            },
+            {
+              type: 'numeric',
+              numericFormat: {
+                pattern: '$ 0,0.00'
+              }
+            }
+          ]
+        });
+
+        hot.validateCells();"
+content15="
+      Help us improve this page
+    "

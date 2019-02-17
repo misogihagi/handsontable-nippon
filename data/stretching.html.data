@@ -1,0 +1,55 @@
+content1="This page shows how to configure Handsontable column stretching:"
+content2="last"
+content3="all"
+content4="none"
+content5="last"
+content6="overflow: hidden"
+content7="stretchH: 'last'"
+content8="
+      var
+        container1 = document.getElementById('example1'),
+        hot1;
+
+      hot1 = new Handsontable(container1, {
+        data: Handsontable.helper.createSpreadsheetData(40, 6),
+        colWidths: 47,
+        rowHeaders: true,
+        colHeaders: true,
+        stretchH: 'last',
+        contextMenu: true
+      });"
+content9="all"
+content10="stretchH:
+      'last'"
+content11="all"
+content12="none"
+content13="
+      var
+        container2 = document.getElementById('example2'),
+        hot2;
+
+      hot3 = new Handsontable(container2, {
+        data: Handsontable.helper.createSpreadsheetData(40, 6),
+        colWidths: [47, 47, 47, 47, 47, 47, 47], // can also be a number or a function
+        rowHeaders: true,
+        colHeaders: true,
+        stretchH: 'all',
+        contextMenu: true
+      });"
+content14="none"
+content15="
+      var
+        container3 = document.getElementById('example3'),
+        hot3;
+
+      hot3 = new Handsontable(container3, {
+        data: Handsontable.helper.createSpreadsheetData(40, 6),
+        colWidths: [47, 47, 47, 47, 47, 47, 47], // can also be a number or a function
+        rowHeaders: true,
+        colHeaders: true,
+        stretchH: 'none', // actually you don't have to declare it because it is default
+        contextMenu: true
+      });"
+content16="
+    Help us improve this page
+  "

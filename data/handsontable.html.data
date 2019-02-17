@@ -1,0 +1,92 @@
+content1="
+    function getCarData() {
+      return [
+        ["Tesla", 2017, "black", "black"],
+        ["Nissan", 2018, "blue", "blue"],
+        ["Chrysler", 2019, "yellow", "black"],
+        ["Volvo", 2020, "white", "gray"]
+      ];
+    }"
+content2="HOT-in-HOT"
+content3="HOT-in-HOT opens by any of the following:"
+content4="F2"
+content5="ENTER"
+content6="the triangle icon is clicked,"
+content7="the cell content is double clicked."
+content8="While HOT-in-HOT is opened, the text field above the HOT-in-HOT remains focused at all times."
+content9="Keyboard bindings while the HOT-in-HOT is opened:"
+content10="ESC"
+content11="ENTER"
+content12="enterMoves"
+content13="TAB"
+content14="tabMoves"
+content15="ARROW DOWN"
+content16="ARROW UP"
+content17="ARROW RIGTH"
+content18="ARROW LEFT"
+content19="Mouse click outside of the editor or on one of the cells in HOT-in-HOT applies change."
+content20="*apply change"
+content21="
+        var
+          carData = getCarData(),
+          container = document.getElementById('example1'),
+          manufacturerData,
+          colors,
+          color,
+          colorData = [],
+          hot;
+
+        manufacturerData = [
+          {name: 'BMW', country: 'Germany', owner: 'Bayerische Motoren Werke AG'},
+          {name: 'Chrysler', country: 'USA', owner: 'Chrysler Group LLC'},
+          {name: 'Nissan', country: 'Japan', owner: 'Nissan Motor Company Ltd'},
+          {name: 'Suzuki', country: 'Japan', owner: 'Suzuki Motor Corporation'},
+          {name: 'Toyota', country: 'Japan', owner: 'Toyota Motor Corporation'},
+          {name: 'Volvo', country: 'Sweden', owner: 'Zhejiang Geely Holding Group'}
+        ];
+        colors = ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white'];
+
+        while (color = colors.shift()) {
+          colorData.push([
+            [color]
+          ]);
+        }
+
+        hot = new Handsontable(container, {
+          data: carData,
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              type: 'handsontable',
+              handsontable: {
+                colHeaders: ['Marque', 'Country', 'Parent company'],
+                autoColumnSize: true,
+                data: manufacturerData,
+                getValue: function() {
+                	var selection = this.getSelectedLast();
+
+                  // Get always manufacture name of clicked row
+                  return this.getSourceDataAtRow(selection[0]).name;
+                },
+              }
+            },
+            {type: 'numeric'},
+            {
+              type: 'handsontable',
+              handsontable: {
+                colHeaders: false,
+                data: colorData
+              }
+            },
+            {
+              type: 'handsontable',
+              handsontable: {
+                colHeaders: false,
+                data: colorData
+              }
+            }
+          ]
+        });"
+content22="
+      Help us improve this page
+    "

@@ -1,0 +1,44 @@
+content1="Understand binding as reference"
+content2="Working with copy of data"
+content3="Understand binding as a reference"
+content4="render"
+content5="
+          var
+            data1 = [
+              ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+              ['2017', 10, 11, 12, 13, 15, 16],
+              ['2018', 10, 11, 12, 13, 15, 16],
+              ['2019', 10, 11, 12, 13, 15, 16],
+              ['2020', 10, 11, 12, 13, 15, 16],
+              ['2021', 10, 11, 12, 13, 15, 16]
+            ],
+            container1 = document.getElementById('example1'),
+            settings1 = {
+              data: data1
+            },
+            hot1;
+
+          hot1 = new Handsontable(container1, settings1);
+          data1[0][1] = 'Ford'; // change "Tesla" to "Ford" programmatically
+          hot1.render();"
+content6="Working with copy of data"
+content7="JSON.parse(JSON.stringify(data))"
+content8="
+          var
+            data2 = [
+              ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+              ['2017', 10, 11, 12, 13, 15, 16],
+              ['2018', 10, 11, 12, 13, 15, 16],
+              ['2019', 10, 11, 12, 13, 15, 16],
+              ['2020', 10, 11, 12, 13, 15, 16],
+              ['2021', 10, 11, 12, 13, 15, 16]
+            ],
+            container2 = document.getElementById('example2'),
+            hot2;
+
+          hot2 = new Handsontable(container2, {
+            data: JSON.parse(JSON.stringify(data2))
+          });"
+content9="
+      Help us improve this page
+    "

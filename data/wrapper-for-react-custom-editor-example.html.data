@@ -1,0 +1,62 @@
+content1="@handsontable-pro/react"
+content2="placeholder"
+content3="input"
+content4="
+"
+content5="
+      <div id="example1" class="hot">
+      </div>
+    "
+content6="
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import { HotTable } from '@handsontable-pro/react';
+        import Handsontable from 'handsontable-pro';
+
+        class CustomEditor extends Handsontable.editors.TextEditor {
+          constructor(props) {
+            super(props);
+          }
+
+          createElements() {
+            super.createElements();
+
+            this.TEXTAREA = document.createElement('input');
+            this.TEXTAREA.setAttribute('placeholder', 'Custom placeholder');
+            this.TEXTAREA.className = 'handsontableInput';
+            this.textareaStyle = this.TEXTAREA.style;
+            Handsontable.dom.empty(this.TEXTAREA_PARENT);
+            this.TEXTAREA_PARENT.appendChild(this.TEXTAREA);
+          }
+        }
+
+        class App extends React.Component {
+          constructor(props) {
+            super(props);
+            this.hotSettings = {
+              startRows: 5,
+              columns: [
+                {
+                  editor: CustomEditor
+                }
+              ],
+              colHeaders: true,
+              colWidths: 200
+            };
+          }
+
+          render() {
+            return (
+              <div>
+                <HotTable
+                  id="hot"
+                  settings={this.hotSettings}
+                />
+              </div>
+            );
+          }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('example1'));
+      "
+content7="Help us improve this page"

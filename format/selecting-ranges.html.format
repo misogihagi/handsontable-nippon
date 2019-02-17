@@ -1,0 +1,235 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-basic">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-selecting">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-getting">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#page-modifying">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#page-styling">
+     content5
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="default">
+  <h3 id="page-basic">
+   content6
+  </h3>
+  <p>
+   content7
+  </p>
+  <p>
+   content8
+  </p>
+  <p>
+   Use
+   <kbd>
+    content9
+   </kbd>
+   on Mac or
+   <kbd>
+    content10
+   </kbd>
+   on Windows to select non-contiguous ranges of cells.
+  </p>
+ </div>
+ <div class="example-container clearfix head-gap" name="selecting">
+  <h3 id="page-selecting">
+   content11
+  </h3>
+  <p>
+   content12
+  </p>
+  <p>
+   Possible values of
+   <code>
+    content13
+   </code>
+   :
+  </p>
+  <ul>
+   <li>
+    <code>
+     content14
+    </code>
+    - A single cell can be selected,
+   </li>
+   <li>
+    <code>
+     content15
+    </code>
+    - Multiple cells within a single range can be selected,
+   </li>
+   <li>
+    <code>
+     content16
+    </code>
+    - Multiple non-contiguous ranges of cells can be selected.
+   </li>
+  </ul>
+  <div data-jsfiddle="example1">
+   <div>
+    <select id="selectOption" style="width: auto; margin-top: 16px;">
+     <option>
+      content17
+     </option>
+     <option>
+      content18
+     </option>
+     <option selected="selected">
+      content19
+     </option>
+    </select>
+   </div>
+   <div class="hot head-gap" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content20
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="getting">
+  <h3 id="page-getting">
+   content21
+  </h3>
+  <p>
+   To retrieve the selected cells as an array of arrays, you should use
+   <code>
+    content22
+   </code>
+   or
+   <code>
+    content23
+   </code>
+   methods.
+  </p>
+  <div data-jsfiddle="example2">
+   <div class="hot head-gap" id="example2">
+   </div>
+   <textarea id="output" style="margin: 16px 0 7px; width: 350px; height: 87px;"></textarea>
+   <div>
+    <button class="intext-btn" id="getButton">
+     content24
+    </button>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content25
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="modifying">
+  <h3 id="page-modifying">
+   content26
+  </h3>
+  <p>
+   content27
+  </p>
+  <div data-jsfiddle="example3">
+   <div class="hot head-gap" id="example3">
+   </div>
+   <div id="buttons" style="margin-top: 10px;">
+    <button class="intext-btn" id="setButton">
+     content28
+    </button>
+    <button class="intext-btn" id="addButton">
+     content29
+    </button>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example3">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example3" data-instance="hot4" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example3">
+    content30
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="styling">
+  <h3 id="page-styling">
+   content31
+  </h3>
+  <p>
+   The background color can be easily changed using CSS styles.
+      The main, light blue background color, is defined in the
+   <code>
+    content32
+   </code>
+   class.
+  </p>
+  <p>
+   For non-contiguous selection, there are multiple classes making each level a bit darker.
+      These classes are called
+   <code>
+    content33
+   </code>
+   ,
+   <code>
+    content34
+   </code>
+   etc.
+  </p>
+  <p>
+   content35
+  </p>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/selecting-ranges.html" target="_blank">
+   content36
+  </a>
+ </p>
+</div>

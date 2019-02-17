@@ -1,0 +1,70 @@
+content1="Introduction to cell options"
+content2="How does the Cascading Configuration work?"
+content3="The Cascading Configuration model"
+content4="Introduction to cell options"
+content5="cell"
+content6="var hot = new Handsontable(document.getElementById('example'), {
+  cell: [
+    {row: 0, col: 0, readOnly: true}
+  ]
+});"
+content7="Or using cells function property to the Handsontable constructor. Example:"
+content8="var hot = new Handsontable(document.getElementById('example'), {
+  cells: function (row, col, prop) {
+    var cellProperties = {}
+
+    if (row === 0 && col === 0) {
+      cellProperties.readOnly = true;
+    }
+
+    return cellProperties;
+  }
+})"
+content9="How does the Cascading Configuration work?"
+content10="Since Handsontable 0.9 we use Cascading Configuration, which is a fast way to provide configuration options
+      for the whole table, along with its columns and particular cells."
+content11="Consider the following example:"
+content12="var hot = new Handsontable(document.getElementById('example'), {
+  readOnly: true,
+  columns: [
+    {readOnly: false},
+    {},
+    {}
+  ],
+  cells: function (row, col, prop) {
+    var cellProperties = {}
+
+    if (row === 0 && col === 0) {
+      cellProperties.readOnly = true;
+    }
+
+    return cellProperties;
+  }
+});"
+content13="The above notation will result in all TDs being read only, except for first column TDs
+      which will be editable, except for the TD in top left corner which will still be read only."
+content14="The cascading configuration model"
+content15="http://jsperf.com/extending-settings"
+content16="Constructor"
+content17="Configuration options that are provided using first-level"
+content18="new Handsontable(document.getElementById('example'), {
+  option: 'value'
+});"
+content19="updateSettings"
+content20="Columns"
+content21="Configuration options that are provided using second-level object"
+content22="new Handsontable(document.getElementById('example'), {
+  columns: {
+    option: 'value'
+  }
+});"
+content23="Cells"
+content24="Configuration options that are provided using second-level function"
+content25="new Handsontable(document.getElementById('example'), {
+  cells: function(row, col, prop) {
+
+  }
+});"
+content26="
+      Help us improve this page
+    "

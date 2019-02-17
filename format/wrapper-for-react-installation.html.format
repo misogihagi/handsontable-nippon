@@ -1,0 +1,68 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   <strong>
+    content1
+   </strong>
+   is the official wrapper for Handsontable, a JavaScript data grid
+        component with a spreadsheet look &amp; feel. It easily integrates with any data source and comes with lots of
+        useful features like data binding, validation, sorting or powerful context menu.
+  </p>
+  <h3>
+   content2
+  </h3>
+  <p>
+   This component needs the Handsontable library to work. We suggest using
+   <a href="https://www.npmjs.com/">
+    content3
+   </a>
+   to install the package.
+  </p>
+  <p>
+   <code>
+    content4
+   </code>
+  </p>
+  for Handsontable Community Edition
+  <p>
+   <code>
+    content5
+   </code>
+  </p>
+  <h3>
+   content6
+  </h3>
+  <p>
+   Import the Handsontable styles to your project
+   <pre>
+          <code>content7</code>
+        </pre>
+   for Handsontable Community Edition
+   <pre>
+          <code>content8</code>
+        </pre>
+  </p>
+  <p>
+   Then use Handsontable for React component in your codebase
+   <pre>
+        <code>content9</code>
+        </pre>
+  </p>
+  <h3>
+   content10
+  </h3>
+  <p>
+   content11
+  </p>
+  <p>
+   <a href="https://github.com/handsontable/react-handsontable/blob/master/LICENSE" target="_blank">
+    content12
+   </a>
+  </p>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-react-installation.html" target="_blank">
+   content13
+  </a>
+ </p>
+</div>

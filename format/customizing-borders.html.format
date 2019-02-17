@@ -1,0 +1,64 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   To enable the custom borders feature, set the
+   <code>
+    content1
+   </code>
+   option.
+      It could be set as
+   <code>
+    content2
+   </code>
+   or initialized as an array with predefined setup.
+  </p>
+  <p>
+   content3
+  </p>
+  <ul>
+   <li>
+    with row/col pairs:
+    <code>
+     content4
+    </code>
+   </li>
+   <li>
+    or with range details:
+    <code>
+     content5
+    </code>
+   </li>
+  </ul>
+  <p>
+   <strong>
+    content6
+   </strong>
+  </p>
+  <div class="scroll-container fixed-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content7
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/customizing-borders.html" target="_blank">
+   content8
+  </a>
+ </p>
+</div>

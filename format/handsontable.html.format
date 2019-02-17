@@ -1,0 +1,133 @@
+<div class="static-content">
+ <script data-jsfiddle="common">
+  content1
+ </script>
+ <div class="example-container clearfix">
+  <p>
+   This page shows using Handsontable as a cell editor in Handsontable (sometimes
+      referred as
+   <strong>
+    content2
+   </strong>
+   ).
+  </p>
+  <p>
+   <strong>
+    content3
+   </strong>
+  </p>
+  <ul>
+   <li>
+    <kbd>
+     content4
+    </kbd>
+    or
+    <kbd>
+     content5
+    </kbd>
+    key is pressed while the cell is selected,
+   </li>
+   <li>
+    content6
+   </li>
+   <li>
+    content7
+   </li>
+  </ul>
+  <p>
+   content8
+  </p>
+  <p>
+   <strong>
+    content9
+   </strong>
+  </p>
+  <ul>
+   <li>
+    <kbd>
+     content10
+    </kbd>
+    - close editor (cancel change),
+   </li>
+   <li>
+    <kbd>
+     content11
+    </kbd>
+    - close editor (apply change*), move the selection in the main HOT downwards (or according to
+    <code>
+     content12
+    </code>
+    setting),
+   </li>
+   <li>
+    <kbd>
+     content13
+    </kbd>
+    - behave as the ENTER key, but move the selection in the main HOT to the right (or according to
+    <code>
+     content14
+    </code>
+    setting),
+   </li>
+   <li>
+    <kbd>
+     content15
+    </kbd>
+    - move the selection in HOT-in-HOT downwards. If the last row was selected, has no effect,
+   </li>
+   <li>
+    <kbd>
+     content16
+    </kbd>
+    - move the selection in HOT-in-HOT upwards. If the first row was selected, deselect. If HOT-in-HOT was deselected, behave as the ENTER key but move the selection in the main HOT upwards,
+   </li>
+   <li>
+    <kbd>
+     content17
+    </kbd>
+    - move the text cursor in the text field to the left. If the text cursor was at the start position, behave as the ENTER key but move the selection in the main HOT to the left,
+   </li>
+   <li>
+    <kbd>
+     content18
+    </kbd>
+    - move the text cursor in the text field to the right. If the text cursor was at the end position, behave as the TAB key.
+   </li>
+  </ul>
+  <p>
+   content19
+  </p>
+  <p>
+   <strong>
+    content20
+   </strong>
+   means: The value of the cell highlighted or clicked in HOT-in-HOT is applied as new cell value in the main HOT. If no cell in HOT-in-HOT is selected, the value of the text field is used instead.
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content21
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/handsontable.html" target="_blank">
+   content22
+  </a>
+ </p>
+</div>

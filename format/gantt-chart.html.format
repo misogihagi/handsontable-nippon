@@ -1,0 +1,181 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#setup">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#options">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#examples">
+     content4
+    </a>
+   </li>
+  </ul>
+  <hr/>
+  <h3 id="overview">
+   content5
+  </h3>
+  <p>
+   The
+   <i>
+    content6
+   </i>
+   plugin allows creating a Gantt Chart using a Handsontable instance. You can feed it with either a data array or
+      another Handsontable instance.
+      Time in the chart is divided into weeks and months. You can easily set the displayed year using the plugin's API.
+  </p>
+  <h3 id="setup">
+   content7
+  </h3>
+  <p>
+   Before setting up the chart plugin, you must first enable it's dependencies:
+   <code>
+    content8
+   </code>
+   and
+   <code>
+    content9
+   </code>
+   <br/>
+   To enable the plugin you need to set the
+   <code>
+    content10
+   </code>
+   property to an object containing the configuration for the plugin.
+  </p>
+  <pre><code class="js">content11</code></pre>
+  <p>
+   The
+   <code>
+    content12
+   </code>
+   object, in this example can be either:
+  </p>
+  <ul>
+   <li>
+    An object containing the data for the chart, defined in this format:
+    <pre><code class="js">content13</code></pre>
+    As you can see, the data object in this case is represented as an
+    <code>
+     content14
+    </code>
+    of
+    <code>
+     content15
+    </code>
+    .
+    <br/>
+    Each object represents a single "bar" of the chart. As the chart itself is date-related (it creates a calendar of some kind), all the
+        information is also based on dates.
+    <br/>
+    <br/>
+    The object should consist of these properties:
+    <ul>
+     <li>
+      <code>
+       content16
+      </code>
+      : the date the "bar" should begin at.
+     </li>
+     <li>
+      <code>
+       content17
+      </code>
+      : the date the "bar" should begin at.
+     </li>
+     <li>
+      <code>
+       content18
+      </code>
+      : additional data passed to the "bar". It could be any information you'd like to be connected with the specified time range.
+     </li>
+    </ul>
+   </li>
+   <li>
+    An object containing binding configuration for another Handsontable instance:
+    <pre><code class="js">content19</code></pre>
+   </li>
+  </ul>
+  <h3 id="options">
+   content20
+  </h3>
+  <p>
+   You can add custom colors to the chart-enabled table rows, by calling:
+   <pre><code class="js">content21</code></pre>
+  </p>
+  <h3 id="examples">
+   content22
+  </h3>
+  <h4>
+   content23
+  </h4>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1" style="overflow: hidden;">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content24
+   </script>
+  </div>
+  <h4>
+   content25
+  </h4>
+  <div data-jsfiddle="example2">
+   <div>
+    <div class="hot" id="example2-source">
+    </div>
+    <br/>
+    <div class="hot" id="example2" style="overflow: hidden;">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content26
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/gantt-chart.html" target="_blank">
+   content27
+  </a>
+ </p>
+</div>

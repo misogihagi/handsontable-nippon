@@ -1,0 +1,164 @@
+<div class="static-content">
+ <div class="index-list">
+  <p>
+   content1
+  </p>
+  <ul>
+   <li>
+    <a href="#page-last">
+     StretchH
+     <code>
+      content2
+     </code>
+     column
+    </a>
+   </li>
+   <li>
+    <a href="#page-stretch">
+     StretchH
+     <code>
+      content3
+     </code>
+     columns
+    </a>
+   </li>
+   <li>
+    <a href="#page-none">
+     StretchH
+     <code>
+      content4
+     </code>
+     (default)
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="last">
+  <h3 id="page-last">
+   StretchH
+   <code>
+    content5
+   </code>
+   column
+  </h3>
+  <p>
+   The following example creates a table with vertical scrollbar by specifying
+    only the container height and
+   <code>
+    content6
+   </code>
+   in CSS.
+    The last column is stretched using
+   <code>
+    content7
+   </code>
+   option.
+  </p>
+  <div class="scroll-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content8
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="stretch">
+  <h3 id="page-stretch">
+   StretchH
+   <code>
+    content9
+   </code>
+   columns
+  </h3>
+  <p>
+   If the table content is not as wide as the container width, the table will be stretched to the container
+    width. The default horizontal stretch model is to stretch the last column only (by using
+   <code>
+    content10
+   </code>
+   option).
+  </p>
+  <p>
+   Other possible stretch modes are
+   <code>
+    content11
+   </code>
+   (stretches all columns equally, used in the below example)
+    and
+   <code>
+    content12
+   </code>
+   (not stretching).
+  </p>
+  <div class="scroll-container" data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content13
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="none">
+  <h3 id="page-none">
+   StretchH
+   <code>
+    content14
+   </code>
+   (default)
+  </h3>
+  <div class="scroll-container" data-jsfiddle="example3">
+   <div class="hot" id="example3">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example3">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example3">
+    content15
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/stretching.html" target="_blank">
+   content16
+  </a>
+ </p>
+</div>

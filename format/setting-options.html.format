@@ -1,0 +1,113 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-options">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-config">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-cascading">
+     content3
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-options">
+   content4
+  </h3>
+  <p>
+   Any constructor or column option may be overwritten for a particular cell (row/column combination),
+      using
+   <code>
+    content5
+   </code>
+   array passed to the Handsontable constructor. Example:
+  </p>
+  <pre><code>content6</code></pre>
+  <p>
+   content7
+  </p>
+  <pre><code>content8</code></pre>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-config">
+   content9
+  </h3>
+  <p>
+   content10
+  </p>
+  <p>
+   content11
+  </p>
+  <pre><code>content12</code></pre>
+  <p>
+   content13
+  </p>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-cascading">
+   content14
+  </h3>
+  <p>
+   The Cascading Configuration model is based on prototypal inheritance. It is much faster and memory
+      efficient compared to the previous model that used jQuery extend. See it yourself:
+   <a href="http://jsperf.com/extending-settings" target="_blank">
+    content15
+   </a>
+  </p>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      content16
+     </strong>
+    </p>
+    <p>
+     content17
+    </p>
+    <pre><code class="lang-javascript">content18</code></pre>
+    <p>
+     and
+     <code>
+      content19
+     </code>
+     method.
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      content20
+     </strong>
+    </p>
+    <p>
+     content21
+    </p>
+    <pre><code class="lang-javascript">content22</code></pre>
+   </li>
+   <li>
+    <p>
+     <strong>
+      content23
+     </strong>
+    </p>
+    <p>
+     content24
+    </p>
+    <pre><code class="lang-javascript">content25</code></pre>
+   </li>
+  </ul>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/setting-options.html" target="_blank">
+   content26
+  </a>
+ </p>
+</div>

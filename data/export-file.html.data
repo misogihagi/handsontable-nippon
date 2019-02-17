@@ -1,0 +1,167 @@
+content1="Overview"
+content2="How it works"
+content3="Exporting methods"
+content4="Available options"
+content5="Live examples"
+content6="Overview"
+content7="ExportFile"
+content8="file"
+content9="blob"
+content10="string"
+content11="How it works"
+content12="CSV"
+content13="available methods"
+content14="Available methods"
+content15="The plugin exposes the following methods to export data."
+content16="downloadFile(format, options)"
+content17="exportAsBlob(format, options)"
+content18="exportAsString(format, options)"
+content19="All of them accept the same arguments:"
+content20="String"
+content21="'csv'"
+content22="Object"
+content23="CSV"
+content24="available options"
+content25="Available options in the export configuration"
+content26="Below you can find all supported options:"
+content27="Boolean"
+content28="Allows you to export data with a BOM signature."
+content29="Please note:"
+content30="FE FF"
+content31="EF BB BF"
+content32="available methods"
+content33="true"
+content34="String"
+content35="Allows you to define the columns delimiter."
+content36="available methods"
+content37="','"
+content38="Boolean"
+content39="Allows to export data with their column header."
+content40="available methods"
+content41="false"
+content42="Boolean"
+content43="Allows you to export data from hidden columns."
+content44="available methods"
+content45="false"
+content46="Boolean"
+content47="Allows you to export data from hidden rows."
+content48="available methods"
+content49="false"
+content50="String"
+content51="Allows you to define the file extension."
+content52="downloadFile"
+content53="'csv'"
+content54="String"
+content55="Allows you to define the file name."
+content56="You can use predefined placeholders, which will be replaced by the date."
+content57="downloadFile"
+content58="'Handsontable [YYYY]-[MM]-[DD]'"
+content59="String"
+content60="Allows you to define the MIME type."
+content61="downloadFile"
+content62="exportAsBlob"
+content63="'text/csv'"
+content64="Array"
+content65="[startRow, startColumn, endRow, endColumn]"
+content66="available methods"
+content67="'text/csv'"
+content68="String"
+content69="Allows you to define rows delimiter."
+content70="available methods"
+content71="'\r\n'"
+content72="Boolean"
+content73="Allows you to export data with their row header."
+content74="available methods"
+content75="false"
+content76="Live examples"
+content77="Export to file"
+content78="Download CSV"
+content79="
+        var container1 = document.getElementById('example1');
+        var hot1 = new Handsontable(container1, {
+          data: Handsontable.helper.createSpreadsheetData(7, 7),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenRows: { rows: [1, 3, 5], indicators: true },
+          hiddenColumns: { columns: [1, 3, 5], indicators: true }
+        });
+        var button1 = document.getElementById('export-file');
+        var exportPlugin1 = hot1.getPlugin('exportFile');
+
+        button1.addEventListener('click', function() {
+          exportPlugin1.downloadFile('csv', {
+            bom: false,
+            columnDelimiter: ',',
+            columnHeaders: false,
+            exportHiddenColumns: true,
+            exportHiddenRows: true,
+            fileExtension: 'csv',
+            filename: 'Handsontable-CSV-file_[YYYY]-[MM]-[DD]',
+            mimeType: 'text/csv',
+            rowDelimiter: '\r\n',
+            rowHeaders: true
+          });
+        });
+      "
+content80="Export as a JavaScript Blob object"
+content81="Open a console in browser developer tools to see the result for above example."
+content82="Export as a Blob"
+content83="
+        var container2 = document.getElementById('example2');
+        var hot2 = new Handsontable(container2, {
+          data: Handsontable.helper.createSpreadsheetData(7, 7),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenRows: { rows: [1, 3, 5], indicators: true },
+          hiddenColumns: { columns: [1, 3, 5], indicators: true }
+        });
+        var button2 = document.getElementById('export-blob');
+        var exportPlugin2 = hot2.getPlugin('exportFile');
+
+        button2.addEventListener('click', function() {
+          var exportedBlob = exportPlugin2.exportAsBlob('csv', {
+            bom: false,
+            columnDelimiter: ',',
+            columnHeaders: false,
+            exportHiddenColumns: true,
+            exportHiddenRows: true,
+            mimeType: 'text/csv',
+            rowDelimiter: '\r\n',
+            rowHeaders: true
+          });
+
+          console.log(exportedBlob);
+        });
+      "
+content84="Export as a string"
+content85="Open a console in browser developer tools to see the result for above example."
+content86="Export as a string"
+content87="
+        var container3 = document.getElementById('example3');
+        var hot3 = new Handsontable(container3, {
+          data: Handsontable.helper.createSpreadsheetData(7, 7),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenRows: { rows: [1, 3, 5], indicators: true },
+          hiddenColumns: { columns: [1, 3, 5], indicators: true }
+        });
+        var button3 = document.getElementById('export-string');
+        var exportPlugin3 = hot3.getPlugin('exportFile');
+
+        button3.addEventListener('click', function() {
+          var exportedString = exportPlugin3.exportAsString('csv', {
+              bom: false,
+              columnDelimiter: ',',
+              columnHeaders: false,
+              exportHiddenColumns: true,
+              exportHiddenRows: true,
+              rowDelimiter: '\r\n',
+              rowHeaders: true
+          });
+
+          console.log(exportedString);
+        });
+      "
+content88="
+      Help us improve this page
+    "

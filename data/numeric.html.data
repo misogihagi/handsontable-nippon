@@ -1,0 +1,67 @@
+content1="
+    function getCarData() {
+      return [
+        {car: "Mercedes A 160", year: 2017, price_usd: 7000, price_eur: 7000},
+        {car: "Citroen C4 Coupe", year: 2018, price_usd: 8330, price_eur: 8330},
+        {car: "Audi A4 Avant", year: 2019, price_usd: 33900, price_eur: 33900},
+        {car: "Opel Astra", year: 2020, price_usd: 5000, price_eur: 5000},
+        {car: "BMW 320i Coupe", year: 2021, price_usd: 30500, price_eur: 30500}
+      ];
+    }"
+content2="
+      Edit this page
+    "
+content3="string"
+content4="<textarea>"
+content5="number"
+content6="type: 'numeric'"
+content7="columns"
+content8="cells"
+content9="500000.5"
+content10="500000,5"
+content11="numericFormat"
+content12="have no influence on the way you enter data"
+content13="53"
+content14="Number"
+content15="w3schools"
+content16="
+        var
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Price ($)', 'Price (€)'],
+          columnSorting : true,
+          columns: [
+            {
+              data: 'car'
+              // 1nd column is simple text, no special options here
+            },
+            {
+              data: 'year',
+              type: 'numeric'
+            },
+            {
+              data: 'price_usd',
+              type: 'numeric',
+              numericFormat: {
+                pattern: '$0,0.00',
+                culture: 'en-US' // this is the default culture, set up for USD
+              },
+              allowEmpty: false
+            },
+            {
+              data: 'price_eur',
+              type: 'numeric',
+              numericFormat: {
+                pattern: '0,0.00 $',
+                culture: 'de-DE' // use this for EUR (German),
+                // more cultures available on http://numbrojs.com/languages.html
+              }
+            }
+          ]
+        });"
+content17="
+      Help us improve this page
+    "

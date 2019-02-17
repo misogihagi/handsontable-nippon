@@ -1,0 +1,549 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   content1
+  </p>
+  <ul>
+   <li>
+    content2
+   </li>
+   <li>
+    content3
+   </li>
+   <li>
+    content4
+   </li>
+  </ul>
+  <p>
+   Each of those functions are responsible for a different cell behavior. You can define them separately or use a
+   <a href="#cell-type">
+    content5
+   </a>
+   to define all three at once. We will now discuss the purpose of the aforementioned
+      functions in details.
+  </p>
+  <h2 id="renderer">
+   content6
+  </h2>
+  <p>
+   Handsontable does not display the values stored in the datasource directly. Instead, every time a value from data
+      source needs to be displayed in a table cell, it is passed to the cell
+   <code>
+    content7
+   </code>
+   function, together with
+      the table cell object of type
+   <code>
+    content8
+   </code>
+   (DOM node), along with other useful information.
+  </p>
+  <p>
+   <code>
+    content9
+   </code>
+   is expected to format the passed value and place it as a content of the cell object.
+   <code>
+    content10
+   </code>
+   can also alter the cell class list, i.e. it can add a
+   <code>
+    content11
+   </code>
+   class to let
+      the user know, that the displayed value is invalid.
+  </p>
+  <h3 id="native-cell-renderers">
+   content12
+  </h3>
+  <p>
+   content13
+  </p>
+  <ul>
+   <li>
+    <code>
+     content14
+    </code>
+   </li>
+   <li>
+    <code>
+     content15
+    </code>
+   </li>
+   <li>
+    <code>
+     content16
+    </code>
+   </li>
+   <li>
+    <code>
+     content17
+    </code>
+   </li>
+   <li>
+    <code>
+     content18
+    </code>
+   </li>
+  </ul>
+  <p>
+   <code>
+    content19
+   </code>
+   is the default renderer for all cells. If you write your own renderer, you will most likely
+      want run this renderer at some point, as it handles things like marking cell as
+   <em>
+    content20
+   </em>
+   or
+   <em>
+    content21
+   </em>
+   ,
+      however calling
+   <code>
+    content22
+   </code>
+   is not obligatory.
+  </p>
+  <h3 id="adding-event-listeners-in-cell-renderer-function">
+   content23
+  </h3>
+  <p>
+   If you are writing an advanced cell renderer and you want to add some custom behavior after a certain user action
+      (i.e. after user hover a mouse pointer over a cell) you might be tempted to add an event listener directly to table
+      cell node passed as an argument to the
+   <code>
+    content24
+   </code>
+   function. Unfortunately, this will almost always cause
+      you trouble and you will end up with either performance issues or having the listeners attached to the wrong cell.
+  </p>
+  <p>
+   content25
+  </p>
+  <ul>
+   <li>
+    calls
+    <code>
+     content26
+    </code>
+    functions multiple times per cell - this can lead to having multiple copies of the
+        same event listener attached to a cell
+   </li>
+   <li>
+    content27
+   </li>
+  </ul>
+  <p>
+   Before deciding to attach an event listener in cell renderer make sure, that there is no
+   <a href="/docs/&lt;?js= version ?&gt;/Hooks.html">
+    content28
+   </a>
+   that suits your needs. Using
+   <em>
+    content29
+   </em>
+   system is the safest way to respond to user actions.
+  </p>
+  <p>
+   If you did't find a suitable
+   <em>
+    content30
+   </em>
+   put the cell content into a wrapping
+   <code>
+    content31
+   </code>
+   , attach the event listener to the wrapper and then put it into the table cell.
+  </p>
+  <!--TODO: example-->
+  <h3 id="performance">
+   content32
+  </h3>
+  <p>
+   Cell renderers are called separately for every displayed cell, during every table render. Table can be rendered
+      multiple times during its lifetime (after table scroll, after table sorting, after cell edit etc.), therefore you
+      should keep your
+   <code>
+    content33
+   </code>
+   functions as simple and fast as possible or you might experience a performance
+      drop, especially when dealing with large sets of data.
+  </p>
+  <h3 id="renerer-templates">
+   content34
+  </h3>
+  <!--TODO: write about cellProperty.rendererTemplate-->
+  <h2 id="editor">
+   content35
+  </h2>
+  <p>
+   content36
+  </p>
+  <h2 id="validator">
+   content37
+  </h2>
+  <p>
+   Cell validator can be either a function or a regular expression. A cell is considered valid, when the validator
+      function calls a
+   <code>
+    content38
+   </code>
+   (passed as one of the
+   <code>
+    content39
+   </code>
+   arguments) with
+   <code>
+    content40
+   </code>
+   or the validation regex
+   <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test">
+    content41
+   </a>
+   method returns
+   <code>
+    content42
+   </code>
+   . Because the validity of a value is determined only by the argument that is passed to
+   <code>
+    content43
+   </code>
+   ,
+   <code>
+    content44
+   </code>
+   function can be synchronous or asynchronous.
+  </p>
+  <p>
+   Contrary to
+   <code>
+    content45
+   </code>
+   and
+   <code>
+    content46
+   </code>
+   functions, the
+   <code>
+    content47
+   </code>
+   function doesn't
+      have to be defined for each cell. If the
+   <code>
+    content48
+   </code>
+   function is not defined, then a cell value is always
+      valid.
+  </p>
+  <h2 id="cell-type">
+   content49
+  </h2>
+  <p>
+   As we mentioned before, there are 3 functions associated with every table cell:
+   <code>
+    content50
+   </code>
+   ,
+   <code>
+    content51
+   </code>
+   and (optionally)
+   <code>
+    content52
+   </code>
+   . Most of the time, those function are strongly connected
+      to each other. For example if you want to store a date in a cell, you will most likely use a renderer which will
+      display the date using appropriate formatting (
+   <code>
+    content53
+   </code>
+   ,
+   <code>
+    content54
+   </code>
+   etc.). You will also use
+      an editor, which will display a calendar instead of the default text input, so user could easily pick the right date.
+      Finally, you might want to check if the value entered by a user is valid.
+  </p>
+  <p>
+   Manually defining those functions for cells or columns would be tedious, so to simplify the configuration,
+      Handsontable introduced
+   <em>
+    content55
+   </em>
+   .
+  </p>
+  <p>
+   Cell type is represented by a string i.e.
+   <code>
+    content56
+   </code>
+   ,
+   <code>
+    content57
+   </code>
+   ,
+   <code>
+    content58
+   </code>
+   . Each string is internally mapped to functions associated with this type. For example
+   <code>
+    content59
+   </code>
+   type is associated with functions:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content60
+    </code>
+   </li>
+   <li>
+    <code>
+     content61
+    </code>
+   </li>
+   <li>
+    <code>
+     content62
+    </code>
+   </li>
+  </ul>
+  <p>
+   content63
+  </p>
+  <pre><code class="lang-javascript">content64</code></pre>
+  <p>
+   content65
+  </p>
+  <pre><code class="lang-javascript">content66</code></pre>
+  <p>
+   When Handsontable encounters a cell with
+   <code>
+    content67
+   </code>
+   option defined, it checks to which cell functions this
+      type refers and use them.
+  </p>
+  <h3 id="native-types">
+   content68
+  </h3>
+  <p>
+   content69
+  </p>
+  <ul>
+   <li>
+    <code>
+     content70
+    </code>
+   </li>
+   <li>
+    <code>
+     content71
+    </code>
+   </li>
+   <li>
+    <code>
+     content72
+    </code>
+   </li>
+   <li>
+    <code>
+     content73
+    </code>
+   </li>
+   <li>
+    <code>
+     content74
+    </code>
+   </li>
+   <li>
+    <code>
+     content75
+    </code>
+   </li>
+   <li>
+    <code>
+     content76
+    </code>
+   </li>
+   <li>
+    <code>
+     content77
+    </code>
+   </li>
+   <li>
+    <code>
+     content78
+    </code>
+   </li>
+  </ul>
+  <p>
+   <code>
+    content79
+   </code>
+   cell type is the default type.
+  </p>
+  <h3 id="precedence">
+   content80
+  </h3>
+  <p>
+   It is possible to define the
+   <code>
+    content81
+   </code>
+   option together with options such as
+   <code>
+    content82
+   </code>
+   ,
+   <code>
+    content83
+   </code>
+   or
+   <code>
+    content84
+   </code>
+   . Lets look at this example:
+  </p>
+  <pre><code class="lang-javascript">content85</code></pre>
+  <p>
+   We defined the
+   <code>
+    content86
+   </code>
+   for all cells in a column to be
+   <code>
+    content87
+   </code>
+   . Besides that, we also defined
+      a validator function directly. In Handsontable, cell functions defined directly always take precedence over functions
+      associated with cell type, so the above configuration is equivalent to:
+  </p>
+  <pre><code class="lang-javascript">content88</code></pre>
+  <p>
+   content89
+  </p>
+  <pre><code class="lang-javascript">content90</code></pre>
+  <p>
+   We take advantage of the
+   <a href="/docs/&lt;?js= version ?&gt;/tutorial-setting-options.html#page-config">
+    content91
+   </a>
+   and define a table with two columns, with
+   <code>
+    content92
+   </code>
+   set to
+   <code>
+    content93
+   </code>
+   function. We also set
+   <code>
+    content94
+   </code>
+   of the first column to
+   <code>
+    content95
+   </code>
+   .
+   <code>
+    content96
+   </code>
+   cell type
+      does not define a validator function:
+  </p>
+  <pre><code class="lang-javascript">content97</code></pre>
+  <p>
+   Because
+   <code>
+    content98
+   </code>
+   is a more specific configuration for the cells in the first column,
+      than the
+   <code>
+    content99
+   </code>
+   , cell functions associated with the
+   <code>
+    content100
+   </code>
+   type takes
+      precedence over the functions defined on the higher level of configuration. Therefore, the equivalent configuration
+      is:
+  </p>
+  <pre><code class="lang-javascript">content101</code></pre>
+  <h2 id="cell-functions-getters">
+   content102
+  </h2>
+  <p>
+   If, for some reason, you have to get the
+   <code>
+    content103
+   </code>
+   ,
+   <code>
+    content104
+   </code>
+   or
+   <code>
+    content105
+   </code>
+   function of specific cell you can use standard
+   <code>
+    content106
+   </code>
+   method to get all properties of
+      particular cell and then refer to cell functions like so:
+  </p>
+  <pre><code class="lang-javascript">content107</code></pre>
+  <p>
+   However, you have to remember that
+   <code>
+    content108
+   </code>
+   return cell properties "as they are", which
+      means that if you use cell type to set cell functions, instead of defining functions directly those cell functions
+      will be
+   <code>
+    content109
+   </code>
+   :
+  </p>
+  <pre><code class="lang-javascript">content110</code></pre>
+  <p>
+   To get the actual cell function use appropriate
+   <em>
+    content111
+   </em>
+   :
+  </p>
+  <ul>
+   <li>
+    <code>
+     content112
+    </code>
+   </li>
+   <li>
+    <code>
+     content113
+    </code>
+   </li>
+   <li>
+    <code>
+     content114
+    </code>
+   </li>
+  </ul>
+  <p>
+   content115
+  </p>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/cell-function.html" target="_blank">
+   content116
+  </a>
+ </p>
+</div>

@@ -1,0 +1,18 @@
+content1="my.handsontable.com"
+content2="
+            Paste your license key to the configuration section, just like in the example below.
+        "
+content3="var container = document.getElementById('example');
+var hot = new Handsontable(container, {
+  data: data,
+  rowHeaders: true,
+  colHeaders: true,
+  licenseKey: '00000-00000-00000-00000-00000'
+});"
+content4="
+            Note that the license key is passed as a string so you need to wrap it with quotes ('').
+        "
+content5="Check the pricing"
+content6="
+      Help us improve this page
+    "

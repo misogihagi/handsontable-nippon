@@ -1,0 +1,29 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   content1
+  </p>
+  <ol>
+   <li>
+    content2
+   </li>
+   <li>
+    content3
+   </li>
+   <li>
+    content4
+   </li>
+   <li>
+    content5
+   </li>
+   <li>
+    content6
+   </li>
+  </ol>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/principles.html" target="_blank">
+   content7
+  </a>
+ </p>
+</div>

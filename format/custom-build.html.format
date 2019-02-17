@@ -1,0 +1,386 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-tasks">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-running">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-customizing">
+     content3
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="building">
+  <p>
+   The build process is using
+   <a href="https://webpack.js.org/" target="_blank">
+    content4
+   </a>
+   ,
+   <a href="https://babeljs.io/" target="_blank">
+    content5
+   </a>
+   and
+      as well as npm tasks listed in
+   <a href="https://github.com/handsontable/handsontable/blob/master/package.json" target="_blank">
+    content6
+   </a>
+   .
+    During this process, the source located in the
+   <code>
+    content7
+   </code>
+   directory are transformed into the output files:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content8
+    </code>
+   </li>
+   <li>
+    <code>
+     content9
+    </code>
+   </li>
+   <li>
+    <code>
+     content10
+    </code>
+   </li>
+   <li>
+    <code>
+     content11
+    </code>
+   </li>
+   <li>
+    <code>
+     content12
+    </code>
+   </li>
+   <li>
+    <code>
+     content13
+    </code>
+   </li>
+   <li>
+    <code>
+     content14
+    </code>
+   </li>
+  </ul>
+  <p>
+   More info about dist packages can be found
+   <a href="https://github.com/handsontable/handsontable/blob/master/dist/README.md" target="_blank">
+    content15
+   </a>
+   .
+      It is advised that you never modify the above-mentioned files but rather make changes in the
+   <code>
+    content16
+   </code>
+   directory and then run a proper build. This is especially important if you want to contribute
+      your changes back to Handsontable by making a pull request.
+  </p>
+ </div>
+ <div class="example-container clearfix" name="tasks">
+  <h3 id="page-tasks">
+   content17
+  </h3>
+  <p>
+   content18
+  </p>
+  <ul>
+   <li>
+    <code>
+     content19
+    </code>
+    - runs several tasks in this order:
+    <ul>
+     <li>
+      <code>
+       content20
+      </code>
+      - check if changes applied into source code are valid with
+      <a href="https://github.com/handsontable/handsontable/blob/master/.eslintrc" target="_blank">
+       content21
+      </a>
+      (inspired by
+      <a href="https://github.com/airbnb/javascript" target="_blank">
+       content22
+      </a>
+      ).
+     </li>
+     <li>
+      <code>
+       content23
+      </code>
+      - runs the test suite in node environment. It uses
+      <a href="https://facebook.github.io/jest/" target="_blank">
+       content24
+      </a>
+      as a test runner.
+     </li>
+     <li>
+      <code>
+       content25
+      </code>
+      - runs a single build of Handsontable CE followed by Jasmine test suite and executes in
+      <a href="https://github.com/GoogleChrome/puppeteer" target="_blank">
+       content26
+      </a>
+      .
+     </li>
+     <li>
+      <code>
+       content27
+      </code>
+      - runs a single build followed by Jasmine test suite and by using the generated bundle
+      <code>
+       content28
+      </code>
+      executes it in Puppeteer.
+     </li>
+     <li>
+      <code>
+       content29
+      </code>
+      - runs a single build followed by Jasmine test suite and by using generated minified bundle
+      <code>
+       content30
+      </code>
+      executes it in Puppeteer.
+     </li>
+    </ul>
+   </li>
+   <li>
+    <code>
+     content31
+    </code>
+    - runs a single build but without the code quality checking. It internally executes these tasks:
+    <ul>
+     <li>
+      <code>
+       content32
+      </code>
+      - transpiles files into the
+      <code>
+       content33
+      </code>
+      format. These files are published into NPM repository later.
+     </li>
+     <li>
+      <code>
+       content34
+      </code>
+      - transpiles files into the
+      <code>
+       content35
+      </code>
+      format. These files are published into NPM repository later.
+     </li>
+     <li>
+      <code>
+       content36
+      </code>
+      - creates the bundles (
+      <code>
+       content37
+      </code>
+      ,
+      <code>
+       content38
+      </code>
+      ,
+      <code>
+       content39
+      </code>
+      and
+      <code>
+       content40
+      </code>
+      ) which are compatible with UMD (Universal Module Definition).
+     </li>
+     <li>
+      <code>
+       content41
+      </code>
+      - creates the minified bundles (
+      <code>
+       content42
+      </code>
+      ,
+      <code>
+       content43
+      </code>
+      ,
+      <code>
+       content44
+      </code>
+      and
+      <code>
+       content45
+      </code>
+      ) which are compatible with UMD (Universal Module Definition).
+     </li>
+     <li>
+      <code>
+       content46
+      </code>
+      - creates the bundles containing language sets (i.e.
+      <code>
+       content47
+      </code>
+      ,
+      <code>
+       content48
+      </code>
+      ) which are compatible with UMD (Universal Module Definition). More information about languages can be found
+      <a href="/docs/&lt;?js= version ?&gt;/tutorial-internationalization.html">
+       content49
+      </a>
+      .
+      <li>
+       <code>
+        content50
+       </code>
+       - creates the minified bundles containing language sets (i.e.
+       <code>
+        content51
+       </code>
+       ,
+       <code>
+        content52
+       </code>
+       ) which are compatible with UMD (Universal Module Definition). More information about languages can be found
+       <a href="/docs/&lt;?js= version ?&gt;/tutorial-internationalization.html">
+        content53
+       </a>
+       .
+      </li>
+     </li>
+    </ul>
+   </li>
+   <li>
+    <code>
+     content54
+    </code>
+    - watches for changes in source directory and runs a build when a change is observed. For faster rebuild when a change is observed, the watcher triggers the file-building task without minify.
+   </li>
+  </ul>
+ </div>
+</div>
+<div class="example-container clearfix" name="running">
+ <h3 id="page-running">
+  content55
+ </h3>
+ <p>
+  content56
+ </p>
+ <ol>
+  <li>
+   Install Node.js (available for Windows, Mac and Linux). This will also install NPM (Node Package Manager) that
+        handles all the dependencies. Handsontable requires
+   <strong>
+    content57
+   </strong>
+   and
+   <strong>
+    content58
+   </strong>
+   for building and testing.
+  </li>
+  <li>
+   content59
+  </li>
+  <li>
+   Run
+   <code>
+    content60
+   </code>
+   to download all the dependencies defined in
+   <code>
+    content61
+   </code>
+   . The
+        dependencies will be downloaded into a new directory
+   <code>
+    content62
+   </code>
+   , that is ignored by Git.
+  </li>
+  <li>
+   <strong>
+    Run
+    <code>
+     content63
+    </code>
+    to make your first build!
+   </strong>
+  </li>
+ </ol>
+</div>
+<div class="example-container clearfix head-gap" name="customizing">
+ <h3 id="page-customizing">
+  content64
+ </h3>
+ <p>
+  This process lets you build a custom package containing only the core engine and selected plugins.
+      It's super useful when you need only a fraction of the spreadsheet's overall functionality or when
+      you have already built a
+  <a href="/docs/&lt;?js= version ?&gt;/tutorial-custom-plugin.html">
+   content65
+  </a>
+  and want to incorporate it into the base code.
+      For this purpose we prepared a tool called
+  <strong>
+   content66
+  </strong>
+  . To install hot-builder globally, run:
+ </p>
+ <p>
+  <code>
+   content67
+  </code>
+ </p>
+ <p>
+  content68
+ </p>
+ <p>
+  <code>
+   content69
+  </code>
+ </p>
+ <p>
+  content70
+ </p>
+ <p>
+  <img alt="Creating a custom package" height="164" src="/docs/&lt;?js= version ?&gt;/images/hot-builder-ui.png" width="822"/>
+ </p>
+ <p>
+  content71
+ </p>
+ <p>
+  <img alt="Creating a custom package" height="532" src="/docs/&lt;?js= version ?&gt;/images/hot-builder-results.png" width="822"/>
+ </p>
+ <p>
+  For further details, check out
+  <a href="https://github.com/handsontable/hot-builder" target="_blank">
+   content72
+  </a>
+  .
+ </p>
+</div>
+<p class="gap-top-xsmall">
+ <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/custom-build.html" target="_blank">
+  content73
+ </a>
+</p>

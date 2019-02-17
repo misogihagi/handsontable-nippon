@@ -1,0 +1,33 @@
+content1="id"
+content2="class"
+content3="style"
+content4="hot-table"
+content5="
+      <div id="example1" class="hot">
+        <hot-table :id="id" :class="className" :style="style" :settings="hotSettings"></hot-table>
+      </div>
+    "
+content6="
+        import Vue from 'vue';
+        import { HotTable } from '@handsontable-pro/vue';
+
+        new Vue({
+          el: '#example1',
+          data: function() {
+            return {
+              hotSettings: {
+                startRows: 5,
+                startCols: 5,
+                colHeaders: true,
+                stretchH: 'all'
+              },
+              id: 'my-custom-id',
+              className: 'my-custom-classname',
+              style: 'width: 300px; height: 142px; overflow: hidden; border: 1px solid red;'
+            }
+          },
+          components: {
+            HotTable
+          }
+        });"
+content7="Help us improve this page"

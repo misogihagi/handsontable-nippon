@@ -1,0 +1,106 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#setup">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#example">
+     content3
+    </a>
+   </li>
+  </ul>
+  <hr/>
+  <h3 id="overview">
+   content4
+  </h3>
+  <p>
+   The
+   <i>
+    content5
+   </i>
+   plugin allows creating a nested header structure, using the
+   <code>
+    content6
+   </code>
+   attribute.
+   <br/>
+   <br/>
+   <strong>
+    content7
+   </strong>
+   the plugin supports a
+   <i>
+    content8
+   </i>
+   structure, which means that a header cannot be wider than its "parent" element. In other words, headers cannot overlap each other.
+  </p>
+  <h3 id="setup">
+   content9
+  </h3>
+  <p>
+   To make a header wider (covering multiple columns), its corresponding configuration array element should
+      be provided as an object with
+   <code>
+    content10
+   </code>
+   and
+   <code>
+    content11
+   </code>
+   properties.
+      The
+   <code>
+    content12
+   </code>
+   property defines the header's label, while the
+   <code>
+    content13
+   </code>
+   property defines
+      the number of columns that the header should cover.
+   <br/>
+   <br/>
+   For example:
+  </p>
+  <pre><code class="js">content14</code></pre>
+  <h3 id="example">
+   content15
+  </h3>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content16
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/nested-headers.html" target="_blank">
+   content17
+  </a>
+ </p>
+</div>

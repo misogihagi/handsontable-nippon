@@ -1,0 +1,229 @@
+content1="Callbacks"
+content2="source"
+content3="beforeKeyDown"
+content4="Callbacks"
+content5="open an issue"
+content6="Clear log"
+content7="Choose events to be logged:"
+content8="select all"
+content9="
+      var
+        data = [
+          ['', 'Tesla', 'Mazda', 'Mercedes', 'Mini', 'Mitsubishi'],
+          ['2017', 0, 2941, 4303, 354, 5814],
+          ['2018', 3, 2905, 2867, 412, 5284],
+          ['2019', 4, 2517, 4822, 552, 6127],
+          ['2020', 2, 2422, 5399, 776, 4151]
+        ],
+        example1 = document.getElementById('example1'),
+        config,
+        $hooksList,
+        hooks,
+        hot;
+
+      config = {
+        data: data,
+        minRows: 5,
+        minCols: 6,
+        minSpareRows: 1,
+        autoWrapRow: true,
+        colHeaders: true,
+        contextMenu: true
+      };
+
+      $hooksList = $('#hooksList');
+      hooks = Handsontable.hooks.getRegistered();
+
+      hooks.forEach(function(hook) {
+        var checked = '';
+
+        if (hook === 'afterChange' || hook === 'afterSelection' || hook === 'afterCreateRow' || hook === 'afterRemoveRow' ||
+            hook === 'afterCreateCol' || hook === 'afterRemoveCol') {
+          checked = 'checked';
+        }
+        $hooksList.append('<li><label><input type="checkbox" ' + checked + ' id="check_' + hook + '"> ' + hook + '</label></li>');
+        config[hook] = function() {
+          log_events(hook, arguments);
+        }
+      });
+
+      var start = (new Date()).getTime();
+      var i = 0;
+      var timer;
+      var example1_events = document.getElementById("example1_events");
+
+      function log_events(event, data) {
+        if (document.getElementById('check_' + event).checked) {
+          var now = (new Date()).getTime(),
+            diff = now - start,
+            vals, str, div, text;
+
+          vals = [
+            i,
+              "@" + numbro(diff / 1000).format('0.000'),
+              "[" + event + "]"
+          ];
+
+          for (var d = 0; d < data.length; d++) {
+            try {
+              str = JSON.stringify(data[d]);
+            }
+            catch (e) {
+              str = data[d].toString(); // JSON.stringify breaks on circular reference to a HTML node
+            }
+
+            if (str === void 0) {
+              continue;
+            }
+
+            if (str.length > 20) {
+              str = Object.prototype.toString.call(data[d]);
+            }
+            if (d < data.length - 1) {
+              str += ',';
+            }
+            vals.push(str);
+          }
+
+          if (window.console) {
+            console.log(i,
+                "@" + numbro(diff / 1000).format('0.000'),
+                "[" + event + "]",
+              data);
+          }
+          div = document.createElement("DIV");
+          text = document.createTextNode(vals.join(" "));
+
+          div.appendChild(text);
+          example1_events.appendChild(div);
+          clearTimeout(timer);
+          timer = setTimeout(function() {
+            example1_events.scrollTop = example1_events.scrollHeight;
+          }, 10);
+
+          i++;
+        }
+      }
+
+      example1 = document.getElementById('example1');
+      hot = new Handsontable(example1,config);
+
+      $('#check_select_all').click(function () {
+        var state = this.checked;
+
+        $('#hooksList input[type=checkbox]').each(function () {
+          if (state === true) {
+            if (this.id === 'check_modifyRow') {
+              return; //too much noise in the log
+            }
+          }
+          this.checked = state;
+        });
+      });
+
+      $('#hooksList input[type=checkbox]').click(function () {
+        if (!this.checked) {
+          document.getElementById('check_select_all').checked = false;
+        }
+      });"
+content10="source"
+content11="source"
+content12="source"
+content13="source"
+content14="auto"
+content15="afterCreateRow"
+content16="minSpareRows"
+content17="edit"
+content18="setData*"
+content19="loadData"
+content20="loadData"
+content21="updateSettings({data: myData})"
+content22="data"
+content23="populateFromArray"
+content24="spliceCol"
+content25="spliceRow"
+content26="timeValidate"
+content27="dateValidate"
+content28="validateCells"
+content29="Autofill.fill"
+content30="Autofill.fill"
+content31="ContextMenu.clearColumns"
+content32="ContextMenu.columnLeft"
+content33="ContextMenu.columnRight"
+content34="ContextMenu.removeColumn"
+content35="ContextMenu.removeRow"
+content36="ContextMenu.rowAbove"
+content37="ContextMenu.rowBelow"
+content38="CopyPaste.paste"
+content39="ObserveChanges.change"
+content40="UndoRedo.redo"
+content41="UndoRedo.undo"
+content42="GantChart.loadData"
+content43="ColumnSummary.set"
+content44="ColumnSummary.reset"
+content45="source"
+content46="afterChange"
+content47="afterCreateCol"
+content48="afterCreateRow<"
+content49="afterSetDataAtCell"
+content50="afterSetDataAtRowProp"
+content51="afterValidate"
+content52="beforeChange"
+content53="beforeChangeRender"
+content54="beforeCreateCol"
+content55="beforeCreateRow"
+content56="beforeValidate"
+content57="beforeKeyDown"
+content58="beforeKeyDown"
+content59="DELETE"
+content60="BACKSPACE"
+content61="ENTER"
+content62="
+        var data = [
+            ['Tesla', 2017, 'black', 'black'],
+            ['Nissan', 2018, 'blue', 'blue'],
+            ['Chrysler', 2019, 'yellow', 'black'],
+            ['Volvo', 2020, 'yellow', 'gray']
+          ],
+          container = document.getElementById("example2"),
+          lastChange = null,
+          hot;
+
+        hot = new Handsontable(container, {
+          data: data,
+          colHeaders: true,
+          rowHeaders: true,
+          minSpareRows: 1,
+          beforeChange: function (changes, source) {
+            lastChange = changes;
+          }
+        });
+
+        hot.updateSettings({
+            beforeKeyDown: function (e) {
+              var selection = hot.getSelected();
+
+              // BACKSPACE or DELETE
+              if (e.keyCode === 8 || e.keyCode === 46) {
+                e.stopImmediatePropagation();
+                // remove data at cell, shift up
+                hot.spliceCol(selection[1], selection[0], 1);
+                e.preventDefault();
+              }
+              // ENTER
+              else if (e.keyCode === 13) {
+                // if last change affected a single cell and did not change it's values
+                if (lastChange && lastChange.length === 1 && lastChange[0][2] == lastChange[0][3]) {
+                  e.stopImmediatePropagation();
+                  hot.spliceCol(selection[1], selection[0], 0, ''); // add new cell
+                  hot.selectCell(selection[0], selection[1]); // select new cell
+                }
+              }
+
+              lastChange = null;
+            }
+          }
+        );"
+content63="
+      Help us improve this page
+    "

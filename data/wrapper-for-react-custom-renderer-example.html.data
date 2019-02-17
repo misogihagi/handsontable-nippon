@@ -1,0 +1,66 @@
+content1="@handsontable-pro/react"
+content2="
+"
+content3="
+      <div id="example1" class="hot">
+      </div>
+    "
+content4="
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import { HotTable } from '@handsontable-pro/react';
+        import Handsontable from 'handsontable-pro';
+
+        class App extends React.Component {
+          constructor(props) {
+            super(props);
+            this.hotSettings = {
+              data:
+                [['A1', 'http://ecx.images-amazon.com/images/I/51bRhyVTVGL._SL50_.jpg'],
+                  ['A2', 'http://ecx.images-amazon.com/images/I/51gdVAEfPUL._SL50_.jpg']],
+              columns: [
+                {},
+                {
+                  renderer: function(instance, td, row, col, prop, value, cellProperties) {
+                    const escaped = Handsontable.helper.stringify(value);
+                    let img = null;
+
+                    if (escaped.indexOf('http') === 0) {
+                      img = document.createElement('IMG');
+                      img.src = value;
+
+                      Handsontable.dom.addEvent(img, 'mousedown', function(event) {
+                        event.preventDefault();
+                      });
+
+                      Handsontable.dom.empty(td);
+                      td.appendChild(img);
+                    }
+                    else {
+                      Handsontable.renderers.TextRenderer.apply(this, arguments);
+                    }
+
+                    return td;
+                  }
+                }
+              ],
+              colHeaders: true,
+              rowHeights: 55
+            };
+          }
+
+          render() {
+            return (
+              <div>
+                <HotTable
+                  id="hot"
+                  settings={this.hotSettings}
+                />
+              </div>
+            );
+          }
+        }
+
+        ReactDOM.render(<App />, document.getElementById('example1'));
+      "
+content5="Help us improve this page"

@@ -1,0 +1,38 @@
+content1="Handsontable for React"
+content2="Installation"
+content3="npm"
+content4="npm install handsontable-pro @handsontable-pro/react"
+content5="npm install handsontable @handsontable/react"
+content6="Basic usage"
+content7="@import 'handsontable-pro/dist/handsontable.full.css';"
+content8="@import 'handsontable/dist/handsontable.full.css';"
+content9="import React from 'react';
+import { HotTable } from '@handsontable-pro/react';
+// import { HotTable } from '@handsontable/react'; // for Handsontable Community Edition
+
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.data = [
+      ["", "Ford", "Volvo", "Toyota", "Honda"],
+      ["2016", 10, 11, 12, 13],
+      ["2017", 20, 11, 14, 13],
+      ["2018", 30, 15, 12, 13]
+    ];
+  }
+
+  render() {
+    return (
+      <div id="hot-app">
+        <HotTable data={this.data} colHeaders={true} rowHeaders={true} width="600" height="300" stretchH="all" />
+      </div>
+    );
+  }
+}
+        "
+content10="License"
+content11="
+          Handsontable for React is an open source library released free under the MIT license.
+      "
+content12="The MIT license"
+content13="Help us improve this page"

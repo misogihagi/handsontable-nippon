@@ -1,0 +1,359 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-nav">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-select">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-edit">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#page-menu">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#page-cells">
+     content5
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-nav">
+   content6
+  </h3>
+  <ul>
+   <li>
+    <kbd>
+     content7
+    </kbd>
+    – move to the cell above current active cell (if exists)
+   </li>
+   <li>
+    <kbd>
+     content8
+    </kbd>
+    – move to cell underneath current active cell (if exists)
+   </li>
+   <li>
+    <kbd>
+     content9
+    </kbd>
+    – move to the cell on the right side of the current active cell (if exists)
+   </li>
+   <li>
+    <kbd>
+     content10
+    </kbd>
+    – move to the cell on the left side of current active cell (if exists)
+   </li>
+   <li>
+    <kbd>
+     content11
+    </kbd>
+    – move to the cell on the right side of the current active cell (if exists)
+   </li>
+   <li>
+    <kbd>
+     content12
+    </kbd>
+    +
+    <kbd>
+     content13
+    </kbd>
+    – move to the cell on the left side of current active cell (if exists)
+   </li>
+   <li>
+    <kbd>
+     content14
+    </kbd>
+    – move to the first cell in a row
+   </li>
+   <li>
+    <kbd>
+     content15
+    </kbd>
+    – move to the last cell in a row
+   </li>
+   <li>
+    <kbd>
+     content16
+    </kbd>
+    +
+    <kbd>
+     content17
+    </kbd>
+    – move to the first cell in a column
+   </li>
+   <li>
+    <kbd>
+     content18
+    </kbd>
+    +
+    <kbd>
+     content19
+    </kbd>
+    – move to the last cell in a column
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-select">
+   content20
+  </h3>
+  <ul>
+   <li>
+    <kbd>
+     content21
+    </kbd>
+    +
+    <kbd>
+     content22
+    </kbd>
+    – select all
+   </li>
+   <li>
+    <kbd>
+     content23
+    </kbd>
+    +
+    <kbd>
+     content24
+    </kbd>
+    – extend selection of the cell above
+   </li>
+   <li>
+    <kbd>
+     content25
+    </kbd>
+    +
+    <kbd>
+     content26
+    </kbd>
+    – extend selection of the cell underneath
+   </li>
+   <li>
+    <kbd>
+     content27
+    </kbd>
+    +
+    <kbd>
+     content28
+    </kbd>
+    – extend selection of the cell on the right
+   </li>
+   <li>
+    <kbd>
+     content29
+    </kbd>
+    +
+    <kbd>
+     content30
+    </kbd>
+    – extend selection of the cell on the left
+   </li>
+   <li>
+    <kbd>
+     content31
+    </kbd>
+    +
+    <kbd>
+     content32
+    </kbd>
+    – select all cells in the row to the left including the current cell
+   </li>
+   <li>
+    <kbd>
+     content33
+    </kbd>
+    +
+    <kbd>
+     content34
+    </kbd>
+    – select all cells in the row to the right including the current cell
+   </li>
+   <li>
+    <kbd>
+     content35
+    </kbd>
+    +
+    <kbd>
+     content36
+    </kbd>
+    +
+    <kbd>
+     content37
+    </kbd>
+    – select all cells in the column to the top including the current cell
+   </li>
+   <li>
+    <kbd>
+     content38
+    </kbd>
+    +
+    <kbd>
+     content39
+    </kbd>
+    +
+    <kbd>
+     content40
+    </kbd>
+    – select all cells in the column to the bottom including the current cell
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-edit">
+   content41
+  </h3>
+  <ul>
+   <li>
+    <kbd>
+     content42
+    </kbd>
+    – open/close cell editor
+   </li>
+   <li>
+    <kbd>
+     content43
+    </kbd>
+    – open cell editor
+   </li>
+   <li>
+    <kbd>
+     content44
+    </kbd>
+    – cancel editing and close cell editor
+   </li>
+   <li>
+    <kbd>
+     content45
+    </kbd>
+    – empty cell
+   </li>
+   <li>
+    <kbd>
+     content46
+    </kbd>
+    – empty cell
+   </li>
+   <li>
+    <kbd>
+     content47
+    </kbd>
+    +
+    <kbd>
+     content48
+    </kbd>
+    – copy cell's content
+   </li>
+   <li>
+    <kbd>
+     content49
+    </kbd>
+    +
+    <kbd>
+     content50
+    </kbd>
+    – cut cell's content
+   </li>
+   <li>
+    <kbd>
+     content51
+    </kbd>
+    +
+    <kbd>
+     content52
+    </kbd>
+    – pastle cell's content
+   </li>
+   <li>
+    <kbd>
+     content53
+    </kbd>
+    +
+    <kbd>
+     content54
+    </kbd>
+    - fill all selected cells with edited cell's value
+   </li>
+   <li>
+    <kbd>
+     content55
+    </kbd>
+    +
+    <kbd>
+     content56
+    </kbd>
+    – undo
+   </li>
+   <li>
+    <kbd>
+     content57
+    </kbd>
+    +
+    <kbd>
+     content58
+    </kbd>
+    – redo
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-menu">
+   content59
+  </h3>
+  <ul>
+   <li>
+    <kbd>
+     content60
+    </kbd>
+    – move to the next option in context menu
+   </li>
+   <li>
+    <kbd>
+     content61
+    </kbd>
+    – move to the previous option in context menu
+   </li>
+   <li>
+    <kbd>
+     content62
+    </kbd>
+    – select option from context menu
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-cells">
+   content63
+  </h3>
+  <ul>
+   <li>
+    <kbd>
+     content64
+    </kbd>
+    +
+    <kbd>
+     content65
+    </kbd>
+    – merge/unmerge selected cells
+   </li>
+  </ul>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/keyboard-navigation.html" target="_blank">
+   content66
+  </a>
+ </p>
+</div>

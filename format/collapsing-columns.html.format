@@ -1,0 +1,114 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#setup">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#example">
+     content3
+    </a>
+   </li>
+  </ul>
+  <hr/>
+  <h3 id="overview">
+   content4
+  </h3>
+  <p>
+   The
+   <i>
+    content5
+   </i>
+   plugin enables collapsing columns, covered by a header with the
+   <code>
+    content6
+   </code>
+   property defined.
+   <br/>
+   The plugin adds a "expand/collapse" button multi-column headers (created with the Nested Headers plugin).
+      Clicking these buttons will collapse (or expands) all "child" headers, leaving the first one visible.
+   <br/>
+   <br/>
+   <strong>
+    content7
+   </strong>
+   You'll need to enable the
+   <a href="/docs/&lt;?js= version ?&gt;/demo-nested-headers.html">
+    content8
+   </a>
+   and
+   <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-columns.html">
+    content9
+   </a>
+   plugins in order for this plugin to work properly.
+  </p>
+  <h3 id="setup">
+   content10
+  </h3>
+  <p>
+   To enable the Collapsible Columns plugin, you can either set the
+   <code>
+    content11
+   </code>
+   property to:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content12
+    </code>
+    - this will enable the functionality for
+    <i>
+     content13
+    </i>
+    multi-column headers. (Every column with the
+    <code>
+     content14
+    </code>
+    attribute defined will be extended with the "expand/collapse" button)
+   </li>
+   <li>
+    an array of objects containing information about which headers should have the "expand/collapse" buttons. The structure in this case looks like this:
+    <pre><code class="js">content15</code></pre>
+   </li>
+  </ul>
+  <h3 id="example">
+   content16
+  </h3>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content17
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/collapsing-columns.html" target="_blank">
+   content18
+  </a>
+ </p>
+</div>

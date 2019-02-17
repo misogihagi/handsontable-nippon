@@ -1,0 +1,47 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <div>
+   <p>
+    An implementation of the
+    <code>
+     content1
+    </code>
+    component with a custom Context Menu added.
+   </p>
+  </div>
+  <div>
+   <div class="hot" id="example1">
+    <hot-table :settings="hotSettings">
+    </hot-table>
+   </div>
+  </div>
+  <script data-jsfiddle="example1" type="text/x-hot-html">
+   content2
+  </script>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example1" data-jsfiddle-panel_js="3" type="text/babel">
+    content3
+   </script>
+  </div>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-vue-custom-context-menu-example.html" target="_blank">
+   content4
+  </a>
+ </p>
+</div>
+<script data-jsfiddle="common" src="/docs/&lt;?js= env.opts.query.version ?&gt;/scripts/jsfiddle-fixer.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@handsontable-pro/vue@3.0.0/dist/vue-handsontable.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js">
+</script>

@@ -1,0 +1,309 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-javascript">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-dom">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-css">
+     content3
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-javascript">
+   content4
+  </h3>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Converting numbers: always use
+      <code>
+       content5
+      </code>
+     </strong>
+    </p>
+    <p>
+     Convert
+     <code>
+      content6
+     </code>
+     to number:
+     <a href="http://jsperf.com/number-vs-parseint-vs-plus/26" target="_blank">
+      content7
+     </a>
+    </p>
+    <p>
+     Convert
+     <code>
+      content8
+     </code>
+     to number:
+     <a href="http://jsperf.com/number-vs-parseint-vs-plus/25" target="_blank">
+      content9
+     </a>
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Cascading configuration options: use
+      <code>
+       content10
+      </code>
+      rather than
+      <code>
+       content11
+      </code>
+     </strong>
+    </p>
+    <p>
+     This technique cannot be applied everywhere, but is a great candidate for
+          Handsontable cascading settings pattern
+          (Constructor
+     <code>
+      content12
+     </code>
+     -&gt;
+     <code>
+      content13
+     </code>
+     -&gt;
+     <code>
+      content14
+     </code>
+     -&gt;
+     <code>
+      content15
+     </code>
+     ).
+    </p>
+    <p>
+     See more:
+     <a href="http://jsperf.com/extending-settings" target="_blank">
+      content16
+     </a>
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Custom functions can be faster than native (for example
+      <code>
+       content17
+      </code>
+      )
+     </strong>
+    </p>
+    <p>
+     According to tests ran at JSPerf, MDN shim of
+     <code>
+      content18
+     </code>
+     can be up to 5 times faster
+          than the native implementation.
+    </p>
+    <p>
+     See more:
+     <a href="http://jsperf.com/native-vs-implmented-0/5" target="_blank">
+      content19
+     </a>
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      <code>
+       content20
+      </code>
+      and
+      <code>
+       content21
+      </code>
+      are MUCH slower than
+      <code>
+       content22
+      </code>
+     </strong>
+    </p>
+    <p>
+     <code>
+      content23
+     </code>
+     can be 10 times faster than a
+     <code>
+      content24
+     </code>
+     .
+    </p>
+    <p>
+     See more:
+     <a href="http://jsperf.com/for-vs-foreach/49" target="_blank">
+      content25
+     </a>
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      <code>
+       content26
+      </code>
+      is faster than
+      <code>
+       content27
+      </code>
+     </strong>
+    </p>
+    <p>
+     See more:
+     <a href="http://jsperf.com/function-calls-direct-vs-apply-vs-call-vs-bind/33" target="_blank">
+      content28
+     </a>
+    </p>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-dom">
+   content29
+  </h3>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Emptying nodes: always prefer
+      <code>
+       content30
+      </code>
+      over
+      <code>
+       content31
+      </code>
+     </strong>
+    </p>
+    <p>
+     See more:
+     <a href="http://jsperf.com/jquery-html-vs-empty-vs-innerhtml/9" target="_blank">
+      content32
+     </a>
+    </p>
+   </li>
+   <li>
+    <p>
+     <strong>
+      Search for ID or by tag: prefer
+      <code>
+       content33
+      </code>
+      or
+      <code>
+       content34
+      </code>
+     </strong>
+    </p>
+   </li>
+   <p>
+    See more:
+    <a href="http://jsperf.com/id-vs-getelementbyid/3" target="_blank">
+     content35
+    </a>
+   </p>
+   <li>
+    <p>
+     <strong>
+      Get first element using DOM (
+      <code>
+       content36
+      </code>
+      or
+      <code>
+       content37
+      </code>
+      )
+     </strong>
+    </p>
+   </li>
+   <p>
+    See more:
+    <a href="http://jsperf.com/jquery-first-vs-first2/10" target="_blank">
+     content38
+    </a>
+   </p>
+   <li>
+    <p>
+     <strong>
+      Create text elements:
+      <code>
+       content39
+      </code>
+      can be many times
+          faster than
+      <code>
+       content40
+      </code>
+     </strong>
+    </p>
+   </li>
+   <p>
+    See more:
+    <a href="http://jsperf.com/creating-text-node/3" target="_blank">
+     content41
+    </a>
+   </p>
+   <li>
+    <p>
+     <strong>
+      Check if element has child nodes:
+      <code>
+       content42
+      </code>
+     </strong>
+    </p>
+   </li>
+   <p>
+    See more:
+    <a href="http://jsperf.com/empty-node-if-needed" target="_blank">
+     content43
+    </a>
+   </p>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-css">
+   content44
+  </h3>
+  <ul>
+   <li>
+    <p>
+     <strong>
+      Change style by caching
+      <code>
+       content45
+      </code>
+     </strong>
+    </p>
+    <p>
+     See more:
+     <a href="http://jsperf.com/change-css-in-many-ways" target="_blank">
+      content46
+     </a>
+    </p>
+   </li>
+  </ul>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/good-practices.html" target="_blank">
+   content47
+  </a>
+ </p>
+</div>

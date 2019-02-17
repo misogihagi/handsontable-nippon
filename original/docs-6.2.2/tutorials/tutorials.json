@@ -1,0 +1,420 @@
+{
+  "index": {
+    "title": "",
+    "children": {
+      "getting-started": {
+        "title": "Getting started",
+        "children": {
+          "introduction": {
+            "title": "Introduction"
+          },
+          "features": {
+            "title": "Features"
+          },
+          "compatibility": {
+            "title": "Compatibility"
+          },
+          "licensing": {
+            "title": "Licensing"
+          },
+          "license-key": {
+            "title": "License key",
+            "pro": true
+          }
+        }
+      },
+      "basic-usage": {
+        "title": "Basic usage",
+        "children": {
+          "quick-start": {
+            "title": "Quick start"
+          },
+          "data-binding": {
+            "title": "Data binding"
+          },
+          "data-sources": {
+            "title": "Data sources"
+          },
+          "load-and-save": {
+            "title": "Load and save"
+          },
+          "setting-options": {
+            "title": "Setting options"
+          },
+          "using-callbacks": {
+            "title": "Using callbacks"
+          },
+          "keyboard-navigation": {
+            "title": "Keyboard navigation"
+          },
+          "internationalization": {
+            "title": "Internationalization"
+          }
+        }
+      },
+      "developer-guide": {
+        "title": "Developer guide",
+        "children": {
+          "custom-build": {
+            "title": "Custom build"
+          },
+          "custom-plugin": {
+            "title": "Custom plugin"
+          },
+          "cell-types": {
+            "title": "Cell types"
+          },
+          "cell-editor": {
+            "title": "Cell editor"
+          },
+          "cell-function": {
+            "title": "Cell function"
+          },
+          "testing": {
+            "title": "Testing"
+          },
+          "principles": {
+            "title": "Principles"
+          },
+          "performance-tips": {
+            "title": "Performance tips"
+          },
+          "good-practices": {
+            "title": "Good practices"
+          },
+          "release-notes": {
+            "title": "Release notes"
+          },
+          "known-limitations": {
+            "title": "Known limitations"
+          },
+          "roadmap": {
+            "title": "Roadmap",
+            "external": "//trello.com/b/PztR4hpj"
+          }
+        }
+      },
+      "community": {
+        "title": "Community",
+        "children": {
+          "github": {
+            "title": "GitHub",
+            "external": "https://github.com/handsontable/handsontable"
+          },
+          "forum": {
+            "title": "Forum",
+            "external": "https://forum.handsontable.com"
+          },
+          "stackoverflow": {
+            "title": "Stack Overflow",
+            "external": "http://stackoverflow.com/tags/handsontable"
+          }
+        }
+      },
+      "rows-and-columns-demos": {
+        "title": "Rows and columns",
+        "demo": true,
+        "children": {
+          "scrolling": {
+            "title": "Scrolling"
+          },
+          "fixing": {
+            "title": "Fixing"
+          },
+          "resizing": {
+            "title": "Resizing"
+          },
+          "moving": {
+            "title": "Moving"
+          },
+          "header-tooltips": {
+            "title": "Header tooltips",
+            "pro": true
+          },
+          "pre-populating": {
+            "title": "Pre-populating rows"
+          },
+          "stretching": {
+            "title": "Stretching columns"
+          },
+          "freezing": {
+            "title": "Freezing columns"
+          },
+          "fixing-bottom": {
+            "title": "Fixing bottom rows"
+          },
+          "hiding-rows": {
+            "title": "Hiding rows",
+            "pro": true
+          },
+          "hiding-columns": {
+            "title": "Hiding columns",
+            "pro": true
+          },
+          "trimming-rows": {
+            "title": "Trimming rows",
+            "pro": true
+          },
+          "bind-rows-headers": {
+            "title": "Bind rows with headers",
+            "pro": true
+          },
+          "collapsing-columns": {
+            "title": "Collapsing columns",
+            "pro": true
+          },
+          "nested-headers": {
+            "title": "Nested headers",
+            "pro": true
+          },
+          "dropdown-menu": {
+            "title": "Dropdown menu",
+            "pro": true
+          }
+        }
+      },
+      "data-operations-demos": {
+        "title": "Data operations",
+        "demo": true,
+        "children": {
+          "sorting": {
+            "title": "Sorting"
+          },
+          "multicolumn-sorting": {
+            "title": "Multi-column sorting",
+            "pro": true
+          },
+          "searching": {
+            "title": "Searching"
+          },
+          "filtering": {
+            "title": "Filtering",
+            "pro": true
+          },
+          "summary-calculations": {
+            "title": "Summary calculations",
+            "pro": true
+          }
+        }
+      },
+      "cell-features-demos": {
+        "title": "Cell features",
+        "demo": true,
+        "children": {
+          "data-validation": {
+            "title": "Data validation"
+          },
+          "auto-fill": {
+            "title": "Auto fill"
+          },
+          "merged-cells": {
+            "title": "Merged cells"
+          },
+          "alignment": {
+            "title": "Alignment"
+          },
+          "read-only": {
+            "title": "Read-only"
+          },
+          "disabled-editing": {
+            "title": "Disabled editing"
+          }
+        }
+      },
+      "cell-types-demos": {
+        "title": "Cell types",
+        "demo": true,
+        "children": {
+          "custom-renderers": {
+            "title": "Custom renderers"
+          },
+          "numeric": {
+            "title": "Numeric"
+          },
+          "date": {
+            "title": "Date"
+          },
+          "time": {
+            "title": "Time"
+          },
+          "checkbox": {
+            "title": "Checkbox"
+          },
+          "select": {
+            "title": "Select"
+          },
+          "dropdown": {
+            "title": "Dropdown"
+          },
+          "autocomplete": {
+            "title": "Autocomplete"
+          },
+          "password": {
+            "title": "Password"
+          },
+          "handsontable": {
+            "title": "Handsontable"
+          }
+        }
+      },
+      "utilities-demos": {
+        "title": "Utilities",
+        "demo": true,
+        "children": {
+          "context-menu": {
+            "title": "Context menu"
+          },
+          "custom-buttons": {
+            "title": "Custom buttons"
+          },
+          "spreadsheet-icons": {
+            "title": "Spreadsheet icons",
+            "pro": true
+          },
+          "comments": {
+            "title": "Comments"
+          },
+          "copy-paste": {
+            "title": "Copy & Paste"
+          },
+          "export-file": {
+            "title": "Export to file",
+            "pro": true
+          }
+        }
+      },
+      "appearance-demos": {
+        "title": "Appearance",
+        "demo": true,
+        "children": {
+          "conditional-formatting": {
+            "title": "Conditional formatting"
+          },
+          "customizing-borders": {
+            "title": "Customizing borders"
+          },
+          "selecting-ranges": {
+            "title": "Selecting ranges"
+          },
+          "highlighting-selection": {
+            "title": "Highlighting selection"
+          },
+          "mobiles-and-tablets": {
+            "title": "Mobiles and tablets"
+          }
+        }
+      },
+      "experimental-demos": {
+        "title": "Experimental features",
+        "demo": true,
+        "children": {
+          "gantt-chart": {
+            "title": "Gantt Chart",
+            "pro": true
+          },
+          "formula-support": {
+            "title": "Formula support",
+            "pro": true
+          },
+          "nested-rows": {
+            "title": "Nested rows",
+            "pro": true
+          }
+        }
+      },
+      "react-framework": {
+        "title": "Wrapper for React",
+        "framework": true,
+        "children": {
+          "wrapper-for-react-installation": {
+            "title": "Installation"
+          },
+          "wrapper-for-react-simple-examples": {
+            "title": "Basic examples"
+          },
+          "wrapper-for-react-custom-context-menu-example": {
+            "title": "Custom Context Menu example"
+          },
+          "wrapper-for-react-custom-editor-example": {
+            "title": "Custom editor example"
+          },
+          "wrapper-for-react-custom-renderer-example": {
+            "title": "Custom renderer example"
+          },
+          "wrapper-for-react-language-change-example": {
+            "title": "Language change example"
+          },
+          "wrapper-for-react-redux-example": {
+            "title": "Redux example"
+          },
+          "wrapper-for-react-hot-reference": {
+            "title": "Referencing the Handsontable instance"
+          }
+        }
+      },
+      "angular-framework": {
+        "title": "Wrapper for Angular",
+        "framework": true,
+        "children": {
+          "wrapper-for-angular-installation": {
+            "title": "Installation"
+          },
+          "wrapper-for-angular-simple-example": {
+            "title": "Basic example"
+          },
+          "wrapper-for-angular-custom-id": {
+            "title": "Custom ID"
+          },
+          "wrapper-for-angular-custom-context-menu-example": {
+            "title": "Custom Context Menu example"
+          },
+          "wrapper-for-angular-custom-editor-example": {
+            "title": "Custom editor example"
+          },
+          "wrapper-for-angular-custom-renderer-example": {
+            "title": "Custom renderer example"
+          },
+          "wrapper-for-angular-language-change-example": {
+            "title": "Language change example"
+          },
+          "wrapper-for-angular-hot-reference": {
+            "title": "Referencing the Handsontable instance"
+          }
+        }
+      },
+      "vue-framework": {
+        "title": "Wrapper for Vue",
+        "framework": true,
+        "children": {
+          "wrapper-for-vue-installation": {
+            "title": "Installation"
+          },
+          "wrapper-for-vue-simple-example": {
+            "title": "Basic example"
+          },
+          "wrapper-for-vue-custom-id-class-style": {
+            "title": "Custom ID, Class, Style and other attributes"
+          },
+          "wrapper-for-vue-custom-context-menu-example": {
+            "title": "Custom Context Menu example"
+          },
+          "wrapper-for-vue-custom-editor-example": {
+            "title": "Custom editor example"
+          },
+          "wrapper-for-vue-custom-renderer-example": {
+            "title": "Custom renderer example"
+          },
+          "wrapper-for-vue-language-change-example": {
+            "title": "Language change example"
+          },
+          "wrapper-for-vue-vuex-example": {
+            "title": "Vuex example"
+          },
+          "wrapper-for-vue-hot-reference": {
+            "title": "Referencing the Handsontable instance"
+          }
+        }
+      }
+    }
+  }
+}

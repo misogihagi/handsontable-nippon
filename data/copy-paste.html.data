@@ -1,0 +1,110 @@
+content1="Copy & Cut"
+content2="End-user usage"
+content3="Context menu"
+content4="Trigger copy & cut programmatically"
+content5="Hooks"
+content6="Paste"
+content7="End-user usage"
+content8="Context menu"
+content9="Trigger paste programmatically"
+content10="Hooks"
+content11="Limitations"
+content12="Copy & Cut"
+content13="CopyPaste"
+content14="taxt/plain"
+content15="text/html"
+content16="End-user usage"
+content17="Available keyboard shortcuts:"
+content18="CTRL/CMD + C"
+content19="CTRL/CMD + X"
+content20="Available options in the browser's toolbar:"
+content21="Edit > Copy"
+content22="Edit > Cut"
+content23="Context menu"
+content24="When the context menu is enabled, it includes default items among which you will find copy and cut options."
+content25="copy"
+content26="cut"
+content27="You can use them in the same way as the rest of the predefined items"
+content28="document.execCommand()"
+content29="
+        var container2 = document.getElementById('example2');
+        var hot2 = new Handsontable(container2, {
+          data: Handsontable.helper.createSpreadsheetData(5, 5),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: ['copy', 'cut'],
+        });
+      "
+content30="Trigger copy & cut programmatically"
+content31="Firstly, you need to select a cell range to copy or cut."
+content32="hot.selectCell(0, 0);"
+content33="Then you can use one of the following commands:"
+content34="document.execCommand('copy')"
+content35="document.execCommand('cut')"
+content36="CopyPaste"
+content37="cop"
+content38="cut"
+content39="Copy"
+content40="Cut"
+content41="
+        var container = document.getElementById('example1');
+        var copyBtn = document.getElementById('copy');
+        var cutBtn = document.getElementById('cut');
+
+        var hot = new Handsontable(container, {
+          rowHeaders: true,
+          colHeaders: true,
+          data: Handsontable.helper.createSpreadsheetData(5, 5),
+          outsideClickDeselects: false,
+        });
+
+        hot.selectCell(0, 0);
+
+        Handsontable.dom.addEvent(copyBtn, 'click', function () {
+          document.execCommand('copy');
+        });
+
+        Handsontable.dom.addEvent(cutBtn, 'click', function () {
+          document.execCommand('cut');
+        });
+      "
+content42="Hooks"
+content43="CopyPaste"
+content44="beforeCopy"
+content45="afterCopy"
+content46="beforeCut"
+content47="afterCut"
+content48="In their descriptions, you can find examples of how to use them."
+content49="Paste"
+content50="CopyPaste"
+content51="taxt/html"
+content52="text/plain"
+content53="End-user usage"
+content54="Available keyboard shortcuts:"
+content55="CTRL/CMD + V"
+content56="Available options in the browser's toolbar:"
+content57="Edit > Paste"
+content58="Context menu"
+content59="Due to security reason, modern browsers disallow to read from the system clipboard."
+content60="Trigger paste programmatically"
+content61="Due to security reason, modern browsers disallow to read from the system clipboard."
+content62="Hooks"
+content63="CopyPaste"
+content64="beforePaste"
+content65="afterPaste"
+content66="In their descriptions, you can find examples of how to use them."
+content67="Limitations"
+content68="CopyPaste"
+content69=""true""
+content70="document.execCommand"
+content71="MouseEvent"
+content72="KeyboardEvent"
+content73="Text"
+content74="text/plain"
+content75="document.execCommand"
+content76="copy"
+content77="cut"
+content78="here"
+content79="
+      Help us improve this page
+    "

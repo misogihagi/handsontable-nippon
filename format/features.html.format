@@ -1,0 +1,524 @@
+<div class="static-content">
+ <p>
+  content1
+ </p>
+ <p>
+  content2
+ </p>
+ <h3>
+  content3
+ </h3>
+ <table class="static-data features-table">
+  <thead>
+   <tr>
+    <th>
+     content4
+    </th>
+    <th>
+     content5
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-bind-rows-headers.html">
+      content6
+     </a>
+    </td>
+    <td>
+     content7
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-collapsing-columns.html">
+      content8
+     </a>
+    </td>
+    <td>
+     content9
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-summary-calculations.html">
+      content10
+     </a>
+    </td>
+    <td>
+     content11
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-dropdown-menu.html">
+      content12
+     </a>
+    </td>
+    <td>
+     content13
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-export-file.html">
+      content14
+     </a>
+    </td>
+    <td>
+     content15
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-filtering.html">
+      content16
+     </a>
+    </td>
+    <td>
+     content17
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-header-tooltips.html">
+      content18
+     </a>
+    </td>
+    <td>
+     content19
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-columns.html">
+      content20
+     </a>
+    </td>
+    <td>
+     content21
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-rows.html">
+      content22
+     </a>
+    </td>
+    <td>
+     content23
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-multicolumn-sorting.html">
+      content24
+     </a>
+    </td>
+    <td>
+     content25
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-nested-headers.html">
+      content26
+     </a>
+    </td>
+    <td>
+     content27
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-trimming-rows.html">
+      content28
+     </a>
+    </td>
+    <td>
+     content29
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <h3>
+  content30
+ </h3>
+ <table class="static-data features-table">
+  <thead>
+   <tr>
+    <th>
+     content31
+    </th>
+    <th>
+     content32
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-formula-support.html">
+      content33
+     </a>
+    </td>
+    <td>
+     content34
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-gantt-chart.html">
+      content35
+     </a>
+    </td>
+    <td>
+     content36
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-nested-rows.html">
+      content37
+     </a>
+    </td>
+    <td>
+     content38
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <h3>
+  content39
+ </h3>
+ <table class="static-data features-table">
+  <thead>
+   <tr>
+    <th>
+     content40
+    </th>
+    <th>
+     content41
+    </th>
+   </tr>
+  </thead>
+  <tbody>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-alignment.html">
+      content42
+     </a>
+    </td>
+    <td>
+     content43
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-autocomplete.html">
+      content44
+     </a>
+    </td>
+    <td>
+     content45
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-checkbox.html">
+      content46
+     </a>
+    </td>
+    <td>
+     content47
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-comments_.html">
+      content48
+     </a>
+    </td>
+    <td>
+     content49
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-conditional-formatting.html">
+      content50
+     </a>
+    </td>
+    <td>
+     content51
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-context-menu.html">
+      content52
+     </a>
+    </td>
+    <td>
+     content53
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-customizing-borders.html">
+      content54
+     </a>
+    </td>
+    <td>
+     content55
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-custom-buttons.html">
+      content56
+     </a>
+    </td>
+    <td>
+     content57
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-custom-renderers.html#cell">
+      content58
+     </a>
+    </td>
+    <td>
+     content59
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-data-validation.html">
+      content60
+     </a>
+    </td>
+    <td>
+     content61
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-date.html">
+      content62
+     </a>
+    </td>
+    <td>
+     content63
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-disabled-editing.html">
+      content64
+     </a>
+    </td>
+    <td>
+     content65
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-auto-fill.html">
+      content66
+     </a>
+    </td>
+    <td>
+     content67
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-dropdown.html">
+      content68
+     </a>
+    </td>
+    <td>
+     content69
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-fixing.html">
+      content70
+     </a>
+    </td>
+    <td>
+     content71
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-freezing.html">
+      content72
+     </a>
+    </td>
+    <td>
+     content73
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-handsontable.html">
+      content74
+     </a>
+    </td>
+    <td>
+     content75
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-highlighting-selection.html">
+      content76
+     </a>
+    </td>
+    <td>
+     content77
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/tutorial-internationalization.html">
+      content78
+     </a>
+    </td>
+    <td>
+     content79
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-merged-cells.html">
+      content80
+     </a>
+    </td>
+    <td>
+     content81
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-moving.html">
+      content82
+     </a>
+    </td>
+    <td>
+     content83
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-numeric.html">
+      content84
+     </a>
+    </td>
+    <td>
+     content85
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-password.html">
+      content86
+     </a>
+    </td>
+    <td>
+     content87
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-pre-populating.html">
+      content88
+     </a>
+    </td>
+    <td>
+     content89
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-read-only.html">
+      content90
+     </a>
+    </td>
+    <td>
+     content91
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-resizing.html">
+      content92
+     </a>
+    </td>
+    <td>
+     content93
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-scrolling.html">
+      content94
+     </a>
+    </td>
+    <td>
+     content95
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-searching.html">
+      content96
+     </a>
+    </td>
+    <td>
+     content97
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-select.html">
+      content98
+     </a>
+    </td>
+    <td>
+     content99
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-sorting.html">
+      content100
+     </a>
+    </td>
+    <td>
+     content101
+    </td>
+   </tr>
+   <tr>
+    <td>
+     <a href="/docs/&lt;?js= version ?&gt;/demo-stretching.html">
+      content102
+     </a>
+    </td>
+    <td>
+     content103
+    </td>
+   </tr>
+  </tbody>
+ </table>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/features.html" target="_blank">
+   content104
+  </a>
+ </p>
+</div>

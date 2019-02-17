@@ -1,0 +1,42 @@
+{
+  "tags": {
+    "allowUnknownTags" : true
+  },
+  "plugins": [
+    "node_modules/grunt-jsdoc/node_modules/jsdoc/plugins/markdown",
+    "plugins/pluginTag",
+    "plugins/experimentalTag",
+    "plugins/utilTag",
+    "plugins/proTag"
+  ],
+  "source": {
+    "excludePattern": "helpers/data.js"
+  },
+  "templates": {
+    "cleverLinks": true,
+    "monospaceLinks": true,
+    "default": {
+      "outputSourceFiles" : false
+    },
+    "applicationName": "Handsontable",
+    "disqus": "",
+    "googleAnalytics": "UA-33932793-1",
+    "openGraph": {
+      "title": "Handsontable Documentation",
+      "type": "website",
+      "image": "",
+      "site_name": "Handsontable",
+      "url": "https://handsontable.com/docs"
+    },
+    "meta": {
+      "title": "Handsontable",
+      "description": "Handsontable is a composite spreadsheet component for apps and websites written in JavaScript and HTML"
+    },
+    "linenums": true
+  },
+  "markdown": {
+    "parser": "gfm",
+    "hardwrap": true,
+    "tags": ["examples", "description"]
+  }
+}

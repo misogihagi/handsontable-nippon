@@ -1,0 +1,70 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   content1
+  </p>
+  <ol>
+   <li>
+    first row is
+    <strong>
+     content2
+    </strong>
+    , and formatted in
+    <strong class="c-green">
+     content3
+    </strong>
+    text,
+   </li>
+   <li>
+    all cells in the Nissan column are written in
+    <em>
+     content4
+    </em>
+    ,
+   </li>
+   <li>
+    empty cells have
+    <span style="background: silver">
+     content5
+    </span>
+    background,
+   </li>
+   <li>
+    negative numbers are written in
+    <span class="c-red">
+     content6
+    </span>
+    .
+   </li>
+  </ol>
+  <div data-jsfiddle="example1">
+   <div class="hot1 hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <style data-jsfiddle="common">
+    content7
+   </style>
+   <script data-jsfiddle="example1">
+    content8
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/conditional-formatting.html" target="_blank">
+   content9
+  </a>
+ </p>
+</div>

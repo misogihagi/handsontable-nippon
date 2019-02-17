@@ -1,0 +1,25 @@
+content1="fixedRowsTop: 2"
+content2="fixedColumnsLeft:
+      2"
+content3="Note:"
+content4="width"
+content5="overflow:
+      hidden"
+content6="Freezing"
+content7="
+        var
+          myData = Handsontable.helper.createSpreadsheetData(100, 50),
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: myData,
+          colWidths: 100,
+          rowHeaders: true,
+          colHeaders: true,
+          fixedRowsTop: 2,
+          fixedColumnsLeft: 2
+        });"
+content8="
+      Help us improve this page
+    "

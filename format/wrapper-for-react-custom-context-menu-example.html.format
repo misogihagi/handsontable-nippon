@@ -1,0 +1,48 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <div>
+   <p>
+    An implementation of the
+    <code>
+     content1
+    </code>
+    component with a custom Context Menu added.
+   </p>
+  </div>
+  <div>
+   <div class="hot" id="example1">
+    content2
+   </div>
+  </div>
+  <script data-jsfiddle="example1" type="text/x-hot-html">
+   content3
+  </script>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example1" data-jsfiddle-panel_js="3" type="text/babel">
+    content4
+   </script>
+  </div>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-react-custom-context-menu-example.html" target="_blank">
+   content5
+  </a>
+ </p>
+</div>
+<script data-jsfiddle="common" src="/docs/&lt;?js= env.opts.query.version ?&gt;/scripts/jsfiddle-fixer.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/react@16/umd/react.development.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.development.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@handsontable-pro/react@2.0.0/dist/react-handsontable.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js">
+</script>

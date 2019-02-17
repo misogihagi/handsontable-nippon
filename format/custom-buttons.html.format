@@ -1,0 +1,54 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   The
+   <strong>
+    <a href="/docs/&lt;?js= version ?&gt;/Core.html#alter">
+     content1
+    </a>
+   </strong>
+   method can be used if you want to insert or remove rows and columns using external
+      buttons. You can programmatically select a cell using the
+   <strong>
+    <a href="/docs/&lt;?js= version ?&gt;/Core.html#selectCell">
+     content2
+    </a>
+   </strong>
+   and load new data by
+   <strong>
+    <a href="/docs/&lt;?js= version ?&gt;/Core.html#loadData">
+     content3
+    </a>
+   </strong>
+   function. The below button implements it.
+  </p>
+  <p>
+   <button class="intext-btn" id="selectFirst">
+    content4
+   </button>
+   <button class="intext-btn" id="removeFirstColumn">
+    content5
+   </button>
+   <button class="intext-btn" id="removeFirstRow">
+    content6
+   </button>
+   <button class="intext-btn" id="resetState">
+    content7
+   </button>
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <script data-jsfiddle="example1">
+    content8
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/custom-buttons.html" target="_blank">
+   content9
+  </a>
+ </p>
+</div>

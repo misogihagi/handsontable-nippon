@@ -1,0 +1,184 @@
+<div class="static-content">
+ <script data-jsfiddle="common">
+  content1
+ </script>
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#lazy">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#strict">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#strict-ajax">
+     content4
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="lazy">
+  <h3 id="lazy">
+   content5
+  </h3>
+  <p>
+   This example shows the usage of the Autocomplete feature in the default
+   <strong>
+    content6
+   </strong>
+   . In this mode,
+      user can choose one of the suggested options while typing or enter a custom value that is not included in the suggestions.
+  </p>
+  <p>
+   In this mode, the mouse and keyboard bindings are identical as in
+   <a href="/docs/&lt;?js= version ?&gt;/demo-handsontable.html">
+    content7
+   </a>
+   The options are rendered from the
+   <code>
+    content8
+   </code>
+   property which can be an array, or a function that returns an array.
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content9
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="strict">
+  <h3 id="strict">
+   content10
+  </h3>
+  <p>
+   This is the same example as above with a difference that autocomplete now runs in
+   <strong>
+    content11
+   </strong>
+   . In this mode, the autocomplete cells will only accept values that are defined in the source
+      array. The mouse and keyboard bindings are identical as in
+   <a href="/docs/&lt;?js= version ?&gt;/demo-handsontable.html">
+    content12
+   </a>
+   with the below differences:
+  </p>
+  <ul>
+   <li>
+    content13
+   </li>
+   <li>
+    When the first row is selected, pressing
+    <kbd>
+     content14
+    </kbd>
+    does not deselect HOT-in-HOT.
+        Instead behaves as the ENTER key but moves the selection in the main HOT upwards.
+   </li>
+  </ul>
+  <p>
+   In strict mode, the
+   <strong>
+    content15
+   </strong>
+   option determines the behaviour in case of manual user input:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content16
+    </code>
+    (optional) - allows manual input of value that does not exist in the
+    <code>
+     content17
+    </code>
+    . In this case, the field background highlight becomes red and the selection
+        advances to the next cell
+   </li>
+   <li>
+    <code>
+     content18
+    </code>
+    - does not allow manual input of value that does not exist in the
+    <code>
+     content19
+    </code>
+    . In this case, the
+    <kbd>
+     content20
+    </kbd>
+    key is ignored and the editor field remains opened.
+   </li>
+  </ul>
+  <br/>
+  <div data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content21
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="strict-ajax">
+  <h3 id="strict-ajax">
+   content22
+  </h3>
+  <p>
+   content23
+  </p>
+  <div data-jsfiddle="example3">
+   <div class="hot" id="example3">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script>
+    content24
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/autocomplete.html" target="_blank">
+   content25
+  </a>
+ </p>
+</div>

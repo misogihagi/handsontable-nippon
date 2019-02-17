@@ -1,0 +1,198 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#testing-in-browser">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#testing-with-npm-cli">
+     content2
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="testing-in-browser">
+   content3
+  </h3>
+  <p>
+   content4
+  </p>
+  <ul>
+   <li>
+    <strong>
+     content5
+    </strong>
+    - Handsontable end-to-end test suite (available for both Handsontable Pro and CE)
+   </li>
+   <li>
+    <strong>
+     content6
+    </strong>
+    - Handsontable mobile test suite (available only for Handsontable CE)
+   </li>
+   <li>
+    <strong>
+     content7
+    </strong>
+    - Walkontable test suite (available only for Handsontable CE)
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="testing-with-npm-cli">
+   content8
+  </h3>
+  <p>
+   To run Jasmine tests in your command line (using Puppeteer), first install all necessary dependencies by executing
+   <code>
+    content9
+   </code>
+   .
+      After the
+   <code>
+    content10
+   </code>
+   finishes fetching required modules your workspace is ready to test.
+  </p>
+  <p>
+   content11
+  </p>
+  <ul>
+   <li>
+    <code>
+     content12
+    </code>
+    - runs all test cases (Handsontable PRO and Handsontable CE).
+   </li>
+   <li>
+    <code>
+     content13
+    </code>
+    - runs only Handsontable PRO end-to-end tests.
+   </li>
+   <li>
+    <code>
+     content14
+    </code>
+    - runs only Handsontable PRO unit tests.
+   </li>
+   <li>
+    <code>
+     content15
+    </code>
+    - runs only Handsontable CE end-to-end tests.
+   </li>
+   <li>
+    <code>
+     content16
+    </code>
+    - runs only end-to-end tests and suites matching the filename "selection".
+   </li>
+   <li>
+    <code>
+     content17
+    </code>
+    - runs only end-to-end tests and suites matching the filename "array".
+   </li>
+   <li>
+    <code>
+     content18
+    </code>
+    - generates the
+    <code>
+     content19
+    </code>
+    file which can by executed in the browser environment (Chrome, PhantomJS etc.) to check if tests passes.
+   </li>
+   <li>
+    <code>
+     content20
+    </code>
+    - generates the
+    <code>
+     content21
+    </code>
+    file on every change detected in test files. It can be helpful for debugging proposes.
+   </li>
+  </ul>
+  <p>
+   content22
+  </p>
+  <ul>
+   <li>
+    <code>
+     content23
+    </code>
+    - runs all test cases (Handsontable CE and Walkontable).
+   </li>
+   <li>
+    <code>
+     content24
+    </code>
+    - runs only Handsontable end-to-end tests.
+   </li>
+   <li>
+    <code>
+     content25
+    </code>
+    - runs only Handsontable unit tests.
+   </li>
+   <li>
+    <code>
+     content26
+    </code>
+    - runs only Walkontable tests.
+   </li>
+   <li>
+    <code>
+     content27
+    </code>
+    - runs only end-to-end tests and suites matching to filename "selection".
+   </li>
+   <li>
+    <code>
+     content28
+    </code>
+    - runs only end-to-end tests and suites matching to filename "array".
+   </li>
+   <li>
+    <code>
+     content29
+    </code>
+    - generates
+    <code>
+     content30
+    </code>
+    file which can by executed in browser environment (Chrome, PhantomJS etc.) to check if tests passes.
+   </li>
+   <li>
+    <code>
+     content31
+    </code>
+    - generates
+    <code>
+     content32
+    </code>
+    file on every change detected in test files. It can be helpful for debugging proposes.
+   </li>
+   <li>
+    <code>
+     content33
+    </code>
+    - generates
+    <code>
+     content34
+    </code>
+    file which can by executed in browser environment of mobile device to check if tests passes.
+   </li>
+  </ul>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/testing.html" target="_blank">
+   content35
+  </a>
+ </p>
+</div>

@@ -1,0 +1,64 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <h3>
+   An implementation of the
+   <code>
+    content1
+   </code>
+   wrapper.
+  </h3>
+  <div>
+   <app-root>
+   </app-root>
+  </div>
+  <script data-jsfiddle="example1" type="text/x-hot-html">
+   content2
+  </script>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example1" data-jsfiddle-panel_js="4" type="text/typescript">
+    content3
+   </script>
+   <p>
+    The same example you can find
+    <a href="https://stackblitz.com/edit/handsontable-angular" target="_blank">
+     content4
+    </a>
+    .
+   </p>
+  </div>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-angular-examples.html" target="_blank">
+   content5
+  </a>
+ </p>
+</div>
+<script data-jsfiddle="common" src="/docs/&lt;?js= env.opts.query.version ?&gt;/scripts/jsfiddle-fixer.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/rxjs@6/bundles/rxjs.umd.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/core-js@2/client/core.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/zone.js@0.8/dist/zone.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@angular/compiler@7/bundles/compiler.umd.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@angular/core@7/bundles/core.umd.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@angular/common@7/bundles/common.umd.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@angular/platform-browser@7/bundles/platform-browser.umd.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@angular/platform-browser-dynamic@7/bundles/platform-browser-dynamic.umd.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@handsontable-pro/angular@3.0.0/bundles/handsontable-pro-angular.umd.min.js">
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typescript/3.2.2/typescript.min.js">
+</script>

@@ -1,0 +1,140 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-afterchange">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-saving">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-using">
+     content3
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-afterchange">
+   content4
+  </h3>
+  <p>
+   Use the
+   <strong>
+    content5
+   </strong>
+   callback to track changes made in the table. In the example below,
+   <code>
+    content6
+   </code>
+   is used to load and save grid data. Note that this is just a mockup. Nothing is actually saved.
+      You have to implement the server-side part by yourself.
+  </p>
+  <div class="ajax-container" data-jsfiddle="example1">
+   <div class="controls">
+    <button class="intext-btn" id="load" name="load">
+     content7
+    </button>
+    <button class="intext-btn" id="save" name="save">
+     content8
+    </button>
+    <label>
+     <input autocomplete="off" checked="checked" id="autosave" name="autosave" type="checkbox"/>
+     Autosave
+    </label>
+   </div>
+   <pre class="console" id="example1console">content9</pre>
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content10
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-saving">
+   content11
+  </h3>
+  <p>
+   You can save any sort of data in local storage to preserve the table state after
+      page reloads. In order to enable the data storage mechanism, the
+   <code>
+    content12
+   </code>
+   option must be set to
+   <code>
+    content13
+   </code>
+   (you can set it either during the Handsontable initialization
+      or using the updateSettings method).
+  </p>
+  <p>
+   When
+   <code>
+    content14
+   </code>
+   is enabled it exposes 3 hooks listed below:
+  </p>
+  <ul>
+   <li>
+    <a href="./Hooks.html#event:persistentStateSave">
+     content15
+    </a>
+   </li>
+   <li>
+    <a href="./Hooks.html#event:persistentStateLoad">
+     content16
+    </a>
+   </li>
+   <li>
+    <a href="./Hooks.html#event:persistentStateReset">
+     content17
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div>
+  <h3 id="page-using">
+   content18
+  </h3>
+  <p>
+   The main reason behind using
+   <code>
+    content19
+   </code>
+   hooks rather than a regular LocalStorage API
+      is that it ensures separation of data stored by multiple Handsontable instances. In other words,
+      if you have two (or more) instances of Handsontable on one page, data saved by one instance
+      will be inaccessible to the second instance. Those two instances can store data under the same
+      key and no data would be overwritten.
+  </p>
+  <p>
+   <strong>
+    In order for the data separation to work properly, make sure that each instance
+        of Handsontable has a unique
+    <code>
+     content20
+    </code>
+    .
+   </strong>
+  </p>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/load-and-save.html" target="_blank">
+   content21
+  </a>
+ </p>
+</div>

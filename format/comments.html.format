@@ -1,0 +1,136 @@
+<div class="static-content">
+ <script data-jsfiddle="common">
+  content1
+ </script>
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#enable">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#context-menu">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#preset-comments">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#api">
+     content5
+    </a>
+   </li>
+   <li>
+    <a href="#example">
+     content6
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <p>
+   The
+   <i>
+    content7
+   </i>
+   plugin makes it possible to easily add, edit and remove comments in Handsontable.
+  </p>
+  <h3 id="enable">
+   content8
+  </h3>
+  <p>
+   To use the plugin, you'll need to set the
+   <code>
+    content9
+   </code>
+   property to
+   <code>
+    content10
+   </code>
+   . It'll enable the
+      plugin and add
+      all the needed context menu items. For example:
+  </p>
+  <pre><code class="javascript">content11</code></pre>
+  <h3 id="context-menu">
+   content12
+  </h3>
+  <p>
+   After you've enabled the plugin, the
+   <a href="./demo-context-menu.html">
+    content13
+   </a>
+   gains a few new items:
+  </p>
+  <ul>
+   <li>
+    content14
+   </li>
+   <li>
+    content15
+   </li>
+   <li>
+    content16
+   </li>
+  </ul>
+  <p>
+   content17
+  </p>
+  <h3 id="preset-comments">
+   content18
+  </h3>
+  <p>
+   You can also pre-define comments for your table. As comments are stored in the table's/column's/cell's meta data
+      object, you can declare it as any other property of that type.
+   <br/>
+   For example:
+  </p>
+  <pre><code class="javascript">content19</code></pre>
+  <p>
+   content20
+  </p>
+  <h3 id="api">
+   content21
+  </h3>
+  <p>
+   You can add, remove and modify most of the comment-related information using the API. For More info, head to
+   <a href="./Comments.html">
+    content22
+   </a>
+   .
+  </p>
+  <h3 id="example">
+   content23
+  </h3>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content24
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/comments.html" target="_blank">
+   content25
+  </a>
+ </p>
+</div>

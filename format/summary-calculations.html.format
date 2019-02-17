@@ -1,0 +1,667 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   The Column Summary plugin allows making pre-defined calculations on the cell values and display the results
+      within Handsontable.
+   <br/>
+   You can think of this plugin as pre-defined formulas.
+  </p>
+  <h4>
+   <a href="#basic-setup">
+    content1
+   </a>
+  </h4>
+  <ol>
+   <li>
+    <a href="#destination">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#calculation-range">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#function-config">
+     content4
+    </a>
+   </li>
+  </ol>
+  <h4>
+   content5
+  </h4>
+  <ol>
+   <li>
+    <a href="#sum">
+     content6
+    </a>
+   </li>
+   <li>
+    <a href="#min">
+     content7
+    </a>
+   </li>
+   <li>
+    <a href="#max">
+     content8
+    </a>
+   </li>
+   <li>
+    <a href="#count">
+     content9
+    </a>
+   </li>
+   <li>
+    <a href="#average">
+     content10
+    </a>
+   </li>
+   <li>
+    <a href="#custom">
+     content11
+    </a>
+   </li>
+  </ol>
+  <h4>
+   content12
+  </h4>
+  <ol>
+   <li>
+    <a href="#force-numeric">
+     content13
+    </a>
+   </li>
+   <li>
+    <a href="#datatype-errors">
+     content14
+    </a>
+   </li>
+   <li>
+    <a href="#read-only">
+     content15
+    </a>
+   </li>
+   <li>
+    <a href="#round">
+     content16
+    </a>
+   </li>
+  </ol>
+  <br/>
+  <br/>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="common">
+    content17
+   </script>
+   <script data-jsfiddle="example1">
+    content18
+   </script>
+  </div>
+  <hr/>
+  <h3 id="basic-setup">
+   content19
+  </h3>
+  <p>
+   To initialize the
+   <i>
+    content20
+   </i>
+   plugin, you need to properly set a property in the Handsontable
+      initial config.
+   <br/>
+   The
+   <code>
+    content21
+   </code>
+   property should be declared as an array of objects, where each object represents
+      a single
+   <i>
+    content22
+   </i>
+   (the "output" cell, or a single calculation).
+   <br/>
+   <pre>
+    <code class="javascript">content23</code></pre>
+  </p>
+  <h3 id="destination">
+   content24
+  </h3>
+  <p>
+   The columnSummary plugin requires the user to provide the destination coordinates (row and column number) for the cell
+      to display the calculations results in.
+   <br/>
+   <br/>
+   To do that, you need to set two properties in the Handsontable config object:
+  </p>
+  <div data-jsfiddle="example-destination">
+   <div>
+    <div class="hot" id="example-destination">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-destination">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-destination" data-instance="hot7" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-destination">
+    content25
+   </script>
+  </div>
+  <!-- ----------- EXAMPLE END ------------- -->
+  <!--<pre><code class="javascript">columnSummary: [-->
+  <!--{-->
+  <!--// This configuration would put the result of the calculation in a cell at coords [2,4].-->
+  <!--destinationRow: 2,-->
+  <!--destinationColumn: 4,-->
+  <!--// ...-->
+  <!--}-->
+  <!--]</code></pre>-->
+  <p>
+   If the destination cell should be closer to the bottom of the table, you might find the
+   <code>
+    content26
+   </code>
+   useful.
+      What it does is counting the rows from the
+   <i>
+    content27
+   </i>
+   , not the top, as it usually does.
+   <br/>
+   <br/>
+   So, for example, defining the plugin like this puts the calculation result in a cell in the 5th column (we're counting from 0) and 2nd row from the bottom of
+      the table.
+  </p>
+  <!-- --------- EXAMPLE START ---------- -->
+  <div data-jsfiddle="example-reverse">
+   <div>
+    <div class="hot" id="example-reverse">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-reverse">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-reverse" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-reverse">
+    content28
+   </script>
+  </div>
+  <h3 id="calculation-range">
+   content29
+  </h3>
+  <p>
+   By default, the plugin makes calculations on data from all rows in the endpoint's destination column. However, you can
+      specify it differently (both column and row-wise).
+   <br/>
+   <br/>
+   The properties responsible for this are
+   <code>
+    content30
+   </code>
+   and
+   <code>
+    content31
+   </code>
+   .
+  </p>
+  <ol>
+   <li>
+    <code>
+     <b>
+      content32
+     </b>
+    </code>
+    option specifies the row range to make the calculations on. It should be declared as an
+    <i>
+     content33
+    </i>
+    , where each of the arrays represent a single row range.
+    <br/>
+    <br/>
+    For example, this configuration would do the calculations for rows:
+    <code>
+     content34
+    </code>
+    ,
+    <code>
+     content35
+    </code>
+    ,
+    <code>
+     content36
+    </code>
+    ,
+    <code>
+     content37
+    </code>
+    ,
+    <code>
+     content38
+    </code>
+    ,
+    <code>
+     content39
+    </code>
+    ,
+    <code>
+     content40
+    </code>
+    and
+    <code>
+     content41
+    </code>
+    .
+    <!-- --------- EXAMPLE START ---------- -->
+    <div data-jsfiddle="example-range">
+     <div>
+      <div class="hot" id="example-range">
+      </div>
+     </div>
+    </div>
+    <div class="codeLayout">
+     <div class="buttons">
+      <button class="jsFiddleLink" data-runfiddle="example-range">
+       <i class="fa fa-jsfiddle">
+       </i>
+       Edit
+      </button>
+      <button class="dump" data-dump="#example-range" data-instance="hot2" name="dump" title="Print current data source to console">
+       <i class="fa fa-terminal">
+       </i>
+       Dump data to console
+      </button>
+     </div>
+     <script data-jsfiddle="example-range">
+      content42
+     </script>
+    </div>
+   </li>
+   <br/>
+   <li>
+    <code>
+     <b>
+      content43
+     </b>
+    </code>
+    option specifies the column to work on.
+    <br/>
+    <br/>
+    For example, this will make operations on the 3rd column (again, we're counting from 0):
+    <br/>
+    <!-- --------- EXAMPLE START ---------- -->
+    <div data-jsfiddle="example-sourceColumn">
+     <div>
+      <div class="hot" id="example-sourceColumn">
+      </div>
+     </div>
+    </div>
+    <div class="codeLayout">
+     <div class="buttons">
+      <button class="jsFiddleLink" data-runfiddle="example-sourceColumn">
+       <i class="fa fa-jsfiddle">
+       </i>
+       Edit
+      </button>
+      <button class="dump" data-dump="#example-sourceColumn" data-instance="hot3" name="dump" title="Print current data source to console">
+       <i class="fa fa-terminal">
+       </i>
+       Dump data to console
+      </button>
+     </div>
+     <script data-jsfiddle="example-sourceColumn">
+      content44
+     </script>
+    </div>
+   </li>
+  </ol>
+  <h3 id="function-config">
+   content45
+  </h3>
+  <p>
+   Since version
+   <code>
+    content46
+   </code>
+   , you can provide a function instead of an array as the config item. The function has to return
+      an array of objects, similarly to a traditional setup method.
+  </p>
+  <p>
+   content47
+  </p>
+  <!-- --------- EXAMPLE START ---------- -->
+  <div data-jsfiddle="example-functionConfig">
+   <div>
+    <div class="hot" id="example-functionConfig">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-functionConfig">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-functionConfig" data-instance="hot7" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-functionConfig">
+    content48
+   </script>
+  </div>
+  <!-- --------- EXAMPLE END ---------- -->
+  <p>
+   This allows many possible usages: for example, you can easily calculate a total for a group in a group parent
+    combining this plugin with the
+   <a href="/demo-nested-rows.html">
+    content49
+   </a>
+   .
+  </p>
+  <p>
+   content50
+  </p>
+  <!-- --------- EXAMPLE START ---------- -->
+  <div data-jsfiddle="example-nestedRows">
+   <div>
+    <div class="hot" id="example-nestedRows">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-nestedRows">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-nestedRows" data-instance="hot8" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-nestedRows">
+    content51
+   </script>
+  </div>
+  <!-- --------- EXAMPLE END ---------- -->
+  <hr/>
+  <h2>
+   content52
+  </h2>
+  <h3 id="sum">
+   content53
+  </h3>
+  <p>
+   Calculates a sum of values in the specified column and row range.
+   <br/>
+   <br/>
+   Usage:
+  </p>
+  <pre><code class="javascript">content54</code></pre>
+  <h3 id="min">
+   content55
+  </h3>
+  <p>
+   content56
+  </p>
+  <pre><code class="javascript">content57</code></pre>
+  <h3 id="max">
+   content58
+  </h3>
+  <p>
+   content59
+  </p>
+  <pre><code class="javascript">content60</code></pre>
+  <h3 id="count">
+   content61
+  </h3>
+  <p>
+   content62
+  </p>
+  <pre><code class="javascript">content63</code></pre>
+  <h3 id="average">
+   content64
+  </h3>
+  <p>
+   content65
+  </p>
+  <pre><code class="javascript">content66</code></pre>
+  <h3 id="custom">
+   content67
+  </h3>
+  <p>
+   content68
+  </p>
+  <pre><code class="javascript">content69</code></pre>
+  <h3>
+   content70
+  </h3>
+  <!-- --------- EXAMPLE START ---------- -->
+  <div data-jsfiddle="example-calculations">
+   <div>
+    <div class="hot" id="example-calculations">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-calculations">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-calculations" data-instance="hot4" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-calculations">
+    content71
+   </script>
+  </div>
+  <!-- ----------- EXAMPLE END ------------- -->
+  <h2>
+   content72
+  </h2>
+  <h3 id="force-numeric">
+   content73
+  </h3>
+  <p>
+   If your table doesn't contain only numeric data, you can try to force the values to be numeric in the calculations.
+      For example,
+   <i>
+    content74
+   </i>
+   can be treated as
+   <i>
+    content75
+   </i>
+   . To enable this feature, you'll need to set the
+   <code>
+    content76
+   </code>
+   property to
+   <code>
+    content77
+   </code>
+   .
+   <br/>
+   <br/>
+   Enabling this option might sometimes be a good idea, as text-based Handsontable cells stores their contents as strings,
+      which might cause problems with, for example, the
+   <i>
+    content78
+   </i>
+   function.
+   <br/>
+   <br/>
+   By default this option is
+   <strong>
+    content79
+   </strong>
+   .
+  </p>
+  <!-- --------- EXAMPLE START ---------- -->
+  <div data-jsfiddle="example-forceNumeric">
+   <div>
+    <div class="hot" id="example-forceNumeric">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-forceNumeric">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-forceNumeric" data-instance="hot5" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-forceNumeric">
+    content80
+   </script>
+  </div>
+  <!-- ----------- EXAMPLE END ------------- -->
+  <h3 id="datatype-errors">
+   content81
+  </h3>
+  <p>
+   If your table doesn't contain only numeric data, you can either skip the non-numeric entries in the calculation,
+      throw an error or try to parse them to float using the forceNumeric option.
+   <br/>
+   If you choose to throw the errors, you need to set the
+   <code>
+    content82
+   </code>
+   property to
+   <code>
+    content83
+   </code>
+   .
+   <br/>
+   <br/>
+   By default,
+   <code>
+    content84
+   </code>
+   is set to
+   <code>
+    content85
+   </code>
+   .
+  </p>
+  <pre><code class="javascript">content86</code></pre>
+  <h3 id="read-only">
+   content87
+  </h3>
+  <p>
+   You can make the the cells with the calculation results read-only by setting the
+   <code>
+    content88
+   </code>
+   option to
+   <code>
+    content89
+   </code>
+   .
+   <br/>
+   <br/>
+   This option is
+   <code>
+    content90
+   </code>
+   by default.
+  </p>
+  <h3 id="round">
+   content91
+  </h3>
+  <p>
+   If you wish to round the calculation result to a specific number of digits after the decimal point, you need to
+      use the
+   <code>
+    content92
+   </code>
+   parameter.
+   <br/>
+   It's value will result in rounding the result to the appropriate amount of digits.
+  </p>
+  <!-- --------- EXAMPLE START ---------- -->
+  <div data-jsfiddle="example-round">
+   <div>
+    <div class="hot" id="example-round">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example-round">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example-round" data-instance="hot6" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example-round">
+    content93
+   </script>
+  </div>
+  <!-- ----------- EXAMPLE END ------------- -->
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/summary-calculations.html" target="_blank">
+   content94
+  </a>
+ </p>
+</div>

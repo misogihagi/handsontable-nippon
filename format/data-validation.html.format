@@ -1,0 +1,258 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-registering-validator">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-full-featured-example">
+     content2
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container head-gap clearfix" name="registering-validator">
+  <h3 id="page-registering-validator">
+   content3
+  </h3>
+  <p>
+   content4
+  </p>
+  <ul>
+   <li>
+    <code>
+     content5
+    </code>
+    for
+    <code>
+     content6
+    </code>
+   </li>
+   <li>
+    <code>
+     content7
+    </code>
+    for
+    <code>
+     content8
+    </code>
+   </li>
+   <li>
+    <code>
+     content9
+    </code>
+    for
+    <code>
+     content10
+    </code>
+   </li>
+   <li>
+    <code>
+     content11
+    </code>
+    for
+    <code>
+     content12
+    </code>
+   </li>
+   <li>
+    <code>
+     content13
+    </code>
+    for
+    <code>
+     content14
+    </code>
+   </li>
+  </ul>
+  <p>
+   content15
+  </p>
+  <p>
+   To register your own alias use
+   <code>
+    content16
+   </code>
+   function. It takes two arguments:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content17
+    </code>
+    - a string representing a validator function
+   </li>
+   <li>
+    <code>
+     content18
+    </code>
+    - a validator function that will be represented by
+    <code>
+     content19
+    </code>
+   </li>
+  </ul>
+  <p>
+   If you'd like to register
+   <code>
+    content20
+   </code>
+   under alias
+   <code>
+    content21
+   </code>
+   you have to call:
+  </p>
+  <pre><code class="lang-javascript">content22</code></pre>
+  <p>
+   content23
+  </p>
+  <pre><code class="lang-javascript">content24</code></pre>
+  <p>
+   content25
+  </p>
+  <pre><code class="lang-javascript">content26</code></pre>
+  <pre><br/><code class="lang-javascript">content27</code></pre>
+  <h3 id="using-an-alias">
+   content28
+  </h3>
+  <p>
+   content29
+  </p>
+  <p>
+   content30
+  </p>
+  <pre><code class="lang-javascript">content31</code></pre>
+  <p>
+   From now on, you can use
+   <code>
+    content32
+   </code>
+   like so:
+  </p>
+  <pre><code class="lang-javascript">content33</code></pre>
+ </div>
+ <div class="example-container clearfix" name="full-featured-example">
+  <h3 id="page-full-featured-example">
+   content34
+  </h3>
+  <p>
+   Use the
+   <strong>
+    content35
+   </strong>
+   (see
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#validator">
+    content36
+   </a>
+   ) method to easily
+      validate synchronous or asynchronous changes to a cell. If you
+      need more control,
+   <strong>
+    content37
+   </strong>
+   and
+   <strong>
+    content38
+   </strong>
+   plugin hooks are available (see
+   <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeValidate">
+    content39
+   </a>
+   ).
+      In the below example,
+   <code>
+    content40
+   </code>
+   is an async validator that resolves after 1000 ms.
+  </p>
+  <p>
+   Use the
+   <strong>
+    content41
+   </strong>
+   option (see
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#allowInvalid">
+    content42
+   </a>
+   ) to define if the
+      grid should accept input that does not validate.
+      If you need to modify the input (e.g. censor bad words, uppercase first letter), use the plugin hook
+   <strong>
+    content43
+   </strong>
+   (see
+   <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeChange">
+    content44
+   </a>
+   ).
+  </p>
+  <p>
+   By default all invalid cells are marked by
+   <code>
+    content45
+   </code>
+   CSS class. If you want to change class to another you can basically add
+      the
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#invalidCellClassName">
+    content46
+   </a>
+   option to Handsontable settings. For example:
+   <pre><code class="lang-js">content47</code></pre>
+  </p>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1">
+    </div>
+   </div>
+   <p>
+    Callback console:
+    <code>
+     content48
+    </code>
+   </p>
+   <p>
+    content49
+   </p>
+   <p>
+    <b>
+     content50
+    </b>
+    Please keep in mind that changes in table are applied after running
+    <b>
+     content51
+    </b>
+    (both synchronous and and asynchronous) from
+    <b>
+     content52
+    </b>
+    changed cells.
+   </p>
+   <pre class="console" id="example1console"></pre>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content53
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/data-validation.html" target="_blank">
+   content54
+  </a>
+ </p>
+</div>

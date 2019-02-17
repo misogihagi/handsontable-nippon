@@ -1,0 +1,68 @@
+<div class="static-content">
+ <script data-jsfiddle="common" src="/docs/&lt;?js= version ?&gt;/components/handsontable-pro/dist/languages/all.js">
+ </script>
+ <div class="example-container clearfix">
+  <div>
+   <p>
+    An implementation of the
+    <code>
+     content1
+    </code>
+    component with an option to change the Context Menu language.
+    <br/>
+    Select a language from the selector above the table and open the Context Menu to see the result.
+    <br/>
+    <br/>
+    Note, that the
+    <code>
+     content2
+    </code>
+    property is bound to the component separately (by using
+    <code>
+     content3
+    </code>
+    ), but it could be
+      included in the
+    <code>
+     content4
+    </code>
+    prop just as well.
+   </p>
+  </div>
+  <div>
+   <div class="hot" id="example1">
+    content5
+   </div>
+  </div>
+  <script data-jsfiddle="example1" type="text/x-hot-html">
+   content6
+  </script>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example1" data-jsfiddle-panel_js="3" type="text/babel">
+    content7
+   </script>
+  </div>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-react-language-change-example.html" target="_blank">
+   content8
+  </a>
+ </p>
+</div>
+<script data-jsfiddle="common" src="/docs/&lt;?js= env.opts.query.version ?&gt;/scripts/jsfiddle-fixer.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/react@16/umd/react.development.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/react-dom@16/umd/react-dom.development.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@handsontable-pro/react@2.0.0/dist/react-handsontable.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js">
+</script>

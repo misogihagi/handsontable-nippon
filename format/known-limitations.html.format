@@ -1,0 +1,180 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   content1
+  </p>
+  <ul>
+   <li>
+    <strong>
+     content2
+    </strong>
+    <p>
+     Our team follows the "proudly found elsewhere" principle which encourages us to make
+                    use of the great work done by other developers. You will probably find the following
+                    open source libraries being utilized by Handsontable:
+     <ul>
+      <li>
+       <strong>
+        content3
+       </strong>
+       (handles numeric data)
+       <br/>
+       Author: Benjamin Van Ryseghem
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="http://numbrojs.com/" target="_blank">
+        content4
+       </a>
+      </li>
+      <li>
+       <strong>
+        content5
+       </strong>
+       (displays a date picker)
+       <br/>
+       Author: David Bushell
+       <br/>
+       License: Open source (BSD &amp; MIT)
+       <br/>
+       <a href="https://github.com/dbushell/Pikaday" target="_blank">
+        content6
+       </a>
+      </li>
+      <li>
+       <strong>
+        content7
+       </strong>
+       (parses, validates and displays dates)
+       <br/>
+       Author: Tim Wood, Tskren Chernev, Moment.js contributors
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="http://momentjs.com" target="_blank">
+        content8
+       </a>
+      </li>
+      <li>
+       <strong>
+        content9
+       </strong>
+       (provides syntax and logic for functions)
+       <br/>
+       Author: Handsontable
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/handsontable/formula.js" target="_blank">
+        content10
+       </a>
+      </li>
+      <li>
+       <strong>
+        content11
+       </strong>
+       (implementation of JSON-Patch - RFC 6902)
+       <br/>
+       Author: Starcounter
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/Starcounter-Jack/JSON-Patch" target="_blank">
+        content12
+       </a>
+      </li>
+      <li>
+       <strong>
+        content13
+       </strong>
+       (polyfills for ECMAScript 5, ECMAScript 6, promises, symbols, collections)
+       <br/>
+       Author: Denis Pushkarev
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/zloirock/core-js" target="_blank">
+        content14
+       </a>
+      </li>
+      <li>
+       <strong>
+        content15
+       </strong>
+       (bessel functions in pure JS)
+       <br/>
+       Author: SheetJS
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/SheetJS/bessel" target="_blank">
+        content16
+       </a>
+      </li>
+      <li>
+       <strong>
+        content17
+       </strong>
+       (statistical library)
+       <br/>
+       Author: jStat
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/jstat/jstat" target="_blank">
+        content18
+       </a>
+      </li>
+      <li>
+       <strong>
+        content19
+       </strong>
+       (a tiny event emitter library)
+       <br/>
+       Author: Scott Corgan
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/scottcorgan/tiny-emitter" target="_blank">
+        content20
+       </a>
+      </li>
+      <li>
+       <strong>
+        content21
+       </strong>
+       (parsing excel formulas library)
+       <br/>
+       Author: Handsontable
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/handsontable/formula-parser" target="_blank">
+        content22
+       </a>
+      </li>
+      <li>
+       <strong>
+        content23
+       </strong>
+       (implementation of linked list and merge sort)
+       <br/>
+       Author: Minko Gechev
+       <br/>
+       License: Open source (MIT)
+       <br/>
+       <a href="https://github.com/mgechev/javascript-algorithms" target="_blank">
+        content24
+       </a>
+      </li>
+     </ul>
+    </p>
+   </li>
+  </ul>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/known-limitations.html" target="_blank">
+   content25
+  </a>
+ </p>
+</div>

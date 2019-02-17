@@ -1,0 +1,48 @@
+content1="Overview"
+content2="Quick setup"
+content3="Overview"
+content4="Bind rows with headers"
+content5="0"
+content6=""A""
+content7="Quick setup"
+content8="bindRowsWithHeaders"
+content9="true"
+content10="
+        var generateDataObj = function(rows, columns) {
+          var data = [];
+          var number = 0;
+
+          if (!rows) {
+            rows = 3;
+          }
+          if (!columns) {
+            columns = 7;
+          }
+
+          for (var i = 0; i < rows; i++) {
+            data[i] = [];
+            for (var j = 0; j < columns; j++) {
+              data[i][j] = number++;
+            }
+          }
+
+          for (i = 0; i < 2; i++) {
+            data.push([]);
+          }
+
+          return data;
+        };"
+content11="
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: generateDataObj(),
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          manualRowMove: true,
+          bindRowsWithHeaders: 'strict'
+        });"
+content12="
+      Help us improve this page
+    "

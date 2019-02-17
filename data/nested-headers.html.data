@@ -1,0 +1,37 @@
+content1="Overview"
+content2="Setup"
+content3="Example"
+content4="Overview"
+content5="Nested Rows"
+content6="colspan"
+content7="Note:"
+content8="nested"
+content9="Setup"
+content10="label"
+content11="colspan"
+content12="label"
+content13="colspan"
+content14="nestedHeaders: [
+  ['A', {label: 'B', colspan: 8}, 'C'],
+  ['D', {label: 'E', colspan: 4}, {label: 'F', colspan: 4}, 'G'],
+  ['H', {label: 'I', colspan: 2}, {label: 'J', colspan: 2}, {label: 'K', colspan: 2}, {label: 'L', colspan: 2}, 'M'],
+  ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
+]"
+content15="Example"
+content16="
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(5,10),
+          colHeaders: true,
+          rowHeaders: true,
+          nestedHeaders: [
+            ['A', {label: 'B', colspan: 8}, 'C'],
+            ['D', {label: 'E', colspan: 4}, {label: 'F', colspan: 4}, 'G'],
+            ['H', {label: 'I', colspan: 2}, {label: 'J', colspan: 2}, {label: 'K', colspan: 2}, {label: 'L', colspan: 2}, 'M'],
+            ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
+          ]
+        });"
+content17="
+      Help us improve this page
+    "

@@ -1,0 +1,74 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   To make the grid scrollable, set constant width and height to the container holding Handsontable and set the
+   <code>
+    content1
+   </code>
+   property to
+   <code>
+    content2
+   </code>
+   in the container's stylesheet. Then, if the table contains
+      enough rows or columns, you can scroll through it.
+  </p>
+  <p>
+   Note, that Handsontable renders only the visible part of the table plus a fixed amount of rows and columns.
+      You can experiment with the
+   <code>
+    content3
+   </code>
+   and
+   <code>
+    content4
+   </code>
+   config options, which define this behavior, to improve the performance of your app.
+  </p>
+  <p>
+   content5
+  </p>
+  <ul>
+   <li>
+    content6
+   </li>
+   <li>
+    content7
+   </li>
+   <li>
+    content8
+   </li>
+   <li>
+    content9
+   </li>
+  </ul>
+  <p>
+   content10
+  </p>
+  <div class="scroll-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content11
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/scrolling.html" target="_blank">
+   content12
+  </a>
+ </p>
+</div>

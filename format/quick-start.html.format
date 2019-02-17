@@ -1,0 +1,199 @@
+<div class="static-content">
+ <div class="index-list">
+  <p>
+   content1
+  </p>
+  <ol>
+   <li>
+    <a href="#page-install">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-create">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#page-bind">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#page-alternative">
+     content5
+    </a>
+   </li>
+  </ol>
+ </div>
+ <div class="example-container clearfix" name="install">
+  <h3 id="page-install">
+   content6
+  </h3>
+  <div class="tabs-alternative">
+   <div class="tabs handsontable-switcher">
+    <div class="tab switch active">
+     <ul>
+      <li aria-selected="true" class="active" id="tab-pro">
+       content7
+      </li>
+      <li aria-selected="false" id="tab-ce">
+       content8
+      </li>
+     </ul>
+     <div class="tabs-content">
+      <div aria-hidden="false" class="content active" id="tab-content-pro">
+       <p>
+        <a href="//handsontable.com/pro-download.html">
+         content9
+        </a>
+        to install Handsontable Pro
+                but we suggest using
+        <a href="https://www.npmjs.com/package/handsontable-pro" target="_blank">
+         content10
+        </a>
+        .
+                Just type in the following command:
+       </p>
+       <pre><code class="lang-bash">content11</code></pre>
+       <p>
+        content12
+       </p>
+       <pre><code class="lang-html">content13</code></pre>
+       <p>
+        content14
+       </p>
+       <pre><code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/handsontable-pro@<?js= version ?>/dist/handsontable.full.min.js"&gt;&lt;/script&gt;&lt;link href="https://cdn.jsdelivr.net/npm/handsontable-pro@<?js= version ?>/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+      </div>
+      <div aria-hidden="true" class="content" id="tab-content-ce">
+       <p>
+        <a href="//handsontable.com/ce-download.html">
+         content15
+        </a>
+        to install Handsontable CE
+                but we suggest using
+        <a href="https://www.npmjs.com/package/handsontable" target="_blank">
+         content16
+        </a>
+        .
+                Just type in the following command:
+       </p>
+       <pre><code class="lang-bash">content17</code></pre>
+       <p>
+        content18
+       </p>
+       <pre><code class="lang-html">content19</code></pre>
+       <p>
+        content20
+       </p>
+       <pre><code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/handsontable@<?js= version ?>/dist/handsontable.full.min.js"&gt;&lt;/script&gt;&lt;link href="https://cdn.jsdelivr.net/npm/handsontable@<?js= version ?>/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+ </div>
+ <div class="example-container clearfix" name="create">
+  <h3 id="page-create">
+   content21
+  </h3>
+  <p>
+   Add an empty
+   <code>
+    content22
+   </code>
+   element that will be turned into a spreadsheet.
+      Let's give this element an "example" ID.
+  </p>
+  <p>
+   <code>
+    content23
+   </code>
+  </p>
+ </div>
+ <div class="example-container clearfix" name="bind">
+  <h3 id="page-bind">
+   content24
+  </h3>
+  <p>
+   In the next step, pass a reference to that
+   <code>
+    content25
+   </code>
+   element and fill
+      it with sample data:
+  </p>
+  <pre><code class="lang-js">content26</code></pre>
+ </div>
+ <div class="example-container clearfix" name="result">
+  <h3 id="page-result">
+   content27
+  </h3>
+  <p>
+   content28
+  </p>
+  <div data-jsfiddle="example">
+   <div class="hot" id="example">
+   </div>
+  </div>
+  <script data-jsfiddle="example">
+   content29
+  </script>
+  <p>
+   You are probably wondering how to not only bind the data source but also save the changes made
+      in Handsontable Pro? Head to
+   <a href="/docs/&lt;?js= version ?&gt;/tutorial-data-binding.html">
+    content30
+   </a>
+   page to learn more about it.
+  </p>
+ </div>
+ <div class="example-container clearfix" name="alternative">
+  <h3 id="page-alternative">
+   content31
+  </h3>
+  <p>
+   Find all the available installation options on the
+   <a href="//handsontable.com/pro-download.html">
+    content32
+   </a>
+   page or
+   <a href="//handsontable.com/ce-download.html">
+    content33
+   </a>
+   page.
+  </p>
+ </div>
+ <div class="example-container clearfix" name="nextsteps">
+  <h3 id="page-next-steps">
+   content34
+  </h3>
+  <ul>
+   <li>
+    <a href="/docs/&lt;?js= version ?&gt;/tutorial-data-sources.html">
+     content35
+    </a>
+   </li>
+   <li>
+    <a href="/docs/&lt;?js= version ?&gt;/tutorial-load-and-save.html">
+     content36
+    </a>
+   </li>
+   <li>
+    <a href="/docs/&lt;?js= version ?&gt;/demo-custom-renderers.html">
+     content37
+    </a>
+   </li>
+   <li>
+    <a href="/docs/&lt;?js= version ?&gt;/demo-data-validation.html">
+     content38
+    </a>
+   </li>
+  </ul>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/quick-start.html" target="_blank">
+   content39
+  </a>
+ </p>
+</div>

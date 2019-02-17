@@ -1,0 +1,406 @@
+<div class="static-content">
+ <div class="index-list">
+  <p>
+   content1
+  </p>
+  <p>
+   You should first enable the plugin by setting the
+   <code>
+    content2
+   </code>
+   option to
+   <code>
+    content3
+   </code>
+   .
+      When enabled,
+   <code>
+    content4
+   </code>
+   exposes a new method
+   <code>
+    content5
+   </code>
+   , where
+   <code>
+    content6
+   </code>
+   is a string to find within the table. By default, the search is case insensitive.
+  </p>
+  <p>
+   <code>
+    content7
+   </code>
+   method does 2 things. First of all, it returns an
+      array of search results. Every element is an objects containing 3 properties:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content8
+    </code>
+    – index of the row where the value has been found
+   </li>
+   <li>
+    <code>
+     content9
+    </code>
+    – index of the column where the value has been found
+   </li>
+   <li>
+    <code>
+     content10
+    </code>
+    – the value that has been found
+   </li>
+  </ul>
+  <p>
+   The second thing the
+   <code>
+    content11
+   </code>
+   does is set the
+   <code>
+    content12
+   </code>
+   property for each cell.
+      If a cell is in search results, then its
+   <code>
+    content13
+   </code>
+   is set to
+   <code>
+    content14
+   </code>
+   ,
+      otherwise the property is set to
+   <code>
+    content15
+   </code>
+   .
+  </p>
+  <p>
+   All you have to do now, is use the
+   <code>
+    content16
+   </code>
+   method inside search input listener and you're done.
+  </p>
+  <h3>
+   content17
+  </h3>
+  <p>
+   By default the
+   <code>
+    content18
+   </code>
+   adds
+   <code>
+    content19
+   </code>
+   class to every cell which
+   <code>
+    content20
+   </code>
+   property is
+   <code>
+    content21
+   </code>
+   . You can change this class using
+   <code>
+    content22
+   </code>
+   option.
+  </p>
+  <p>
+   If you wish to change the result class, you can use the
+   <code>
+    content23
+   </code>
+   method.
+  </p>
+  <h3>
+   Custom
+   <code>
+    content24
+   </code>
+  </h3>
+  <p>
+   The
+   <code>
+    content25
+   </code>
+   is responsible for determining whether a
+   <code>
+    content26
+   </code>
+   matches the value
+      stored in a cell. It takes 2 arguments:
+   <code>
+    content27
+   </code>
+   and
+   <code>
+    content28
+   </code>
+   . The first is a string
+      passed to
+   <code>
+    content29
+   </code>
+   method. The second is a value returned by
+   <code>
+    content30
+   </code>
+   .
+      The
+   <code>
+    content31
+   </code>
+   function should return
+   <code>
+    content32
+   </code>
+   if there is a match.
+  </p>
+  <p>
+   The default
+   <code>
+    content33
+   </code>
+   is dead simple:
+  </p>
+  <pre>
+      <code class="lang-javascript">content34</code>
+    </pre>
+  <p>
+   If you want to change the
+   <code>
+    content35
+   </code>
+   , use
+   <code>
+    content36
+   </code>
+   option.
+      You can also pass the
+   <code>
+    content37
+   </code>
+   as the third argument of
+   <code>
+    content38
+   </code>
+   method.
+      To change the
+   <code>
+    content39
+   </code>
+   , use
+   <code>
+    content40
+   </code>
+   .
+  </p>
+  <h3>
+   content41
+  </h3>
+  <p>
+   After calling
+   <code>
+    content42
+   </code>
+   <code>
+    content43
+   </code>
+   calls
+   <code>
+    content44
+   </code>
+   for every cell.
+  </p>
+  <p>
+   Just as the
+   <code>
+    content45
+   </code>
+   , you can override this callback, using
+   <code>
+    content46
+   </code>
+   , or pass the
+   <code>
+    content47
+   </code>
+   as the second argument of
+   <code>
+    content48
+   </code>
+   method.
+  </p>
+  <p>
+   The default
+   <code>
+    content49
+   </code>
+   is responsible for setting the
+   <code>
+    content50
+   </code>
+   property.
+  </p>
+  <pre>
+      <code class="lang-javascript">content51</code>
+    </pre>
+  <p>
+   content52
+  </p>
+  <ul>
+   <li>
+    <a href="#page-simplest-use-case">
+     content53
+    </a>
+   </li>
+   <li>
+    <a href="#page-custom-search-result-class">
+     content54
+    </a>
+   </li>
+   <li>
+    <a href="#page-custom-query-method">
+     content55
+    </a>
+   </li>
+   <li>
+    <a href="#page-custom-callback">
+     content56
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="simplest-use-case">
+  <a class="edit-doc" href="https://github.com/handsontable/-pro/edit/&lt;?js= version ?&gt;/tutorials/searching.html" target="_blank">
+   content57
+  </a>
+  <h3 id="page-simplest-use-case">
+   content58
+  </h3>
+  <div data-jsfiddle="example1">
+   <input id="search_field" placeholder="Search" type="search"/>
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content59
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="custom-search-result-class">
+  <h3 id="page-custom-search-result-class">
+   content60
+  </h3>
+  <div data-jsfiddle="example2">
+   <input id="search_field2" placeholder="Search" type="search"/>
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <style data-jsfiddle="example2">
+    content61
+   </style>
+   <script data-jsfiddle="example2">
+    content62
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="custom-query-method">
+  <h3 id="page-custom-query-method">
+   content63
+  </h3>
+  <div data-jsfiddle="example3">
+   <input id="search_field3" placeholder="Search" type="search"/>
+   <div class="hot" id="example3">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example3">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example3">
+    content64
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="custom-callback">
+  <h3 id="page-custom-callback">
+   content65
+  </h3>
+  <div data-jsfiddle="example4">
+   <input id="search_field4" placeholder="Search" type="search"/>
+   <p>
+    <span id="resultCount">
+     content66
+    </span>
+    results
+   </p>
+   <div class="hot" id="example4">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example4">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example4" data-instance="hot4" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example4">
+    content67
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/searching.html" target="_blank">
+   content68
+  </a>
+ </p>
+</div>

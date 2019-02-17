@@ -1,0 +1,36 @@
+content1="Overview"
+content2="Quick setup"
+content3="Plugin configuration"
+content4="Overview"
+content5="Context Menu"
+content6="Quick setup"
+content7="dropdownMenu"
+content8="true"
+content9="
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(3, 7),
+          colHeaders: true,
+          dropdownMenu: true
+        });"
+content10="Plugin configuration"
+content11="true"
+content12="Context Menu demo"
+content13="
+        var example2 = document.getElementById('example2');
+
+        var hot2 = new Handsontable(example2, {
+          data: Handsontable.helper.createSpreadsheetData(3, 7),
+          colHeaders: true,
+          dropdownMenu: [
+            'remove_col',
+            '---------',
+            'make_read_only',
+            '---------',
+            'alignment'
+          ]
+        });"
+content14="
+      Help us improve this page
+    "

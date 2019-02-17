@@ -1,0 +1,433 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#copy-cut">
+     content1
+    </a>
+    <ul>
+     <li>
+      <a href="#copy-cut-end-user-usage">
+       content2
+      </a>
+     </li>
+     <li>
+      <a href="#copy-cut-context-menu">
+       content3
+      </a>
+     </li>
+     <li>
+      <a href="#copy-cut-trigger-paste-programmatically">
+       content4
+      </a>
+     </li>
+     <li>
+      <a href="#copy-cut-hooks">
+       content5
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li>
+    <a href="#paste">
+     content6
+    </a>
+    <ul>
+     <li>
+      <a href="#paste-end-user-usage">
+       content7
+      </a>
+     </li>
+     <li>
+      <a href="#paste-context-menu">
+       content8
+      </a>
+     </li>
+     <li>
+      <a href="#paste-trigger-paste-programmatically">
+       content9
+      </a>
+     </li>
+     <li>
+      <a href="#paste-hooks">
+       content10
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li>
+    <a href="#limitations">
+     content11
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="copy-cut">
+   content12
+  </h3>
+  <p>
+   Copy &amp; Cut actions allows exporting data from Handsontable into the system clipboard.
+      The
+   <i>
+    content13
+   </i>
+   plugin copies and cuts data as a
+   <code>
+    content14
+   </code>
+   and a
+   <code>
+    content15
+   </code>
+   mime-type.
+  </p>
+  <h4 id="copy-cut-end-user-usage">
+   content16
+  </h4>
+  <p>
+   content17
+  </p>
+  <ul>
+   <li>
+    <kbd>
+     content18
+    </kbd>
+    - copies the content of the last selected cells range
+   </li>
+   <li>
+    <kbd>
+     content19
+    </kbd>
+    - cuts the content of the last selected cells range
+   </li>
+  </ul>
+  <p>
+   content20
+  </p>
+  <ul>
+   <li>
+    <code>
+     content21
+    </code>
+    - copies the content of the last selected cells range
+   </li>
+   <li>
+    <code>
+     content22
+    </code>
+    - cuts the content of the last selected cells range
+   </li>
+  </ul>
+  <h4 id="copy-cut-context-menu">
+   content23
+  </h4>
+  <p>
+   content24
+  </p>
+  <ul>
+   <li>
+    Copy - as a predefined key
+    <code>
+     content25
+    </code>
+   </li>
+   <li>
+    Cut - as a predefined key
+    <code>
+     content26
+    </code>
+   </li>
+  </ul>
+  <p>
+   <a href="./demo-context-menu.html#page-custom">
+    content27
+   </a>
+   .
+      These operations are executed by
+   <code>
+    content28
+   </code>
+   .
+  </p>
+  <div data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content29
+   </script>
+  </div>
+  <h4 id="copy-cut-trigger-paste-programmatically">
+   content30
+  </h4>
+  <p>
+   content31
+  </p>
+  <pre><code>content32</code></pre>
+  <p>
+   content33
+  </p>
+  <ul>
+   <li>
+    <code>
+     content34
+    </code>
+   </li>
+   <li>
+    <code>
+     content35
+    </code>
+   </li>
+  </ul>
+  <p>
+   The
+   <i>
+    content36
+   </i>
+   plugin listens to the browser's
+   <code>
+    content37
+   </code>
+   and
+   <code>
+    content38
+   </code>
+   events, so if they are triggered,
+      our implementation will copy or cut the selected data into the system clipboard.
+  </p>
+  <div data-jsfiddle="example1">
+   <p>
+    <button id="copy">
+     content39
+    </button>
+    <button id="cut">
+     content40
+    </button>
+   </p>
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content41
+   </script>
+  </div>
+  <h4 id="copy-cut-hooks">
+   content42
+  </h4>
+  <p>
+   The
+   <i>
+    content43
+   </i>
+   plugin exposes following hooks to manipulate data during copy or cut operations:
+  </p>
+  <ul>
+   <li>
+    <a href="./Hooks.html#event:beforeCopy">
+     <i>
+      content44
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="./Hooks.html#event:afterCopy">
+     <i>
+      content45
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="./Hooks.html#event:beforeCut">
+     <i>
+      content46
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="./Hooks.html#event:afterCut">
+     <i>
+      content47
+     </i>
+    </a>
+   </li>
+  </ul>
+  <p>
+   content48
+  </p>
+  <h3 id="paste">
+   content49
+  </h3>
+  <p>
+   Paste action allows importing data from external sources using the user's system clipboard.
+      The
+   <i>
+    content50
+   </i>
+   firstly looks for
+   <code>
+    content51
+   </code>
+   in the system clipboard, otherwise it looks for
+   <code>
+    content52
+   </code>
+   .
+  </p>
+  <h4 id="paste-end-user-usage">
+   content53
+  </h4>
+  <p>
+   content54
+  </p>
+  <ul>
+   <li>
+    <kbd>
+     content55
+    </kbd>
+    - paste the content into the last selected cell range
+   </li>
+  </ul>
+  <p>
+   content56
+  </p>
+  <ul>
+   <li>
+    <code>
+     content57
+    </code>
+    - paste the content into the last selected cell range
+   </li>
+  </ul>
+  <h4 id="paste-context-menu">
+   content58
+  </h4>
+  <p>
+   <a href="https://www.w3.org/TR/clipboard-apis/#privacy" rel="nofollow">
+    content59
+   </a>
+  </p>
+  <h4 id="paste-trigger-paste-programmatically">
+   content60
+  </h4>
+  <p>
+   <a href="https://www.w3.org/TR/clipboard-apis/#privacy" rel="nofollow">
+    content61
+   </a>
+  </p>
+  <h4 id="paste-hooks">
+   content62
+  </h4>
+  <p>
+   The
+   <i>
+    content63
+   </i>
+   plugin exposes following hooks to manipulate data data during the pasting operation:
+  </p>
+  <ul>
+   <li>
+    <a href="./Hooks.html#event:beforePaste">
+     <i>
+      content64
+     </i>
+    </a>
+   </li>
+   <li>
+    <a href="./Hooks.html#event:afterPaste">
+     <i>
+      content65
+     </i>
+    </a>
+   </li>
+  </ul>
+  <p>
+   content66
+  </p>
+  <h3 id="limitations">
+   content67
+  </h3>
+  <ol>
+   <li>
+    The
+    <i>
+     content68
+    </i>
+    plugin doesn't copy, cut or paste cells' appearance.
+   </li>
+   <li>
+    The data copied from Handsontable will always be kept as plain text.
+        For instance, if you copy a checked checkbox, the input will be kept as a value of
+    <code>
+     content69
+    </code>
+    .
+   </li>
+   <li>
+    <code>
+     content70
+    </code>
+    can be called only during an immediate-execute event, such as a
+    <code>
+     content71
+    </code>
+    or a
+    <code>
+     content72
+    </code>
+    .
+   </li>
+   <li>
+    Internet Explorer supports only
+    <code>
+     content73
+    </code>
+    mime-type - what is an equivalent of
+    <code>
+     content74
+    </code>
+    .
+   </li>
+   <li>
+    Internet Explorer prompts a confirm window to allow/disallow at the first time user tries to call
+    <code>
+     content75
+    </code>
+    .
+        Unfortunately, if user disallows access to the system clipboard, no exceptions will be thrown and
+    <code>
+     content76
+    </code>
+    and
+    <code>
+     content77
+    </code>
+    actions will be disabled for end-user. You can read more about this behavior of the browser
+    <a href="https://github.com/zenorocha/clipboard.js/issues/77" rel="nofollow">
+     content78
+    </a>
+   </li>
+  </ol>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/copy-paste.html" target="_blank">
+   content79
+  </a>
+ </p>
+</div>

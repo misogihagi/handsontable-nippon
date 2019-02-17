@@ -1,0 +1,1319 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <h3>6.2.2</h3>
+    <p>Released on 19th of December, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a bug, where it was impossible to use mouse selection on a device which supported both mouse and touch events. (<a href="https://github.com/handsontable/handsontable/issues/5669" target="_blank">#5669</a>)</li>
+      <li>Fixed a bug, where the per-cell validation information was not shifted after removing rows. (<a href="https://github.com/handsontable/handsontable/issues/5674" target="_blank">#5674</a>)</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.2.1</h3>
+    <p>Released on 12th of December, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Updated <code>babel</code> to <code>7.x</code>. (<a href="https://github.com/handsontable/handsontable/issues/5398" target="_blank">#5398</a>)</li>
+      <li>Fixed a bug, where calling <code>updateSettings</code> or <code>loadData</code> with a new, larger dataset caused an error to be thrown. (<a href="https://github.com/handsontable/handsontable/issues/5617" target="_blank">#5617</a>)</li>
+      <li>Fixed a bug, where the mobile keyboard opened on every cell selection on Android devices. (<a href="https://github.com/handsontable/handsontable/issues/5586" target="_blank">#5586</a>)</li>
+      <li>Fixed a bug, where the date validation did not work properly in some cases. (<a href="https://github.com/handsontable/handsontable/issues/5563" target="_blank">#5563</a>)</li>
+      <li>Fixed a problem with poor <code>updateSettings</code> performance when removing rows. (<a href="https://github.com/handsontable/handsontable/issues/5561" target="_blank">#5561</a>)</li>
+      <li>Fixed a problem with improper `carriage return` symbol usage in the pasted data. (<a href="https://github.com/handsontable/handsontable/issues/5477" target="_blank">#5477</a>)</li>
+      <li>Added some missing methods, options and hooks to the typescript definition file. (<a href="https://github.com/handsontable/handsontable/issues/5639" target="_blank">#5639</a>, <a href="https://github.com/handsontable/handsontable/issues/5590" target="_blank">#5590</a>)</li>
+      <li>Corrected the CSS property assignment to zero from <code>0</code> to <code>'0'</code>; (<a href="https://github.com/handsontable/handsontable/issues/5291" target="_blank">#5291</a>)</li>
+      <li>Fixed a bug, where the <code>autofill</code> feature did not work properly with the <code>mergeCells</code> plugin, while working on an object-based dataset. (<a href="https://github.com/handsontable/handsontable/issues/5022" target="_blank">#5022</a>)</li>
+      <li>Fixed a problem with the <code>observeChanges</code> plugin causing a memory leak. (<a href="https://github.com/handsontable/handsontable/issues/4400" target="_blank">#4400</a>)</li>
+      <li>Fixed a problem with the scientific notation not being supported in the numeric editor. (<a href="https://github.com/handsontable/handsontable/issues/#2030" target="_blank">#2030</a>)</li>
+      <li>Fixed a bug, where setting <code>enterBeginsEditing</code> to <code>false</code> allowed changing the state of <code>checkbox</code>-typed cells using the <code>ENTER</code> key. (<a href="https://github.com/handsontable/handsontable/issues/#4162" target="_blank">#4162</a>)</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.2.0</h3>
+    <p>Released on 14th of November, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Added the Korean language support. (<a href="https://github.com/handsontable/handsontable/issues/5356" target="_blank">#5356</a>)</li>
+      <li>Added the Latvian language support. (<a href="https://github.com/handsontable/handsontable/issues/5186" target="_blank">#5186</a>)</li>
+      <li>Updated the TypeScript definition file for <code>ColumnSorting</code> and <code>MultiColumnSorting</code>. (<a href="https://github.com/handsontable/handsontable/issues/5545" target="_blank">#5545</a>, <a href="https://github.com/handsontable/handsontable/issues/5445" target="_blank">#5445</a>)</li>
+      <li>Updated the TypeScript definition for <code>beforeRowMove</code> and <code>beforeColumnMove</code>. (<a href="https://github.com/handsontable/handsontable/issues/5416" target="_blank">#5416</a>)</li>
+      <li>Updated the TypeScript definition for some selection and context menu related methods and hooks. (<a href="https://github.com/handsontable/handsontable/issues/5307" target="_blank">#5307</a>)</li>
+      <li>Fixed a bug with the Copy/Paste plugin working incorrectly, when copying <code>0</code>. (<a href="https://github.com/handsontable/handsontable/issues/5544" target="_blank">#5544</a>)</li>
+      <li>Fixed a problem with improper <code>autoRowSize</code> calculations. (<a href="https://github.com/handsontable/handsontable/issues/5527" target="_blank">#5527</a>)</li>
+      <li>Fixed a problem with the keyboard opening on every selection on mobile. (<a href="https://github.com/handsontable/handsontable/issues/5479" target="_blank">#5479</a>)</li>
+      <li>Refactored the <code>columnSorting</code> plugin to be reusable with the <code>multiColumnSorting</code> plugin. (<a href="https://github.com/handsontable/handsontable/issues/5457" target="_blank">#5457</a>)</li>
+      <li>Refactored the <code>multiColumnSorting</code> plugin to use the <code>columnSorting</code> plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/148" target="_blank">#148</a>)</li>
+      <li>Fixed a bug, where adding a new row cleared the data from the first row. (<a href="https://github.com/handsontable/handsontable/issues/5446" target="_blank">#5446</a>)</li>
+      <li>Fixed a bug, where using the `allowInvalid: false` option on date-typed cells broke the table. (<a href="https://github.com/handsontable/handsontable/issues/5419" target="_blank">#5419</a>)</li>
+      <li>Fixed a bug with the column header width being calculated incorrectly. (<a href="https://github.com/handsontable/handsontable/issues/5359" target="_blank">#5359</a>)</li>
+      <li>Fixed a problem with building Handsontable <code>3.0.0+</code> using <code>hot-builder</code>. (<a href="https://github.com/handsontable/handsontable/issues/5287" target="_blank">#5287</a>)</li>
+      <li>Fixed a bug, where opening the context menu on the column header sorted the column. (<a href="https://github.com/handsontable/handsontable/issues/4676" target="_blank">#4676</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/176" target="_blank">#176</a>)</li>
+      <li>Updated Jest to resolve a security issue with the <code>merge</code> package. (<a href="https://github.com/handsontable/handsontable/issues/5564" target="_blank">#5564</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/179" target="_blank">#179</a>)</li>
+      <li>Fixed some unstable tests, which caused the CI to fail frequently. (<a href="https://github.com/handsontable/handsontable/issues/5562" target="_blank">#5562</a>)</li>
+      <li>Fixed the <code>ERR_ADDRESS_INVALID</code> error when running e2e tests. (<a href="https://github.com/handsontable/handsontable/issues/5558" target="_blank">#5558</a>)</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.1.1</h3>
+    <p>Released on 23rd of October, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li> Fixed a bug, where the Context Menu's <code>copy</code> and <code>cut</code> options did not work.(<a href="https://github.com/handsontable/handsontable/issues/5535" target="_blank">#5535</a>)</li>
+      <li> Removed the unneeded <code>yarn</code> entry from the dependencies section in <code>package.json</code></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.1.0</h3>
+    <p>Released on 17th of October, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li> Moved the <code>fixedRowsBottom</code> functionality to Handsontable CE. (<a href="https://github.com/handsontable/handsontable/issues/5404" target="_blank">#5404</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/146" target="_blank">#146</a>)</li>
+      <li> Introduced a new functionality to the <i>Copy/Paste</i> plugin. From version <code>6.1.0</code>, it supports the <code>text/html</code> data type alongside <code>text/plain</code>. This change, apart from allowing the user to copy data from Handsontable as an HTML table, allowed us to fix multiple bugs related to the plugin:
+        <ul>
+          <li> Fixed a bug, where it was impossible to copy the first row/column if it was declared as <code>readOnly</code>. (handsontable/handsontable#5392)</li>
+          <li> Fixed a bug, where the cell editor contained an unwanted empty line, if the previous value of the cell was pasted from Excel. (<a href="https://github.com/handsontable/handsontable/issues/5330" target="_blank">#5330</a>)</li>
+          <li> Fixed a problem with copying and pasting data from rows after clicking the row headers. (<a href="https://github.com/handsontable/handsontable/issues/5300" target="_blank">#5300</a>)</li>
+          <li> Fixed a bug where pasting multiple rows from Excel (below version <code>16</code>) did not work properly. (<a href="https://github.com/handsontable/handsontable/issues/5277" target="_blank">#5277</a>)</li>
+          <li> Fixed a bug with copying entire rows into Excel not working properly. (<a href="https://github.com/handsontable/handsontable/issues/5176" target="_blank">#5176</a>)</li>
+          <li> Fixed a bug, where pasting data from Excel to Handsontable did not work on Safari. (<a href="https://github.com/handsontable/handsontable/issues/5121" target="_blank">#5121</a>)</li>
+          <li> Fixed a problem with improper cell selection after pasting data into the table. (<a href="https://github.com/handsontable/handsontable/issues/4849" target="_blank">#4849</a>)</li>
+          <li> Fixed a bug with Handsontable crashing after using <code>updateSettings</code> inside the <code>afterSelectionEnd</code> callback. (<a href="https://github.com/handsontable/handsontable/issues/4837" target="_blank">#4837</a>)</li>
+          <li> Fixed a problem with pasting double quotation marks (<code>""</code>) into the table. (<a href="https://github.com/handsontable/handsontable/issues/4790" target="_blank">#4790</a>, <a href="https://github.com/handsontable/handsontable/issues/4003" target="_blank">#4003</a>)</li>
+          <li> Fixed a bug, where copying and pasting empty cells did not work properly. (<a href="https://github.com/handsontable/handsontable/issues/4725" target="_blank">#4725</a>)</li>
+          <li> Fixed a problem with copying data on IE and pasting it on Chrome/Firefox. (<a href="https://github.com/handsontable/handsontable/issues/4717" target="_blank">#4717</a>)</li>
+          <li> Fixed a bug, where copying and pasting entire columns did not work as expected. (<a href="https://github.com/handsontable/handsontable/issues/4456" target="_blank">#4456</a>)</li>
+          <li> Fixed a problem with pasting multiline content into a single cell. (<a href="https://github.com/handsontable/handsontable/issues/4308" target="_blank">#4308</a>)</li>
+        </ul></li>
+
+      <li> Added an Italian translation to the languages set. (<a href="https://github.com/handsontable/handsontable/issues/5407" target="_blank">#5407</a>)</li>
+      <li> Added a Dutch translation to the languages set. (<a href="https://github.com/handsontable/handsontable/issues/5156" target="_blank">#5156</a>)</li>
+      <li> Fixed a bug, where trying to open the cell editor while a cell outside of the viewport was being edited threw an error. (<a href="https://github.com/handsontable/handsontable/issues/5119" target="_blank">#5119</a>)</li>
+      <li> Fixed a bug, where the cell editor rendered improperly when the <code>preventOverflow</code> option was enabled. (<a href="https://github.com/handsontable/handsontable/issues/5073" target="_blank">#5073</a>)</li>
+      <li> Fixed a bug, where clicking on a cell caused the table container to scroll. (<a href="https://github.com/handsontable/handsontable/issues/4656" target="_blank">#4656</a>)</li>
+      <li> Fixed a bug, where using the <code>Undo</code> functionality did not work properly after sorting and removing rows. (<a href="https://github.com/handsontable/handsontable/issues/3188" target="_blank">#3188</a>)</li>
+      <li> Fixed a bug, where the contents of the <code>Filters</code> dropdown menu was scrollable horizontally. (<a href="https://github.com/handsontable/handsontable-pro/issues/151" target="_blank">#151</a>)</li>
+      <li> Fix a bug, where multi-column sorting did not work with the <code>Filters</code> plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/149" target="_blank">#149</a>)</li>
+      <li> Switched to using a CDN in the default jsfiddle link in the issue template. (<a href="https://github.com/handsontable/handsontable-pro/issues/154" target="_blank">#154</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/6.1.0" target="_blank">6.1.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.0.1</h3>
+    <p>Released on 2nd of October, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a bug where inserting new columns threw an error. (<a href="https://github.com/handsontable/handsontable-pro/issues/140" target="_blank">#140</a>, <a href="https://github.com/handsontable/handsontable/issues/5422" target="_blank">#5422</a>)</li>
+      <li>Fixed a problem where the non-contiguous selection did not work properly in multiple scenarios. (<a href="https://github.com/handsontable/handsontable/issues/5427" target="_blank">#5427</a>)</li>
+      <li>Fixed a bug where a newly edited cell had the background of the previously edited cell. (<a href="https://github.com/handsontable/handsontable/issues/5402" target="_blank">#5402</a>)</li>
+      <li>Fixed a bug where an error was being thrown after clicking the top-left corner of the table. (<a href="https://github.com/handsontable/handsontable-pro/issues/144" target="_blank">#144</a>, <a href="https://github.com/handsontable/handsontable/issues/5434" target="_blank">#5434</a>)</li>
+      <li>Fixed a bug where adding a new row cleared the data in the first row. (<a href="https://github.com/handsontable/handsontable-pro/issues/142" target="_blank">#142</a>, <a href="https://github.com/handsontable/handsontable/issues/5431" target="_blank">#5431</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/6.0.1" target="_blank">6.0.1</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.0.0</h3>
+    <p>Released on 27th of September, 2018</p>
+    <p>This release contains changes to the <code>ColumnSorting</code> plugin exclusively. Detailed information about the changes can be found in the description of pull request <a href="https://github.com/handsontable/handsontable/issues/5411" target="_blank">#5411</a> and in <a href="https://handsontable.com/docs/6.0.0/demo-sorting.html" target="_blank">our documentation</a>.</p>
+    <strong>Breaking changes</strong>
+    <ul>
+      <li>We refactored and rewrote parts of the <code>ColumnSorting</code> plugin in order for it to work seamlessly with the new <code>MultiColumnSorting</code> plugin for Handsontable Pro. This allowed us to fix multiple problems that the previous version of the plugin had. <br>This introduced some backward-incompatible changes:
+        <ul>
+          <li>The configuration items (such as <code>sortIndicator</code>, <code>sortEmptyCells</code>, <code>sortFunction</code>) for the plugin were moved into the scope of the plugin config.</li>
+          <li>The initial plugin configuration is stored under the <code>initialConfig</code> property in the plugin configuration.</li>
+          <li>The <code>sortFunction</code> config item was renamed to <code>compareFunctionFactory</code> and converted to a factory returning a compare function (and moved into the plugin configuration scope, as mentioned above).</li>
+          <li>The <code>sortIndicator</code> config item was renamed to <code>indicator</code> (and moved into the plugin configuration scope, as mentioned above).</li>
+          <li><div>Comparator function structure changed:
+            <code style="white-space: pre;">
+              // Was:
+              function numericSort(sortOrder, columnMeta) {
+              return function ([, value], [, nextValue]) {
+
+              // Is:
+              function numericSort(sortOrder, columnMeta) {
+              return function (value, nextValue) {
+            </code>
+          </div></li>
+          <li><div>The <code>sort</code> method arguments were reorganized, so it accepts the sorting configuration as an object:
+            <code style="white-space: pre;">
+              hot.getPlugin('columnSorting').sort({ column: 0, sortOrder: 'asc' });
+            </code>
+          </div></li>
+          <li>Some public methods were rewritten, renamed and set as private, namely:
+            <ul>
+              <li><code>getNextOrderState</code></li>
+              <li><code>loadSortingState</code></li>
+              <li><code>saveSortingState</code></li>
+            </ul></li>
+          <li>The <code>beforeColumnSort</code> and <code>afterColumnSort</code> hooks receive a different set of arguments. For more information, check our <a href="https://docs.handsontable.com/6.0.0/Hooks.html#event:beforeColumnSort" target="_blank">documentation</a>.</li>
+          <li>Calling the <code>updateSettings</code> method with <code>columnSorting</code> defined will set a fresh sort configuration.</li>
+        </ul>
+      </li>
+    </ul>
+    <strong>Changes</strong>
+    <p>Apart from the breaking changes above, this release introduces some additional changes to the sorting plugin:</p>
+    <ul>
+      <li>Added a new plugin - <code>MultiColumnSorting</code>. It allows multiple columns to be used when sorting the table. <br> While it works similarly to CE's <code>ColumnSorting</code>, it introduces multiple new functionalities. Detailed information about this new feature can be found in the <a href="https://docs.handsontable.com/6.0.0/demo-sorting.html" target="_blank"> documentation</a> and in the description of pull request <a href="https://github.com/handsontable/handsontable-pro/issues/101" target="_blank">#101</a>.</li>
+      <li>Replaced the current sorting indicators with new ones, in the form of arrows.</li>
+      <li>The sorting indicators will be displayed by default.</li>
+      <li>Added a possibility to disable the action of sorting by clicking on the headers, using the <code>headerAction</code> option.</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/6.0.0" target="_blank">6.0.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>5.0.2</h3>
+    <p>Released on 12th of September, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a bug where editor focusing caused the window to scroll. (<a href="https://github.com/handsontable/handsontable/issues/5220" target="_blank">#5220</a>)</li>
+      <li>Fixed a problem where double-clicking the fill handle filled the cells towards the left instead of down. (<a href="https://github.com/handsontable/handsontable/issues/5023" target="_blank">#5023</a>)</li>
+      <li>Fixed a bug where editing a cell showed improper values after sorting and using the <code>setDataAtRowProp</code> method. (<a href="https://github.com/handsontable/handsontable/issues/4289" target="_blank">#4289</a>)</li>
+      <li>Fixed a problem with editing <code>autocomplete</code>-typed cells after using similar cells in a different Handsontable instance. (<a href="https://github.com/handsontable/handsontable/issues/3374" target="_blank">#3374</a>)</li>
+      <li>Corrected a typo in <code>AutoColumnSize</code> typescript definition file. (<a href="https://github.com/handsontable/handsontable/issues/5364" target="_blank">#5364</a>)</li>
+      <li>Fixed a bug with calculating how many rows/columns need to be rendered. (<a href="https://github.com/handsontable/handsontable/issues/5365" target="_blank">#5365</a>)</li>
+      <li>Fixed a bug with column headers improperly rendering after expanding a previously-collapsed column. (<a href="https://github.com/handsontable/handsontable-pro/issues/105" target="_blank">#105</a>)</li>
+      <li>Finished the ESLint warning correction task (<a href="https://github.com/handsontable/handsontable-pro/issues/107" target="_blank">#107</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/137" target="_blank">#137</a>), which included resolving problems with:
+        <ul>
+          <li><code>arrow-parens</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/108" target="_blank">#108</a>)</li>
+          <li><code>eqeqeq</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/114" target="_blank">#114</a>)</li>
+          <li><code>no-extra-semi</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/115" target="_blank">#115</a>)</li>
+          <li><code>newline-per-chained-call</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/112" target="_blank">#112</a>)</li>
+          <li><code>linebreak-style</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/110" target="_blank">#110</a>)</li>
+          <li><code>no-constant-condition</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/113" target="_blank">#113</a>)</li>
+          <li><code>no-unused-vars</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/116" target="_blank">#116</a>)</li>
+          <li><code>prefer-template</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/119" target="_blank">#119</a>)</li>
+          <li><code>consistent-return</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/109" target="_blank">#109</a>)</li>
+          <li><code>object-curly-spacing</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/118" target="_blank">#118</a>)</li>
+          <li><code>prefer-arrow-callback</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/117" target="_blank">#117</a>)</li>
+          <li><code>max-depth</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/111" target="_blank">#111</a>)</li>
+          <li><code>prefer-spread</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/122" target="_blank">#122</a>)</li>
+          <li><code>prefer-const</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/125" target="_blank">#125</a>)</li>
+          <li><code>no-unneeded-ternary</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/126" target="_blank">#126</a>)</li>
+          <li><code>object-shorthand</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/121" target="_blank">#121</a>)</li>
+          <li><code>space-before-function-paren</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/124" target="_blank">#124</a>)</li>
+          <li><code>prefer-rest-params</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/127" target="_blank">#127</a>)</li>
+          <li><code>no-plusplus</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/123" target="_blank">#123</a>)</li>
+          <li><code>no-eq-null</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/120" target="_blank">#120</a>)</li>
+          <li><code>one-var</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/128" target="_blank">#128</a>)</li>
+          <li><code>no-var</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/129" target="_blank">#129</a>)</li>
+          <li><code>no-undef</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/130" target="_blank">#130</a>)</li>
+          <li><code>vars-on-top</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/131" target="_blank">#131</a>)</li>
+          <li><code>no-use-before-define</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/132" target="_blank">#132</a>)</li>
+          <li><code>no-restricted-properties</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/133" target="_blank">#133</a>)</li>
+          <li><code>no-restricted-syntax</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/134" target="_blank">#134</a>)</li>
+          <li><code>no-param-reassign</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/136" target="_blank">#136</a>)</li>
+          <li><code>no-shadow</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/135" target="_blank">#135</a>)</li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <p>The corresponding Handsontable version is <a href="https://github.com/handsontable/handsontable/releases/5.0.2" target="_blank">5.0.2</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>5.0.1</h3>
+    <p>Released on 16th of August, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a bug, where the <code>Cmd + F</code> / <code>Ctrl + F</code> key combination enabled the multiple selection mode. (<a href="https://github.com/handsontable/handsontable/issues/5302" target="_blank">#5302</a>)</li>
+      <li>Added the <code>getRegistered</code> method to the typescript definition file. (<a href="https://github.com/handsontable/handsontable/issues/5262" target="_blank">#5262</a>)</li>
+      <li>Fixed a bug, where hiding the custom border through the <code>setBorders</code> method did not work. (<a href="https://github.com/handsontable/handsontable/issues/5240" target="_blank">#5240</a>)</li>
+      <li>Fixed a problem with opening the <code>handsontable</code>-typed cell multiple times. (<a href="https://github.com/handsontable/handsontable/issues/5195" target="_blank">#5195</a>)</li>
+      <li>Fixed a problem with inconsistent row height in certain situations. (<a href="https://github.com/handsontable/handsontable/issues/4888" target="_blank">#4888</a>)</li>
+      <li>Fixed a bug with autofill border overlapping the selection border. (<a href="https://github.com/handsontable/handsontable/issues/4810" target="_blank">#4810</a>)</li>
+      <li>Fixed a bug, where pressing the down arrow would not scroll the table, when the row header was selected. (<a href="https://github.com/handsontable/handsontable/issues/3560" target="_blank">#3560</a>)</li>
+      <li>Fixed a problem with calculating the column with after selecting a in-cell checkbox. (<a href="https://github.com/handsontable/handsontable/issues/3437" target="_blank">#3437</a>)</li>
+      <li>Updated an <code>README.md</code> entry regarding typescript. (<a href="https://github.com/handsontable/handsontable-pro/issues/29" target="_blank">#29</a>)</li>
+      <li>Changed an improper link in <code>filters.js</code>. (<a href="https://github.com/handsontable/handsontable-pro/issues/103" target="_blank">#103</a>)</li>
+      <li>Added tests for the <code>fixedRowsBottom</code> synchronization issue. (<a href="https://github.com/handsontable/handsontable-pro/issues/96" target="_blank">#96</a>)</li>
+      <li>Fixed a bug, where the fixed rows on the bottom of the table would get out of sync. (<a href="https://github.com/handsontable/handsontable/issues/5163" target="_blank">#5163</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable version is <a href="https://github.com/handsontable/handsontable/releases/5.0.1" target="_blank">5.0.1</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>5.0.0</h3>
+    <p>Released on 11th of July, 2018</p>
+    <strong>Breaking changes</strong>
+    <ul>
+      <li>Refactored the Custom Borders plugin. The API method was changed - added new methods such as <code>getBorders</code>, <code>setBorders</code> and <code>clearBorders</code>. The initial object configuration has been intact, it is still compatible with the previous releases. (<a href="https://github.com/handsontable/handsontable/issues/5017" target="_blank">#5017</a>)</li>
+      <li>Improved colors, cursor style and sizes of some parts of Handsontable. (<a href="https://github.com/handsontable/handsontable/issues/5170" target="_blank">#5170</a>)</li>
+    </ul>
+    <br>
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed an issue related with a lack of <code>afterSelectionEnd</code> hook being fired when <code>contextmenu</code> event is called for a cell. This fix additionally introduces two new hooks (<code>afterOnCellContextMenu</code>, <code>beforeOnCellContextMenu</code>). (<a href="https://github.com/handsontable/handsontable/issues/5201" target="_blank">#5201</a>, <a href="https://github.com/handsontable/handsontable/issues/5232" target="_blank">#5232</a>)</li>
+      <li>Fixed an issue related with minifying CSS files where the <code>z-index</code> property was incorrectly modified by <code>OptimizeCssAssetsPlugin</code> webpack plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/87" target="_blank">#87</a>)</li>
+      <li>Cleaned up and improved the code readability of the <code>ColumnSorting</code> plugin. (<a href="https://github.com/handsontable/handsontable/issues/5228" target="_blank">#5228</a>) </li>
+      <li>Fixed sort indicator which didn't update after moving columns. (<a href="https://github.com/handsontable/handsontable/issues/3900" target="_blank">#3900</a>)</li>
+      <li>Added an ability to disable Byte Order Mark (BOM) while exporting table to the CSV file. (<a href="https://github.com/handsontable/handsontable-pro/issues/86" target="_blank">#86</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable version is <a href="https://github.com/handsontable/handsontable/releases/5.0.0" target="_blank">5.0.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>4.0.0</h3>
+    <p>Released on 13th of June, 2018</p>
+    <strong>Breaking changes</strong>
+    <ul>
+      <li>Changed the default values for the following configuration options (<a href="https://github.com/handsontable/handsontable/issues/5135" target="_blank">#5135</a>)
+        <ul>
+          <li><code>autoInsertRow</code> (was: <code>true</code>, is: <code>false</code>)</li>
+          <li><code>autoWrapCol</code>  (was: <code>false</code>, is: <code>true</code>)</li>
+          <li><code>autoWrapRow</code>   (was: <code>false</code>, is: <code>true</code>)</li>
+        </ul>
+      </li>
+      <li>Updated our number-handling dependency, <i>Numbro</i> to the latest version. (<a href="https://github.com/handsontable/handsontable/issues/5081" target="_blank">#5081</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/77" target="_blank">#77</a>)<br>
+        In order to keep your implementation working correctly, you'll need to update the <i>Numbro 2.x</i>-compatible language files.<br><br>
+        For more information on those, take a look at <a href="http://numbrojs.com/languages.html" target="_blank">the Numbro documentation</a>.
+      </li>
+    </ul>
+    <br>
+    <strong>Changes</strong>
+    <ul>
+      <li>Updated the API documentation for the language settings. (<a href="https://github.com/handsontable/handsontable/issues/5099" target="_blank">#5099</a>)</li>
+      <li>Added a Norwegian translation to Handsontable. (<a href="https://github.com/handsontable/handsontable/issues/4694" target="_blank">#4694</a>)</li>
+      <li>Fixed a problem with the IME API, where an unwanted first character remained in the editor. (<a href="https://github.com/handsontable/handsontable/issues/4662" target="_blank">#4662</a>)</li>
+      <li>Fixed a bug, where there was a way to break the <code>allowInvalid</code> option, by making two editors active. (<a href="https://github.com/handsontable/handsontable/issues/4551" target="_blank">#4551</a>)</li>
+      <li>Fixed a problem with incomplete table rendering after sorting columns. (<a href="https://github.com/handsontable/handsontable/issues/4062" target="_blank">#4062</a>)</li>
+      <li>Fixed a problem with the filtering menu state after using any checkboxes in the table. (<a href="https://github.com/handsontable/handsontable/issues/4780" target="_blank">#4780</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/72" target="_blank">#72</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable version is <a href="https://github.com/handsontable/handsontable/releases/4.0.0" target="_blank">4.0.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>3.0.0</h3>
+    <p>Released on 16th of May, 2018</p>
+    <strong>Breaking changes</strong>
+    <p>The Column Sorting plugin is over the first stage of refactoring. (<a href="https://github.com/handsontable/handsontable/issues/5014" target="_blank">#5014</a>) This resulted in the following breaking changes:</p>
+    <ul>
+      <li>The main instance's <code>sort</code> function was moved to the plugin</li>
+      <li>The <code>sortIndex</code> property was removed from Handsontable's main instance</li>
+      <li>Moved the <code>sortColumn</code> and <code>sortOrder</code> properties from the main instance to the plugin</li>
+      <li>The <code>sortOrder</code> property now accepts string values (<code>asc</code>, <code>desc</code>, <code>none</code>), instead of booleans (<code>true</code>, <code>false</code>, <code>undefined</code>)</li>
+    </ul>
+    <p>The Gantt Chart plugin had its API refactored, to allow generating year-related data for other years that the one displayed. (<a href="https://github.com/handsontable/handsontable-pro/issues/67" target="_blank">#67</a>) Along the way, some of its lesser used API methods became private. Please refer to the documentation for the current state of the API.</p>
+
+    <strong>Changes</strong>
+    <ul>
+      <li>Added missing type definitions for the Search Plugin. (<a href="https://github.com/handsontable/handsontable/issues/5039" target="_blank">#5039</a>)</li>
+      <li>Added the Chinese (CN, TW) translations. (<a href="https://github.com/handsontable/handsontable/issues/5007" target="_blank">#5007</a>, <a href="https://github.com/handsontable/handsontable/issues/4923" target="_blank">#4923</a>)</li>
+      <li>Added the French translation. (<a href="https://github.com/handsontable/handsontable/issues/4777" target="_blank">#4777</a>)</li>
+      <li>Added the Spanish (MX) translation. (<a href="https://github.com/handsontable/handsontable/issues/4900" target="_blank">#4900</a>)</li>
+      <li>Fixed a problem, where an error was being thrown when using the <code>updateSettings</code> method. (<a href="https://github.com/handsontable/handsontable/issues/4988" target="_blank">#4988</a>)</li>
+      <li>Fixed a problem, where using the <code>TAB</code> key removed some data, when <code>minSpareCols</code> was set to <code>1</code>. (<a href="https://github.com/handsontable/handsontable/issues/4986" target="_blank">#4986</a>)</li>
+      <li>Fixed a bug, where an infinite hook loop was being created, when the table was initialized at the bottom of the page. (<a href="https://github.com/handsontable/handsontable/issues/4961" target="_blank">#4961</a>)</li>
+      <li>Fixed some issues with the CI stability. (<a href="https://github.com/handsontable/handsontable/issues/4925" target="_blank">#4925</a>)</li>
+      <li>Removed some unnecessary margins from the Filtering dropdown. (<a href="https://github.com/handsontable/handsontable-pro/issues/69" target="_blank">#69</a>)</li>
+      <li>Added an option to the Gantt Chart plugin, which allows skipping the incomplete weeks at the beginning and/or end of the month. (<a href="https://github.com/handsontable/handsontable-pro/issues/65" target="_blank">#65</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/3.0.0" target="_blank">3.0.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>2.0.0</h3>
+    <p>Released on 11th of April, 2018</p>
+    <strong>Breaking changes</strong>
+    <ul>
+      <li>Rewritten the Search and Custom Borders plugins to ES6. (<a href="https://github.com/handsontable/handsontable/issues/4892" target="_blank">#4892</a>, <a href="https://github.com/handsontable/handsontable/issues/4621" target="_blank">#4621</a>)</li>
+    </ul>
+    <p>
+      These plugins will no longer be available from the main Handsontable instance. They will be accessible analogously to other plugins, as <code>hot.getPlugin('search')</code> and <code>hot.getPlugin('customBorders')</code>.
+    </p>
+
+    <strong>Changes</strong>
+    <ul>
+      <li>Added the <code>beforeContextMenuShow</code> hook, triggered within the Context Menu plugin. (<a href="https://github.com/handsontable/handsontable/issues/4973" target="_blank">#4973</a>)</li>
+      <li>Fixed problems with disappearing selection handles on mobile devices. (<a href="https://github.com/handsontable/handsontable/issues/4943" target="_blank">#4943</a>, <a href="https://github.com/handsontable/handsontable/issues/4936" target="_blank">#4936</a>)</li>
+      <li>Fixed a problem, where clicking on links inside cells was not possible on mobile devices. (<a href="https://github.com/handsontable/handsontable/issues/4570" target="_blank">#4570</a>)</li>
+      <li>Fixed a bug, where sorting didn't work when filtering was applied (<a href="https://github.com/handsontable/handsontable/issues/4170" target="_blank">#4170</a>)</li>
+      <li>Fixed a problem with selecting entire columns, when multiple column header levels are declared. Mostly visible with Handsontable Pro's Nested Headers plugin. (<a href="https://github.com/handsontable/handsontable/issues/4951" target="_blank">#4951</a>)</li>
+      <li>Fixed a problem, where the Context Menu was too narrow for its contents. (<a href="https://github.com/handsontable/handsontable/issues/4933" target="_blank">#4933</a>)</li>
+      <li>Modified the look of the fill handle. (<a href="https://github.com/handsontable/handsontable/issues/4921" target="_blank">#4921</a>)</li>
+      <li>Fixed a bug, where pressing <kbd>ENTER</kbd> multiple times on a merged cell at the bottom of the table was not working properly. (<a href="https://github.com/handsontable/handsontable/issues/4915" target="_blank">#4915</a>)</li>
+      <li>Fixed a problem with highlighting headers, when selecting entire columns. (<a href="https://github.com/handsontable/handsontable/issues/4875" target="_blank">#4875</a>)</li>
+      <li>Fixed a bug, where removing the first row of a merged cell sometimes caused an error. (<a href="https://github.com/handsontable/handsontable/issues/3473" target="_blank">#3473</a>)</li>
+      <li>Added a Russian translation. (<a href="https://github.com/handsontable/handsontable/issues/4854" target="_blank">#4854</a>)</li>
+      <li>Fixed a bug with handsontable editor headers overlapped the table cells. (<a href="https://github.com/handsontable/handsontable/issues/4787" target="_blank">#4787</a>)</li>
+      <li>Fixed a problem, where the <code>afterRowMove</code> hook returned improper parameters. (<a href="https://github.com/handsontable/handsontable/issues/4444" target="_blank">#4444</a>)</li>
+      <li>Fixed a bug, where the <code>afterCreateCol</code> hook returned a wrong <code>amount</code> parameter. (<a href="https://github.com/handsontable/handsontable/issues/4210" target="_blank">#4210</a>)</li>
+      <li>Fixed problems with alignment and the undo/redo functionality. (<a href="https://github.com/handsontable/handsontable/issues/3319" target="_blank">#3319</a>)</li>
+      <li>Fixed a problem, where selecting and entire merged cell with non-contiguous selections did not highlight that merged cell. (<a href="https://github.com/handsontable/handsontable/issues/4860" target="_blank">#4860</a>)</li>
+      <li>Fixed a problem with the jsfiddle link in the issue templates. (<a href="https://github.com/handsontable/handsontable/issues/4983" target="_blank">#4983</a>)</li>
+      <li>Updated the pull request templates. (<a href="https://github.com/handsontable/handsontable/issues/4957" target="_blank">#4957</a>)</li>
+      <li>Added helpers for <code>console.log</code>, <code>console.warn</code> etc due to IE compatibility. (<a href="https://github.com/handsontable/handsontable/issues/4924" target="_blank">#4924</a>)</li>
+      <li>Fixed a problem, where scrolling the table on Chrome on a retina display created empty spaces. (<a href="https://github.com/handsontable/handsontable/issues/4498" target="_blank">#4498</a>)</li>
+      <li>Added an additional hook, <code>beforeDropdownMenuShow</code> for the dropdown menu plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/56" target="_blank">#56</a>)</li>
+      <li>Fixed a problem with the Dropdown Menu being to narrow for its contents. (<a href="https://github.com/handsontable/handsontable-pro/issues/49" target="_blank">#49</a>)</li>
+      <li>Added undo/redo test cases for the dropdown menu plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/47" target="_blank">#47</a>)</li>
+      <li>Fixed a problem, where the size of the buttons in the dropdown menu wasn't dynamically updated. (<a href="https://github.com/handsontable/handsontable-pro/issues/44" target="_blank">#44</a>)</li>
+      <li>Added extra parameters for the <code>beforeFilter</code> and <code>afterFilter</code> hooks. (<a href="https://github.com/handsontable/handsontable-pro/issues/43" target="_blank">#43</a>)</li>
+      <li>Fixed a problem with the jsfiddle link in the issue template. (<a href="https://github.com/handsontable/handsontable-pro/issues/58" target="_blank">#58</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/2.0.0" target="_blank">2.0.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.18.1</h3>
+    <p>Released on 20th of March, 2018</p>
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a bug with duplicate fill handles on the edges of the table's overlays. (<a href="https://github.com/handsontable/handsontable/issues/4920" target="_blank">CE#4920</a>)</li>
+      <li>Fixed a problem, where the <code>MergeCells</code> class was added under <code>Core</code> in the docs. (<a href="https://github.com/handsontable/handsontable/issues/4941" target="_blank">CE#4941</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/0.38.1" target="_blank">0.38.1</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.18.0</h3>
+    <p>Released on 14th of March, 2018</p>
+
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li>We removed the mobile editor from the repository. After this version, a standard editor will be used when using mobile devices. (<a href="https://github.com/handsontable/handsontable/issues/4911" target="_blank">CE#4911</a>)</li>
+    </ul>
+
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a bug, where merged cells declared outside of the table were still partially rendered. (<a href="https://github.com/handsontable/handsontable/issues/4887" target="_blank">CE#4887</a>)</li>
+      <li>Added tests for mobile devices. (<a href="https://github.com/handsontable/handsontable/issues/4868" target="_blank">CE#4868</a>)</li>
+      <li>Fixed a bug, where rows were not being rendered, when scrolling the table on a mobile device. (<a href="https://github.com/handsontable/handsontable/issues/4856" target="_blank">CE#4856</a>)</li>
+      <li>Added some missing API for the non-contiguous selection feature. (<a href="https://github.com/handsontable/handsontable/issues/4811" target="_blank">CE#4811</a>)</li>
+      <li>Change the <code>isObjectEquals</code> function to <code>isObjectEqual</code>. (<a href="https://github.com/handsontable/handsontable/issues/4387" target="_blank">CE#4387</a>)</li>
+      <li>Fixed a problem with scrolling on Microsoft Edge. (<a href="https://github.com/handsontable/handsontable/issues/4320" target="_blank">CE#4320</a>)</li>
+      <li>Added a proper <code>source</code> argument value for removing data from the table using the <code>Backspace</code> and <code>Delete</code> keys. (<a href="https://github.com/handsontable/handsontable/issues/3916">CE#3916</a>, <a href="https://github.com/handsontable/handsontable/issues/3539">CE#3539</a>)</li>
+      <li>Added a <code>cellProperties</code> argument for the <code>beforeValueRender</code> hook. (<a href="https://github.com/handsontable/handsontable/issues/4543" target="_blank">CE#4543</a>)</li>
+      <li>Fixed a problem, where the Filters dropdown contained misaligned elements. (<a href="https://github.com/handsontable/handsontable-pro/issues/33" target="_blank">#33</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/tag/0.38.0">0.38.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.17.0</h3>
+    <p>Released on 1st of March, 2018</p>
+
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li><p>The Merge Cells plugin has been rewritten to ES6 and completely refactored. Before <code>0.37.0</code> (<code>1.17.0</code> with Handsontable Pro) the plugin was accessible from the <code>mergeCells</code> property in the main instance. After the refactor, you can access it just like every other plugin, which is with <code>hot.getPlugin(‘mergeCells’)</code>. (<a href="https://github.com/handsontable/handsontable/issues/4214" target="_blank">#4214</a>, <a href="https://github.com/handsontable/handsontable/issues/4858" target="_blank">#4858</a>, <a href="https://github.com/handsontable/handsontable/issues/4870" target="_blank">#4870</a>)
+
+      <table>
+      <tr><td><b>Pre-<code>0.37.0</code></b></td><td><b>Post-<code>0.37.0</code></b></td></tr>
+      <tr><td><code>hot.mergeCells</code></td><td><code>hot.getPlugin('mergeCells')</code></td></tr>
+      <tr><td><code>hot.mergeCells.mergedCellInfoCollection</code></td><td><code>hot.getPlugin('mergeCells').mergedCellsCollection.mergedCells</code></td></tr>
+      </table>
+
+      This update introduces new API (more information in the documentation) and four new hooks:
+
+      <ul>
+      <li><b>beforeMergeCells</b></li>
+      <li><b>afterMergeCells</b></li>
+      <li><b>beforeUnmergeCells</b></li>
+      <li><b>afterUnmergeCells</b></li>
+      </ul></p>
+      </li>
+      <li>The merged cells are now cleared (filled with <code>null</code>s). The only value that remains, is the top-left corner cell's value, which is the visible one. (<a href="https://github.com/handsontable/handsontable/issues/2958" target="_blank">#2958</a>)</li>
+    </ul>
+
+    <strong>Changes</strong>
+    <ul>
+      <li>Added the <code>common.css</code> file, necessary for tests added to Handsontable CE.(<a href="https://github.com/handsontable/handsontable-pro/issues/40" target="_blank">#40</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/tag/0.37.0">0.37.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.16.0</h3>
+    <p>Released on 16th of February, 2018</p>
+
+    <strong>Breaking changes:</strong>
+    <p>- Rewritten the <code>PersistentState</code> plugin to ES6. (<a href="https://github.com/handsontable/handsontable/issues/4618" target="_blank">#4618</a>)
+      From this version onward you can access the plugin like all regular plugins (<code>hot.getPlugin('persistentState')</code>), not from the main instance (the <code>hot.storage</code> object is now accesible from <code>hot.getPlugin('persistentState').storage</code>)</p>
+    <p>- Added support for selecting non-contiguous cells or ranges (<a href="https://github.com/handsontable/handsontable/issues/4708" target="_blank">#4708</a>). That required some changes - some of them are backward incompatible:</p>
+    <b>New API</b>
+    <ul>
+      <li><code>hot.getSelectedLast()</code> Returns an array with coordinates of the last selected layer (<code>[row, col, rowEnd, colEnd]</code>). This method behaves as <code>hot.getSelected()</code> before the breaking change.</li>
+      <li><code>hot.getSelectedRangeLast()</code> Returns a <code>CellRange</code> object containing the last selection coordinates applied to the table. This method behaves as <code>hot.getSelectedRange()</code> before the braking change.</li>
+      <li><code>hot.alter('remove_row', [[1, 4], [10, 1]])</code> Supports removing non-contiguous rows. Instead of passing the row index, we can pass an array of arrays, where the first item is the index of the row and at the second item is the amount of rows to be removed;</li>
+      <li><code>hot.alter('remove_col', [[1, 4], [10, 1]])</code> Same as above, but for the columns. Only "remove" actions support that new feature.</li>
+    </ul>
+    <b>Backward-incompatible changes</b>
+    <ul>
+      <li><code>hot.getSelected()</code> Returns an array of arrays with the coordinates of all layers (<code>[[row, col, rowEnd, colEnd], [row, col, rowEnd, colEnd] ...]</code>);</li>
+      <li><code>hot.getSelectedRange()</code> Returns an array of <code>CellRange</code> objects with the coordinates of all layers (<code>[{CellRange}, {CellRange} ...]</code>);</li>
+      <li>Previously <code>hot.selection.empty()</code>, now <code>hot.emptySelectedCells()</code>;</li>
+      <li>Changed selection colors:<br>
+        - area borders, was <code>#89aff9</code> -> is <code>#4b89ff</code><br>
+        - area background, was <code>#b5d1ff</code> -> is <code>#005eff</code><br>
+        - current selection border, was <code>#5292f7</code> -> is <code>#4b89ff</code>
+      </li>
+      <li>Removed the <code>multiSelect</code> setting and replaced it with <code>selectionMode: 'single'</code>;</li>
+      <li>Added a new <code>selectionMode</code> option, which can be set either as <code>'single'</code> (previously as <code>multiSelect: false</code>), <code>'range'</code> (previously as <code>multiSelect: true</code>) or <code>'multiple'</code> (new non-contiguous mode);</li>
+    </ul>
+    <b>Backward-compatible changes</b>
+    <ul>
+      <li><code>afterSelection</code><br>
+        - <i>previously</i>: <code>afterSelection(row, column, rowEnd, columnEnd, preventScrolling)</code><br>
+        - <i>now</i>: <code>afterSelection(row, column, rowEnd, columnEnd, preventScrolling, selectionLayerLevel)</code>
+      </li><li><code>afterSelectionByProp</code><br>
+      - <i>previously</i>: <code>afterSelectionByProp(row, prop, rowEnd, propEnd, preventScrolling)</code><br>
+      - <i>now</i>: <code>afterSelectionByProp(row, prop, rowEnd, propEnd, preventScrolling, selectionLayerLevel)</code>
+    </li><li><code>afterSelectionEnd</code><br>
+      - <i>previously</i>: <code>afterSelectionEnd(row, column, rowEnd, columnEnd)</code><br>
+      - <i>now</i>: <code>afterSelectionEnd(row, column, rowEnd, columnEnd, selectionLayerLevel)</code>
+    </li><li><code>afterSelectionEndByProp</code><br>
+      - <i>previously</i>: <code>afterSelectionEndByProp(row, prop, rowEnd, propEnd)</code><br>
+      - <i>now</i>: <code>afterSelectionEndByProp(row, prop, rowEnd, propEnd, selectionLayerLevel)</code>
+    </li>
+    </ul>
+    <p>
+      We've added a <code>selectionLayerLevel</code> argument for all the hooks listed above. The <code>selectionLayerLevel</code> is a number indicating which selection layer is currently being modified. For the first selection, this value is <code>0</code>, with the new added layers this number increases.
+    </p>
+
+    <strong>Changes</strong>
+    <ul>
+      <li>Fixed a problem with unneeded rows being added when using Filters along with minRows or minSpareRows. (<a href="https://github.com/handsontable/handsontable-pro/issues/24" target="_blank">#24</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/tag/0.36.0">0.36.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.15.1</h3>
+    <p>Released on 25th of January, 2018</p>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Fixed a problem, where the language files were not generated properly in some specific cases. (<a href="https://github.com/handsontable/handsontable-pro/issues/23" target="_blank">#23</a>)</li>
+      <li>Fixed a problem with the <code>afterValidate</code> hook's arguments with <code>trimRows</code> enabled. (<a href="https://github.com/handsontable/handsontable-pro/issues/11" target="_blank">#11</a>)</li>
+      <li>Updated the <code>moment</code> version because of a ReDoS vulnerability.</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.35.1</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.15.0</h3>
+    <p>Released on 6th of December, 2017</p>
+    <strong>New feature:</strong>
+    <p>
+      From now on you will able to translate messages and elements of the UI to your specific language. <a href="https://docs.handsontable.com/tutorial-internationalization.html">Read more</a> about this new feature.
+    </p>
+
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li>
+        We have renamed our locale and language-related configuration options to free the namespace required for multi-language support introduced within this release.
+      </li>
+    </ul>
+    <p>
+      What used to be defined as:
+    <pre><code class="lang-js">{
+  format: '0,0.00 $',
+  language: 'de-DE'
+}</code></pre>
+
+    will now look like this:
+
+    <pre><code class="lang-js">{
+  numericFormat: {
+    pattern: '0,0.00 $',
+    culture: 'de-DE'
+  }
+}</code></pre>
+    Take a look at our documentation for more insight:
+    <ul>
+      <li><a href="https://docs.handsontable.com/1.14.3/demo-numeric.html" target="_blank">to version 1.14.3</a></li>
+      <li><a href="https://docs.handsontable.com/1.15.0/demo-numeric.html" target="_blank">from version 1.15.0</a></li>
+    </ul>
+    </p>
+
+    <strong>Other changes:</strong>
+    <ul>
+      <li>Removed unwanted dependencies. (<a href="https://github.com/handsontable/handsontable-pro/issues/13" target="_blank">#13</a>)</li>
+      <li>Fixed problems in test cases for the <code>Filters</code> plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/12" target="_blank">#12</a>)</li>
+      <li>Added multi-language support for the table. Please, take a look at https://docs.handsontable.com/tutorial-internationalization.html for more information. (<a href="https://github.com/handsontable/handsontable-pro/issues/6" target="_blank">#6</a>)</li>
+      <li>Added a <code>weekHeaderGenerator</code> option for the <code>GanttChart</code> plugin. (<a href="https://github.com/handsontable/handsontable-pro/issues/19" target="_blank">#19</a>)</li>
+      <li>Fixed a bug, where formulas did not work on nested coordinates. (<a href="https://github.com/handsontable/handsontable-pro/issues/15" target="_blank">#15</a>)</li>
+    </ul>
+
+    <p>The corresponding Handsontable CE version is <a href="https://github.com/handsontable/handsontable/releases/tag/0.35.0">0.35.0</a>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.3</h3>
+    <p>Released on 12th of October, 2017</p>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Added the <code>allowSplitWeeks</code> option for the Gantt Chart plugin (defaults to <code>true</code>) (<a href="https://github.com/handsontable/handsontable-pro/issues/2" target="_blank">#2</a>)</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.34.5</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.2</h3>
+    <p>Released on 13th of September, 2017</p>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Added a missing <code>moment</code> import. (<a href="https://github.com/handsontable/handsontable/issues/4514" target="_blank">#4514</a>)</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.34.4</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.1</h3>
+    <p>Released on 12th of September, 2017</p>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Fix a problem, with the table instance removed its sibling on <code>destroy</code>.</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.34.3</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.0</h3>
+    <p>Released on 12th of September, 2017</p>
+
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li>Since version <code>1.14.0</code>, it is required to pass a valid Handsontable Pro license key in the settings object under the <code>licenseKey</code> property. If a valid key is not provided, Handsontable will display a small notification below the table.<br>
+        Please review your implementation to make sure your setup remains intact.</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.34.2</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.13.1</h3>
+    <p>Released on 6th of September, 2017</p>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Fixed a problem with the Filters plugin improperly trimming the table rows.</li>
+      <li>Updated documentation for the Trim Rows plugin.</li>
+      <li>Fixed a problem with the Filters plugin dropdown components not being updated properly.</li>
+      <li>Fixed a problem with <code>hot-table</code> not being initialized properly.</li>
+      <li>Fixed a problem with Handsontable throwing an error when moving the cursor outside the table.</li>
+      <li>Updated the <code>setDataAtCell</code> TypeScript definition.</li>
+      <li>Updated the Bootstrap <code>css</code> files.</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.34.1</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.13.0</h3>
+    <p>Released on 2nd of August, 2017</p>
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li>We've unified the types of coordinates passed to these plugin hooks: <code>beforeGetCellMeta</code>, <code>afterGetCellMeta</code>, <code>afterSetCellMeta</code>. Now they'll be operating on <b>visual</b> table coordinates (so do the <code>getCellMeta</code> and <code>setCellMeta</code> methods). Please make sure you update your hook callbacks to use them properly. (<a href="https://github.com/handsontable/handsontable/issues/4409" target="_blank">#4409</a>)</li>
+    </ul>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Updated the Filters documentation.</li>
+      <li>Fixed a problem where the Filters plugin threw an error when there was a condition with too many arguments applied.</li>
+      <li>Added support for the <code>EXP</code> formula in the Filters plugin.</li>
+      <li>Changed the text in the warning message thrown when the amount of conditions exceeded the capacity of the dropdownMenu.</li>
+      <li>Fixed the alignment of the checkboxes in the Filters dropdown menu.</li>
+      <li>Fixed a problem where the Filters plugin threw an error when adding a condition with an improper name.</li>
+      <li>Fixed a problem where the Filters plugin threw an error when using the <code>disablePlugin</code> method while the Dropdown Menu plugin was not enabled.</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.34.0</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.12.0</h3>
+    <p>Released on 11th of July, 2017</p>
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li>We've refactored the Copy/Paste plugin and removed the ZeroClipboard dependency. Please make sure it works as expected in your setup before updating to this version.</li>
+      <li>Some of the Filters plugin's API methods has changed. Please check <a href="https://github.com/handsontable/handsontable/issues/4358" target="_blank">GH#4358</a> for detailed information.</li>
+    </ul>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Fixed a bug where Filters were broken when doing a custom build.</li>
+      <li>Added a workaround for npm incorrectly generating the <code>package-lock.json</code> file.</li>
+      <li>Removed ZeroClipboard from dependencies.</li>
+      <li>Extended the Filters API for with extra operations between conditions.</li>
+      <li>Updated the Handsontable dependencies.</li>
+      <li>Fixed a problem with a missing method import. (<a href="https://github.com/handsontable/handsontable/issues/4367" target="_blank">#4367</a>)</li>
+      <li>Added a new config option for the Comments plugin (<code>displayDelay</code>), allowing to customize the delay for showing the comment box. (<a href="https://github.com/handsontable/handsontable/issues/4323" target="_blank">#4323</a>)</li>
+      <li>Fixed a problem, where using the Autofill option upwards with a group of cells gave unexpected results. (<a href="https://github.com/handsontable/handsontable/issues/4298" target="_blank">#4298</a>)</li>
+      <li>Updated the Handsontable dependencies. (<a href="https://github.com/handsontable/handsontable/issues/4280" target="_blank">#4280</a>)</li>
+      <li>Fixed an issue with different gap sizes in the dropdown menu for Firefox and Chrome. (<a href="https://github.com/handsontable/handsontable/issues/2832" target="_blank">#2832</a>)</li>
+      <li>Updated documentation for some methods in our API. (<a href="https://github.com/handsontable/handsontable/issues/4191" target="_blank">#4191</a>, <a href="https://github.com/handsontable/handsontable/issues/4032" target="_blank">#4032</a>, <a href="https://github.com/handsontable/handsontable/issues/3895" target="_blank">#3895</a>, <a href="https://github.com/handsontable/handsontable/issues/3876" target="_blank">#3876</a>, <a href="https://github.com/handsontable/handsontable/issues/3170" target="_blank">#3170</a>, <a href="https://github.com/handsontable/handsontable/issues/3025" target="_blank">#3025</a>, <a href="https://github.com/handsontable/handsontable/issues/2298" target="_blank">#2298</a>, <a href="https://github.com/handsontable/handsontable/issues/2259" target="_blank">#2259</a>)</li>
+      <li>Added a helper for template literals. (<a href="https://github.com/handsontable/handsontable/issues/4354" target="_blank">#4354</a>)</li>
+      <li>Updated our ESlint rules list. (<a href="https://github.com/handsontable/handsontable/issues/4366" target="_blank">#4366</a>)</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.33.0</code>.</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.11.0</h3>
+    <p>Released on 31th of May, 2017</p>
+    <strong>Breaking changes:</strong>
+    <ul>
+      <li>Migration from Traceur to Babel. (<a href="https://github.com/handsontable/handsontable/issues/4070" target="_blank">#4070</a>)</li>
+    </ul>
+    <p>
+      We're now using Babel to transpile our code. That means that we had to make breaking changes, please take a look if you have to make some adjustments in your implementation before moving to this version.
+    </p>
+    <ul>
+      <li>The Bootstrap CSS files were merged to Handsontable's default CSS.</li>
+      <li>The <code>/plugins</code> directory was deleted (with the "removeRow plugin" included)</li>
+      <li>Some global variables were reorganized and/or removed. Please take a look.</li>
+    </ul>
+    <br><br>
+    <strong>Validators</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+      <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+      <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+      <tr><td>Handsontable.DateValidator</td><td>Handsontable.validators.DateValidator</td></tr>
+      <tr><td>Handsontable.NumericValidator</td><td>Handsontable.validators.NumericValidator</td></tr>
+      <tr><td>Handsontable.TimeValidator</td><td>Handsontable.validators.TimeValidator</td></tr>
+    </table>
+
+    <strong>Renderers</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+      <tr><td>Handsontable.AutocompleteRenderer</td><td>Handsontable.renderers.AutocompleteRenderer</td></tr>
+      <tr><td>Handsontable.BaseRenderer</td><td>Handsontable.renderers.BaseRenderer</td></tr>
+      <tr><td>Handsontable.CheckboxRenderer</td><td>Handsontable.renderers.CheckboxRenderer</td></tr>
+      <tr><td>Handsontable.HtmlRenderer</td><td>Handsontable.renderers.HtmlRenderer</td></tr>
+      <tr><td>Handsontable.NumericRenderer</td><td>Handsontable.renderers.NumericRenderer</td></tr>
+      <tr><td>Handsontable.PasswordRenderer</td><td>Handsontable.renderers.PasswordRenderer</td></tr>
+      <tr><td>Handsontable.TextRenderer</td><td>Handsontable.renderers.TextRenderer</td></tr>
+    </table>
+
+    <strong>Cell types</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+      <tr><td>Handsontable.AutocompleteCell</td><td>Handsontable.cellTypes.autocomplete</td></tr>
+      <tr><td>Handsontable.CheckboxCell</td><td>Handsontable.cellTypes.checkbox</td></tr>
+      <tr><td>Handsontable.DateCell</td><td>Handsontable.cellTypes.date</td></tr>
+      <tr><td>Handsontable.DropdownCell</td><td>Handsontable.cellTypes.dropdown</td></tr>
+      <tr><td>Handsontable.HandsontableCell</td><td>Handsontable.cellTypes.handsontable</td></tr>
+      <tr><td>Handsontable.NumericCell</td><td>Handsontable.cellTypes.numeric</td></tr>
+      <tr><td>Handsontable.PasswordCell</td><td>Handsontable.cellTypes.password</td></tr>
+      <tr><td>Handsontable.TextCell</td><td>Handsontable.cellTypes.text</td></tr>
+      <tr><td>Handsontable.TimeCell</td><td>Handsontable.cellTypes.time</td></tr>
+    </table>
+
+    <strong>Plugins</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+      <tr><td>Handsontable.CustomBorders</td><td>Handsontable.plugins.CustomBorders</td></tr>
+      <tr><td>Handsontable.MergeCells</td><td>Handsontable.plugins.MergeCells</td></tr>
+      <tr><td>Handsontable.Search</td><td>Handsontable.plugins.Search</td></tr>
+      <tr><td>Handsontable.UndoRedo</td><td>Handsontable.plugins.UndoRedo</td></tr>
+    </table>
+
+
+    <strong>Helpers</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+      <tr><td>Handsontable.Dom</td><td>Handsontable.dom</td></tr>
+    </table>
+
+    <strong>Other</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+      <tr><td>Handsontable.EditorManager</td><td>(not available)</td></tr>
+      <tr><td>Handsontable.EditorState</td><td>(not available)</td></tr>
+      <tr><td>Handsontable.SearchCellDecorator</td><td>(not available)</td></tr>
+      <tr><td>Handsontable.TableView</td><td>(not available)</td></tr>
+      <tr><td>Handsontable.cellLookup</td><td>(not available)</td></tr>
+      <tr><td>Handsontable.eventManager</td><td>Handsontable.EventManager</td></tr>
+      <tr><td>Handsontable.utils</td><td>(not available)</td></tr>
+    </table>
+
+    <ul>
+      <li>Changed the way in which custom cell types are being registered. (<a href="https://github.com/handsontable/handsontable/issues/4254" target="_blank">#4254</a>)</li>
+    </ul>
+    <p>
+      We improved the public API to give developers an ability to register cell behaviors and types separately.
+      We strongly recommend to use a registered alias in Handsontable settings to increase the code maintainability.
+    </p>
+    <p>
+      An example on how to add a custom editor/renderer/validator:
+    </p>
+  <pre><code class="lang-js">Handsontable.cellTypes.registerCellType('my-custom-select', {
+  editor: MyCustomSelectEditor,
+  renderer: MyCustomSelectRenderer,
+  validator: MyCustomSelectValidator,
+});
+
+Handsontable.validators.registerValidator('credit-card', function(query, callback) {
+  callback(/* passed `true` or `false` depending on a query value */);
+});
+
+new Handsontable(document.getElementById('element'), {
+  data: data,
+  columns: [{
+    data: 'id',
+    type: 'my-custom-select'
+  }, {
+    data: 'name',
+    renderer: 'my-custom-select'
+  }, {
+    data: 'cardNumber',
+    validator: 'credit-card'
+  }]
+})</code></pre>
+
+    <strong>Changes:</strong>
+    <ul>
+      <li>Fixed documentation for the <code>autoRowSize</code> config option. (<a href="https://github.com/handsontable/handsontable/issues/4267" target="_blank">#4267</a>)</li>
+      <li>Fixed documentation for the <code>cells</code> config option. (<a href="https://github.com/handsontable/handsontable/issues/4185" target="_blank">#4185</a>)</li>
+      <li>Fixed a problem with the <code>maxRows</code> functionality. (<a href="https://github.com/handsontable/handsontable/issues/4180" target="_blank">#4180</a>)</li>
+      <li>Fixed a problem with the <code>maxCols</code> functionality. (<a href="https://github.com/handsontable/handsontable/issues/4156" target="_blank">#4156</a>)</li>
+      <li>Fixed a bug, where passing integer values to a dropdown caused the cell to be marked as invalid. (<a href="https://github.com/handsontable/handsontable/issues/4143" target="_blank">#4143</a>)</li>
+      <li>Added the TypeScript definitions to the repository. (<a href="https://github.com/handsontable/handsontable/issues/4112" target="_blank">#4112</a>)</li>
+      <li>Fixed a bug with <code>getCoords</code> throwing an error when used on non-cell elements. (<a href="https://github.com/handsontable/handsontable/issues/4074" target="_blank">#4074</a>)</li>
+      <li>Data copied from the table will no longer have a <b>newline</b> at the end. (<a href="https://github.com/handsontable/handsontable/issues/3801" target="_blank">#3801</a>)</li>
+      <li>Fixed a problem with scrolling on IE9+. (<a href="https://github.com/handsontable/handsontable/issues/2350" target="_blank">#2350</a>)</li>
+      <li>Fixed a wrong variable in a listener of the mouse wheel event. (<a href="https://github.com/handsontable/handsontable/issues/4255" target="_blank">#4255</a>)</li>
+      <li>Fixed an issue related to defining a cell metadata for non-existing cells. (<a href="https://github.com/handsontable/handsontable/issues/4024" target="_blank">#4024</a>)</li>
+    </ul>
+    <p>The corresponding Handsontable CE version is <code>0.32.0</code>.</p>
+
+  </div>
+
+    <div class="example-container clearfix">
+        <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/release-notes.html"
+           class="edit-doc" target="_blank">
+            Edit this page
+        </a>
+        <div class="example-container clearfix">
+          <h3>1.11.0-beta2</h3>
+          <p>Released on 24th of May, 2017</p>
+          <strong>Breaking changes:</strong>
+          <ul>
+            <li>Changed the way in which custom cell types are being registered. (<a href="https://github.com/handsontable/handsontable/issues/4254" target="_blank">#4254</a>)</li>
+          </ul>
+          <p>
+            As you already know from beta1 release, we have migrated from Traceur to Babel. It required from us to standarize the code so we decided to
+            stop using a Handsontable global variable in our internal projects. As a result, we changed the way of creating custom editors, validators, renderers
+            and their combinations like 'cell types'. In this beta2 release we improved the public API to give developers an ability to register
+            cell behaviors and types separately. We strongly recommend to use a registered alias in Handsontable settings to increase the code maintainability.
+          </p>
+          <p>
+            An example on how to add a custom editor/renderer/validator:
+          </p>
+      <pre><code class="lang-js">Handsontable.cellTypes.registerCellType('my-custom-select', {
+  editor: MyCustomSelectEditor,
+  renderer: MyCustomSelectRenderer,
+  validator: MyCustomSelectValidator,
+});
+
+Handsontable.validators.registerValidator('credit-card', function(query, callback) {
+  callback(/* passed `true` or `false` depending on a query value */);
+});
+
+new Handsontable(document.getElementById('element'), {
+  data: data,
+  columns: [{
+    data: 'id',
+    type: 'my-custom-select'
+  }, {
+    data: 'name',
+    renderer: 'my-custom-select'
+  }, {
+    data: 'cardNumber',
+    validator: 'credit-card'
+  }]
+})</code></pre>
+
+          <strong>Changes:</strong>
+          <ul>
+            <li>Fixed a wrong variable in a listener of the mouse wheel event. (<a href="https://github.com/handsontable/handsontable/issues/4255" target="_blank">#4255</a>)</li>
+            <li>Fixed an issue related to defining a cell metadata for non-existing cells. (<a href="https://github.com/handsontable/handsontable/issues/4024" target="_blank">#4024</a>)</li>
+          </ul>
+          <p>The corresponding Handsontable CE version is <code>0.32.0-beta2</code>.</p>
+
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.11.0-beta1</h3>
+            <p>Released on 17th of May, 2017</p>
+            <strong>Breaking changes:</strong>
+            <ul>
+                <li>Migration from Traceur to Babel. (<a href="https://github.com/handsontable/handsontable/issues/4070" target="_blank">#4070</a>)</li>
+            </ul>
+            <p>
+                We're now using Babel to transpile our code. That means that we had to make breaking changes, please take a look if you have to make some adjustments in your implementation before moving to this version.</p>
+            <ul>
+                <li>The Bootstrap CSS files were merged to Handsontable's default CSS.</li>
+                <li>The <code>/plugins</code> directory was deleted (with the "removeRow plugin" included)</li>
+                <li>Some global variables were reorganized and/or removed. Please take a look.</li>
+            </ul>
+            <br><br>
+            <strong>Validators</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+                <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+                <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+                <tr><td>Handsontable.DateValidator</td><td>Handsontable.validators.DateValidator</td></tr>
+                <tr><td>Handsontable.NumericValidator</td><td>Handsontable.validators.NumericValidator</td></tr>
+                <tr><td>Handsontable.TimeValidator</td><td>Handsontable.validators.TimeValidator</td></tr>
+            </table>
+
+            <strong>Renderers</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+                <tr><td>Handsontable.AutocompleteRenderer</td><td>Handsontable.renderers.AutocompleteRenderer</td></tr>
+                <tr><td>Handsontable.BaseRenderer</td><td>Handsontable.renderers.BaseRenderer</td></tr>
+                <tr><td>Handsontable.CheckboxRenderer</td><td>Handsontable.renderers.CheckboxRenderer</td></tr>
+                <tr><td>Handsontable.HtmlRenderer</td><td>Handsontable.renderers.HtmlRenderer</td></tr>
+                <tr><td>Handsontable.NumericRenderer</td><td>Handsontable.renderers.NumericRenderer</td></tr>
+                <tr><td>Handsontable.PasswordRenderer</td><td>Handsontable.renderers.PasswordRenderer</td></tr>
+                <tr><td>Handsontable.TextRenderer</td><td>Handsontable.renderers.TextRenderer</td></tr>
+            </table>
+
+            <strong>Cell types</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+                <tr><td>Handsontable.AutocompleteCell</td><td>Handsontable.cellTypes.autocomplete</td></tr>
+                <tr><td>Handsontable.CheckboxCell</td><td>Handsontable.cellTypes.checkbox</td></tr>
+                <tr><td>Handsontable.DateCell</td><td>Handsontable.cellTypes.date</td></tr>
+                <tr><td>Handsontable.DropdownCell</td><td>Handsontable.cellTypes.dropdown</td></tr>
+                <tr><td>Handsontable.HandsontableCell</td><td>Handsontable.cellTypes.handsontable</td></tr>
+                <tr><td>Handsontable.NumericCell</td><td>Handsontable.cellTypes.numeric</td></tr>
+                <tr><td>Handsontable.PasswordCell</td><td>Handsontable.cellTypes.password</td></tr>
+                <tr><td>Handsontable.TextCell</td><td>Handsontable.cellTypes.text</td></tr>
+                <tr><td>Handsontable.TimeCell</td><td>Handsontable.cellTypes.time</td></tr>
+            </table>
+
+            <strong>Plugins</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+                <tr><td>Handsontable.CustomBorders</td><td>Handsontable.plugins.CustomBorders</td></tr>
+                <tr><td>Handsontable.MergeCells</td><td>Handsontable.plugins.MergeCells</td></tr>
+                <tr><td>Handsontable.Search</td><td>Handsontable.plugins.Search</td></tr>
+                <tr><td>Handsontable.UndoRedo</td><td>Handsontable.plugins.UndoRedo</td></tr>
+            </table>
+
+
+            <strong>Helpers</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+                <tr><td>Handsontable.Dom</td><td>Handsontable.dom</td></tr>
+            </table>
+
+            <strong>Other</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>Was</td><td>Is</td></tr>
+                <tr><td>Handsontable.EditorManager</td><td>(not available)</td></tr>
+                <tr><td>Handsontable.EditorState</td><td>(not available)</td></tr>
+                <tr><td>Handsontable.SearchCellDecorator</td><td>(not available)</td></tr>
+                <tr><td>Handsontable.TableView</td><td>(not available)</td></tr>
+                <tr><td>Handsontable.cellLookup</td><td>(not available)</td></tr>
+                <tr><td>Handsontable.eventManager</td><td>Handsontable.EventManager</td></tr>
+                <tr><td>Handsontable.utils</td><td>(not available)</td></tr>
+            </table>
+
+            <strong>Changes in Handsontable CE:</strong>
+            <ul>
+                <li>Fixed documentation for the <code>cells</code> config option. (<a href="https://github.com/handsontable/handsontable/issues/4185" target="_blank">#4185</a>)</li>
+                <li>Fixed a problem with the <code>maxRows</code> functionality. (<a href="https://github.com/handsontable/handsontable/issues/4180" target="_blank">#4180</a>)</li>
+                <li>Fixed a problem with the <code>maxCols</code> functionality. (<a href="https://github.com/handsontable/handsontable/issues/4156" target="_blank">#4156</a>)</li>
+                <li>Fixed a bug, where passing integer values to a dropdown caused the cell to be marked as invalid. (<a href="https://github.com/handsontable/handsontable/issues/4143" target="_blank">#4143</a>)</li>
+                <li>Added the TypeScript definitions to the repository. (<a href="https://github.com/handsontable/handsontable/issues/4112" target="_blank">#4112</a>)</li>
+                <li>Fixed a bug with <code>getCoords</code> throwing an error when used on non-cell elements. (<a href="https://github.com/handsontable/handsontable/issues/4074" target="_blank">#4074</a>)</li>
+                <li>Data copied from the table will no longer have a <b>newline</b> at the end. (<a href="https://github.com/handsontable/handsontable/issues/3801" target="_blank">#3801</a>)</li>
+                <li>Fixed a problem with scrolling on IE9+. (<a href="https://github.com/handsontable/handsontable/issues/2350" target="_blank">#2350</a>)</li>
+            </ul>
+
+            <strong>Changes in Handsontable Pro:</strong>
+            <ul>
+                <li>Fixed a problem, where the <code>ESC</code> key did not work for the filtering menu.</li>
+            </ul>
+
+            <p>The corresponding Handsontable CE version is <code>0.32.0-beta1</code>.</p>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.10.1</h3>
+            <p>Released on 7th of March, 2017</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Fixed a problem where the column titles were trimmed when using the <code>nestedHeaders</code> plugin. </li>
+                <li>Fixed a problem with the Nested Headers' <code>collapseAll</code> method.</li>
+                <li>Updated Handsontable CE to <code>0.31.1</code>.</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.10.0</h3>
+            <p>Released on 14th of February, 2017</p>
+            <strong>Backward incompatible changes</strong>
+            <ul>
+                <li>Changed the possible values of the <code>source</code> property provided by plugin hooks. <a href="https://github.com/handsontable/handsontable/issues/4017#issuecomment-277200985" target="_blank">See the issue page for this problem for more information about the breaking change.</a> (<a href="https://github.com/handsontable/handsontable/issues/4017" target="_blank">#4017</a>)</li>
+            </ul>
+            <strong>Changes</strong>
+            <ul>
+                <li>Updated the <code>hot-formula-parser</code> dependency.</li>
+                <li>Added some fixes for Handsontable CE.</li>
+                <li>Fixed a bug with `grunt test-pro` wasn't working properly.</li>
+                <li>Updated Handsontable CE version to `0.31.0`.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.9.1</h3>
+            <p>Released on 17st of January, 2017</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Fixed a problem with copying/pasting values when <code>fixedRowsBottom</code> is enabled.</li>
+                <li>Updated the Handsontable version to <code>0.30.1</code>.</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.9.0</h3>
+            <p>Released on 11th of January, 2017</p>
+            <strong>Breaking Changes</strong>
+            <ul>
+                <li>The <b>AutoFill</b> plugin was refactored, thus introducing some breaking changes into the API. If your implementation uses the previous <code>autoFill</code> structure, please check if it everything works as expected. (<a href="https://github.com/handsontable/handsontable/issues/3257" target="_blank">#3257</a>)</li>
+                <li>The <code>setCellMeta</code> method was changed to work on <i>visual</i> row and column indexes, analogously to the <code>getCellMeta</code> method. If your implementation utilizes it, please check if you need to tweak it (it may cause issues especially when using it with the <code>columnSorting</code>, <code>manualRowMove</code> and <code>manualColumnMove</code> plugins).</li>
+            </ul>
+            <strong>Changes</strong>
+            <ul>
+                <li>Fixed issues with manipulating the data structure with the <code>columnSummary</code> plugin enabled.</li>
+                <li>Added tests for the Pro version concerning the maxRows option.</li>
+                <li>Fixed a problem with building the Pro version with a different Handsontable branch than <code>master</code></li>
+                <li>Updated Handsontable to version <code>0.29.0</code>.</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.8.2</h3>
+            <p>Released on 21st of December, 2016</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Fix a problem when longer header labels were cut with the <code>nestedHeaders</code> plugin. </li>
+                <li>Fix a problem with selection and keyboard navigation when using the <code>hiddenRows</code> plugin. </li>
+                <li>Updated the Handsontable version to <code>0.29.2</code>.</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.8.1</h3>
+            <p>Released on 13th of December, 2016</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Refactored the <code>columnSummary</code> plugin, introducing a feature which allows providing custom functions to the plugin configuration.</li>
+                <li>Updated Handsontable to version <code>0.29.1</code>.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.8.0</h3>
+            <p>Released on 8th of November, 2016</p>
+            <strong>Breaking changes</strong>
+            <ul>
+                <li>We've added a new cell property: <code>allowHtml</code>. If you set it to <code>true</code>, the <code>autocomplete</code> and <code>dropdown</code> cells will be able to render HTML elements correctly (as it was before).
+                    However, if you set it to <code>false</code>, no HTML will be rendered. This change is meant to decrease Handsontable's XSS vulnerability.</li>
+                <li>We've refactored the Comments plugin, which caused some API and visual changes. Please see our documentation and check if you need to make some changes in your implementation.
+                    The <code>allowHtml</code> property defaults to **false**, so please make sure if you have to specify it in your implementation!</li>
+            </ul>
+
+            <strong>Changes</strong>
+            <ul>
+                <li>Fixed problems with tests on macOS Sierra.</li>
+                <li>Fixed a problem when typing <code>=</code> in a cell caused an error to be thrown.</li>
+                <li>Tweaked invalid characters validation for the formulas.</li>
+                <li>Fixed a problem with updating the <code>fixedRowsBottom</code> option.</li>
+                <li>Updated Handsontable to the latest version. (<code>0.29.0</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.4</h3>
+            <p>Released on 13th of October, 2016</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Updated Handsontable to the latest version. (<code>0.28.4</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.3</h3>
+            <p>Released on 5th of October, 2016</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Updated Handsontable to the latest version. (<code>0.28.3</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.2</h3>
+            <p>Released on 4th of October, 2016</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>Fixed a problem where hiding the first column would also hide its border.</li>
+                <li>Updated Handsontable to the latest version. (0.28.2)</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.1</h3>
+            <p>Released on 29th of September, 2016</p>
+            <strong>Changes</strong>
+            <ul>
+              <li>Added the <code>hot-formula-parser</code> dependency to <code>bower.json</code>.</li>
+              <li>Fixed the <code>firstWeekDay</code> functionality in the Gantt Chart plugin.</li>
+              <li>Fixed a problem when it was impossible to create Gantt Chart plugin's range bars spanned between years.</li>
+              <li>Fixed a problem with header selection in the Nested Headers plugin.</li>
+              <li>Fixed a problem with the Formulas and Column Sorting plugins being used together.</li>
+              <li>Updated to the latest Handsontable version (<code>0.28.1</code>)</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.0</h3>
+            <p>Released on 15th of September, 2016</p>
+            <strong>Breaking changes</strong>
+            <br>
+            <ul>
+                <li>This release introduces a new feature - Formulas (currently in alpha stage, may not be stable). This required us to make some breaking changes, for example,
+                    the <code>afterCreateRow</code> and <code>afterCreateCol</code> changes their argument types (the third argument used to be <code>boolean</code>, now it has to be <code>string</code>). You can find more about the plugin in our docs: <a href="http://docs.handsontable.com/demo-formula-support.html">http://docs.handsontable.com/demo-formula-support.html</a>.</li>
+                <li>We've refactored the Manual Column Move plugin to allow the user to move multiple columns at once. This made some backward-incompatible changes.
+                    For example the <code>beforeColumnMove</code> and <code>afterColumnMove</code> hooks had their arguments changed.</li>
+            </ul>
+            <p>After updating to this version, please check if any changes need to made in your implementation.</p>
+            <strong>Changes</strong>
+            <ul>
+                <li>New plugin - Nested Rows. It's currently in alpha stage and may not be stable. It allows providing Handsontable with nested data structures and operating on data within the groups.
+                    You can find more information in our docs: <a href="http://docs.handsontable.com/demo-nested-rows.html">http://docs.handsontable.com/demo-nested-rows.html</a>.</li>
+                <li>Added missing dependencies to <code>bower.json</code>.</li>
+                <li>Updated to the latest Handsontable version (<code>0.28.0</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.6.0</h3>
+            <p>Released on 2nd of September, 2016</p>
+            <strong>Breaking changes</strong>
+            <br>
+            <ul>
+                <li>We've refactored the Manual Row Move plugin to allow the user to move multiple rows at once. This made some backward-incompatible changes.
+                    For example the `beforeRowMove` and `afterRowMove` hooks had their arguments changed. After updating to this version, please check if any changes need to made in your implementation.</li>
+                <li>We've added an additional default column/row header styling - now the column and row header corresponding to the selected cell will be rendered with a darker background. Please have that in mind when styling your Handsontable implementations.</li>
+            </ul>
+            <strong>Changes</strong>
+            <ul>
+                <li>Fixed some performance problems connected with using both Dropdown Menu and Filters together.</li>
+                <li>Added support for the refactored Manual Row Move plugin in the Hidden Rows plugin.</li>
+                <li>Updated Handsontable to the latest version, which is 0.27.0. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.27.0" target="_blank">See changes</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.5.1</h3>
+            <p>Released on 27th of July, 2016</p>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Improved rendering performance of GanttChart plugin.</li>
+                <li>Updated Handsontable to the latest version, which is 0.26.1. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.26.1" target="_blank">See changes</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.5.0</h3>
+            <p>Released on 27th of June, 2016</p>
+            <strong>Backward incompatible changes</strong>
+            <br>
+            <ul>
+                <li>Changed one of our core dependencies. We're using <a href="https://github.com/foretagsplatsen/numbro" target="_blank">Numbro</a> instead of <a href="https://github.com/adamwdraper/Numeral-js" target="_blank">Numeral.js</a>. If you're including our dependencies independently, please update your setup. (<a href="https://github.com/handsontable/handsontable/issues/3487" target="_blank">3487</a>)</li>
+                <li>Updated Handsontable to the latest version, which is 0.26.0. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.26.0" target="_blank">See changes</a>).</li>
+            </ul>
+            <br>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Fixed a bug where hovering over the <code>Filter by value</code> items would throw errors.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.4.1</h3>
+            <p>Released on 6th of June, 2016</p>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Fixed problems with hiddenRows and hiddenColumns.</li>
+                <li>New feature: Added a Select All and Clear options for the Filtering plugin.</li>
+                <li>Fixed problems with filtering blank cells.</li>
+                <li>Updated Handsontable to the latest version, which is 0.25.1. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.25.1" target="_blank">See changes</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.4.0</h3>
+            <p>Released on 25th of May, 2016</p>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Fixed problems with selection in the nestedHeaders plugin.</li>
+                <li>New feature: Added "show" and "hide column" to the Context Menu.</li>
+                <li>Upgraded Handsontable to the latest version, which is 0.25.0. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.25.0" target="_blank">See changes</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.4</h3>
+            <p>Released on 28th of April, 2016</p>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Upgraded Handsontable to the latest version, which is 0.24.3. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.3" target="_blank">See changes</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.3</h3>
+            <p>Released on 11th of April, 2016</p>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Added the <code>afterFilter</code> hook.</li>
+                <li>Replaced <code>keyup</code> with <code>input</code> in "Filter by Value" section.</li>
+                <li>Fixed problems with not working <kbd>ESC</kbd> key.</li>
+                <li>Added support for node environment.</li>
+                <li>Upgraded Handsontable to the latest version, which is 0.24.2. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.2" target="_blank">See changes</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.2</h3>
+            <p>Released on 18th of March, 2016</p>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Update with a working <code>handsontable.full.js</code> build. The <code>.full</code> build from <code>1.3.1</code> had major problems with the date and time cells.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+          <h3>1.3.1</h3>
+          <p>Released on 16th of March, 2016</p>
+          <strong>Changes</strong>
+          <br>
+          <ul>
+            <li>Upgraded Handsontable to the latest version, which is 0.24.1. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.1" target="_blank">See changes</a>).</li>
+          </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.0</h3>
+            <p>Released on 15th of March, 2016</p>
+            <strong>Backward incompatible change</strong>
+            <br>
+            <ul>
+                <li>Upgraded Handsontable to the latest version, which is 0.24.0. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.0" target="_blank">See changes</a>).</li>
+                <li>A noticeable visual change in the Filters plugin: The filters menu gained a new section (Filter by Value).</li>
+            </ul>
+            <br>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Fixed problem when enabling manualColumnMove and hiddenColumns displayed empty values in a column.</li>
+                <li>Fixed a problem, when sometimes clicking a dropdown menu button caused the page to refresh.</li>
+                <li>Extended the Filters functionality by adding the "filter by value" component.</li>
+                <li>Added a possibility to undo/redo filtering.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.2.0</h3>
+            <p>Released on 19th of February, 2016</p>
+            <strong>Backward incompatible change</strong>
+            <br>
+            <ul>
+                <li>Upgraded Handsontable to the latest version, which is 0.23.0. (<a href="https://github.com/handsontable/handsontable/releases/tag/0.23.0" target="_blank">See changes</a>)</li>
+            </ul>
+            <br>
+            <strong>Changes</strong>
+            <br>
+            <ul>
+                <li>Added an asynchronous calls in Gantt Chart plugin to reduce the time needed to update the data.</li>
+                <li>Improvements to the Context/Dropdown menu, mainly a better UI handling.</li>
+                <li>The Filter Data plugin is not shrinking the table anymore when there is no results.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.1.1</h3>
+            <p>Released on 4th of February, 2016</p>
+            <ul>
+                <li>Added a possibility to set up server-side filtering by adding the <code>beforeFilter</code> hook.</li>
+                <li>Added cell meta cache'ing to the Gantt Chart plugin in order to properly use the <code>updateSettings</code> method.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.1.0</h3>
+            <p>Released on 3th of February, 2016</p>
+            <ul>
+                <li>
+                    <strong>Backward incompatible change</strong>
+                    <br>
+                    Upgraded Handsontable to the latest version, which is 0.22.0.
+                </li>
+                <li>Fixed an error with selecting a row, with the last column being hidden.</li>
+                <li>Fixed a memory leak problem with the GanttChart plugin.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.0.0</h3>
+            <p>Released on 20th of January, 2016</p>
+            <ul>
+                <li>
+                    <strong>Backward incompatible change</strong>
+                    <br>
+                    The <code>afterValidate</code> hook will provide the <i>visual</i> row indexes, instead of the <i>logical</i> ones. For example, if the first row becomes the seventh row after sorting the table, the <code>afterValidate</code> hook will provide <code>6</code> as the row index.
+
+                    To translate the <i>visual</i> row to the <i>logical</i> row, you can use the <code>translateRow</code> method of the <code>columnSorting</code> plugin (<a href="https://github.com/handsontable/handsontable/issues/3132" target="_blank">#3132</a>).
+                    <pre><code class="lang-js">var logicalRow = hotInstance.getPlugin('columnSorting').translateRow(row);</code></pre>
+                </li>
+                <li>Fixed problem, where pasting a dataset which row count exceeds the number of rows in the table nothing happened.</li>
+                <li>Fixed problems with dropdown menu and submenu positioning.</li>
+                <li>Fixed problems with filtering the fixed rows.</li>
+                <li>Fixed problem with filter options missing after filtering out all rows.</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.0.0-beta3</h3>
+            <p>Released on 11th of January, 2016</p>
+            <ul>
+                <li>Fixed problem with the <code>columnSummary</code> plugin, which wasn't updating the calculation results when an object-based dataset was provided to the Handsontable instance.
+                </li>
+                <li>Prevent displaying the dropdown header buttons in higher levels of headers (for example, when using the nested headers plugin).
+                </li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.0.0-beta2</h3>
+            <p>Released on 8th of January, 2016</p>
+            <ul>
+                <li>Fixed problems with columns being selected after collapsing a column (with the <code>collapsibleColumns</code> plugin).
+                </li>
+                <li>Fixed problems with <code>fixedRowsBottom</code> not working properly with window-scrollable tables.
+                </li>
+                <li>
+                    Fixed wrong position issues in the Filters plugin.
+                </li>
+                <li>
+                    Fixed column selection issues in the <code>nestedHeaders</code> plugin.
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p class="gap-top-xsmall">
+      <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/release-notes.html" class="edit-doc" target="_blank">
+        Help us improve this page
+      </a>
+    </p>
+</div>

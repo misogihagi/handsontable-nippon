@@ -1,0 +1,51 @@
+content1="@handsontable/vue"
+content2="language"
+content3=":language="language""
+content4=":settings"
+content5="Select language: "
+content6="
+      <div id="example1" class="hot">
+        <label for="languages">Select language: </label><select v-on:change="updateHotLanguage" id="languages"></select><br/><br/>
+        <hot-table :language="language" :settings="hotSettings"></hot-table>
+      </div>
+    "
+content7="
+      import Vue from 'vue';
+      import { HotTable } from '@handsontable-pro/vue';
+      import Handsontable from 'handsontable-pro';
+
+      new Vue({
+        el: '#example1',
+        data: function() {
+          return {
+            hotSettings: {
+              data: Handsontable.helper.createSpreadsheetData(5, 10),
+              colHeaders: true,
+              rowHeaders: true,
+              contextMenu: true
+            },
+            language: 'en-US'
+          }
+        },
+        mounted: function() {
+          this.getAllLanguageOptions();
+        },
+        methods: {
+          getAllLanguageOptions: function() {
+            const allDictionaries = Handsontable.languages.getLanguagesDictionaries();
+            const langSelect = document.querySelector('#languages');
+            langSelect.innerHTML = '';
+
+            for (let language of allDictionaries) {
+              langSelect.innerHTML += `<option value="${language.languageCode}">${language.languageCode}</option>`
+            }
+          },
+          updateHotLanguage: function(event) {
+            this.language = event.target.value;
+          }
+        },
+        components: {
+          HotTable
+        }
+      });"
+content8="Help us improve this page"

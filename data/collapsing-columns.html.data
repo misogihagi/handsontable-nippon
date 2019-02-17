@@ -1,0 +1,44 @@
+content1="Overview"
+content2="Setup and configuration"
+content3="Example"
+content4="Overview"
+content5="Collapsible Columns"
+content6="colspan"
+content7="Node:"
+content8="Nested Headers"
+content9="Hidden Columns"
+content10="Setup and configuration"
+content11="collapsibleColumns"
+content12="true"
+content13="all"
+content14="colspan"
+content15="collapsibleColumns: [
+  {row: -4, col: 1, collapsible: true}, // Add the button to the 4th-level (counting from the first table row upwards) header of the 1st column.
+  {row: -3, col: 5, collapsible: true} // Add the button to the 3rd-level (counting from the first table row upwards) header of the 5th column.
+]"
+content16="Example"
+content17="
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(5,10),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenColumns: true,
+          colWidths: 60,
+          nestedHeaders: [
+            ['A', {label: 'B', colspan: 8}, 'C'],
+            ['D', {label: 'E', colspan: 4}, {label: 'F', colspan: 4}, 'G'],
+            ['H', {label: 'I', colspan: 2}, {label: 'J', colspan: 2}, {label: 'K', colspan: 2}, {label: 'L', colspan: 2}, 'M'],
+            ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
+          ],
+          collapsibleColumns: [
+            {row: -4, col: 1, collapsible: true},
+            {row: -3, col: 1, collapsible: true},
+            {row: -2, col: 1, collapsible: true},
+            {row: -2, col: 3, collapsible: true}
+          ]
+        });"
+content18="
+      Help us improve this page
+    "

@@ -1,0 +1,416 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-callbacks">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-source-definition">
+     Definition for
+     <code>
+      content2
+     </code>
+     argument
+    </a>
+   </li>
+   <li>
+    <a href="#page-beforeKeyDown">
+     <code>
+      content3
+     </code>
+     use case
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="callbacks">
+  <h3 id="page-callbacks">
+   content4
+  </h3>
+  <p>
+   This page shows usage of some callbacks available in Handsontable. If you require a new callback to be added,
+      please
+   <a href="https://github.com/handsontable/handsontable/issues/new" target="_blank">
+    content5
+   </a>
+   .
+      Note that some callbacks are checked on this page by default.
+  </p>
+  <div class="part-left-container callbacks-container clearfix" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+   <div id="example1_events">
+   </div>
+  </div>
+  <div class="clear-log">
+   <button class="intext-btn" onclick="$('#example1_events').empty()">
+    content6
+   </button>
+  </div>
+  <p>
+   <strong>
+    content7
+   </strong>
+  </p>
+  <ul class="tight clearfix" id="hooksList">
+   <li>
+    <label>
+     <input id="check_select_all" type="checkbox"/>
+     <strong>
+      content8
+     </strong>
+    </label>
+   </li>
+  </ul>
+ </div>
+ <div class="codeLayout">
+  <div class="buttons">
+   <!--<button class="jsFiddleLink" data-runfiddle="example1">-->
+   <!--<i class="fa fa-jsfiddle"></i>-->
+   <!--Edit-->
+   <!--</button>-->
+   <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+    <i class="fa fa-terminal">
+    </i>
+    Dump data to console
+   </button>
+  </div>
+  <script data-jsfiddle="example1">
+   content9
+  </script>
+ </div>
+ <div class="example-container clearfix head-gap" name="source-definition">
+  <h3 id="page-source-definition">
+   Definition for
+   <code>
+    content10
+   </code>
+   argument
+  </h3>
+  <p>
+   It's worth to mention that some of the hooks are triggered from the inside of the Handsontable (Core) and some from the plugins.
+      In some situations it is helpful to know what triggered the callback (if it was done by Handsontable itself, triggered from external code or a user action). That's
+      why in crucial hooks Handsontable delivers
+   <code>
+    content11
+   </code>
+   as an argument which informs you about who've triggered the action. Thanks to
+   <code>
+    content12
+   </code>
+   you can create additional conditions based on that information.
+  </p>
+  <p>
+   <code>
+    content13
+   </code>
+   argument is optional. It takes following values:
+   <ul>
+    <li>
+     <code>
+      content14
+     </code>
+     - Action triggered by Handsontable and reason for it is releated directly with settings aplied to Handsontable.
+          For instance
+     <code>
+      content15
+     </code>
+     will be fired with this when
+     <code>
+      content16
+     </code>
+     will be greater then 0;
+    </li>
+    <li>
+     <code>
+      content17
+     </code>
+     - Action triggered by Handsontable after the data has been changed (for example after an edit or using
+     <code>
+      content18
+     </code>
+     methods);
+    </li>
+    <li>
+     <code>
+      content19
+     </code>
+     - Action triggered by Handsontable after the
+     <code>
+      content20
+     </code>
+     or
+     <code>
+      content21
+     </code>
+     (with
+     <code>
+      content22
+     </code>
+     property) method has been called;
+    </li>
+    <li>
+     <code>
+      content23
+     </code>
+     - Action triggered by Handsontable after requesting for populating data;
+    </li>
+    <li>
+     <code>
+      content24
+     </code>
+     - Action triggered by Handsontable after the column data splicing has been done;
+    </li>
+    <li>
+     <code>
+      content25
+     </code>
+     - Action triggered by Handsontable after the row data splicing has been done;
+    </li>
+    <li>
+     <code>
+      content26
+     </code>
+     - Action triggered by Handsontable after the time validator has been called (for example after an edit);
+    </li>
+    <li>
+     <code>
+      content27
+     </code>
+     - Action triggered by Handsontable after the date validator has been called (for example after an edit);
+    </li>
+    <li>
+     <code>
+      content28
+     </code>
+     - Action triggered by Handsontable after the validation process has been triggered;
+    </li>
+    <li>
+     <code>
+      content29
+     </code>
+     - Action triggered by the AutoFill plugin;
+    </li>
+    <li>
+     <code>
+      content30
+     </code>
+     - Action triggered by the AutoFill plugin;
+    </li>
+    <li>
+     <code>
+      content31
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Clear column" has been clicked;
+    </li>
+    <li>
+     <code>
+      content32
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Insert column on the left" has been clicked;
+    </li>
+    <li>
+     <code>
+      content33
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Insert column on the right" has been clicked;
+    </li>
+    <li>
+     <code>
+      content34
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Remove column" has been clicked;
+    </li>
+    <li>
+     <code>
+      content35
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Remove Row" has been clicked;
+    </li>
+    <li>
+     <code>
+      content36
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Insert row above" has been clicked;
+    </li>
+    <li>
+     <code>
+      content37
+     </code>
+     - Action triggered by the ContextMenu plugin after the "Insert row below" has been clicked;
+    </li>
+    <li>
+     <code>
+      content38
+     </code>
+     - Action triggered by the CopyPaste plugin after the value has been pasted;
+    </li>
+    <li>
+     <code>
+      content39
+     </code>
+     - Action triggered by the ObserveChanges plugin after the changes has been detected;
+    </li>
+    <li>
+     <code>
+      content40
+     </code>
+     - Action triggered by the UndoRedo plugin after the change has been redone;
+    </li>
+    <li>
+     <code>
+      content41
+     </code>
+     - Action triggered by the UndoRedo plugin after the change has been undone;
+    </li>
+    <li>
+     <code>
+      content42
+     </code>
+     - Action triggered by the GantChart plugin after the data has been loaded;
+    </li>
+    <li>
+     <code>
+      content43
+     </code>
+     - Action triggered by the ColumnSummary plugin after the calculation has been done;
+    </li>
+    <li>
+     <code>
+      content44
+     </code>
+     - Action triggered by the ColumnSummary plugin after the calculation has been reset.
+    </li>
+   </ul>
+  </p>
+  <p>
+   List of callback that operates on
+   <code>
+    content45
+   </code>
+   parameter:
+   <ul>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterChange">
+      content46
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterCreateCol">
+      content47
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterCreateRow">
+      content48
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterSetDataAtCell">
+      content49
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterSetDataAtRowProp">
+      content50
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterValidate">
+      content51
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeChange">
+      content52
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeChangeRender">
+      content53
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeCreateCol">
+      content54
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeCreateRow">
+      content55
+     </a>
+    </li>
+    <li>
+     <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeValidate">
+      content56
+     </a>
+    </li>
+   </ul>
+  </p>
+ </div>
+ <div class="example-container clearfix head-gap" name="beforeKeyDown">
+  <h3 id="page-beforeKeyDown">
+   <code>
+    content57
+   </code>
+   use case
+  </h3>
+  <p>
+   The following demo uses
+   <code>
+    content58
+   </code>
+   callback to modify some key bindings:
+  </p>
+  <ul>
+   <li>
+    Pressing
+    <kbd>
+     content59
+    </kbd>
+    or
+    <kbd>
+     content60
+    </kbd>
+    on a cell deletes the cell and shifts all cells beneath it
+        in the column up resulting in the cursor (which doesn't move) having the value previously beneath it,
+        now in the current cell.
+   </li>
+   <li>
+    Pressing
+    <kbd>
+     content61
+    </kbd>
+    in a cell (not changing the value) results in pushing all the cells in the column beneath
+        this cell down one row (including current cell) resulting in a blank cell under the cursor (which hasn't moved).
+   </li>
+  </ul>
+  <div class="head-gap" data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <!--<button class="jsFiddleLink" data-runfiddle="example2">-->
+    <!--<i class="fa fa-jsfiddle"></i>-->
+    <!--Edit-->
+    <!--</button>-->
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content62
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/using-callbacks.html" target="_blank">
+   content63
+  </a>
+ </p>
+</div>

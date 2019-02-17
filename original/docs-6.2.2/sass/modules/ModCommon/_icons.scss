@@ -1,0 +1,26 @@
+/**
+ * @author: Handsoncode
+ */
+
+ul.icons-wrapper {
+  margin-top: 50px;
+  text-align: center;
+
+  & > li {
+    margin: 0 0 1.4rem 0 !important;
+    line-height: 1;
+
+    svg {
+      @include square(48px);
+      fill: rgba(0, 0, 0, 0.75);
+    }
+    span {
+      padding: 0 10px;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 12px;
+      text-overflow: ellipsis;
+    }
+  }
+}

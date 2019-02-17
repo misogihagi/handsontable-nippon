@@ -1,0 +1,567 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#how-it-works">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#methods">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#options">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#examples">
+     content5
+    </a>
+   </li>
+  </ul>
+  <hr/>
+  <h3 id="overview">
+   content6
+  </h3>
+  <p>
+   The
+   <i>
+    content7
+   </i>
+   plugin allows you to export table content to a
+   <code>
+    content8
+   </code>
+   ,
+   <code>
+    content9
+   </code>
+   or
+   <code>
+    content10
+   </code>
+   .
+   <br/>
+   The plugin is always enabled, so there is no additional configuration involved. Learn more about
+   <a href="#how-it-works">
+   </a>
+   how it works
+  </p>
+ </div>
+</div>
+under the hood.
+<h3 id="how-it-works">
+ content11
+</h3>
+<p>
+ The plugin allows you to export data from Handsontable into a
+ <code>
+  content12
+ </code>
+ file.
+</p>
+<p>
+ For the list of methods you can use to accomplish this, see
+ <a href="#methods">
+  content13
+ </a>
+ .
+</p>
+<h3 id="methods">
+ content14
+</h3>
+<p>
+ content15
+</p>
+<ul>
+ <li>
+  <a href="/docs/&lt;?js= version ?&gt;/ExportFile.html#downloadFile">
+   <strong>
+    content16
+   </strong>
+  </a>
+  - allows you to
+        generate a downloadable file, directly in your browser.
+ </li>
+ <li>
+  <a href="/docs/&lt;?js= version ?&gt;/ExportFile.html#exportAsBlob">
+   <strong>
+    content17
+   </strong>
+  </a>
+  - allows you to
+        export a JavaScript Blob object.
+ </li>
+ <li>
+  <a href="/docs/&lt;?js= version ?&gt;/ExportFile.html#exportAsString">
+   <strong>
+    content18
+   </strong>
+  </a>
+  - allows you
+        to export data as a string.
+ </li>
+</ul>
+<p>
+ content19
+</p>
+<dl>
+ <dt>
+  <h4 class="name">
+   format
+   <span class="type-signature type string">
+    content20
+   </span>
+  </h4>
+  <p>
+   This is required to prepare a predefined settings object. We currently allow for only
+   <code>
+    content21
+   </code>
+   to be used.
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   options
+   <span class="type-signature type object">
+    content22
+   </span>
+  </h4>
+  <p>
+   This is an optional argument. It contains a set of supported options and extends the predefined
+   <code>
+    content23
+   </code>
+   configuration.
+          For the complete list of options that you can use, see
+   <a href="#options">
+    content24
+   </a>
+   .
+  </p>
+ </dt>
+</dl>
+<h3 id="options">
+ content25
+</h3>
+<p>
+ content26
+</p>
+<dl>
+ <dt>
+  <h4 class="name">
+   bom
+   <span class="type-signature type boolean">
+    content27
+   </span>
+  </h4>
+  <p>
+   content28
+  </p>
+  <div class="notification info">
+   <strong>
+    content29
+   </strong>
+   This property will prepend content with the UTF-16BE BOM signature (
+   <em>
+    content30
+   </em>
+   ).
+          The browser will convert the signature to the UTF-8 value (
+   <em>
+    content31
+   </em>
+   ) automatically.
+  </div>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content32
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content33
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   columnDelimiter
+   <span class="type-signature type string">
+    content34
+   </span>
+  </h4>
+  <p>
+   content35
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content36
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content37
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   columnHeaders
+   <span class="type-signature type boolean">
+    content38
+   </span>
+  </h4>
+  <p>
+   content39
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content40
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content41
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   exportHiddenColumns
+   <span class="type-signature type boolean">
+    content42
+   </span>
+  </h4>
+  <p>
+   content43
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content44
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content45
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   exportHiddenRows
+   <span class="type-signature type boolean">
+    content46
+   </span>
+  </h4>
+  <p>
+   content47
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content48
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content49
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   fileExtension
+   <span class="type-signature type string">
+    content50
+   </span>
+  </h4>
+  <p>
+   content51
+  </p>
+  <p>
+   You can use this property in the
+   <strong>
+    content52
+   </strong>
+   method.
+  </p>
+  <p>
+   Default value:
+   <code>
+    content53
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   filename
+   <span class="type-signature type string">
+    content54
+   </span>
+  </h4>
+  <p>
+   content55
+  </p>
+  <p>
+   content56
+  </p>
+  <p>
+   You can use this property in the
+   <strong>
+    content57
+   </strong>
+   method.
+  </p>
+  <p>
+   Default value:
+   <code>
+    content58
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   mimeType
+   <span class="type-signature type string">
+    content59
+   </span>
+  </h4>
+  <p>
+   content60
+  </p>
+  <p>
+   You can use this property in the
+   <strong>
+    content61
+   </strong>
+   and
+   <strong>
+    content62
+   </strong>
+   methods.
+  </p>
+  <p>
+   Default value:
+   <code>
+    content63
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   range
+   <span class="type-signature type array">
+    content64
+   </span>
+  </h4>
+  <p>
+   Allows you to define a range of dataset to export. It's represented by an array of numeric, visual indexes
+   <code>
+    content65
+   </code>
+   .
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content66
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content67
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   rowDelimiter
+   <span class="type-signature type string">
+    content68
+   </span>
+  </h4>
+  <p>
+   content69
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content70
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content71
+   </code>
+  </p>
+ </dt>
+</dl>
+<dl>
+ <dt>
+  <h4 class="name">
+   rowHeaders
+   <span class="type-signature type boolean">
+    content72
+   </span>
+  </h4>
+  <p>
+   content73
+  </p>
+  <p>
+   You can use this property in all of the
+   <a href="#methods">
+    content74
+   </a>
+   .
+  </p>
+  <p>
+   Default value:
+   <code>
+    content75
+   </code>
+  </p>
+ </dt>
+</dl>
+<h3 id="examples">
+ content76
+</h3>
+<h4>
+ content77
+</h4>
+<div data-jsfiddle="example1">
+ <div class="hot" id="example1">
+ </div>
+ <button class="intext-btn" id="export-file">
+  content78
+ </button>
+</div>
+<div class="codeLayout">
+ <div class="buttons">
+  <button class="jsFiddleLink" data-runfiddle="example1">
+   <i class="fa fa-jsfiddle">
+   </i>
+   Edit in jsFiddle
+  </button>
+  <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+   <i class="fa fa-terminal">
+   </i>
+   Dump data to console
+  </button>
+ </div>
+ <script data-jsfiddle="example1">
+  content79
+ </script>
+</div>
+<h4>
+ content80
+</h4>
+<div data-jsfiddle="example2">
+ <p>
+  content81
+ </p>
+ <div class="hot" id="example2">
+ </div>
+ <button class="intext-btn" id="export-blob">
+  content82
+ </button>
+</div>
+<div class="codeLayout">
+ <div class="buttons">
+  <button class="jsFiddleLink" data-runfiddle="example2">
+   <i class="fa fa-jsfiddle">
+   </i>
+   Edit in jsFiddle
+  </button>
+  <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+   <i class="fa fa-terminal">
+   </i>
+   Dump data to console
+  </button>
+ </div>
+ <script data-jsfiddle="example2">
+  content83
+ </script>
+</div>
+<h4>
+ content84
+</h4>
+<div data-jsfiddle="example3">
+ <p>
+  content85
+ </p>
+ <div class="hot" id="example3">
+ </div>
+ <button class="intext-btn" id="export-string">
+  content86
+ </button>
+</div>
+<div class="codeLayout">
+ <div class="buttons">
+  <button class="jsFiddleLink" data-runfiddle="example3">
+   <i class="fa fa-jsfiddle">
+   </i>
+   Edit in jsFiddle
+  </button>
+  <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+   <i class="fa fa-terminal">
+   </i>
+   Dump data to console
+  </button>
+ </div>
+ <script data-jsfiddle="example3">
+  content87
+ </script>
+</div>
+<p class="gap-top-xsmall">
+ <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/export-file.html" target="_blank">
+  content88
+ </a>
+</p>

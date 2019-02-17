@@ -1,0 +1,169 @@
+content1="Please note: "
+content2="Overview"
+content3="Quick setup"
+content4="Preparing the data source"
+content5="User interface"
+content6="Overview"
+content7="Nested Rows"
+content8="Quick Setup"
+content9="nestedRows"
+content10="true"
+content11="var hot = new Handsontable(container, {
+  data: sourceDataObject,
+  rowHeaders: true,
+  nestedRows: true,
+  contextMenu: true
+});"
+content12="rowHeaders"
+content13="contextMenu"
+content14="true"
+content15="collapse"
+content16="expand"
+content17="add row"
+content18="insert child"
+content19="Preparing the data source"
+content20="Nested Rows"
+content21="array of objects"
+content22="0-level"
+content23="0-level"
+content24="array of objects"
+content25="__children"
+content26="
+        var sourceDataObject = [
+                  {
+                    category: 'Best Rock Performance',
+                    artist: null,
+                    title: null,
+                    label: null,
+                    __children: [
+                      {
+                        title: 'Don\'t Wanna Fight',
+                        artist: 'Alabama Shakes',
+                        label: 'ATO Records'
+                      }, {
+                        title: 'What Kind Of Man',
+                        artist: 'Florence & The Machine',
+                        label: 'Republic'
+                      }, {
+                        title: 'Something From Nothing',
+                        artist: 'Foo Fighters',
+                        label: 'RCA Records'
+                      }, {
+                        title: 'Ex\'s & Oh\'s',
+                        artist: 'Elle King',
+                        label: 'RCA Records'
+                      }, {
+                        title: 'Moaning Lisa Smile',
+                        artist: 'Wolf Alice',
+                        label: 'RCA Records/Dirty Hit'
+                      }
+
+                    ]
+                  }, {
+                    category: 'Best Metal Performance',
+                    __children: [
+                      {
+                        title: 'Cirice',
+                        artist: 'Ghost',
+                        label: 'Loma Vista Recordings'
+                      }, {
+                        title: 'Identity',
+                        artist: 'August Burns Red',
+                        label: 'Fearless Records'
+                      }, {
+                        title: '512',
+                        artist: 'Lamb Of God',
+                        label: 'Epic Records'
+                      }, {
+                        title: 'Thank You',
+                        artist: 'Sevendust',
+                        label: '7Bros Records'
+                      }, {
+                        title: 'Custer',
+                        artist: 'Slipknot',
+                        label: 'Roadrunner Records'
+                      },]
+                  }, {
+                    category: 'Best Rock Song',
+                    __children: [
+                      {
+                        title: 'Don\'t Wanna Fight',
+                        artist: 'Alabama Shakes',
+                        label: 'ATO Records',
+                      }, {
+                        title: 'Ex\'s & Oh\'s',
+                        artist: 'Elle King',
+                        label: 'RCA Records',
+                      }, {
+                        title: 'Hold Back The River',
+                        artist: 'James Bay',
+                        label: 'Republic',
+                      }, {
+                        title: 'Lydia',
+                        artist: 'Highly Suspect',
+                        label: '300 Entertainment',
+                      }, {
+                        title: 'What Kind Of Man',
+                        artist: 'Florence & The Machine',
+                        label: 'Republic',
+                      }
+                    ]
+                  }, {
+                    category: 'Best Rock Album',
+                    __children: [
+                      {
+                        title: 'Drones',
+                        artist: 'Muse',
+                        label: 'Warner Bros. Records',
+                      }, {
+                        title: 'Chaos And The Calm',
+                        artist: 'James Bay',
+                        label: 'Republic',
+                      }, {
+                        title: 'Kintsugi',
+                        artist: 'Death Cab For Cutie',
+                        label: 'Atlantic',
+                      }, {
+                        title: 'Mister Asylum',
+                        artist: 'Highly Suspect',
+                        label: '300 Entertainment',
+                      }, {
+                        title: '.5: The Gray Chapter',
+                        artist: 'Slipknot',
+                        label: 'Roadrunner Records',
+                      }
+                    ]
+                  }],
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: sourceDataObject,
+          rowHeaders: true,
+          colHeaders: ['Category', 'Artist', 'Title', 'Album', 'Label'],
+          nestedRows: true,
+          contextMenu: true,
+        });"
+content27="0-level"
+content28="__children"
+content29="first"
+content30="null"
+content31="''"
+content32="User interface"
+content33="Nested Rows"
+content34="Row headers"
+content35="parent"
+content36="+"
+content37="-"
+content38="Context Menu"
+content39="
+      The context menu has been extended with a few Nested Rows-related options, such as:
+    "
+content40="Insert child row"
+content41="Detach from parent"
+content42="
+    Moreover, the “Insert row above” and “Insert row below” options were modified to work properly with the nested data structure.
+    "
+content43="
+      Help us improve this page
+    "

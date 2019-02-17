@@ -1,0 +1,57 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   To enable these features, use settings
+   <code>
+    content1
+   </code>
+   and
+   <code>
+    content2
+   </code>
+  </p>
+  <p>
+   content3
+  </p>
+  <ul>
+   <li>
+    content4
+   </li>
+   <li>
+    content5
+   </li>
+  </ul>
+  <p>
+   content6
+  </p>
+  <p>
+   content7
+  </p>
+  <div class="scroll-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content8
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/resizing.html" target="_blank">
+   content9
+  </a>
+ </p>
+</div>

@@ -1,0 +1,42 @@
+content1="Overview"
+content2="Setup"
+content3="Example"
+content4="API examples"
+content5="Overview"
+content6="Trim Rows"
+content7="Setup"
+content8="trimRows"
+content9="examples"
+content10="Example"
+content11="
+                    Notice, that the second, third and sixth rows are missing.
+                "
+content12="
+            var example1 = document.getElementById('example1');
+
+            var hot = new Handsontable(example1, {
+                data: Handsontable.helper.createSpreadsheetData(10, 4),
+                colHeaders: true,
+                rowHeaders: true,
+                trimRows: [1, 2, 5]
+            });"
+content13="API examples"
+content14="
+            You can access the plugin instance by calling
+        "
+content15="var plugin = hot.getPlugin('trimRows');"
+content16="trimRow"
+content17="plugin.trimRow(4);"
+content18="trimRow"
+content19="trimRows"
+content20="plugin.trimRow(0, 4, 6);
+// or
+plugin.trimRows([0, 4, 6]);"
+content21="To restore the trimmed row(s), use the following methods:"
+content22="plugin.untrimRow(4);"
+content23="plugin.untrimRow(0, 4, 6);"
+content24="plugin.untrimRows([0, 4, 6]);"
+content25="hot.render();"
+content26="
+        Help us improve this page
+      "

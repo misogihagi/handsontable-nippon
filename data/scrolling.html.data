@@ -1,0 +1,28 @@
+content1="overflow"
+content2="hidden"
+content3="viewportColumnRenderingOffset"
+content4="viewportRowRenderingOffset"
+content5="
+      The overall scrolling performance depends mainly on these four factors:
+    "
+content6="the amount of cells,"
+content7="the amount of custom renderers,"
+content8="the number of features (options) in use,"
+content9="the end-user's machine and browser performance."
+content10="
+      This demo below shows a table of 1 million cells (1000 x 1000):
+    "
+content11="
+        var example = document.getElementById('example1');
+        var hot1 = new Handsontable(example, {
+          data: Handsontable.helper.createSpreadsheetData(1000, 1000),
+          width: 584,
+          height: 320,
+          colWidths: 100,
+          rowHeights: 23,
+          rowHeaders: true,
+          colHeaders: true
+        });"
+content12="
+      Help us improve this page
+    "

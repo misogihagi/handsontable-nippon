@@ -1,0 +1,232 @@
+content1="Registering a renderer"
+content2="Rendering custom HTML in cells"
+content3="Rendering custom HTML in header"
+content4="Registering a renderer"
+content5="When you create a renderer, a good idea is to assign it as an alias that will refer to this particular renderer function.
+      Handsontable defines 10 aliases by default:"
+content6="autocomplete"
+content7="Handsontable.renderers.AutocompleteRenderer"
+content8="base"
+content9="Handsontable.renderers.BaseRenderer"
+content10="checkbox"
+content11="Handsontable.renderers.CheckboxRenderer"
+content12="date"
+content13="Handsontable.renderers.DateRenderer"
+content14="dropdown"
+content15="Handsontable.renderers.DropdownRenderer"
+content16="html"
+content17="Handsontable.renderers.HtmlRenderer"
+content18="numeric"
+content19="Handsontable.renderers.NumericRenderer"
+content20="password"
+content21="Handsontable.renderers.PasswordRenderer"
+content22="text"
+content23="Handsontable.renderers.TextRenderer"
+content24="time"
+content25="Handsontable.renderers.TimeRenderer"
+content26="It gives users a convenient way for defining which renderer should
+      be used when table rendering was triggered. User doesn't need to
+      know which renderer function is responsible for displaying the cell value, he does
+      not even need to know that there is any function at all. What is
+      more, you can change the render function associated with an alias without a
+      need to change code that defines a table."
+content27="Handsontable.renderers.registerRenderer()"
+content28="rendererName"
+content29="renderer"
+content30="rendererName"
+content31="asterixDecoratorRenderer"
+content32="asterix"
+content33="Handsontable.renderers.registerRenderer('asterix', asterixDecoratorRenderer);"
+content34="Choose aliases wisely. If you register your renderer under name that is already registered, the target function will be
+      overwritten:"
+content35="Handsontable.renderers.registerRenderer('text', asterixDecoratorRenderer);
+
+// Now 'text' alias points to `asterixDecoratorRenderer` function, not Handsontable.renderers.TextRenderer"
+content36="So, unless you intentionally want to overwrite an existing alias, try to choose a unique name. A good practice is
+      prefixing your aliases with some custom name (for example your GitHub username) to minimize the possibility of name
+      collisions.
+      This is especially important if you want to publish your renderer, because you never know aliases has been
+      registered by the user who uses your renderer."
+content37="Handsontable.renderers.registerRenderer('asterix', asterixDecoratorRenderer);
+
+// Someone might already registered such alias"
+content38="Handsontable.renderers.registerRenderer('my.asterix', asterixDecoratorRenderer);
+
+// That's better."
+content39="Using an alias"
+content40="The final touch is to using the registered aliases, so that users can easily refer to it without the need
+    to now the actual renderer function is."
+content41="To sum up, a well prepared renderer function should look like this:"
+content42="(function(Handsontable){
+  function customRenderer(hotInstance, td, row, column, prop, value, cellProperties) {
+    // Optionally include `BaseRenderer` which is responsible for adding/removing CSS classes to/from the table cells.
+    Handsontable.renderers.BaseRenderer.apply(this, arguments);
+
+    // ...your custom logic of the renderer
+  }
+
+  // Register an alias
+  Handsontable.renderers.registerRenderer('my.custom', customRenderer);
+
+})(Handsontable);"
+content43="customRenderer"
+content44="var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      renderer: 'my.custom'
+    }
+  ]
+}); "
+content45="Rendering custom HTML in cells"
+content46="This example shows how to use custom cell renderers to display HTML content in a cell.
+      This is a very powerful feature. Just remember to escape any HTML code that could be used for XSS
+      attacks. In the below configuration:"
+content47="Title"
+content48="<script>"
+content49="Description"
+content50="Comments"
+content51="safeHtmlRenderer"
+content52="Cover"
+content53="<img>"
+content54="
+        var
+          data = [
+            {
+              title: "<a href='http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas/dp/1118026691'>Professional JavaScript for Web Developers</a>",
+              description: "This <a href='http://bit.ly/sM1bDf'>book</a> provides a developer-level introduction along with more advanced and useful features of <b>JavaScript</b>.",
+              comments: "I would rate it &#x2605;&#x2605;&#x2605;&#x2605;&#x2606;",
+              cover: "http://ecx.images-amazon.com/images/I/51bRhyVTVGL._SL50_.jpg"
+            },
+            {
+              title: "<a href='http://shop.oreilly.com/product/9780596517748.do'>JavaScript: The Good Parts</a>",
+              description: "This book provides a developer-level introduction along with <b>more advanced</b> and useful features of JavaScript.",
+              comments: "This is the book about JavaScript",
+              cover: "http://ecx.images-amazon.com/images/I/51gdVAEfPUL._SL50_.jpg"
+            },
+            {
+              title: "<a href='http://shop.oreilly.com/product/9780596805531.do'>JavaScript: The Definitive Guide</a>",
+              description: "<em>JavaScript: The Definitive Guide</em> provides a thorough description of the core <b>JavaScript</b> language and both the legacy and standard DOMs implemented in web browsers.",
+              comments: "I've never actually read it, but the <a href='http://shop.oreilly.com/product/9780596805531.do'>comments</a> are highly <strong>positive</strong>.",
+              cover: "http://ecx.images-amazon.com/images/I/51VFNL4T7kL._SL50_.jpg"
+            }
+          ],
+          container1,
+          hot1;
+
+        container1 = document.getElementById('example1');
+        hot1 = new Handsontable(container1, {
+          data: data,
+          colWidths: [200, 200, 200, 80],
+          colHeaders: ["Title", "Description", "Comments", "Cover"],
+          columns: [
+            {data: "title", renderer: "html"},
+            {data: "description", renderer: "html"},
+            {data: "comments", renderer: safeHtmlRenderer},
+            {data: "cover", renderer: coverRenderer}
+          ]
+        });
+
+        // original by: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        function strip_tags(input, allowed) {
+          var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+            commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+
+          // making sure the allowed arg is a string containing only tags in lowercase (<a><b><c>)
+          allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+          return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+            return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+          });
+        }
+
+        function safeHtmlRenderer(instance, td, row, col, prop, value, cellProperties) {
+          var escaped = Handsontable.helper.stringify(value);
+          escaped = strip_tags(escaped, '<em><b><strong><a><big>'); //be sure you only allow certain HTML tags to avoid XSS threats (you should also remove unwanted HTML attributes)
+          td.innerHTML = escaped;
+
+          return td;
+        }
+
+        function coverRenderer (instance, td, row, col, prop, value, cellProperties) {
+          var escaped = Handsontable.helper.stringify(value),
+            img;
+
+          if (escaped.indexOf('http') === 0) {
+            img = document.createElement('IMG');
+            img.src = value;
+
+            Handsontable.dom.addEvent(img, 'mousedown', function (e){
+              e.preventDefault(); // prevent selection quirk
+            });
+
+            Handsontable.dom.empty(td);
+            td.appendChild(img);
+          }
+          else {
+            // render as text
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+          }
+
+          return td;
+        }"
+content55="Rendering custom HTML in header"
+content56="You can also put HTML into row and column headers. If you need to attach events to DOM elements like the checkbox below, just remember to identify the element
+      by class name, not by id. This is because row and column headers are duplicated in the DOM tree and id
+      attribute must be unique."
+content57="
+        var
+          isChecked,
+          container2 = document.getElementById('example2'),
+          hot2;
+
+        hot2 = new Handsontable(container2, {
+          columns: [
+            {},
+            {renderer: customRenderer}
+          ],
+          colHeaders: function (col) {
+            var txt;
+
+            switch (col) {
+              case 0:
+                return '<b>Bold</b> and <em>Beautiful</em>';
+
+              case 1:
+                txt = "Some <input type='checkbox' class='checker' ";
+                txt += isChecked ? 'checked="checked"' : '';
+                txt += "> checkbox";
+
+                return txt;
+            }
+          }
+        });
+
+        function customRenderer(instance, td) {
+          Handsontable.renderers.TextRenderer.apply(this, arguments);
+
+          if (isChecked) {
+            td.style.backgroundColor = 'yellow';
+          }
+          else {
+            td.style.backgroundColor = 'white';
+          }
+
+          return td;
+        }
+
+        Handsontable.dom.addEvent(container2, 'mousedown', function (event) {
+          if (event.target.nodeName == 'INPUT' && event.target.className == 'checker') {
+            event.stopPropagation();
+          }
+        });
+
+        Handsontable.dom.addEvent(container2, 'mouseup', function (event) {
+          if (event.target.nodeName == 'INPUT' && event.target.className == 'checker') {
+            isChecked = !event.target.checked;
+            hot2.render();
+          }
+        });"
+content58="
+      Help us improve this page
+    "

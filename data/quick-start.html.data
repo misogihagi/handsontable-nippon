@@ -1,0 +1,73 @@
+content1="Follow these steps to install Handsontable:"
+content2="Install"
+content3="Create"
+content4="Initialize"
+content5="Alternative installation"
+content6="Step 1: Install"
+content7="Install Handsontable Pro"
+content8="Install Community Edition"
+content9="There are many ways"
+content10="npm"
+content11="npm install handsontable-pro"
+content12="After the installation process is finished, embed this code inside your HTML file:"
+content13="<script src="node_modules/handsontable-pro/dist/handsontable.full.min.js"></script>
+<link href="node_modules/handsontable-pro/dist/handsontable.full.min.css" rel="stylesheet" media="screen">"
+content14="Alternatively, use a CDN:"
+content15="There are many ways"
+content16="npm"
+content17="npm install handsontable"
+content18="After the installation process is finished, embed this code inside your HTML file:"
+content19="<script src="node_modules/handsontable/dist/handsontable.full.min.js"></script>
+<link href="node_modules/handsontable/dist/handsontable.full.min.css" rel="stylesheet" media="screen">"
+content20="Alternatively, use a CDN:"
+content21="Step 2: Create"
+content22="<div>"
+content23="<div id="example"></div>"
+content24="Step 3: Initialize"
+content25="<div id="example">"
+content26="var data = [
+  ["", "Ford", "Tesla", "Toyota", "Honda"],
+  ["2017", 10, 11, 12, 13],
+  ["2018", 20, 11, 14, 13],
+  ["2019", 30, 15, 12, 13]
+];
+
+var container = document.getElementById('example');
+var hot = new Handsontable(container, {
+  data: data,
+  rowHeaders: true,
+  colHeaders: true,
+  filters: true,
+  dropdownMenu: true
+});"
+content27="Step 4: The result"
+content28="That's it, now your Handsontable Pro is up and ready to use:"
+content29="
+      var data = [
+        ["", "Ford", "Tesla", "Toyota", "Honda"],
+        ["2017", 10, 11, 12, 13],
+        ["2018", 20, 11, 14, 13],
+        ["2019", 30, 15, 12, 13]
+      ];
+
+      var container = document.getElementById('example');
+      var hot = new Handsontable(container, {
+        data: data,
+        rowHeaders: true,
+        colHeaders: true,
+        filters: true,
+        dropdownMenu: true
+      });
+    "
+content30="Binding data"
+content31="Alternative installation"
+content32="Download Handsontable Pro"
+content33="Download Handsontable CE"
+content34="Next steps"
+content35="How to connect the data source?"
+content36="How to load and save data?"
+content37="How to create a custom HTML inside a cell or header?"
+content38="How to validate data?"
+content39="
+      Help us improve this page
+    "

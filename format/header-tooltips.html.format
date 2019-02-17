@@ -1,0 +1,153 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#setup">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#options">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#examples">
+     content4
+    </a>
+   </li>
+  </ul>
+  <hr/>
+  <h3 id="overview">
+   content5
+  </h3>
+  <p>
+   The
+   <i>
+    content6
+   </i>
+   plugin allows adding tooltips to the table headers. These tooltips contain the header's label. It a useful
+      feature when the label is wider than the header that is holding it.
+  </p>
+  <h3 id="setup">
+   content7
+  </h3>
+  <p>
+   To enable the plugin, you simply need to set the
+   <code>
+    content8
+   </code>
+   property to
+   <code>
+    content9
+   </code>
+   in Handsontable configuration. This will
+      enable the the tooltips for both rows and columns.
+  </p>
+  <h3 id="options">
+   content10
+  </h3>
+  <p>
+   Instead of setting the
+   <code>
+    content11
+   </code>
+   property to
+   <code>
+    content12
+   </code>
+   , you can define it as an object containing these options:
+  </p>
+  <ul>
+   <li>
+    the
+    <code>
+     content13
+    </code>
+    property defines if tooltips should be added to row headers,
+   </li>
+   <li>
+    the
+    <code>
+     content14
+    </code>
+    property defines if tooltips should be added to column headers,
+   </li>
+   <li>
+    the
+    <code>
+     content15
+    </code>
+    property defines if tooltips should be added only to headers, which content is trimmed by the header itself (the content being wider then the header).
+   </li>
+  </ul>
+  <p>
+   content16
+  </p>
+  <h3 id="examples">
+   content17
+  </h3>
+  <h4>
+   content18
+  </h4>
+  <div data-jsfiddle="example1">
+   <div>
+    <div class="hot" id="example1">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content19
+   </script>
+  </div>
+  <h4>
+   content20
+  </h4>
+  <div data-jsfiddle="example2">
+   <div>
+    <div class="hot" id="example2">
+    </div>
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit in jsFiddle
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content21
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/header-tooltips.html" target="_blank">
+   content22
+  </a>
+ </p>
+</div>

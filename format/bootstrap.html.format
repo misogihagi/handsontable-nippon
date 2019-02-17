@@ -1,0 +1,41 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/bootstrap.html" target="_blank">
+   content1
+  </a>
+  <p>
+   This page demonstrate example of using Handsontable with
+   <a href="http://getbootstrap.com/" target="_blank">
+    content2
+   </a>
+   .
+  </p>
+  <p>
+   In the previous releases of Handsontable if you wanted to use Bootstrap classes like
+   <code>
+    content3
+   </code>
+   ,
+   <code>
+    content4
+   </code>
+   ,
+   <code>
+    content5
+   </code>
+   etc. you had to include
+   <a href="https://github.com/handsontable/handsontable/blob/0.31.0/plugins/bootstrap/handsontable.bootstrap.css" target="_blank">
+    content6
+   </a>
+   file. Since 0.31.0-beta1 that file is not necessary and all the relevant CSS selectors are included to the
+   <code>
+    content7
+   </code>
+   file.
+  </p>
+  <div class="scroll-container bootstrap-container" data-jsfiddle="example1">
+   <iframe allowfullscreen="allowfullscreen" frameborder="0" height="320" src="//jsfiddle.net/jx4myuye/89/embedded/" width="100%">
+   </iframe>
+  </div>
+ </div>
+</div>

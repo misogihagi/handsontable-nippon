@@ -1,0 +1,66 @@
+content1="
+    function getCarData() {
+      return [
+        ["Mercedes", "A 160", "01/14/2017", 6999.95],
+        ["Citroen", "C4 Coupe", "12/01/2018", 8330],
+        ["Audi", "A4 Avant", "11/19/2019", 33900],
+        ["Opel", "Astra", "02/02/2020", 7000],
+        ["BMW", "320i Coupe", "07/24/2021", 30500]
+      ];
+    }"
+content2="type: 'date'"
+content3="columns"
+content4="cells"
+content5="Pikaday datepicker"
+content6="Moment.js"
+content7="<head>"
+content8="/dist/moment/moment.js"
+content9="/dist/pikaday/pikaday.js"
+content10="/dist/pikaday/css/pikaday.css"
+content11="DD/MM/YYYY"
+content12="correctFormat"
+content13="
+        var
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Model', 'Registration date', 'Price'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: ['Audi', 'BMW', 'Chrysler', 'Citroen', 'Mercedes', 'Nissan', 'Opel', 'Suzuki', 'Toyota', 'Volvo'],
+              strict: false
+            },
+            {
+              // 2nd cell is simple text, no special options here
+            },
+            {
+              type: 'date',
+              dateFormat: 'MM/DD/YYYY',
+              correctFormat: true,
+              defaultDate: '01/01/1900',
+              // datePicker additional options (see https://github.com/dbushell/Pikaday#configuration)
+              datePickerConfig: {
+                // First day of the week (0: Sunday, 1: Monday, etc)
+                firstDay: 0,
+                showWeekNumber: true,
+                numberOfMonths: 3,
+                disableDayFn: function(date) {
+                  // Disable Sunday and Saturday
+                  return date.getDay() === 0 || date.getDay() === 6;
+                }
+              }
+            },
+            {
+              type: 'numeric',
+              numericFormat: {
+                pattern: '$ 0,0.00'
+              }
+            }
+          ]
+        });"
+content14="
+      Help us improve this page
+    "

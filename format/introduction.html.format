@@ -1,0 +1,95 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <h3>
+   content1
+  </h3>
+  <p>
+   <strong>
+    content2
+   </strong>
+   is a data grid component including spreadsheet features. Handsontable is written
+          in JavaScript and works with the most popular frameworks such as Angular, Vue and React. It can be easily
+          modified or extended with custom plugins. It binds to any data source using the JSON format and handles
+          large amounts of records. It enables to do basic operations like filtering, sorting and
+   <a href="https://en.wikipedia.org/wiki/Create,_read,_update_and_delete" target="_blank">
+    content3
+   </a>
+   (Create, Read, Update, Delete)
+          as well as advanced ones - multi-column sorting, creating custom cell types and adding data summaries.
+  </p>
+  <p>
+   content4
+  </p>
+  <h3>
+   content5
+  </h3>
+  <p>
+   content6
+  </p>
+  <ul>
+   <li>
+    content7
+   </li>
+   <li>
+    content8
+   </li>
+   <li>
+    content9
+   </li>
+   <li>
+    content10
+   </li>
+   <li>
+    content11
+   </li>
+   <li>
+    content12
+   </li>
+  </ul>
+  <h3>
+   content13
+  </h3>
+  <p>
+   content14
+  </p>
+  <h3>
+   content15
+  </h3>
+  <p>
+   content16
+  </p>
+  <ul>
+   <li>
+    Report a bug on
+    <a href="https://github.com/handsontable/handsontable/issues">
+     content17
+    </a>
+   </li>
+   <li>
+    Ask on
+    <a href="https://stackoverflow.com/questions/tagged/handsontable">
+     content18
+    </a>
+   </li>
+   <li>
+    Ask on
+    <a href="https://forum.handsontable.com">
+     content19
+    </a>
+    (Pro)
+   </li>
+   <li>
+    Ask our
+    <a href="mailto:support@handsontable.com">
+     content20
+    </a>
+    (Pro)
+   </li>
+  </ul>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/introduction.html" target="_blank">
+   content21
+  </a>
+ </p>
+</div>

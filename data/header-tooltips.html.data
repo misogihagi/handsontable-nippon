@@ -1,0 +1,47 @@
+content1="Overview"
+content2="Quick setup"
+content3="Available options"
+content4="Live examples"
+content5="Overview"
+content6="headerTooltips"
+content7="Quick setup"
+content8="headerTooltips"
+content9="true"
+content10="Available options"
+content11="headerTooltips"
+content12="true"
+content13="rows"
+content14="columns"
+content15="onlyTrimmed"
+content16="
+      See the examples for a live preview. Hover a mouse cursor over the header to see the tooltip.
+    "
+content17="Live examples"
+content18="Tooltips displayed for both row and column headers"
+content19="
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(5,10),
+          colHeaders: true,
+          rowHeaders: true,
+          headerTooltips: true
+        });"
+content20="Tooltips displayed only for column headers, and only if their content's width exceeds the header width"
+content21="
+        var example2 = document.getElementById('example2');
+
+        var hot2 = new Handsontable(example2, {
+          data: Handsontable.helper.createSpreadsheetData(4,7),
+          rowHeaders: true,
+          colHeaders: ['A', 'B', 'Long column header label', 'D', 'Another long label', 'E', 'F'],
+          colWidths: [null, null, 40, null, 50],
+          headerTooltips: {
+            rows: false,
+            columns: true,
+            onlyTrimmed: true
+          }
+        });"
+content22="
+      Help us improve this page
+    "

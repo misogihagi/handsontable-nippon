@@ -1,0 +1,37 @@
+content1="Handsontable for Angular"
+content2="Installation"
+content3="npm"
+content4="npm install handsontable-pro @handsontable-pro/angular"
+content5="npm install handsontable @handsontable/angular"
+content6="Basic usage"
+content7="@import '~handsontable-pro/dist/handsontable.full.css';"
+content8="@import '~handsontable/dist/handsontable.full.css';"
+content9="import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+import { HotTableModule } from '@handsontable-pro/angular';
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+    HotTableModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+        "
+content10="<hot-table
+  [colHeaders]="true"
+  [rowHeaders]="true"
+  [data]="dataset"></hot-table>
+        "
+content11="License"
+content12="
+          Handsontable for Angular is an open source library released free under the MIT license.
+      "
+content13="The MIT license"
+content14="Help us improve this page"

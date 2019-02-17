@@ -1,0 +1,290 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-registering-renderer">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-cell">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-header">
+     content3
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container head-gap clearfix" name="registering-renderer">
+  <h3 id="page-registering-renderer">
+   content4
+  </h3>
+  <p>
+   content5
+  </p>
+  <ul>
+   <li>
+    <code>
+     content6
+    </code>
+    for
+    <code>
+     content7
+    </code>
+   </li>
+   <li>
+    <code>
+     content8
+    </code>
+    for
+    <code>
+     content9
+    </code>
+   </li>
+   <li>
+    <code>
+     content10
+    </code>
+    for
+    <code>
+     content11
+    </code>
+   </li>
+   <li>
+    <code>
+     content12
+    </code>
+    for
+    <code>
+     content13
+    </code>
+   </li>
+   <li>
+    <code>
+     content14
+    </code>
+    for
+    <code>
+     content15
+    </code>
+   </li>
+   <li>
+    <code>
+     content16
+    </code>
+    for
+    <code>
+     content17
+    </code>
+   </li>
+   <li>
+    <code>
+     content18
+    </code>
+    for
+    <code>
+     content19
+    </code>
+   </li>
+   <li>
+    <code>
+     content20
+    </code>
+    for
+    <code>
+     content21
+    </code>
+   </li>
+   <li>
+    <code>
+     content22
+    </code>
+    for
+    <code>
+     content23
+    </code>
+   </li>
+   <li>
+    <code>
+     content24
+    </code>
+    for
+    <code>
+     content25
+    </code>
+   </li>
+  </ul>
+  <p>
+   content26
+  </p>
+  <p>
+   To register your own alias use
+   <code>
+    content27
+   </code>
+   function. It takes two arguments:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content28
+    </code>
+    - a string representing a renderer function
+   </li>
+   <li>
+    <code>
+     content29
+    </code>
+    - a renderer function that will be represented by
+    <code>
+     content30
+    </code>
+   </li>
+  </ul>
+  <p>
+   If you'd like to register
+   <code>
+    content31
+   </code>
+   under alias
+   <code>
+    content32
+   </code>
+   you have to call:
+  </p>
+  <pre><code class="lang-javascript">content33</code></pre>
+  <p>
+   content34
+  </p>
+  <pre><code class="lang-javascript">content35</code></pre>
+  <p>
+   content36
+  </p>
+  <pre><code class="lang-javascript">content37</code></pre>
+  <pre><br/><code class="lang-javascript">content38</code></pre>
+  <h3 id="using-an-alias">
+   content39
+  </h3>
+  <p>
+   content40
+  </p>
+  <p>
+   content41
+  </p>
+  <pre><code class="lang-javascript">content42</code></pre>
+  <p>
+   From now on, you can use
+   <code>
+    content43
+   </code>
+   like so:
+  </p>
+  <pre><code class="lang-javascript">content44</code></pre>
+ </div>
+ <div class="example-container clearfix" name="cell">
+  <h3 id="page-cell">
+   content45
+  </h3>
+  <p>
+   content46
+  </p>
+  <ul>
+   <li>
+    <strong>
+     content47
+    </strong>
+    column uses built-in HTML renderer that allows any HTML. This is unsafe if your code comes from untrusted source. Take notice that a Handsontable user can use it to enter
+    <code>
+     content48
+    </code>
+    or other potentially malicious tags using the cell editor!
+   </li>
+   <li>
+    <strong>
+     content49
+    </strong>
+    column also uses HTML renderer (same as above)
+   </li>
+   <li>
+    <strong>
+     content50
+    </strong>
+    column uses a custom renderer (
+    <code>
+     content51
+    </code>
+    ). This should be safe for user input, because only certain tags are allowed
+   </li>
+   <li>
+    <strong>
+     content52
+    </strong>
+    column accepts image URL as a string and converts it to a
+    <code>
+     content53
+    </code>
+    in the renderer
+   </li>
+  </ul>
+  <br>
+   <div data-jsfiddle="example1">
+    <div class="hot" id="example1">
+    </div>
+   </div>
+   <div class="codeLayout">
+    <div class="buttons">
+     <button class="jsFiddleLink" data-runfiddle="example1">
+      <i class="fa fa-jsfiddle">
+      </i>
+      Edit
+     </button>
+     <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+      <i class="fa fa-terminal">
+      </i>
+      Dump data to console
+     </button>
+    </div>
+    <script data-jsfiddle="example1">
+     content54
+    </script>
+   </div>
+  </br>
+ </div>
+ <div class="example-container clearfix head-gap" name="header">
+  <h3 id="page-header">
+   content55
+  </h3>
+  <p>
+   content56
+  </p>
+  <div data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content57
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/custom-renderers.html" target="_blank">
+   content58
+  </a>
+ </p>
+</div>

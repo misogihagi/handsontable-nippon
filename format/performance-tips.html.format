@@ -1,0 +1,84 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <p>
+   content1
+  </p>
+  <p>
+   content2
+  </p>
+  <h3>
+   content3
+  </h3>
+  <p>
+   You can try setting a constant size for your table's columns. This way, Handsontable won't have
+            to calculate the optimal width for each column. In order to do that, define the column widths
+            in the colWidths property of your Handsontable instance configuration, for example:
+   <pre><code>content4</code></pre>
+  </p>
+  <p>
+   For more information, see
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#colWidths" target="_blank">
+    content5
+   </a>
+   .
+  </p>
+  <p>
+   content6
+  </p>
+  <h3>
+   content7
+  </h3>
+  <p>
+   You can tweak the value of the
+   <code>
+    content8
+   </code>
+   and
+   <code>
+    content9
+   </code>
+   options.
+            They allow you to define the amount of width/height-related calculations
+            made during the table's initialization.
+  </p>
+  <p>
+   For more information, see our documentation for
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#autoRowSize">
+    content10
+   </a>
+   and
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#autoColumnSize">
+    content11
+   </a>
+   .
+  </p>
+  <h3>
+   content12
+  </h3>
+  <p>
+   content13
+  </p>
+  <p>
+   For more information, see our documentation for
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#viewportRowRenderingOffset">
+    content14
+   </a>
+   and
+   <a href="/docs/&lt;?js= version ?&gt;/Options.html#viewportColumnRenderingOffset">
+    content15
+   </a>
+   .
+  </p>
+  <h3>
+   content16
+  </h3>
+  <p>
+   content17
+  </p>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/performance-tips.html" target="_blank">
+   content18
+  </a>
+ </p>
+</div>

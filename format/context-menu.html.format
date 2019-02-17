@@ -1,0 +1,659 @@
+<div class="static-content">
+ <script data-jsfiddle="common">
+  content1
+ </script>
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-default">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#page-specific">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#page-custom">
+     content4
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix" name="default">
+  <h3 id="page-default">
+   content5
+  </h3>
+  <p>
+   To run the basic configuration of the Context Menu, just set the contextMenu option to
+   <code>
+    content6
+   </code>
+   .
+  </p>
+  <p>
+   From version
+   <code>
+    content7
+   </code>
+   , context menu also works for row and column headers. When the context menu for the row
+      header is opened, the column options are disabled. Likewise, when the context menu for the column header is opened,
+      the row options are disabled
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content8
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="specific">
+  <h3 id="page-specific">
+   content9
+  </h3>
+  <p>
+   content10
+  </p>
+  <table class="static-data features-table">
+   <thead>
+    <tr>
+     <th>
+      content11
+     </th>
+     <th>
+      content12
+     </th>
+     <th>
+      content13
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>
+      <code>
+       content14
+      </code>
+     </td>
+     <td>
+      content15
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content16
+      </code>
+     </td>
+     <td>
+      content17
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content18
+      </code>
+     </td>
+     <td>
+      content19
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content20
+      </code>
+     </td>
+     <td>
+      content21
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content22
+      </code>
+     </td>
+     <td>
+      content23
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content24
+      </code>
+     </td>
+     <td>
+      content25
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content26
+      </code>
+     </td>
+     <td>
+      content27
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content28
+      </code>
+     </td>
+     <td>
+      content29
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content30
+      </code>
+     </td>
+     <td>
+      content31
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/UndoRedo.html">
+       content32
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content33
+      </code>
+     </td>
+     <td>
+      content34
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/UndoRedo.html">
+       content35
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content36
+      </code>
+     </td>
+     <td>
+      content37
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content38
+      </code>
+     </td>
+     <td>
+      content39
+     </td>
+     <td>
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content40
+      </code>
+     </td>
+     <td>
+      content41
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-copy-paste.html">
+       content42
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content43
+      </code>
+     </td>
+     <td>
+      content44
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-copy-paste.html">
+       content45
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content46
+      </code>
+     </td>
+     <td>
+      content47
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-freezing.html">
+       content48
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content49
+      </code>
+     </td>
+     <td>
+      content50
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-freezing.html">
+       content51
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content52
+      </code>
+     </td>
+     <td>
+      content53
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-customizing-borders.html">
+       content54
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content55
+      </code>
+     </td>
+     <td>
+      content56
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-comments_.html">
+       content57
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content58
+      </code>
+     </td>
+     <td>
+      content59
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-comments_.html">
+       content60
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content61
+      </code>
+     </td>
+     <td>
+      content62
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-comments_.html">
+       content63
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content64
+      </code>
+     </td>
+     <td>
+      content65
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-merged-cells.html">
+       content66
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content67
+      </code>
+     </td>
+     <td>
+      content68
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-nested-rows.html">
+       content69
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content70
+      </code>
+     </td>
+     <td>
+      content71
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-nested-rows.html">
+       content72
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content73
+      </code>
+     </td>
+     <td>
+      content74
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-columns.html">
+       content75
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content76
+      </code>
+     </td>
+     <td>
+      content77
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-columns.html">
+       content78
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content79
+      </code>
+     </td>
+     <td>
+      content80
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-rows.html">
+       content81
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content82
+      </code>
+     </td>
+     <td>
+      content83
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-hiding-rows.html">
+       content84
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content85
+      </code>
+     </td>
+     <td>
+      content86
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-filtering.html">
+       content87
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content88
+      </code>
+     </td>
+     <td>
+      content89
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-filtering.html">
+       content90
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content91
+      </code>
+     </td>
+     <td>
+      content92
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-filtering.html">
+       content93
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content94
+      </code>
+     </td>
+     <td>
+      content95
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-filtering.html">
+       content96
+      </a>
+      turned on
+     </td>
+    </tr>
+    <tr>
+     <td>
+      <code>
+       content97
+      </code>
+     </td>
+     <td>
+      content98
+     </td>
+     <td>
+      Plugin
+      <a href="/docs/&lt;?js= version ?&gt;/demo-filtering.html">
+       content99
+      </a>
+      turned on
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <div data-jsfiddle="example2">
+   <div class="hot head-gap" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content100
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap" name="custom">
+  <h3 id="page-custom">
+   content101
+  </h3>
+  <p>
+   content102
+  </p>
+  <p>
+   <ul>
+    <li>
+     content103
+    </li>
+    <li>
+     content104
+    </li>
+    <li>
+     content105
+    </li>
+    <li>
+     content106
+    </li>
+    <li>
+     content107
+    </li>
+   </ul>
+  </p>
+  <div data-jsfiddle="example3">
+   <div class="hot" id="example3">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example3">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example3">
+    content108
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/context-menu.html" target="_blank">
+   content109
+  </a>
+ </p>
+</div>

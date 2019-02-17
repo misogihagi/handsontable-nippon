@@ -1,0 +1,103 @@
+content1="
+    function getCarData() {
+      return [
+        {car: "Mercedes A 160", year: 2017, available: true, comesInBlack: 'yes'},
+        {car: "Citroen C4 Coupe", year: 2018, available: false, comesInBlack: 'yes'},
+        {car: "Audi A4 Avant", year: 2019, available: true, comesInBlack: 'no'},
+        {car: "Opel Astra", year: 2020, available: false, comesInBlack: 'yes'},
+        {car: "BMW 320i Coupe", year: 2021, available: false, comesInBlack: 'no'}
+      ];
+    }"
+content2="Checkbox true/false values"
+content3="Checkbox template"
+content4="Checkbox labels"
+content5="Data in such cells will be rendered as checkbox
+      and can be easily changed by checking/unchecking the checkbox."
+content6="SPACE"
+content7="SPACE"
+content8="Checkbox true/false values"
+content9="true"
+content10="false"
+content11="
+        var example1 = document.getElementById('example1'),
+          hot1;
+
+        hot1 = new Handsontable(example1, {
+          data: getCarData(),
+          colHeaders: ['Car model', 'Year of manufacture', 'Available'],
+          columns: [
+            {
+              data: 'car'
+            },
+            {
+              data: 'year',
+              type: 'numeric'
+            },
+            {
+              data: 'available',
+              type: 'checkbox'
+            }
+          ]
+        });"
+content12="Checkbox template"
+content13="true"
+content14="false"
+content15="checkedTemplate"
+content16="uncheckedTemplate"
+content17="
+        var example2 = document.getElementById('example2');
+
+        var hot2 = new Handsontable(example2, {
+          data: getCarData(),
+          colHeaders: ['Car model', 'Year of manufacture', 'Comes in black'],
+          columns: [
+            {
+              data: 'car'
+            },
+            {
+              data: 'year',
+              type: 'numeric'
+            },
+            {
+              data: 'comesInBlack',
+              type: 'checkbox',
+              checkedTemplate: 'yes',
+              uncheckedTemplate: 'no'
+            }
+          ]
+        });"
+content18="Checkbox labels"
+content19="label"
+content20="
+        var example3 = document.getElementById('example3');
+
+        var hot3 = new Handsontable(example3, {
+          data: getCarData(),
+          colHeaders: ['Car model', 'Accepted', 'Comes in black'],
+          columns: [
+            {
+              data: 'car'
+            },
+            {
+              data: 'available',
+              type: 'checkbox',
+              label: {
+                position: 'after',
+                property: 'car' // Read value from row object
+              },
+            },
+            {
+              data: 'comesInBlack',
+              type: 'checkbox',
+              checkedTemplate: 'yes',
+              uncheckedTemplate: 'no',
+              label: {
+                position: 'before',
+                value: 'In black? '
+              },
+            },
+          ]
+        });"
+content21="
+      Help us improve this page
+    "

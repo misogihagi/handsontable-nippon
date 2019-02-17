@@ -1,0 +1,128 @@
+content1="
+    function getCarData() {
+      return [
+        ["BMW", 2017, "black", "black"],
+        ["Nissan", 2018, "blue", "blue"],
+        ["Chrysler", 2019, "yellow", "black"],
+        ["Volvo", 2020, "white", "gray"]
+      ];
+    }"
+content2="Autocomplete lazy mode"
+content3="Autocomplete strict mode"
+content4="Autocomplete strict mode (Ajax)"
+content5="Autocomplete lazy mode"
+content6="lazy mode"
+content7="Handsontable cell type."
+content8="source"
+content9="
+        var
+          example1 = document.getElementById('example1'),
+          hot1;
+
+        hot1 = new Handsontable(example1, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: ['BMW', 'Chrysler', 'Nissan', 'Suzuki', 'Toyota', 'Volvo'],
+              strict: false
+            },
+            {type: 'numeric'},
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange and another color', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: false,
+              visibleRows: 4
+            },
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange and another color', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: false,
+              trimDropdown: false
+            }
+          ]
+        });"
+content10="Autocomplete strict mode"
+content11="strict
+      mode"
+content12="Handsontable cell type"
+content13="If there is at least one option visible, there always is a selection in HOT-in-HOT."
+content14="ARROW UP"
+content15="allowInvalid"
+content16="allowInvalid: true"
+content17="source"
+content18="allowInvalid: false"
+content19="source"
+content20="ENTER"
+content21="
+        var
+          container2 = document.getElementById('example2'),
+          hot2;
+
+        hot2 = new Handsontable(container2, {
+          data: getCarData(),
+          colHeaders: ['Car<br>(allowInvalid true)', 'Year', 'Chassis color<br>(allowInvalid false)', 'Bumper color<br>(allowInvalid true)'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: ['BMW', 'Chrysler', 'Nissan', 'Suzuki', 'Toyota', 'Volvo'],
+              strict: true
+              // allowInvalid: true // true is default
+            },
+            {},
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: true,
+              allowInvalid: false
+            },
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: true,
+              allowInvalid: true //true is default
+            }
+          ]
+        });"
+content22="Autocomplete strict mode (Ajax)"
+content23="Autocomplete can be also used with Ajax data source. In the below example, suggestions for the "Car" column are
+      loaded from server. To load data from remote (asynchronous) source, assign a function to the 'source' property. Function should
+      perform the server side request and call the callback function when the result is available."
+content24="
+        var
+          container3 = document.getElementById('example3'),
+          hot3;
+
+        hot3 = new Handsontable(container3, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: function (query, process) {
+                $.ajax({
+                  //url: 'php/cars.php', // commented out because our website is hosted as a set of static pages
+                  url: 'scripts/json/autocomplete.json',
+                  dataType: 'json',
+                  data: {
+                    query: query
+                  },
+                  success: function (response) {
+                    console.log("response", response);
+                    //process(JSON.parse(response.data)); // JSON.parse takes string as a argument
+                    process(response.data);
+
+                  }
+                });
+              },
+              strict: true
+            },
+            {}, // Year is a default text column
+            {}, // Chassis color is a default text column
+            {} // Bumper color is a default text column
+          ]
+        });"
+content25="
+      Help us improve this page
+    "

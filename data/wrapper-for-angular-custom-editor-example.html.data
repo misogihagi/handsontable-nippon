@@ -1,0 +1,66 @@
+content1="@handsontable-pro/angular"
+content2="placeholder"
+content3="input"
+content4="
+      <app-root></app-root>
+    "
+content5="
+        // app.component.ts
+        import { Component } from '@angular/core';
+        import * as Handsontable from 'handsontable-pro';
+
+        class CustomEditor extends Handsontable.editors.TextEditor {
+          constructor(props) {
+            super(props);
+          }
+
+          createElements() {
+            super.createElements();
+
+            this.TEXTAREA = document.createElement('input');
+            this.TEXTAREA.setAttribute('placeholder', 'Custom placeholder');
+            this.TEXTAREA.className = 'handsontableInput';
+            this.textareaStyle = this.TEXTAREA.style;
+            Handsontable.dom.empty(this.TEXTAREA_PARENT);
+            this.TEXTAREA_PARENT.appendChild(this.TEXTAREA);
+          }
+        }
+
+        @Component({
+          selector: 'app-root',
+          template: `
+          <div class="hot">
+            <hot-table [settings]="hotSettings"></hot-table>
+          </div>
+          `,
+        })
+        class AppComponent {
+          hotSettings: Handsontable.GridSettings = {
+            startRows: 5,
+            columns: [
+              {
+                editor: CustomEditor
+              }
+            ],
+            colHeaders: true,
+            colWidths: 200
+          };
+        }
+
+        // app.module.ts
+        import { NgModule } from '@angular/core';
+        import { BrowserModule } from '@angular/platform-browser';
+        import { HotTableModule } from '@handsontable-pro/angular';
+
+        @NgModule({
+          imports:      [ BrowserModule, HotTableModule ],
+          declarations: [ AppComponent ],
+          bootstrap:    [ AppComponent ]
+        })
+        class AppModule { }
+
+        // bootstrap
+        import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
+
+        platformBrowserDynamic().bootstrapModule(AppModule).catch(err => { console.error(err) });"
+content6="Help us improve this page"

@@ -1,0 +1,46 @@
+content1="
+            Handsontable performs multiple calculations to display the grid properly. The most demanding actions are
+            performed on load, change and scroll events. Every single operation decreases the performance, but most of
+            them are unavoidable.
+        "
+content2="
+            We use Performance Lab to measure the execution times in various configurations. Some tests have shown that
+            there are methods which may potentially boost the performance of your application. Those work only in certain
+            cases, but we hope they can be successfully applied to your app as well.
+        "
+content3="Set constant size"
+content4="var hot = new Handsontable(obj, {
+    // other options
+    colWidths: [50, 150, 45]
+});"
+content5="
+            our documentation"
+content6="
+            As Handsontable won't do the column width calculations, you need to make sure,
+            that your table contents fit inside the columns with the provided widths.
+        "
+content7="Turn off autoRowSize and/or autoColumnSize"
+content8="autoRowSize"
+content9="autoColumnSize"
+content10="rows"
+content11="columns"
+content12="Define the number of pre-rendered rows and columns"
+content13="
+            You can explicitly specify the number of rows and columns to be rendered
+            outside of the visible part of the table. In some cases you can achieve
+            better results by setting a lower number (as less elements get rendered),
+            but sometimes setting a larger number may also work well (as less operations
+            are being made on each scroll event). Tweaking these settings and finding the
+            sweet spot may improve the feeling of your Handsontable implementation.
+        "
+content14="rows"
+content15="columns"
+content16="Rule of thumb: don't use too much styling"
+content17="
+            Changing your background, font colors etc. shouldn't lower the performance,
+            however adding too many CSS animations, transitions and other calculation-consuming attributes may
+            impact the performance, so keep them it a reasonable level.
+        "
+content18="
+        Help us improve this page
+      "

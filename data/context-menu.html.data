@@ -1,0 +1,209 @@
+content1="
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }"
+content2="Context menu with default options"
+content3="Context menu with specific options"
+content4="Context menu with fully custom configuration"
+content5="Context menu with default options"
+content6="true"
+content7="0.11"
+content8="
+        var example1 = document.getElementById('example1');
+        var settings1 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true
+        };
+
+        var hot1 = new Handsontable(example1, settings1);"
+content9="Context menu with specific options"
+content10="You can limit options available in the context menu using contextMenu option as an array of keys which are strings:"
+content11="Key"
+content12="Purpose"
+content13="Extra conditions"
+content14="row_above"
+content15="Insert row above action"
+content16="row_below"
+content17="Insert row below action"
+content18="col_left"
+content19="Insert column left action"
+content20="col_right"
+content21="Insert column right action"
+content22="---------"
+content23="Separator"
+content24="remove_row"
+content25="Remove row(s) actions"
+content26="remove_col"
+content27="Remove column(s) action"
+content28="clear_column"
+content29="Clear column values action"
+content30="undo"
+content31="Undo action"
+content32="UndoRedo"
+content33="redo"
+content34="Redo action"
+content35="UndoRedo"
+content36="make_read_only"
+content37="Make read only action"
+content38="alignment"
+content39="Alignment actions"
+content40="cut"
+content41="Cut action"
+content42="CopyPaste"
+content43="copy"
+content44="Copy action"
+content45="CopyPaste"
+content46="freeze_column"
+content47="Freeze column action"
+content48="ManualColumnFreeze"
+content49="unfreeze_column"
+content50="Unfreeze column action"
+content51="ManualColumnFreeze"
+content52="borders"
+content53="Custom borders actions"
+content54="CustomBorders"
+content55="commentsAddEdit"
+content56="Add and edit comment actions"
+content57="Comments"
+content58="commentsRemove"
+content59="Remove comment action"
+content60="Comments"
+content61="commentsReadOnly"
+content62="Make comment read only action"
+content63="Comments"
+content64="mergeCells"
+content65="Merge and unmerge cells actions"
+content66="MergeCells"
+content67="add_child"
+content68="Insert child row action"
+content69="NestedRows"
+content70="detach_from_parent"
+content71="Detach from parent row action"
+content72="NestedRows"
+content73="hidden_columns_hide"
+content74="Hide column(s) action"
+content75="HiddenColumns"
+content76="hidden_columns_show"
+content77="Show hidden column(s) action"
+content78="HiddenColumns"
+content79="hidden_rows_hide"
+content80="Hide row(s) action"
+content81="HiddenRows"
+content82="hidden_rows_show"
+content83="Show hidden row(s) action"
+content84="HiddenRows"
+content85="filter_by_condition"
+content86="First conditions select element"
+content87="Filters"
+content88="filter_operators"
+content89="Operation select element"
+content90="Filters"
+content91="filter_by_condition2"
+content92="Second conditions select element"
+content93="Filters"
+content94="filter_by_value"
+content95="Value select element"
+content96="Filters"
+content97="filter_action_bar"
+content98="Action bar element"
+content99="Filters"
+content100="
+        var example2 = document.getElementById('example2');
+        var settings2 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: ['row_above', 'row_below', 'remove_row']
+        };
+
+        var hot2 = new Handsontable(example2, settings2);"
+content101="Context menu with fully custom configuration"
+content102="This example shows how to:"
+content103="add common callback for all options"
+content104="dynamically disable option"
+content105="set custom text for predefined option"
+content106="add own custom option"
+content107="add callback for specific option"
+content108="
+        var example3 = document.getElementById('example3');
+        var settings3 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: {
+            callback: function (key, selection, clickEvent) {
+              // Common callback for all options
+              console.log(key, selection, clickEvent);
+            },
+            items: {
+              "row_above": {
+                disabled: function () { // `disabled` can be a boolean or a function
+                  // Disable option when first row was clicked
+                  return this.getSelectedLast()[0] === 0; // `this` === hot3
+                }
+              },
+              "row_below": {
+                name: 'Click to add row below' // Set custom text for predefined option
+              },
+              "about": { // Own custom option
+                name: function () { // `name` can be a string or a function
+                  return '<b>Custom option</b>'; // Name can contain HTML
+                },
+                hidden: function () { // `hidden` can be a boolean or a function
+                  // Hide the option when the first column was clicked
+                  return this.getSelectedLast()[1] == 0; // `this` === hot3
+                },
+                callback: function(key, selection, clickEvent) { // Callback for specific option
+                  setTimeout(function() {
+                    alert('Hello world!'); // Fire alert after menu close (with timeout)
+                  }, 0);
+                }
+              },
+              "colors": { // Own custom option
+                name: 'Colors...',
+                submenu: {
+                  // Custom option with submenu of items
+                  items: [
+                    {
+                      // Key must be in the form "parent_key:child_key"
+                      key: 'colors:red',
+                      name: 'Red',
+                      callback: function(key, selection, clickEvent) {
+                        setTimeout(function() {
+                          alert('You clicked red!');
+                        }, 0);
+                      }
+                    },
+                    { key: 'colors:green', name: 'Green' },
+                    { key: 'colors:blue', name: 'Blue' }
+                  ]
+                }
+              },
+              "credits": { // Own custom property
+                // Custom rendered element in the context menu
+                renderer: function(hot, wrapper, row, col, prop, itemValue) {
+                  var elem = document.createElement('marquee');
+                  elem.style.cssText = 'background: lightgray;';
+                  elem.textContent = 'Brought to you by...';
+                  return elem;
+                },
+                disableSelection: true, // Prevent mouseoever from highlighting the item for selection
+                isCommand: false // Prevent clicks from executing command and closing the menu
+              }
+            }
+          }
+        };
+
+        var hot3 = new Handsontable(example3, settings3);"
+content109="
+      Help us improve this page
+    "

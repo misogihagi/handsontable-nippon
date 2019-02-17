@@ -1,0 +1,208 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-registering-validator">Registering a validator</a></li>
+      <li><a href="#page-full-featured-example">Full featured example</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container head-gap clearfix" name="registering-validator">
+    <h3 id="page-registering-validator">Registering a validator</h3>
+    <p>When you create a validator, a good idea is to assign it as an alias that will refer to this particular validator function.
+      Handsontable defines 5 aliases by default:</p>
+    <ul>
+      <li><code>autocomplete</code> for <code>Handsontable.validators.AutocompleteValidator</code></li>
+      <li><code>date</code> for <code>Handsontable.validators.DateValidator</code></li>
+      <li><code>dropdown</code> for <code>Handsontable.validators.DropdownValidator</code></li>
+      <li><code>numeric</code> for <code>Handsontable.validators.NumericValidator</code></li>
+      <li><code>time</code> for <code>Handsontable.validators.TimeValidator</code></li>
+    </ul>
+    <p>It gives users a convenient way for defining which validator should
+      be used when table validation was triggered. User doesn't need to
+      know which validator function is responsible for checking the cell value, he does
+      not even need to know that there is any function at all. What is
+      more, you can change the validator function associated with an alias without a
+      need to change code that defines a table.</p>
+    <p>To register your own alias use <code>Handsontable.validators.registerValidator()</code> function. It takes two arguments:
+    </p>
+    <ul>
+      <li><code>validatorName</code> - a string representing a validator function</li>
+      <li><code>validator</code> - a validator function that will be represented by <code>validatorName</code></li>
+    </ul>
+    <p>If you'd like to register <code>creditCardValidator</code> under alias <code>credit-card</code> you have to call:</p>
+    <pre><code class="lang-javascript">Handsontable.validators.registerValidator('credit-card', creditCardValidator);</code></pre>
+    <p>Choose aliases wisely. If you register your validator under name that is already registered, the target function will be
+      overwritten:</p>
+    <pre><code class="lang-javascript">Handsontable.validators.registerValidator('date', creditCardValidator);
+
+// Now 'date' alias points to `creditCardValidator` function, not Handsontable.validators.DateValidator</code></pre>
+    <p>So, unless you intentionally want to overwrite an existing alias, try to choose a unique name. A good practice is
+      prefixing your aliases with some custom name (for example your GitHub username) to minimize the possibility of name
+      collisions.
+      This is especially important if you want to publish your validator, because you never know aliases has been
+      registered by the user who uses your validator.</p>
+    <pre><code class="lang-javascript">Handsontable.validators.registerValidator('credit-card', creditCardValidator);
+
+// Someone might already registered such alias</code></pre>
+    <pre><br><code class="lang-javascript">Handsontable.validators.registerValidator('my.credit-card', creditCardValidator);
+
+// That's better.</code></pre>
+    <h3 id="using-an-alias">Using an alias</h3>
+    <p>The final touch is to using the registered aliases, so that users can easily refer to it without the need
+      to now the actual validator function is.</p>
+    <p>To sum up, a well prepared validator function should look like this:</p>
+    <pre><code class="lang-javascript">(function(Handsontable){
+  function customValidator(query, callback) {
+    // ...your custom logic of the validator
+
+    callback(/* Pass `true` or `false` based on your logic */);
+  }
+
+  // Register an alias
+  Handsontable.validators.registerValidator('my.custom', customValidator);
+
+})(Handsontable);</code></pre>
+    <p>From now on, you can use <code>customValidator</code> like so:</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      validator: 'my.custom'
+    }
+  ]
+}); </code></pre>
+  </div>
+  <div class="example-container clearfix" name="full-featured-example">
+    <h3 id="page-full-featured-example">Full featured example</h3>
+    <p>Use the <strong>validator</strong> (see <a
+        href="/docs/<?js= version ?>/Options.html#validator">options page</a>) method to easily
+      validate synchronous or asynchronous changes to a cell. If you
+      need more control, <strong>beforeValidate</strong> and <strong>afterValidate</strong> plugin hooks are available (see <a
+          href="/docs/<?js= version ?>/Hooks.html#event:beforeValidate">hooks page</a>).
+      In the below example, <code>email_validator_fn</code> is an async validator that resolves after 1000 ms.
+    </p>
+    <p>Use the <strong>allowInvalid</strong> option (see <a href="/docs/<?js= version ?>/Options.html#allowInvalid">options page</a>) to define if the
+      grid should accept input that does not validate.
+      If you need to modify the input (e.g. censor bad words, uppercase first letter), use the plugin hook <strong>beforeChange</strong>
+      (see <a href="/docs/<?js= version ?>/Hooks.html#event:beforeChange">hooks page</a>).
+    </p>
+    <p>
+      By default all invalid cells are marked by <code>htInvalid</code> CSS class. If you want to change class to another you can basically add
+      the <a href="/docs/<?js= version ?>/Options.html#invalidCellClassName">invalidCellClassName</a> option to Handsontable settings. For example:
+    <pre><code class="lang-js">// For whole table
+...
+invalidCellClassName: 'myInvalidClass',
+...
+
+// For specified columns
+...
+columns: [
+  {data: 'firstName', invalidCellClassName: 'myInvalidClass'},
+  {data: 'lastName', invalidCellClassName: 'myInvalidSecondClass'},
+  {data: 'address'},
+]
+...
+</code></pre>
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+
+      <p>Callback console: <code>[[row, col, oldValue, newValue], ...]</code></p>
+      <p>Edit the above grid to see callback</p>
+      <p>
+        <b>Note:</b> Please keep in mind that changes in table are applied after running <b>all validators</b> (both synchronous and and asynchronous) from <b>every</b> changed cells.
+      </p>
+
+
+      <pre id="example1console" class="console"></pre>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var people = [
+              {id: 1, name: {first: 'Joe', last: 'Fabiano'}, ip: '0.0.0.1', email: 'Joe.Fabiano@ex.com'},
+              {id: 2, name: {first: 'Fred', last: 'Wecler'}, ip: '0.0.0.1', email: 'Fred.Wecler@ex.com'},
+              {id: 3, name: {first: 'Steve', last: 'Wilson'}, ip: '0.0.0.1', email: 'Steve.Wilson@ex.com'},
+              {id: 4, name: {first: 'Maria', last: 'Fernandez'}, ip: '0.0.0.1', email: 'M.Fernandez@ex.com'},
+              {id: 5, name: {first: 'Pierre', last: 'Barbault'}, ip: '0.0.0.1', email: 'Pierre.Barbault@ex.com'},
+              {id: 6, name: {first: 'Nancy', last: 'Moore'}, ip: '0.0.0.1', email: 'Nancy.Moore@ex.com'},
+              {id: 7, name: {first: 'Barbara', last: 'MacDonald'}, ip: '0.0.0.1', email: 'B.MacDonald@ex.com'},
+              {id: 8, name: {first: 'Wilma', last: 'Williams'}, ip: '0.0.0.1', email: 'Wilma.Williams@ex.com'},
+              {id: 9, name: {first: 'Sasha', last: 'Silver'}, ip: '0.0.0.1', email: 'Sasha.Silver@ex.com'},
+              {id: 10, name: {first: 'Don', last: 'Pérignon'}, ip: '0.0.0.1', email: 'Don.Pérignon@ex.com'},
+              {id: 11, name: {first: 'Aaron', last: 'Kinley'}, ip: '0.0.0.1', email: 'Aaron.Kinley@ex.com'}
+            ],
+            example1 = document.getElementById('example1'),
+            example1console = document.getElementById('example1console'),
+            settings1,
+            ipValidatorRegexp,
+            emailValidator;
+
+        ipValidatorRegexp = /^(?:\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b|null)$/;
+        emailValidator = function (value, callback) {
+          setTimeout(function(){
+            if (/.+@.+/.test(value)) {
+              callback(true);
+            }
+            else {
+              callback(false);
+            }
+          }, 1000);
+        };
+
+        settings1 = {
+          data: people,
+          beforeChange: function (changes, source) {
+            for (var i = changes.length - 1; i >= 0; i--) {
+              // gently don't accept the word "foo" (remove the change at index i)
+              if (changes[i][3] === 'foo') {
+                changes.splice(i, 1);
+              }
+              // if any of pasted cells contains the word "nuke", reject the whole paste
+              else if (changes[i][3] === 'nuke') {
+                return false;
+              }
+              // capitalise first letter in column 1 and 2
+              else if ((changes[i][1] === 'name.first' || changes[i][1] === 'name.last') && changes[i][3].charAt(0)) {
+                changes[i][3] = changes[i][3].charAt(0).toUpperCase() + changes[i][3].slice(1);
+              }
+            }
+          },
+          afterChange: function (changes, source) {
+            if (source !== 'loadData') {
+              example1console.innerText = JSON.stringify(changes);
+            }
+          },
+          colHeaders: ['ID', 'First name', 'Last name', 'IP', 'E-mail'],
+          columns: [
+            {data: 'id', type: 'numeric'},
+            {data: 'name.first'},
+            {data: 'name.last'},
+            {data: 'ip', validator: ipValidatorRegexp, allowInvalid: true},
+            {data: 'email', validator: emailValidator, allowInvalid: false}
+          ]
+        };
+        var hot = new Handsontable(example1, settings1);</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/data-validation.html" class="edit-doc" target="_blank">
+      Help us improve this page
+    </a>
+  </p>
+</div>

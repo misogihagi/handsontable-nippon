@@ -1,0 +1,65 @@
+content1="@handsontable-pro/react"
+content2="language"
+content3="language={this.language}""
+content4="settings"
+content5="
+"
+content6="
+      <div id="example1" class="hot">
+      </div>
+    "
+content7="
+        import React from 'react';
+        import ReactDOM from 'react-dom';
+        import {HotTable} from '@handsontable-pro/react';
+        import Handsontable from 'handsontable-pro';
+
+        class App extends React.Component {
+          constructor(props) {
+            super(props);
+
+            this.id = 'hot';
+            this.state = {
+              hotSettings: {
+                data: Handsontable.helper.createSpreadsheetData(5, 10),
+                colHeaders: true,
+                rowHeaders: true,
+                contextMenu: true
+              },
+              language: 'en-US'
+            };
+
+            this.updateHotLanguage = this.updateHotLanguage.bind(this);
+          }
+
+          componentDidMount() {
+            this.getAllLanguageOptions();
+          }
+
+          getAllLanguageOptions() {
+            const allDictionaries = Handsontable.languages.getLanguagesDictionaries();
+            const langSelect = document.querySelector('#languages');
+            langSelect.innerHTML = '';
+
+            for (let language of allDictionaries) {
+              langSelect.innerHTML += `<option value="${language.languageCode}">${language.languageCode}</option>`
+            }
+          }
+
+          updateHotLanguage(event) {
+            this.setState({language: event.target.value});
+          }
+
+          render() {
+            return (
+              <div>
+                <label for="languages">Select language: </label><select onChange={this.updateHotLanguage} id="languages"></select><br/><br/>
+                <HotTable id={this.id} language={this.state.language} settings={this.state.hotSettings}/>
+              </div>
+            );
+          }
+        }
+
+        ReactDOM.render(<App/>, document.getElementById('example1'));
+      "
+content8="Help us improve this page"

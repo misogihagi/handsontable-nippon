@@ -1,0 +1,57 @@
+<?js if (env.conf.templates.meta) { ?>
+<?js if (env.conf.templates.meta.description) { ?><meta name="description" content="<?js= env.conf.templates.meta.description ?>" /><?js } ?>
+<?js } ?>
+<?js if (env.conf.templates.openGraph) { ?>
+<meta property="og:title" content="<?js= env.conf.templates.openGraph.title ?>"/>
+<meta property="og:type" content="<?js= env.conf.templates.openGraph.type ?>"/>
+<meta property="og:image" content="<?js= env.conf.templates.openGraph.image ?>"/>
+<?js if (env.conf.templates.openGraph.site_name) { ?><meta property="og:site_name" content="<?js= env.conf.templates.openGraph.site_name ?>"/><?js } ?>
+<meta property="og:url" content="<?js= env.conf.templates.openGraph.url ?>"/>
+<?js } ?>
+
+<link rel="canonical" href="https://handsontable.com/docs{@canonical}" />
+
+<link rel="apple-touch-icon" sizes="180x180" href="/docs/<?js= env.opts.query.version ?>/images/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/docs/<?js= env.opts.query.version ?>/images/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/docs/<?js= env.opts.query.version ?>/images/favicon-16x16.png">
+<link rel="manifest" href="/docs/<?js= env.opts.query.version ?>/images/manifest.json">
+<link rel="mask-icon" href="/docs/<?js= env.opts.query.version ?>/images/safari-pinned-tab.svg" color="#5bbad5">
+<meta name="theme-color" content="#ffffff">
+
+<script src="/docs/<?js= env.opts.query.version ?>/scripts/prettify/prettify.js"></script>
+<script src="/docs/<?js= env.opts.query.version ?>/scripts/prettify/lang-css.js"></script>
+<script src="/docs/<?js= env.opts.query.version ?>/scripts/jquery.min.js"></script>
+<script src="/docs/<?js= env.opts.query.version ?>/components/highlightjs/highlight.pack.min.js"></script>
+<script src="/docs/<?js= env.opts.query.version ?>/components/axios/dist/axios.min.js"></script>
+<script>
+  if (typeof Promise === 'undefined') {
+      document.write('<scr'+'ipt src="/docs/<?js= env.opts.query.version ?>/components/promise-polyfill/promise.min.js"></scr'+'ipt>');
+  }
+</script>
+<!--[if lt IE 9]>
+<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+<![endif]-->
+<script data-jsfiddle="common" src="/docs/<?js= env.opts.query.version ?>/components/handsontable-pro/dist/handsontable.full.min.js"></script>
+
+<link href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700" rel="stylesheet">
+
+<link type="text/css" rel="stylesheet" href="/docs/<?js= env.opts.query.version ?>/components/highlightjs/styles/github.css">
+<link type="text/css" rel="stylesheet" href="/docs/<?js= env.opts.query.version ?>/components/handsontable-pro/dist/handsontable.full.min.css" data-jsfiddle="common">
+<link type="text/css" rel="stylesheet" href="/docs/<?js= env.opts.query.version ?>/styles/prettify-tomorrow.css">
+<link type="text/css" rel="stylesheet" href="/docs/<?js= env.opts.query.version ?>/components/font-awesome/css/font-awesome.min.css">
+<link type="text/css" rel="stylesheet" href="/docs/<?js= env.opts.query.version ?>/styles/main.css">
+
+<script>
+    <?js if (env.conf.templates) { ?>
+        var config = <?js= JSON.stringify(env.conf.templates) ?>;
+    <?js } ?>
+    var hotVersion = "<?js= env.opts.query.version ?>";
+    var hotLatestVersion = "<?js= env.opts.query.latestVersion ?>";
+</script>
+<script>
+    var HW_config = {
+        selector: ".news",
+        account: "xaD6ry"
+    };
+</script>
+<script src="//cdn.headwayapp.co/widget.js"></script>

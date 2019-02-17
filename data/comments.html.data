@@ -1,0 +1,56 @@
+content1="
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }"
+content2="Enabling the plugin"
+content3="Adding the comments via the Context Menu"
+content4="Setting up pre-set comments"
+content5="API"
+content6="Example implementation"
+content7="Comments"
+content8="Enabling the plugin"
+content9="comments"
+content10="true"
+content11="let hot = new Handsontable(container, {
+  data: Handsontable.helper.createSpreadsheetData(10, 10),
+  comments: true
+});"
+content12="Adding the comments via the Context Menu"
+content13="Context Menu"
+content14="Add/Edit comment"
+content15="Delete comment"
+content16="Read only comment"
+content17="I think all of them are pretty self-explanatory."
+content18="Setting up pre-set comments"
+content19="cell: [
+  {row: 1, col: 1, comment: {value: 'Hello world!'}}
+]"
+content20="In this example we're adding a "Hello world!" comment to a cell at (1,1)."
+content21="API"
+content22="our Comments documentation"
+content23="Example implementation"
+content24="
+        var container = document.getElementById('example1'),
+                hot1;
+
+        hot1 = new Handsontable(container, {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true,
+          comments: true,
+          cell: [
+            {row: 1, col: 1, comment: {value: 'Some comment'}},
+            {row: 2, col: 2, comment: {value: 'More comments'}}
+          ]
+        });"
+content25="
+      Help us improve this page
+    "

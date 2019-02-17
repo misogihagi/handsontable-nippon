@@ -1,0 +1,132 @@
+content1="Overview"
+content2="Plugin setup"
+content3="Additional options"
+content4="Live examples"
+content5="Overview"
+content6="ganttChart"
+content7="Plugin setup"
+content8="Hidden Columns"
+content9="Column Headers"
+content10="ganttChart"
+content11="ganttChart: {
+  dataSource: data, // an object, containing information about the data source (see below)
+  firstWeekDay: 'monday', // sets the first day of the week to either 'monday' or 'sunday'
+  startYear: 2015 // sets the displayed year to the provided value
+}"
+content12="data"
+content13="var data = [
+  {
+    startDate: '1/5/2015',
+    endDate: '1/20/2015',
+    additionalData: {label: 'Example label.', quantity: 'Four packs.'}
+  },
+  {
+    startDate: '1/11/2015',
+    endDate: '1/29/2015',
+    additionalData: {label: 'Another label.', quantity: 'One pack.'}
+  }
+];"
+content14="Array"
+content15="Objects"
+content16="startDate"
+content17="endDate"
+content18="additionalData"
+content19="var data = {
+  instance: source, // reference to another Handsontable instance
+  startDateColumn: 4, // index of a column, which contains information about start dates of data ranges
+  endDateColumn: 5, // index of a column, which contains information about end dates of data ranges
+  additionalData: { // information about additional data passed to the chart, in this example:
+    label: 0, // labels are stored in the first column
+    quantity: 1 // quantity information is stored in the second column
+  }
+}"
+content20="Additional options"
+content21="hot.getPlugin('ganttChart').setRangeBarColors({
+  // shades by row:
+  0: ['#000', '#fff'], // first array element is the color of the full week, the second is the color of the partial week
+  2: ['#000', '#fff']
+});"
+content22="Live Examples"
+content23="Object as data source"
+content24="
+        var example1 = document.getElementById('example1');
+        var dataObj = [
+          {
+            startDate: '1/5/2015',
+            endDate: '1/20/2015',
+            additionalData: {label: 'Label 1'}
+          },
+          {
+            startDate: '1/11/2015',
+            endDate: '1/29/2015',
+            additionalData: {label: 'Label 2'}
+          },
+          {
+            startDate: '2/1/2015',
+            endDate: '2/26/2015',
+            additionalData: {label: 'Label 3'}
+          },
+          {
+            startDate: '2/15/2015',
+            endDate: '3/26/2015',
+            additionalData: {label: 'Label 4'}
+          }
+        ];
+
+        var hot = new Handsontable(example1, {
+          data: [],
+          hiddenColumns: true,
+          colHeaders: true,
+          ganttChart: {
+            dataSource: dataObj,
+            firstWeekDay: 'monday',
+            startYear: 2015
+          },
+          width: 600,
+          height: 165
+        });"
+content25="Another instance as data source"
+content26="
+        var example2 = document.getElementById('example2');
+        var sourceHot = document.getElementById('example2-source');
+
+        var hotSource = new Handsontable(sourceHot, {
+          data: [
+            ['Label 1', '01/12/2015', '01/20/2016'],
+            ['Label 2', '01/11/2015', '01/29/2015'],
+            ['Label 3', '01/15/2015', '02/20/2015'],
+            ['Label 4', '01/03/2015', '03/29/2015'],
+            ['Label 5', '04/05/2015', '04/20/2015'],
+            ['Label 6', '02/11/2015', '05/29/2015'],
+            ['Label 7', '02/15/2015', '03/20/2015'],
+            ['Label 8', '03/02/2015', '04/12/2015']
+          ],
+          columns: [
+            {title: 'Label', type: 'text'},
+            {title: 'Start Date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true},
+            {title: 'End Date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true}
+          ]
+        });
+
+        var hot2 = new Handsontable(example2, {
+          data: [],
+          hiddenColumns: true,
+          colHeaders: true,
+          ganttChart: {
+            dataSource: {
+              instance: hotSource,
+              startDateColumn: 1,
+              endDateColumn: 2,
+              additionalData: {
+                label: 0
+              }
+            },
+            firstWeekDay: 'monday',
+            startYear: 2015
+          },
+          width: 600,
+          height: 255
+        });"
+content27="
+      Help us improve this page
+    "

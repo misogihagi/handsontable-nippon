@@ -1,0 +1,94 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#page-default">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#page-vertical-without-creating-rows">
+     content2
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="page-default">
+   content3
+  </h3>
+  <p>
+   Notice the little square (
+   <strong>
+    content4
+   </strong>
+   ) in the corner of the selected cell. You can drag it
+      (drag-down) to repeat the values from the cell. Double click the fill handle in cell B4 (value "30")
+      to fill the selection down to the last value in neighbouring column, just like it would in Excel or Google Sheets.
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content5
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="page-vertical-without-creating-rows">
+   content6
+  </h3>
+  <p>
+   In this configuration fill handle is restricted to move only vertically. Additionally, to adding new rows when it comes to the edge of the table bottom
+      we need change
+   <strong>
+    content7
+   </strong>
+   to
+   <strong>
+    content8
+   </strong>
+   .
+  </p>
+ </div>
+</div>
+<div data-jsfiddle="example2">
+ <div class="hot" id="example2">
+ </div>
+</div>
+<div class="codeLayout">
+ <div class="buttons">
+  <button class="jsFiddleLink" data-runfiddle="example2">
+   <i class="fa fa-jsfiddle">
+   </i>
+   Edit
+  </button>
+  <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+   <i class="fa fa-terminal">
+   </i>
+   Dump data to console
+  </button>
+ </div>
+ <script data-jsfiddle="example2">
+  content9
+ </script>
+</div>
+<p class="gap-top-xsmall">
+ <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/auto-fill.html" target="_blank">
+  content10
+ </a>
+</p>

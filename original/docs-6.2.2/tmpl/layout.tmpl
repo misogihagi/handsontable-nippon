@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <?js= this.partial('analytics-pre.tmpl', this) ?>
+  <meta charset="utf-8">
+  <meta name=viewport content="width=device-width, initial-scale=1">
+  <title>Handsontable - <?js= title ?></title>
+  <?js= this.partial('head.tmpl', this) ?>
+</head>
+
+<body>
+
+  <?js= this.partial('analytics-post.tmpl', this) ?>
+  <?js= this.partial('svg.tmpl', this) ?>
+  <?js= this.partial('header.tmpl', this) ?>
+
+  <div id="wrapper">
+    <div class="row">
+      <div class="small-10 medium-3 columns">
+
+          <?js= this.partial('navigation.tmpl', this) ?>
+
+      </div>
+      <div class="small-12 medium-9 columns">
+        <div class="main">
+          <div id="outdated-version" class="notification info mt-0 hidden"></div>
+          <h1 class="page-title" data-filename="<?js= filename.replace('tutorial-','') ?>"><?js= title ?></h1>
+          <div class="breadcrumbs"></div>
+
+          <?js= content ?>
+          <?js= this.partial('footer.tmpl', this) ?>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <?js= this.partial('scripts.tmpl', this) ?>
+
+</body>
+</html>

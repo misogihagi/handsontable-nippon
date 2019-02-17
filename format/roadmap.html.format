@@ -1,0 +1,17 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/roadmap.html" target="_blank">
+   content1
+  </a>
+  <div class="example-container clearfix">
+   <h3>
+    content2
+   </h3>
+   <p>
+    <a href="https://trello.com/b/PztR4hpj/handsontable-roadmap-2016" target="_blank">
+     content3
+    </a>
+   </p>
+  </div>
+ </div>
+</div>

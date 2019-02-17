@@ -1,0 +1,143 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <p>Follow these steps to install Handsontable:</p>
+    <ol>
+      <li><a href="#page-install">Install</a></li>
+      <li><a href="#page-create">Create</a></li>
+      <li><a href="#page-bind">Initialize</a></li>
+      <li><a href="#page-alternative">Alternative installation</a></li>
+    </ol>
+  </div>
+
+  <div class="example-container clearfix" name="install">
+    <h3 id="page-install">Step 1: Install</h3>
+
+    <div class="tabs-alternative">
+      <div class="tabs handsontable-switcher">
+        <div class="tab switch active">
+          <ul>
+            <li id="tab-pro" aria-selected="true" class="active">Install Handsontable Pro</li>
+            <li id="tab-ce" aria-selected="false">Install Community Edition</li>
+          </ul>
+          <div class="tabs-content">
+            <div id="tab-content-pro" aria-hidden="false" class="content active">
+              <p>
+                <a href="//handsontable.com/pro-download.html">There are many ways</a> to install Handsontable Pro
+                but we suggest using <a href="https://www.npmjs.com/package/handsontable-pro" target="_blank">npm</a>.
+                Just type in the following command:
+              </p>
+              <pre><code class="lang-bash">npm install handsontable-pro</code></pre>
+              <p>After the installation process is finished, embed this code inside your HTML file:</p>
+              <pre><code class="lang-html">&lt;script src="node_modules/handsontable-pro/dist/handsontable.full.min.js"&gt;&lt;/script&gt;
+&lt;link href="node_modules/handsontable-pro/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+              <p>Alternatively, use a CDN:</p>
+              <pre><code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/handsontable-pro@<?js= version ?>/dist/handsontable.full.min.js"&gt;&lt;/script&gt;&lt;link href="https://cdn.jsdelivr.net/npm/handsontable-pro@<?js= version ?>/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+            </div>
+            <div id="tab-content-ce" aria-hidden="true" class="content">
+              <p>
+                <a href="//handsontable.com/ce-download.html">There are many ways</a> to install Handsontable CE
+                but we suggest using
+                <a href="https://www.npmjs.com/package/handsontable" target="_blank">npm</a>.
+                Just type in the following command:
+              </p>
+              <pre><code class="lang-bash">npm install handsontable</code></pre>
+              <p>After the installation process is finished, embed this code inside your HTML file:</p>
+              <pre><code class="lang-html">&lt;script src="node_modules/handsontable/dist/handsontable.full.min.js"&gt;&lt;/script&gt;
+&lt;link href="node_modules/handsontable/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+              <p>Alternatively, use a CDN:</p>
+              <pre><code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/handsontable@<?js= version ?>/dist/handsontable.full.min.js"&gt;&lt;/script&gt;&lt;link href="https://cdn.jsdelivr.net/npm/handsontable@<?js= version ?>/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container clearfix" name="create">
+    <h3 id="page-create">Step 2: Create</h3>
+    <p>
+      Add an empty <code>&lt;div&gt;</code> element that will be turned into a spreadsheet.
+      Let's give this element an "example" ID.
+    </p>
+    <p>
+      <code>&lt;div id="example"&gt;&lt;/div&gt;</code>
+    </p>
+  </div>
+
+  <div class="example-container clearfix" name="bind">
+    <h3 id="page-bind">Step 3: Initialize</h3>
+    <p>In the next step, pass a reference to that <code>&lt;div id="example"&gt;</code> element and fill
+      it with sample data:</p>
+    <pre><code class="lang-js">var data = [
+  ["", "Ford", "Tesla", "Toyota", "Honda"],
+  ["2017", 10, 11, 12, 13],
+  ["2018", 20, 11, 14, 13],
+  ["2019", 30, 15, 12, 13]
+];
+
+var container = document.getElementById('example');
+var hot = new Handsontable(container, {
+  data: data,
+  rowHeaders: true,
+  colHeaders: true,
+  filters: true,
+  dropdownMenu: true
+});</code></pre>
+  </div>
+
+  <div class="example-container clearfix" name="result">
+    <h3 id="page-result">Step 4: The result</h3>
+    <p>That's it, now your Handsontable Pro is up and ready to use:</p>
+
+    <div data-jsfiddle="example">
+      <div id="example" class="hot"></div>
+    </div>
+
+    <script data-jsfiddle="example">
+      var data = [
+        ["", "Ford", "Tesla", "Toyota", "Honda"],
+        ["2017", 10, 11, 12, 13],
+        ["2018", 20, 11, 14, 13],
+        ["2019", 30, 15, 12, 13]
+      ];
+
+      var container = document.getElementById('example');
+      var hot = new Handsontable(container, {
+        data: data,
+        rowHeaders: true,
+        colHeaders: true,
+        filters: true,
+        dropdownMenu: true
+      });
+    </script>
+
+    <p>
+      You are probably wondering how to not only bind the data source but also save the changes made
+      in Handsontable Pro? Head to
+      <a href="/docs/<?js= version ?>/tutorial-data-binding.html">Binding data</a> page to learn more about it.
+    </p>
+  </div>
+
+  <div class="example-container clearfix" name="alternative">
+    <h3 id="page-alternative">Alternative installation</h3>
+    <p>Find all the available installation options on the
+      <a href="//handsontable.com/pro-download.html">Download Handsontable Pro</a> page or <a href="//handsontable.com/ce-download.html">Download Handsontable CE</a> page.
+    </p>
+  </div>
+
+  <div class="example-container clearfix" name="nextsteps">
+    <h3  id="page-next-steps">Next steps</h3>
+    <ul>
+      <li><a href="/docs/<?js= version ?>/tutorial-data-sources.html">How to connect the data source?</a></li>
+      <li><a href="/docs/<?js= version ?>/tutorial-load-and-save.html">How to load and save data?</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-custom-renderers.html">How to create a custom HTML inside a cell or header?</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-data-validation.html">How to validate data?</a></li>
+    </ul>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/quick-start.html" class="edit-doc" target="_blank">
+      Help us improve this page
+    </a>
+  </p>
+</div>

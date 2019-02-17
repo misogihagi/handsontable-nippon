@@ -1,0 +1,58 @@
+content1="Overview"
+content2="Setup"
+content3="Additional options"
+content4="Example"
+content5="API examples"
+content6="Overview"
+content7="Hidden Rows"
+content8="Quick setup"
+content9="hiddenRows"
+content10="rows"
+content11="the examples section"
+content12="Additional options"
+content13="indicators"
+content14="true"
+content15="the examples section"
+content16="copyPasteEnabled"
+content17="true"
+content18="false"
+content19="true"
+content20="false"
+content21="Context menu"
+content22="hidden_rows_show"
+content23="hidden_rows_hide"
+content24="the examples section"
+content25="Example"
+content26="
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(12,5),
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          hiddenRows: {
+            rows: [3, 5, 9],
+            indicators: true
+          }
+        });"
+content27="API examples"
+content28="
+      You can access the plugin instance by calling
+    "
+content29="var plugin = hot.getPlugin('hiddenRows');"
+content30="hideRow"
+content31="plugin.hideRow(4);"
+content32="hideRow"
+content33="hideRows"
+content34="plugin.hideRow(0, 4, 6);
+// or
+plugin.hideRows([0, 4, 6]);"
+content35="To restore the trimmed row(s), use the following methods:"
+content36="plugin.showRow(4);"
+content37="plugin.showRow(0, 4, 6);"
+content38="plugin.showRows([0, 4, 6]);"
+content39="hot.render();"
+content40="
+      Help us improve this page
+    "

@@ -1,0 +1,372 @@
+<div class="static-content">
+
+  <script data-jsfiddle="common">
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }</script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-default">Context menu with default options</a></li>
+      <li><a href="#page-specific">Context menu with specific options</a></li>
+      <li><a href="#page-custom">Context menu with fully custom configuration</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="default">
+    <h3 id="page-default">Context menu with default options</h3>
+    <p>To run the basic configuration of the Context Menu, just set the contextMenu option to <code>true</code>.</p>
+    <p>From version <code>0.11</code>, context menu also works for row and column headers. When the context menu for the row
+      header is opened, the column options are disabled. Likewise, when the context menu for the column header is opened,
+      the row options are disabled</p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+        var settings1 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true
+        };
+
+        var hot1 = new Handsontable(example1, settings1);</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="specific">
+    <h3  id="page-specific">Context menu with specific options</h3>
+    <p>You can limit options available in the context menu using contextMenu option as an array of keys which are strings:</p>
+
+    <table class="static-data features-table">
+      <thead>
+      <tr>
+        <th>Key</th>
+        <th>Purpose</th>
+        <th>Extra conditions</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>row_above</code></td>
+        <td>Insert row above action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>row_below</code></td>
+        <td>Insert row below action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>col_left</code></td>
+        <td>Insert column left action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>col_right</code></td>
+        <td>Insert column right action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>---------</code></td>
+        <td>Separator</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>remove_row</code></td>
+        <td>Remove row(s) actions</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>remove_col</code></td>
+        <td>Remove column(s) action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>clear_column</code></td>
+        <td>Clear column values action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>undo</code></td>
+        <td>Undo action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/UndoRedo.html">UndoRedo</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>redo</code></td>
+        <td>Redo action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/UndoRedo.html">UndoRedo</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>make_read_only</code></td>
+        <td>Make read only action</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>alignment</code></td>
+        <td>Alignment actions</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>cut</code></td>
+        <td>Cut action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-copy-paste.html">CopyPaste</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>copy</code></td>
+        <td>Copy action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-copy-paste.html">CopyPaste</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>freeze_column</code></td>
+        <td>Freeze column action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-freezing.html">ManualColumnFreeze</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>unfreeze_column</code></td>
+        <td>Unfreeze column action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-freezing.html">ManualColumnFreeze</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>borders</code></td>
+        <td>Custom borders actions</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-customizing-borders.html">CustomBorders</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>commentsAddEdit</code></td>
+        <td>Add and edit comment actions</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-comments_.html">Comments</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>commentsRemove</code></td>
+        <td>Remove comment action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-comments_.html">Comments</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>commentsReadOnly</code></td>
+        <td>Make comment read only action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-comments_.html">Comments</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>mergeCells</code></td>
+        <td>Merge and unmerge cells actions</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-merged-cells.html">MergeCells</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>add_child</code></td>
+        <td>Insert child row action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-nested-rows.html">NestedRows</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>detach_from_parent</code></td>
+        <td>Detach from parent row action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-nested-rows.html">NestedRows</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>hidden_columns_hide</code></td>
+        <td>Hide column(s) action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-hiding-columns.html">HiddenColumns</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>hidden_columns_show</code></td>
+        <td>Show hidden column(s) action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-hiding-columns.html">HiddenColumns</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>hidden_rows_hide</code></td>
+        <td>Hide row(s) action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-hiding-rows.html">HiddenRows</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>hidden_rows_show</code></td>
+        <td>Show hidden row(s) action</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-hiding-rows.html">HiddenRows</a> turned on</td>
+      </tr>
+
+      <tr>
+        <td><code>filter_by_condition</code></td>
+        <td>First conditions select element</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>filter_operators</code></td>
+        <td>Operation select element</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>filter_by_condition2</code></td>
+        <td>Second conditions select element</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>filter_by_value</code></td>
+        <td>Value select element</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a> turned on</td>
+      </tr>
+      <tr>
+        <td><code>filter_action_bar</code></td>
+        <td>Action bar element</td>
+        <td>Plugin <a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a> turned on</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot head-gap"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var example2 = document.getElementById('example2');
+        var settings2 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: ['row_above', 'row_below', 'remove_row']
+        };
+
+        var hot2 = new Handsontable(example2, settings2);</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="custom">
+    <h3 id="page-custom">Context menu with fully custom configuration</h3>
+    <p>This example shows how to:</p>
+    <p>
+    <ul>
+      <li>add common callback for all options</li>
+      <li>dynamically disable option</li>
+      <li>set custom text for predefined option</li>
+      <li>add own custom option</li>
+      <li>add callback for specific option</li>
+    </ul>
+    </p>
+
+    <div data-jsfiddle="example3">
+      <div id="example3" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3">
+        var example3 = document.getElementById('example3');
+        var settings3 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: {
+            callback: function (key, selection, clickEvent) {
+              // Common callback for all options
+              console.log(key, selection, clickEvent);
+            },
+            items: {
+              "row_above": {
+                disabled: function () { // `disabled` can be a boolean or a function
+                  // Disable option when first row was clicked
+                  return this.getSelectedLast()[0] === 0; // `this` === hot3
+                }
+              },
+              "row_below": {
+                name: 'Click to add row below' // Set custom text for predefined option
+              },
+              "about": { // Own custom option
+                name: function () { // `name` can be a string or a function
+                  return '<b>Custom option</b>'; // Name can contain HTML
+                },
+                hidden: function () { // `hidden` can be a boolean or a function
+                  // Hide the option when the first column was clicked
+                  return this.getSelectedLast()[1] == 0; // `this` === hot3
+                },
+                callback: function(key, selection, clickEvent) { // Callback for specific option
+                  setTimeout(function() {
+                    alert('Hello world!'); // Fire alert after menu close (with timeout)
+                  }, 0);
+                }
+              },
+              "colors": { // Own custom option
+                name: 'Colors...',
+                submenu: {
+                  // Custom option with submenu of items
+                  items: [
+                    {
+                      // Key must be in the form "parent_key:child_key"
+                      key: 'colors:red',
+                      name: 'Red',
+                      callback: function(key, selection, clickEvent) {
+                        setTimeout(function() {
+                          alert('You clicked red!');
+                        }, 0);
+                      }
+                    },
+                    { key: 'colors:green', name: 'Green' },
+                    { key: 'colors:blue', name: 'Blue' }
+                  ]
+                }
+              },
+              "credits": { // Own custom property
+                // Custom rendered element in the context menu
+                renderer: function(hot, wrapper, row, col, prop, itemValue) {
+                  var elem = document.createElement('marquee');
+                  elem.style.cssText = 'background: lightgray;';
+                  elem.textContent = 'Brought to you by...';
+                  return elem;
+                },
+                disableSelection: true, // Prevent mouseoever from highlighting the item for selection
+                isCommand: false // Prevent clicks from executing command and closing the menu
+              }
+            }
+          }
+        };
+
+        var hot3 = new Handsontable(example3, settings3);</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/context-menu.html" class="edit-doc" target="_blank">
+      Help us improve this page
+    </a>
+  </p>
+</div>

@@ -1,0 +1,955 @@
+<div class="static-content">
+ <script data-jsfiddle="common" src="/docs/&lt;?js= version ?&gt;/components/handsontable-pro/dist/languages/all.js">
+ </script>
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#loading-language-files">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#demo">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#internalization-for-features">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#available-languages">
+     content5
+    </a>
+   </li>
+   <li>
+    <a href="#files-hierarchy">
+     content6
+    </a>
+   </li>
+   <li>
+    <a href="#custom-languages">
+     content7
+    </a>
+   </li>
+   <li>
+    <a href="#custom-keys">
+     content8
+    </a>
+   </li>
+   <li>
+    <a href="#static-properties">
+     content9
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="overview">
+   content10
+  </h3>
+  <p>
+   content11
+  </p>
+ </div>
+ <div class="alert-box info" data-alert="">
+  <strong>
+   We are looking for contributors who would like to help us in adding new translations to Handsontable.
+   <a href="#custom-languages">
+    content12
+   </a>
+   .
+  </strong>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="loading-language-files">
+   content13
+  </h3>
+  <p>
+   To properly use the internationalization feature, you'll need to load the language sets. It's important,
+      that they're included after the Handsontable files. You can do it by getting the necessary files (they were created using
+   <a href="https://github.com/umdjs/umd">
+    content14
+   </a>
+   ):
+  </p>
+  <ol>
+   <li>
+    <p>
+     from
+     <code>
+      content15
+     </code>
+     folder inside your HTML file
+    </p>
+    <pre><code class="lang-html">content16</code></pre>
+    <p>
+     Note: Please keep in mind, that you can also use the minified versions of the files from the
+     <code>
+      content17
+     </code>
+     folder.
+    </p>
+   </li>
+   <li>
+    <p>
+     from the
+     <code>
+      content18
+     </code>
+     folder located in the root of the project, to be used by module systems;
+          the example below shows how to use it with ECMAScript 6 (you will need a bundler or TypeScript).
+    </p>
+    <p>
+     content19
+    </p>
+    <pre><code class="lang-js">content20</code></pre>
+    <p>
+     content21
+    </p>
+    <pre><code class="lang-js">content22</code></pre>
+   </li>
+  </ol>
+  <p>
+   Languages included this way are ready to use immediately after loading the file. More about other language-specific
+      files and language registration for Handsontable can be found in
+   <a href="#files-hierarchy">
+    content23
+   </a>
+   .
+  </p>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="demo">
+   content24
+  </h3>
+  <p>
+   content25
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="example1">
+    content26
+   </script>
+   <script data-jsfiddle="example1">
+    content27
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="internalization-for-features">
+   content28
+  </h3>
+  <p>
+   content29
+  </p>
+  <ul>
+   <li>
+    content30
+   </li>
+   <li>
+    content31
+   </li>
+   <li>
+    content32
+   </li>
+   <li>
+    content33
+   </li>
+   <li>
+    content34
+   </li>
+   <li>
+    content35
+   </li>
+   <li>
+    content36
+   </li>
+   <li>
+    content37
+   </li>
+   <li>
+    content38
+   </li>
+   <li>
+    content39
+   </li>
+   <li>
+    content40
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="available-languages">
+   content41
+  </h3>
+  <p>
+   By default, Handsontable uses the
+   <b>
+    content42
+   </b>
+   language-country set (
+   <code>
+    content43
+   </code>
+   code) for creating the text of UI elements.
+      However, it can be used like every extra, "non-standard" language file, thus the
+   <code>
+    content44
+   </code>
+   file can be found in
+   <code>
+    content45
+   </code>
+   ,
+   <code>
+    content46
+   </code>
+   and
+   <code>
+    content47
+   </code>
+   folders. Currently, we also distribute extra language-country files:
+   <ul>
+    <li>
+     <code>
+      content48
+     </code>
+     for
+     <b>
+      content49
+     </b>
+     (
+     <code>
+      content50
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content51
+     </code>
+     for
+     <b>
+      content52
+     </b>
+     (
+     <code>
+      content53
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content54
+     </code>
+     for
+     <b>
+      content55
+     </b>
+     (
+     <code>
+      content56
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content57
+     </code>
+     for
+     <b>
+      content58
+     </b>
+     (
+     <code>
+      content59
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content60
+     </code>
+     for
+     <b>
+      content61
+     </b>
+     (
+     <code>
+      content62
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content63
+     </code>
+     for
+     <b>
+      content64
+     </b>
+     (
+     <code>
+      content65
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content66
+     </code>
+     for
+     <b>
+      content67
+     </b>
+     (
+     <code>
+      content68
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content69
+     </code>
+     for
+     <b>
+      content70
+     </b>
+     (
+     <code>
+      content71
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content72
+     </code>
+     for
+     <b>
+      content73
+     </b>
+     (
+     <code>
+      content74
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content75
+     </code>
+     for
+     <b>
+      content76
+     </b>
+     (
+     <code>
+      content77
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content78
+     </code>
+     for
+     <b>
+      content79
+     </b>
+     (
+     <code>
+      content80
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content81
+     </code>
+     for
+     <b>
+      content82
+     </b>
+     (
+     <code>
+      content83
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content84
+     </code>
+     for
+     <b>
+      content85
+     </b>
+     (
+     <code>
+      content86
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content87
+     </code>
+     for
+     <b>
+      content88
+     </b>
+     (
+     <code>
+      content89
+     </code>
+     code).
+    </li>
+    <li>
+     <code>
+      content90
+     </code>
+     for
+     <b>
+      content91
+     </b>
+     (
+     <code>
+      content92
+     </code>
+     code).
+    </li>
+   </ul>
+  </p>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="files-hierarchy">
+   content93
+  </h3>
+  <p>
+   Information within this paragraph may be useful mainly for people who would like to add new or edit already existing language.
+      The simple way of using the prepared languages is
+   <a href="#loading-language-files">
+    content94
+   </a>
+   .
+      All the changes we're mentioning below should be made to
+   <a href="https://github.com/handsontable/handsontable">
+    content95
+   </a>
+   .
+  </p>
+  <p>
+   In
+   <code>
+    content96
+   </code>
+   , we currently have 3 folders with files that can be treated as languages files:
+  </p>
+  <ul>
+   <li>
+    <code>
+     content97
+    </code>
+    *
+   </li>
+   <li>
+    <code>
+     content98
+    </code>
+    *
+   </li>
+   <li>
+    <code>
+     content99
+    </code>
+   </li>
+  </ul>
+  <p>
+   Files from the two first folders are built as
+   <a href="https://github.com/umdjs/umd">
+    content100
+   </a>
+   modules by
+   <a href="https://webpack.js.org/">
+    content101
+   </a>
+   (can be prepared by using the following npm scripts:
+   <code>
+    content102
+   </code>
+   and
+   <code>
+    content103
+   </code>
+   ).
+      The last,
+   <code>
+    content104
+   </code>
+   directory contains modules created using the
+   <code>
+    content105
+   </code>
+   standard.
+  </p>
+  <p>
+   To use the language dictionaries, you'll have to register the language sets.
+      Registration is a process of loading the dictionaries globally for Handsontable using the
+   <code>
+    content106
+   </code>
+   method.
+  </p>
+  <p>
+   content107
+  </p>
+  <table class="static-data features-table">
+   <thead>
+    <tr>
+     <th>
+      content108
+     </th>
+     <th>
+      Files in
+      <code>
+       content109
+      </code>
+      and
+      <code>
+       content110
+      </code>
+      folders
+     </th>
+     <th>
+      Files in
+      <code>
+       content111
+      </code>
+      folder
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>
+      content112
+     </td>
+     <td>
+      content113
+     </td>
+     <td>
+      content114
+     </td>
+    </tr>
+    <tr>
+     <td>
+      content115
+     </td>
+     <td>
+      content116
+     </td>
+     <td>
+      Created manually,
+      <b>
+       content117
+      </b>
+      transpiled by Babel
+     </td>
+    </tr>
+    <tr>
+     <td>
+      content118
+     </td>
+     <td>
+      content119
+     </td>
+     <td>
+      <b>
+       content120
+      </b>
+      registered automatically
+     </td>
+    </tr>
+    <tr>
+     <td>
+      content121
+     </td>
+     <td>
+      Should
+      <b>
+       content122
+      </b>
+      be edited, as they're created automatically
+     </td>
+     <td>
+      content123
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   Please keep in mind that the files inside the
+   <code>
+    content124
+   </code>
+   folder are a copy of files located inside
+   <code>
+    content125
+   </code>
+   , with two differences.
+      The first folder contains additional, minified versions of the files.
+      Also, it doesn't contain the
+   <code>
+    content126
+   </code>
+   file (
+   <code>
+    content127
+   </code>
+   folder contains it for the purpose of easier loading of all the languages).
+  </p>
+  <p>
+   Both of these folders contain the
+   <code>
+    content128
+   </code>
+   file, containing all of the language dictionaries.
+  </p>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="custom-languages">
+   content129
+  </h3>
+  <p>
+   content130
+  </p>
+  <h4>
+   content131
+  </h4>
+  <p>
+   content132
+  </p>
+  <p>
+   Additional languages files should be placed in the
+   <code>
+    content133
+   </code>
+   folder
+      of the
+   <a href="https://github.com/handsontable/handsontable">
+    content134
+   </a>
+   repository with name corresponding to the chosen language code
+      (described below, for example:
+   <code>
+    content135
+   </code>
+   ). You can incorporate your translations to the Handsontable library
+      by sending us a
+   <a href="https://handsontable.com/docs/tutorial-contributing.html">
+    content136
+   </a>
+   . It's important, that your changes are not made to the
+   <code>
+    content137
+   </code>
+   and
+   <code>
+    content138
+   </code>
+   directories! Our release master will generate files which will be placed there in the building process.
+      After that, you will be able to use the languages in
+   <code>
+    content139
+   </code>
+  </p>
+  <p>
+   You can see a full template of a sample language
+      at the bottom of this paragraph. We're basing it on
+      our
+   <a href="https://github.com/handsontable/handsontable/tree/master/src/i18n/languages/en-US.js">
+    content140
+   </a>
+   . Parts of the file creation process are described below.
+  </p>
+  <ol>
+   <li id="custom-languages-step1">
+    <p>
+     The file should start with a comment containing the translation
+     <b>
+      content141
+     </b>
+     (separated by commas, for example:
+     <i>
+      content142
+     </i>
+     ),
+     <b>
+      content143
+     </b>
+     (in format:
+     <i>
+      content144
+     </i>
+     , for example:
+     <i>
+      content145
+     </i>
+     ) and a
+     <b>
+      content146
+     </b>
+    </p>
+    <pre><code class="lang-js">content147</code></pre>
+   </li>
+   <li id="custom-languages-step2">
+    <p>
+     content148
+    </p>
+    <pre><code>content149</code></pre>
+   </li>
+   <li id="custom-languages-step3">
+    <p>
+     The language dictionary object should contain a
+     <code>
+      content150
+     </code>
+     key (in format: two lowercase letters, hyphen, two uppercase letters,
+          for example:
+     <i>
+      content151
+     </i>
+     ) which will determine the language code to be used in the language property
+          in the
+     <code>
+      content152
+     </code>
+     settings and dictionaries keys with their corresponding translations.
+    </p>
+    <pre><code class="lang-js">content153</code></pre>
+   </li>
+   <li id="custom-languages-step4">
+    <p>
+     content154
+    </p>
+    <pre><code class="lang-js">content155</code></pre>
+   </li>
+   <li id="custom-languages-step5">
+    <p>
+     A simple, sample language dictionary can look like the snippet below. The
+     <code>
+      content156
+     </code>
+     and
+     <code>
+      content157
+     </code>
+     folders will be generated by the build process.
+          Files from those localizations can be included as shown in
+     <a href="#loading-language-files">
+      content158
+     </a>
+     .
+          After loading them, you will be able to use the language. You can do it by changing the language setting of
+     <code>
+      content159
+     </code>
+     to
+     <code>
+      content160
+     </code>
+     .
+    </p>
+    <pre><code class="lang-js">content161</code></pre>
+   </li>
+   <li id="custom-languages-step6">
+    <p>
+     Import already created file inside the
+     <code>
+      content162
+     </code>
+     file and export it like it's shown in the snippet below (keys in a alphabetical order).
+    </p>
+    <pre><code class="diff">content163</code></pre>
+   </li>
+   <li id="custom-languages-step7">
+    <p>
+     Voilà! You've created a language which can be used just by you or shared with others.
+          We wait for at least 5 positive feedback from users to accept a created
+     <a href="https://handsontable.com/docs/tutorial-contributing.html">
+      content164
+     </a>
+     .
+    </p>
+   </li>
+  </ol>
+  <h4>
+   content165
+  </h4>
+  <p>
+   You can register a language dictionary which is not a part of the
+   <code>
+    content166
+   </code>
+   package. To do so, use the static
+   <code>
+    content167
+   </code>
+   method and the static constant
+   <code>
+    content168
+   </code>
+   which are described briefly in the next section.
+  </p>
+  <pre><code class="lang-js">content169</code></pre>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="custom-keys">
+   content170
+  </h3>
+  <p>
+   You can register a language dictionary containing custom keys. These entries can be used like any other keys, so you're not
+      limited to using our pre-defined constants (the ones that are present within
+   <code>
+    content171
+   </code>
+   file and may
+      be accessed by
+   <code>
+    content172
+   </code>
+   alias).
+   <pre><code class="lang-js">content173</code></pre>
+  </p>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="static-properties">
+   content174
+  </h3>
+  <p>
+   Handsontable has a few static methods and properties connected with languages. They are stored in the
+   <code>
+    content175
+   </code>
+   key of the global
+   <code>
+    content176
+   </code>
+   variable.
+      All of them are described below.
+  </p>
+  <h4>
+   Handsontable.languages.getLanguageDictionary(languageCode:
+   <code>
+    content177
+   </code>
+   )
+  </h4>
+  <p>
+   content178
+  </p>
+  <p>
+   Returns:
+   <code>
+    content179
+   </code>
+  </p>
+  <h4>
+   content180
+  </h4>
+  <p>
+   content181
+  </p>
+  <p>
+   Returns:
+   <code>
+    content182
+   </code>
+  </p>
+  <h4>
+   Handsontable.languages.getTranslatedPhrase(languageCode:
+   <code>
+    content183
+   </code>
+   , dictionaryKey:
+   <code>
+    content184
+   </code>
+   , extraArguments:
+   <code>
+    content185
+   </code>
+   )
+  </h4>
+  <p>
+   content186
+  </p>
+  <p>
+   Returns:
+   <code>
+    content187
+   </code>
+  </p>
+  <h4>
+   Handsontable.languages.registerLanguageDictionary(languageCodeOrDictionary:
+   <code>
+    content188
+   </code>
+   , dictionary:
+   <code>
+    content189
+   </code>
+   )
+  </h4>
+  <p>
+   content190
+  </p>
+  <p>
+   Returns:
+   <code>
+    content191
+   </code>
+  </p>
+  <h4>
+   content192
+  </h4>
+  <p>
+   content193
+  </p>
+  <p>
+   Contains:
+   <code>
+    content194
+   </code>
+  </p>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/internationalization.html" target="_blank">
+   content195
+  </a>
+ </p>
+</div>

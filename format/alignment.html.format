@@ -1,0 +1,88 @@
+<div class="static-content">
+ <div class="example-container clearfix clearfix">
+  <p>
+   To initialize Handsontable with predefined horizontal and vertical alignment, provide className cells
+      details in form of a grid,
+   <code>
+    content1
+   </code>
+   or
+   <code>
+    content2
+   </code>
+   setting (see code sample below).
+  </p>
+  <p>
+   content3
+  </p>
+  <ul>
+   <li>
+    Horizontal:
+    <code>
+     content4
+    </code>
+    ,
+    <code>
+     content5
+    </code>
+    ,
+    <code>
+     content6
+    </code>
+    ,
+    <code>
+     content7
+    </code>
+    ,
+   </li>
+   <li>
+    Vertical:
+    <code>
+     content8
+    </code>
+    ,
+    <code>
+     content9
+    </code>
+    ,
+    <code>
+     content10
+    </code>
+    .
+   </li>
+  </ul>
+  <p>
+   Alignment changes can be tracked using
+   <code>
+    content11
+   </code>
+   hook callback.
+  </p>
+  <div class="scroll-container" data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1">
+    content12
+   </script>
+  </div>
+  <p class="gap-top-xsmall">
+   <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/alignment.html" target="_blank">
+    content13
+   </a>
+  </p>
+ </div>
+</div>

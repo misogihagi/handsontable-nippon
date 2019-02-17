@@ -1,0 +1,61 @@
+<div class="static-content">
+ <div class="example-container clearfix">
+  <div>
+   <p>
+    You can easily pass
+    <code>
+     content1
+    </code>
+    ,
+    <code>
+     content2
+    </code>
+    ,
+    <code>
+     content3
+    </code>
+    and other attributes to the
+    <code>
+     content4
+    </code>
+    wrapper element.
+    <br/>
+    Each of them will be applied to the root Handsontable element, allowing further customization of the table.
+   </p>
+  </div>
+  <div>
+   <div class="hot" id="example1">
+    <hot-table :class="className" :id="id" :settings="hotSettings" :style="style">
+    </hot-table>
+   </div>
+  </div>
+  <script data-jsfiddle="example1" type="text/x-hot-html">
+   content5
+  </script>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+   </div>
+   <script data-jsfiddle="example1" data-jsfiddle-panel_js="3" type="text/babel">
+    content6
+   </script>
+  </div>
+ </div>
+ <p>
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/wrapper-for-vue-custom-id-class-style.html" target="_blank">
+   content7
+  </a>
+ </p>
+</div>
+<script data-jsfiddle="common" src="/docs/&lt;?js= env.opts.query.version ?&gt;/scripts/jsfiddle-fixer.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.min.js">
+</script>
+<script data-jsfiddle="common" src="https://cdn.jsdelivr.net/npm/@handsontable-pro/vue@3.0.0/dist/vue-handsontable.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7/babel.min.js">
+</script>

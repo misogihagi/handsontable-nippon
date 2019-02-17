@@ -1,0 +1,24 @@
+content1="
+    .large-3, .heading, .breadcrumbs, .footer {
+      display: none!important;
+    }
+    .large-9 {
+      width: 100%!important;
+    }
+    .handsontable {
+      font-size: 13px;
+    }
+    .handsontable td {
+      text-align: center;
+    }
+    .wall {
+      background-color: #222 !important;
+    }
+    .snake {
+      background-color: #3493f5 !important;
+    }
+    .snake-head {
+      background-color: #347eca !important;
+    }
+  "
+content2="We couldn’t find the page you’re looking for."

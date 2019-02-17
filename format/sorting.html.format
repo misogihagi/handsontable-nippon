@@ -1,0 +1,603 @@
+<div class="static-content">
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#overview">
+     content1
+    </a>
+   </li>
+   <li>
+    <a href="#basic-plugin-configuration">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#extended-plugin-configuration">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#default-compare-functions">
+     content4
+    </a>
+   </li>
+   <li>
+    <a href="#custom-compare-functions">
+     content5
+    </a>
+   </li>
+   <li>
+    <a href="#column-options">
+     content6
+    </a>
+   </li>
+   <li>
+    <a href="#custom-sort-implementation">
+     content7
+    </a>
+   </li>
+   <li>
+    <a href="#hooks">
+     content8
+    </a>
+   </li>
+   <li>
+    <a href="#api">
+     content9
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="overview">
+   content10
+  </h3>
+  <p>
+   The column sorting plugin works as a proxy between the datasource and the Handsontable rendering module. It can map indices of displayed rows (called “visual indices”) to the indices of corresponding rows in the datasource (called “physical indices”) and vice versa. This way you can alter the order of rows which are being presented to a user, without changing the datasource’s internal structure. The sort operation is performed using a
+   <a href="https://en.wikipedia.org/wiki/Sorting_algorithm#Stability">
+    content11
+   </a>
+   regardless of the browser you use and the size of the data set which you sort.
+  </p>
+  <div class="alert-box info" data-alert="">
+   <strong>
+    Please keep in mind that you shouldn't enable both the
+    <code>
+     content12
+    </code>
+    and
+    <code>
+     content13
+    </code>
+    plugins simultaneously.
+   </strong>
+  </div>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="basic-plugin-configuration">
+   content14
+  </h3>
+  <p>
+   The simplest way to enable the plugin is to just set the
+   <code>
+    content15
+   </code>
+   key to
+   <code>
+    content16
+   </code>
+   . You will then be able to
+   <b>
+    use
+    <a href="#api">
+     content17
+    </a>
+   </b>
+   and
+   <b>
+    content18
+   </b>
+   , as you can see in the example below. What's more, by default:
+  </p>
+  <p>
+   <ul>
+    <li>
+     content19
+    </li>
+    <li>
+     content20
+    </li>
+    <li>
+     content21
+    </li>
+    <li>
+     the sort method will use default compare functions (read more about them
+     <a href="#default-compare-functions">
+      content22
+     </a>
+     ).
+    </li>
+   </ul>
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="example1">
+    content23
+   </script>
+   <script data-jsfiddle="example1">
+    content24
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="extended-plugin-configuration">
+   content25
+  </h3>
+  <p>
+   You can customize plugin options by providing configuration as an
+   <code>
+    content26
+   </code>
+   . Here is the list of possible options to set:
+  </p>
+  <p>
+   <ul>
+    <li>
+     <code>
+      content27
+     </code>
+     (
+     <code>
+      content28
+     </code>
+     ), which determines the initial sort status for some column; it contains the following keys:
+     <ul>
+      <li>
+       <code>
+        content29
+       </code>
+       (
+       <code>
+        content30
+       </code>
+       ), which determines the visual index of the sorted column
+      </li>
+      <li>
+       <code>
+        content31
+       </code>
+       (
+       <code>
+        content32
+       </code>
+       ), which determines the order that the column will be sorted in (possible values:
+       <code>
+        content33
+       </code>
+       and
+       <code>
+        content34
+       </code>
+       )
+      </li>
+     </ul>
+    </li>
+    <li>
+     <code>
+      content35
+     </code>
+     (
+     <code>
+      content36
+     </code>
+     ), which defines whether the sorting order indicator is displayed (an arrow icon in the column header specifying the sorting order),
+    </li>
+    <li>
+     <code>
+      content37
+     </code>
+     (
+     <code>
+      content38
+     </code>
+     ), which defines whether empty cells should take part in the sorting process,
+    </li>
+    <li>
+     <code>
+      content39
+     </code>
+     (
+     <code>
+      content40
+     </code>
+     ), which defines whether clicking the header should sort the table,
+    </li>
+    <li>
+     <code>
+      content41
+     </code>
+     (
+     <code>
+      content42
+     </code>
+     ), which defines the compare function factory (described in more detail in
+     <a href="#custom-compare-functions">
+      content43
+     </a>
+     ).
+    </li>
+   </ul>
+  </p>
+  <p>
+   content44
+  </p>
+  <div data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-dont-display="true" data-jsfiddle="example2">
+    content45
+   </script>
+   <script data-jsfiddle="example2">
+    content46
+   </script>
+   <p>
+    Please keep in mind that options defined by the
+    <code>
+     content47
+    </code>
+    key in the main Handsontable settings apply to the entire table. Most of them can also be set for a particular column, as described in
+    <a href="#column-options">
+     content48
+    </a>
+    .
+   </p>
+  </div>
+  <div class="example-container clearfix">
+   <h3 id="default-compare-functions">
+    content49
+   </h3>
+   <p>
+    As in the native
+    <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort">
+     <code>
+      content50
+     </code>
+    </a>
+    method, our internal sorting alghoritm uses the
+    <b>
+     content51
+    </b>
+    (also known as
+    <b>
+     content52
+    </b>
+    ). Different kinds of cells (like
+    <a href="/docs/&lt;?js= version ?&gt;/tutorial-cell-types.html">
+     <code>
+      content53
+     </code>
+    </a>
+    ) are treated in a different way. Each of them have their own comparator for sorting a particular data type.
+   </p>
+   <p>
+    As a result, you can see that different types of data are sorted properly.
+    <code>
+     content54
+    </code>
+    simply needs the declared data type for the column, as you can see in the example below.
+   </p>
+   <div data-jsfiddle="example3">
+    <div class="hot" id="example3">
+    </div>
+   </div>
+   <div class="codeLayout">
+    <div class="buttons">
+     <button class="jsFiddleLink" data-runfiddle="example3">
+      <i class="fa fa-jsfiddle">
+      </i>
+      Edit
+     </button>
+     <button class="dump" data-dump="#example3" data-instance="hot" name="dump" title="Print current data source to console">
+      <i class="fa fa-terminal">
+      </i>
+      Dump data to console
+     </button>
+    </div>
+    <script data-dont-display="true" data-jsfiddle="example3">
+     content55
+    </script>
+    <script data-jsfiddle="example3">
+     content56
+    </script>
+   </div>
+   <div class="example-container clearfix">
+    <h3 id="custom-compare-functions">
+     content57
+    </h3>
+    <p>
+     You can provide your own compare function to the sorting algorithm. This function should look the same as an argument in the native
+     <code>
+      <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters">
+       content58
+      </a>
+     </code>
+     method (read the
+     <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Description">
+      content59
+     </a>
+     ). It is handled by the plugin when
+     <code>
+      content60
+     </code>
+     is defined in the configuration. Something which we call a
+     <b>
+      content61
+     </b>
+     must be placed under this key. The factory takes as parameters
+     <code>
+      content62
+     </code>
+     and
+     <code>
+      content63
+     </code>
+     and returns the compare function.
+    </p>
+    <p>
+     content64
+    </p>
+    <pre><code class="lang-js">content65</code></pre>
+    <p>
+     content66
+    </p>
+   </div>
+   <div class="example-container clearfix">
+    <h3 id="column-options">
+     content67
+    </h3>
+    <p>
+     The plugin's options, such as
+     <code>
+      content68
+     </code>
+     ,
+     <code>
+      content69
+     </code>
+     ,
+     <code>
+      content70
+     </code>
+     ,
+     <code>
+      content71
+     </code>
+     may be set just for a particular column. This can be done through the use of the
+     <a href="&lt;?js= version ?&gt;/Options.html#columns">
+      content72
+     </a>
+     option. The example below demonstrates how to disable the indicator and
+     <b>
+      content73
+     </b>
+     .
+    </p>
+    <div data-jsfiddle="example4">
+     <div class="hot" id="example4">
+     </div>
+    </div>
+    <div class="codeLayout">
+     <div class="buttons">
+      <button class="jsFiddleLink" data-runfiddle="example4">
+       <i class="fa fa-jsfiddle">
+       </i>
+       Edit
+      </button>
+      <button class="dump" data-dump="#example4" data-instance="hot" name="dump" title="Print current data source to console">
+       <i class="fa fa-terminal">
+       </i>
+       Dump data to console
+      </button>
+     </div>
+     <script data-dont-display="true" data-jsfiddle="example4">
+      content74
+     </script>
+     <script data-jsfiddle="example4">
+      content75
+     </script>
+    </div>
+    <div class="example-container clearfix">
+     <h3 id="custom-sort-implementation">
+      content76
+     </h3>
+     <p>
+      The plugin exposes the
+      <code>
+       content77
+      </code>
+      method, which was designed for the purpose of setting the internal sort state. Please keep in mind that the data set
+      <b>
+       content78
+      </b>
+      just by using this method. However, the
+      <code>
+       content79
+      </code>
+      and
+      <code>
+       content80
+      </code>
+      methods will return results corresponding to the previously set configuration. To use a custom sort implementation you have to:
+     </p>
+     <ul>
+      <li>
+       provide a callback for the
+       <code>
+        content81
+       </code>
+       hook which will return
+       <code>
+        content82
+       </code>
+       ,
+      </li>
+      <li>
+       content83
+      </li>
+      <li>
+       set the internal state of the sort by using the
+       <code>
+        content84
+       </code>
+       method.
+      </li>
+     </ul>
+     <p>
+      content85
+     </p>
+     <pre><code class="lang-js">content86</code></pre>
+    </div>
+    <div class="example-container clearfix">
+     <h3 id="hooks">
+      content87
+     </h3>
+     <p>
+      content88
+     </p>
+     <p>
+      <ul>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:beforeColumnSort">
+          content89
+         </a>
+        </code>
+        , which as the name suggests is run before the sort. This means that the actual sort configuration obtained by the
+        <code>
+         content90
+        </code>
+        method within the callback will be equal to the sort configuration preserved before the hook call. The callback for
+        <code>
+         content91
+        </code>
+        , which will return
+        <code>
+         content92
+        </code>
+        , will stop the table from being sorted. As a result, the
+        <code>
+         content93
+        </code>
+        hook will not be called.
+       </li>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/Hooks.html#event:afterColumnSort">
+          content94
+         </a>
+        </code>
+        , which is run always after the sorting, unless the callback for
+        <code>
+         content95
+        </code>
+        hook returns
+        <code>
+         content96
+        </code>
+        .
+       </li>
+      </ul>
+     </p>
+     <p>
+      Please keep in mind that hooks are also run when you use the
+      <code>
+       content97
+      </code>
+      method or provide a configuration that won't be processed (validation will fail).
+     </p>
+    </div>
+    <div class="example-container clearfix">
+     <h3 id="api">
+      content98
+     </h3>
+     <p>
+      content99
+     </p>
+     <p>
+      <ul>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/ColumnSorting.html#clearSort">
+          content100
+         </a>
+        </code>
+       </li>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/ColumnSorting.html#getSortConfig">
+          content101
+         </a>
+        </code>
+       </li>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/ColumnSorting.html#isSorted">
+          content102
+         </a>
+        </code>
+       </li>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/ColumnSorting.html#setSortConfig">
+          content103
+         </a>
+        </code>
+       </li>
+       <li>
+        <code>
+         <a href="/docs/&lt;?js= version ?&gt;/ColumnSorting.html#sort">
+          content104
+         </a>
+        </code>
+       </li>
+      </ul>
+     </p>
+    </div>
+    <p class="gap-top-xsmall">
+     <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/sorting.html" target="_blank">
+      content105
+     </a>
+    </p>
+   </div>
+  </div>
+ </div>
+</div>

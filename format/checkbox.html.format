@@ -1,0 +1,164 @@
+<div class="static-content">
+ <script data-jsfiddle="common" type="text/javascript">
+  content1
+ </script>
+ <div class="index-list">
+  <ul>
+   <li>
+    <a href="#default">
+     content2
+    </a>
+   </li>
+   <li>
+    <a href="#template">
+     content3
+    </a>
+   </li>
+   <li>
+    <a href="#labels">
+     content4
+    </a>
+   </li>
+  </ul>
+ </div>
+ <div>
+  <p>
+   content5
+  </p>
+  <p>
+   Checking and unchecking can be performed using mouse or by pressing
+   <kbd>
+    content6
+   </kbd>
+   .
+      You can change the state of multiple cells at once.
+      Simply select cells you want to change and press
+   <kbd>
+    content7
+   </kbd>
+  </p>
+ </div>
+ <div class="example-container clearfix">
+  <h3 id="default">
+   content8
+  </h3>
+  <p>
+   This is default usage scenario when columns data have
+   <code>
+    content9
+   </code>
+   or
+   <code>
+    content10
+   </code>
+   value and we want to
+    display only checkboxes.
+  </p>
+  <div data-jsfiddle="example1">
+   <div class="hot" id="example1">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example1">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example1" data-instance="hot1" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example1" type="text/javascript">
+    content11
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="template">
+   content12
+  </h3>
+  <p>
+   If you want use other values than
+   <code>
+    content13
+   </code>
+   and
+   <code>
+    content14
+   </code>
+   ,
+      you have to provide this information using
+   <code>
+    content15
+   </code>
+   and
+   <code>
+    content16
+   </code>
+   . Handsontable will then update your data using appropriate template.
+  </p>
+  <div data-jsfiddle="example2">
+   <div class="hot" id="example2">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example2">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example2" data-instance="hot2" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example2">
+    content17
+   </script>
+  </div>
+ </div>
+ <div class="example-container clearfix head-gap">
+  <h3 id="labels">
+   content18
+  </h3>
+  <p>
+   If you want to add label to the checkbox you can use
+   <code>
+    content19
+   </code>
+   option. With this option you can declare
+      where label will be injected (before or after checkbox element) and from what data source label text will be updated.
+  </p>
+  <div data-jsfiddle="example3">
+   <div class="hot" id="example3">
+   </div>
+  </div>
+  <div class="codeLayout">
+   <div class="buttons">
+    <button class="jsFiddleLink" data-runfiddle="example3">
+     <i class="fa fa-jsfiddle">
+     </i>
+     Edit
+    </button>
+    <button class="dump" data-dump="#example3" data-instance="hot3" name="dump" title="Print current data source to console">
+     <i class="fa fa-terminal">
+     </i>
+     Dump data to console
+    </button>
+   </div>
+   <script data-jsfiddle="example3">
+    content20
+   </script>
+  </div>
+ </div>
+ <p class="gap-top-xsmall">
+  <a class="edit-doc" href="https://github.com/handsontable/docs/edit/&lt;?js= version ?&gt;/tutorials/checkbox.html" target="_blank">
+   content21
+  </a>
+ </p>
+</div>
