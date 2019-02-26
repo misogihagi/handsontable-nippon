@@ -1,0 +1,205 @@
+<div class="static-content">
+
+
+  <script data-jsfiddle="common">
+    function getCarData() {
+      return [
+        ["BMW", 2017, "black", "black"],
+        ["Nissan", 2018, "blue", "blue"],
+        ["Chrysler", 2019, "yellow", "black"],
+        ["Volvo", 2020, "white", "gray"]
+      ];
+    }</script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#lazy">lazyモード</a></li>
+      <li><a href="#strict">strictモード</a></li>
+      <li><a href="#strict-ajax">strictモード(Ajax)</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="lazy">
+    <h3 id="lazy">lazyモード</h3>
+    <p>この例は、デフォルトの<strong>lazyモード</strong>でのオートコンプリート機能の使用方法を示しています。
+      このモードでは、ユーザーは入力中に提案された選択肢の1つを選ぶか、提案に含まれていないカスタムの値を入力できます。</p>
+    <p>このモードでは、マウスとキーボードのバインディングは<a href="/docs/<?js= version ?>/demo-handsontable.html">Handsontableセルタイプ</a>と同じです。 
+      選択肢は<code>source</code>プロパティから渡され、配列または配列を返す関数にすることができます。</p>
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          example1 = document.getElementById('example1'),
+          hot1;
+
+        hot1 = new Handsontable(example1, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: ['BMW', 'Chrysler', 'Nissan', 'Suzuki', 'Toyota', 'Volvo'],
+              strict: false
+            },
+            {type: 'numeric'},
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange and another color', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: false,
+              visibleRows: 4
+            },
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange and another color', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: false,
+              trimDropdown: false
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="strict">
+    <h3 id="strict">strictモード</h3>
+    <p>これは上記と同じ例ですが、オートコンプリートが<strong>strictモード</strong>で実行される点が異なります。
+       このモードでは、オートコンプリートstrictモードが適用されたセルは、ソース配列に定義されている値のみを受け入れます。
+      マウスとキーボードのバインディングは<a href="/docs/<?js= version ?>/demo-handsontable.html">Handsontableセルタイプ</a>と同じですが、以下の違いがあります。:</p>
+    <ul>
+      <li>少なくとも1つのオプションが表示されている場合、HOT-in-HOTには常に選択肢があります。</li>
+      <li>最初の行が選択されているときに<kbd>↑</kbd>を押しても、HOT-in-HOTの選択は解除されません。
+        代わりにENTERキーとして動作しますが、メインHOT内の選択を上に移動します。</li>
+    </ul>
+    <p>strictモードでの<strong>allowInvalid</strong>オプションは手動のユーザー入力の場合の動作を決定します。:</p>
+    <ul>
+      <li><code>allowInvalid: true</code>（オプション） - <code>source</code>に存在しない値の手動入力を許可します。
+        この場合、フィールドの背景ハイライトは赤になり、選択は次のセルに進みます。
+      </li>
+      <li><code>allowInvalid: false</code> - <code>source</code>に存在しない値の手動入力を許可しません。
+        この場合、<kbd>ENTER</kbd>キーは無視され、エディタフィールドは開いたままになります。</li>
+    </ul>
+    <br>
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var
+          container2 = document.getElementById('example2'),
+          hot2;
+
+        hot2 = new Handsontable(container2, {
+          data: getCarData(),
+          colHeaders: ['Car<br>(allowInvalid true)', 'Year', 'Chassis color<br>(allowInvalid false)', 'Bumper color<br>(allowInvalid true)'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: ['BMW', 'Chrysler', 'Nissan', 'Suzuki', 'Toyota', 'Volvo'],
+              strict: true
+              // allowInvalid: true // true is default
+            },
+            {},
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: true,
+              allowInvalid: false
+            },
+            {
+              type: 'autocomplete',
+              source: ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white', 'purple', 'lime', 'olive', 'cyan'],
+              strict: true,
+              allowInvalid: true //true is default
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="strict-ajax">
+    <h3 id="strict-ajax">strictモード(Ajax)</h3>
+    <p>オートコンプリートはAjaxデータソースでも使用できます。次の例では、 "Car"列の候補がサーバーから読み込まれています。
+      リモート（非同期）ソースからデータをロードするには、'source'プロパティに関数を割り当てます。Function should
+      関数はサーバーサイドの要求を実行し、結果が利用可能になったときにコールバック関数を呼び出す必要があります。</p>
+
+    <div data-jsfiddle="example3">
+      <div id="example3" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script>
+        var
+          container3 = document.getElementById('example3'),
+          hot3;
+
+        hot3 = new Handsontable(container3, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              type: 'autocomplete',
+              source: function (query, process) {
+                $.ajax({
+                  //url: 'php/cars.php', // commented out because our website is hosted as a set of static pages
+                  url: 'scripts/json/autocomplete.json',
+                  dataType: 'json',
+                  data: {
+                    query: query
+                  },
+                  success: function (response) {
+                    console.log("response", response);
+                    //process(JSON.parse(response.data)); // JSON.parse takes string as a argument
+                    process(response.data);
+
+                  }
+                });
+              },
+              strict: true
+            },
+            {}, // Year is a default text column
+            {}, // Chassis color is a default text column
+            {} // Bumper color is a default text column
+          ]
+        });</script>
+   </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/autocomplete.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+    </a>
+  </p>
+</div>
