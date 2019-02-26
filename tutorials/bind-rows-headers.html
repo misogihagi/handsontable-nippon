@@ -1,0 +1,87 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#setup">Quick setup</a></li>
+    </ul>
+
+    <hr>
+
+    <h3 id="overview">概要</h3>
+    <p>
+      その名前が示すように、<i>Bind rows with headers</i>プラグインはテーブルの行をそのヘッダで結びつけられます。<br>
+      このプラグインが有効になっていると、テーブルの行ヘッダーは行に固定されます。たとえば、行を移動すると、ヘッダーの内容も一緒に移動します。
+      基本的に、初期化時に<code>0</code>行目に<code>"A"</code>というタイトルのヘッダーがある場合は、テーブルをどうやっても<code>0</code>行目は<code>"A"</code>というタイトルでしょう。
+    </p>
+
+    <h3 id="setup">実装</h3>
+    <p>
+      このプラグインを有効にするには、Handsontableの作成時に<code>bindRowsWithHeaders</code>プロパティを単に<code>true</code>に設定します。<br>
+      このプラグインが実際に何をするのかを見るために、下の例の行を移動してみてください。
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="common" data-dont-display="true">
+        var generateDataObj = function(rows, columns) {
+          var data = [];
+          var number = 0;
+
+          if (!rows) {
+            rows = 3;
+          }
+          if (!columns) {
+            columns = 7;
+          }
+
+          for (var i = 0; i < rows; i++) {
+            data[i] = [];
+            for (var j = 0; j < columns; j++) {
+              data[i][j] = number++;
+            }
+          }
+
+          for (i = 0; i < 2; i++) {
+            data.push([]);
+          }
+
+          return data;
+        };</script>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: generateDataObj(),
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          manualRowMove: true,
+          bindRowsWithHeaders: 'strict'
+        });</script>
+
+    </div>
+
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/bind-rows-headers.html" class="edit-doc" target="_blank">
+      Help us improve this page
+    </a>
+  </p>
+</div>
