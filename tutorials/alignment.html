@@ -1,0 +1,69 @@
+<div class="static-content">
+
+
+  <div class="example-container clearfix clearfix">
+    <p>Handsontableには、初期状態のセルの水平方向および垂直方向の配置を定義するclassNameが備わっています。
+      グリッド、 <code>column</code>または<code>cell</code>の形で設定されます（以下のコードサンプルを参照）。
+    </p>
+
+
+    <p>classNameに設定できる名前:</p>
+    <ul>
+      <li>水平方向: <code>htLeft</code>, <code>htCenter</code>, <code>htRight</code>, <code>htJustify</code>,
+      </li>
+      <li>垂直方向: <code>htTop</code>, <code>htMiddle</code>, <code>htBottom</code>.</li>
+    </ul>
+    <p>配置の変更は<code>afterSetCellMeta</code>フックを使用して追跡できます。</p>
+
+    <div data-jsfiddle="example1" class="scroll-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          container = document.getElementById('example1'),
+          hot1;
+
+        hot1 = new Handsontable(container, {
+          data: Handsontable.helper.createSpreadsheetData(100, 18),
+          colWidths: 100,
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true,
+          mergeCells: [
+            {row: 1, col: 1, rowspan: 3, colspan: 3},
+            {row: 3, col: 4, rowspan: 2, colspan: 2}
+          ],
+          className: "htCenter",
+          cell: [
+            {row: 0, col: 0, className: "htRight"},
+            {row: 1, col: 1, className: "htLeft htMiddle"},
+            {row: 3, col: 4, className: "htLeft htBottom"}
+          ],
+          afterSetCellMeta: function (row, col, key, val) {
+            console.log("cell meta changed", row, col, key, val);
+          }
+        });</script>
+    </div>
+    <p class="gap-top-xsmall">
+      <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/alignment.html" class="edit-doc" target="_blank">
+        このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+      </a>
+    </p>
+  </div>
+</div>
+
