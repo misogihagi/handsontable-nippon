@@ -1,0 +1,755 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-editor-manager-responsibility">Responsibility of EditorManager class</a></li>
+      <li><a href="#page-inheritance-of-editors">Inheritance of editors</a></li>
+      <li><a href="#page-creating-custom-editor">How to create a custom editor</a></li>
+      <li><a href="#page-registering-an-editor">Registering an editor</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <p>Handsontableは、セルの値を表示するプロセスとセルの値を変更するプロセスを区別します。
+      レンダラーはデータを表示する役目があり、エディターにーはそれを変更する役目があります。レンダラーには1つの単純なタスクしかありません。それは
+      <em>セルの実際の値を取得し、HTMLコードとして表現</em>して返し、それらを単一の関数にすることです。
+      一方エディターはユーザー入力（マウスとキーボードのイベント）、有効なデータ、有効なデータ結果に従った動作の処理をする必要があるため、
+      これらすべての機能を1つの関数にまとめることはお勧めできません。Handsontableエディターがeditorクラスの一つなのはこういった事情があるのです。</p>
+    <p>Handsontable 0.10.0以降、ほとんどのeditorsモジュールを理解しやすいようにわかりやすく、予測しやすく、拡張しやすく書き直しました。
+      このチュートリアルでは、セルの編集の全プロセスがどのように機能するか、Handsontable Coreがエディターをどのように管理するか、
+      エディターのライフサイクルがどのようになるか、独自のエディターを作成にはどうするかを包括的に見ていきます。
+      </p>
+    <h2 id="editormanager">EditorManager</h2>
+    <p><code>EditorManager</code>Handsontableで利用可能なすべてのエディターの処理を担当するクラスです。
+      <code>Handsontable.Core</code>は<code>EditorManager</code>オブジェクト
+      使用してエディターと連携します。
+      <code>EditorManager</code>オブジェクトは、
+      <code>handsontable()</code>コンストラクターを初めて呼び出した後に実行される<code>init()</code>メソッドでインスタンス化されます。
+      <code>EditorManager</code>オブジェクトの参照は
+      Handsontableインスタンス内で非公開にされているため、アクセスできません。ただし、<code>EditorManager</code>の
+      デフォルトの動作を変更する方法はいくつかあります。</p>
+    <h3 id="editormanager-tasks">EditorManager tasks</h3>
+    <p><code>EditorManager</code>には4つのタスクがあります。</p>
+    <ul>
+      <li>アクティブセルに適切なエディターを選択する</li>
+      <li>表示するエディターの準備</li>
+      <li>（ユーザーの動作に従って）エディターの表示</li>
+      <li>（ユーザーの動作に従って）エディターを閉じる</li>
+    </ul>
+    <p>これらの各タスクについて詳細に説明します。</p>
+    <h4 id="selecting-proper-editor-for-an-active-cell">アクティブセルに適切なエディターを選択する</h4>
+    <p>ユーザーがセルを選択すると、<code>EditorManager</code>はこのセルに割り当てられているエディタークラスを見つけて、
+      <code>editor</code>プロパティの値を調べます。
+      <code>editor</code>プロパティは、グローバルに（テーブル内のすべてのセルに対して）、列ごとに（列内のすべてのセルに対して）、
+      または各セルに対して個別に定義できます。
+      詳しくは、<a
+        href="/docs/<?js= version ?>/tutorial-setting-options.html#page-config">階層設定とは
+        </a>を参照してください。</p>
+    <p><code>editor</code>プロパティの値は、エディターを表す文字列（ 'text'、 'autocomplete'、 'checkbox'など）、
+      またはeditorクラスのいずれかです。
+      <code>EditorManager</code>はeditorクラスのインスタンスを取得します。ここで覚えてほしい最も重要なことは、
+      <strong>単一のテーブルには常に特定のeditorのインスタンスが1つ存在することです。</strong>言い換えれば、
+      editorクラスオブジェクトはテーブル一つにつき一つのコンストラクターを呼び出す、
+      <strong>関係性が一対一に対応するシングルトンであるということです。</strong>
+      例えば1ページに3つのテーブルがある場合、各テーブルには独自のeditorクラスのインスタンスがあります。
+      これはあなたがあなた自身のエディターを作成することを考慮しなければならないといういくつかの重要な意味を持ちます。</p>
+    <h4 id="preparing-editor-to-be-displayed">表示するエディターの準備</h4>
+    <p><code>EditorManager</code>editorクラスインスタンス（editorオブジェクト）を取得すると、<code>prepare</code>メソッド
+      を呼び出します。The <code>prepare</code>メソッドは、
+      選択したセルに関連するeditorオブジェクトのプロパティを設定しますが、エディターは表示しません。
+      ユーザーがセルを選択するたびに<code>prepare</code>が呼び出されます。
+      場合によっては、セルは変更されずに、同じセルに対して複数回呼び出すことができます。
+    </p>
+    <h4 id="displaying-editor">エディターの表示</h4>
+    <p>エディターが準備されると、<code>EditorManager</code>はセルを編集するユーザーイベントを待ちます。そのイベントは以下のとおりです。
+      </p>
+    <ul>
+      <li><kbd>ENTER</kbd>を押す</li>
+      <li>セルをダブルクリックする</li>
+      <li><kbd>F2</kbd>を押す</li>
+    </ul>
+    <p>これらのイベントのいずれかが引き金になると、<code>EditorManager</code>はエディターの<code>beginEditing()</code>
+      メソッドを呼び出します。これによりエディターが表示されます。</p>
+    <h4 id="closing-editor">エディターを閉じる</h4>
+    <p>エディターが開かれると、<code>EditorManager</code>はセルの編集を終了するユーザーイベントを待ちます。そのイベントは以下のとおりです。
+      </p>
+    <ul> 
+      <li>別のセルをクリック（変更を保存）</li>
+      <li><kbd>ENTER</kbd>を押す（変更を保存）</li>
+      <li><kbd>ESC</kbd>を押す（変更を中止）</li>
+      <li><kbd>↑</kbd>, <kbd>↓</kbd>, <kbd>←</kbd>,
+        <kbd>→</kbd>を押す（変更を保存）
+      </li>
+      <li><kbd>TAB</kbd>を押す（変更を保存）</li>
+      <li><kbd>HOME</kbd>, <kbd>END</kbd>を押す（変更を保存）</li>
+      <li><kbd>PAGE_UP</kbd>, <kbd>PAGE_DOWN</kbd>を押す（変更を保存）</li>
+    </ul>
+    <p>これらのイベントのいずれかがトリガーされると、<code>EditorManager</code>はエディターの<code>finishEditing()</code>
+      メソッドを呼び出します。このメソッドは変更を保存し
+      （<kbd>ESC</kbd>キーが押されていない限り）エディターを閉じます。</p>
+    <h3 id="overriding-editormanager-default-behaviour">EditorManagerのデフォルトの動作を上書き</h3>
+    <p>もしかするとなにかやりたいことがあって、エディターを開いたり閉じたりするデフォルトのイベントを変更する必要が出てきても大丈夫です。たとえば、エディターで
+      <kbd>↑</kbd>と<kbd>↓</kbd>イベントを使用してアクション（セル値の増減など）を実行し、
+      ユーザーがこれらのキーを押したときに<code>EditorManager</code>がエディターを閉じないようにすることができます。
+      これが、<code>EditorManager</code>がユーザーイベントを処理する前に<code>beforeKeyDown</code>
+      フックを実行する理由です。<code>beforeKeyDown</code>をリスナーに登録した場合、<code>event</code>オブジェクト<code>EditorManager</code>に対し、
+      <code>stopImmediatePropagation()</code>の呼び出しによってデフォルトのアクションが実行されます。さらなる<code>EditorManager</code>の動作の詳細については
+      &quot;SelectEditor  - エディターをスクラッチで作成する&quot;セクションを参照ください。</p>
+    <p><code>EditorManager</code>がどのように動くか理解が深まってきましたか？それでは少し深めに進み、
+      各エディタクラスに実装する必要があるメソッドと
+      そのメソッドの処理について見ていきましょう。</p>
+    <h2 id="page-inheritance-of-editors" name="inheritance-of-editors">BaseEditor</h2>
+    <p><code>Handsontable.editors.BaseEditor</code>は、すべてのeditorクラスが継承する抽象クラスです。
+    基本的なeditorメソッドを実装するとともに、各editorクラスによって実装されるべきいくつかのメソッドを宣言します。
+    このセクションでは、それらすべてのメソッドをみていきます。</p>
+    <h3 id="common-methods">共通メソッド</h3>
+    <p>共通メソッドは、<code>BaseEditor</code>クラスによって実装されたメソッドです。共通メソッドは
+      すべてのエディターが持つべきコアロジックを含んでいます。
+      ほとんどの場合、それらの方法を気にするべきではありません。
+      ただし、もっと複雑なエディターを作成する場合は、一般的なメソッドをオーバーライドする必要があります。
+      その場合は、必ずオリジナルメソッドを呼び出してから、作ったエディターに固有の他の操作を実行する必要があります。</p>
+    <p><strong>例</strong> - 共通メソッドのオーバーライド</p>
+    <pre>
+      <code class="lang-js">// CustomEditorをclass関数で、BaseEditorから継承します（後述）。
+CustomEditor.prototype.prepare = function(row, col, prop, td, originalValue, cellProperties){
+  // オリジナルメソッドを呼び出して
+  Handsontable.editors.BaseEditor.prototype.prepare.apply(this, arguments);
+  // 作ったCustomEditorをいじります 
+  this.customEditorSpecificProperty = &#x27;foo&#x27;;
+};
+      </code>
+    </pre>
+    <p>共通メソッドは7つあり、以下に示します。</p>
+    <h4 id="prepare-row-number-col-number-prop-string-td-htmltablecellelement-cellproperties-object-">prepare(row: <code>Number</code>,
+      col: <code>Number</code>, prop: <code>String</code>, td: <code>HTMLTableCellElement</code>, cellProperties: <code>Object</code>)
+    </h4>
+    <p>呼び出されたらエディターを表示できる状態にします。また、Handsontableインスタンスのほとんどのプロパティを初期化します。</p>
+    <p>返り値： <code>undefined</code></p>
+    <h4 id="beginediting-initialvalue-string-optional-">beginEditing(initialValue: 'String' <em>[任意]</em> )
+    </h4>
+    <p>エディターの値に<code>initialValue</code>を設定します。<code>initialValue</code>を定義しなかった場合、エディターの値は
+      元のセルの値になります。
+      内部的に<code>open()</code>メソッドを呼び出します。</p>
+    <p>返り値： <code>undefined</code></p>
+    <h4 id="finishediting-reverttooriginal-boolean-optional-ctrldown-boolean-optional-callback-function-">
+      finishEditing(revertToOriginal: 'Boolean' <em>[任意]</em>, ctrlDown: <code>Boolean</code>
+      <em>[任意]</em>, callback: <code>Function</code>)</h4>
+    <p>セルの編集の終了を試みます。内部的に<code>saveValue()</code>と<code>discardEditor()</code>を呼び出します。
+      <code>revertToOriginal</code>に<code>true</code>が指定されている場合、セルの値は元の値（編集前）
+      になります。
+      <code>ctrlDown</code>の値は<code>saveValue()</code>を呼び出すときに第二引数として使用されます。</p>
+    <p>Callback関数は真偽値のパラメーターが含まれます。もし新しい値が有効か<code>allowInvalid</code>ならパラメーターは
+      <code>true</code>で、
+      そうではなかったらパラメーターは<code>false</code>です。</p>
+    <h4 id="discardeditor-validationresult-boolean-">discardEditor(validationResult: <code>Boolean</code>)</h4>
+    <p>セルの有効性が確認されたきに呼び出されます。新しい値が正常に保存された場合（<code>validationResult</code>が<code>true</code>
+      か<code>allowInvalid</code>プロパティが<code>true</code>設定されている場合）、
+      <code>close()</code>メソッドを呼び出します。それ以外の場合は<code>focus()</code>メソッドを呼び出し、エディターを開いたままにします。</p>
+    <p>返り値： <code>undefined</code></p>
+    <h4 id="savevalue-val-mixed-ctrldown-boolean-">saveValue(val: <code>Mixed</code>, ctrlDown: <code>Boolean</code>)</h4>
+    <p><code>val</code>を新しいセルの値として保存しようと試みます。有効性を内部的に検証します。<code>ctrlDown</code>が
+      trueに設定されている場合、新しい値は選択されたすべてのセルに設定されます。</p>
+    <p>返り値： <code>undefined</code></p>
+    <h4 id="isopened-">isOpened()</h4>
+    <p>エディターが開いている場合は<code>true</code>、エディターが閉じている場合は<code>false</code>を返します。エディターは
+      <code>open()</code>メソッドが呼ばれた後、開かれていると見なされます。
+      エディターは<code>close()</code>メソッドが呼ばれた後、閉じられていると見なされます。</p>
+    <p>返り値： <code>Boolean</code></p>
+    <h4 id="extend-">extend()</h4>
+    <p>返り値： <code>Function</code></p>
+      <p>Functionは現在のクラスから継承したクラス関数です。返り値のクラスの<code>prototype</code>
+      メソッドは、
+      親の<code>prototype</code>を変更する危険をさけて安全に上書きすることができます。</p>
+    <p><strong>例</strong> - <code>BaseEditor</code>から継承し、メソッドをオーバーライドしています</p>
+    <pre><code class="lang-js">var CustomEditor = Handsontable.editors.BaseEditor.prototype.extend();
+
+//この例ではBaseEditor.prototype.beginEditing()を変更することはありません
+CustomEditor.prototype.beginEditing = function() {};</code></pre>
+    <p><strong>例</strong> - ほかのエディターから継承します</p>
+    <pre><code class="lang-js">var CustomTextEditor = Handsontable.editors.TextEditor.prototype.extend();
+
+// CustomTextEditorはTextEditorから実装されTextEditorのすべてのメソッドを使えます
+// もとのTextEditorに影響を与えることなく安全にメソッドをオーバーライドできます。</code></pre>
+    <p><strong>注：</strong> これはユーティリティーメソッドで、セルを編集するプロセスとは関係ありません。</p>
+    <h3 id="editor-specific-methods">エディター固有のメソッド</h3>
+    <p>エディター固有のメソッドは<code>BaseEditor</code>に実装されていないメソッドです。エディターとして働くためには、
+      すべてのエディタークラスがこれらのメソッドを実装する必要があります。</p>
+    <h4 id="init-">init()</h4>
+    <p>エディタークラスの新しいインスタンスが作成されたときに呼び出されるメソッドです。 すべてのエディターはテーブルインスタンス内の<strong>シングルトン</strong>として使用されるため、
+      テーブルインスタンスごとに多くとも一つしかありません。エディターが生きている間はこのメソッドを利用して、
+      実行結果を再利用できるタスクを設定してください。最も一般的な操作はエディターのHTMLを作成することです。</p>
+    <p>このメソッドは値を返す必要はありません。</p>
+    <h4 id="getvalue-">getValue()</h4>
+    <p>このメソッドは現在のエディターの値、つまり新しいセルの値として保存されるべき値を返すように動作します。</p>
+    <h4 id="setvalue-newvalue-mixed-">setValue(newValue: 'Mixed')</h4>
+    <p>メソッドはエディターの値を<code>newValue</code>に設定する必要があります。</p>
+    <p><strong>例</strong>
+      カレンダーを表示して日付を選択するのに役立つDateEditorを実装しているとしましょう。
+      <code>getValue()</code>および<code>setValue()</code>メソッドは次のように機能します。:</p>
+    <pre><code class="lang-js">CalendarEditor.prototype.getValue = function() {
+  return calendar.getDate(); // 現在の選択された日付を返します（例、"2013/09/15"）
+};
+
+CalendarEditor.prototype.setValue = function(newValue) {
+  calendar.highlightDate(newValue); // カレンダーの指定された日付を目立たせます
+};</code></pre>
+    <h4 id="open-">open()</h4>
+    <p>エディターを表示します。多くの場合このメソッドは以下のようになるでしょう。:</p>
+    <pre><code class="lang-js">CustomEditor.prototype.open = function() {
+  this.editorDiv.style.display = '';
+};</code></pre>
+    <p>このメソッドは値を返す必要はありません。</p>
+    <h4 id="close-">close()</h4>
+    <p>セルの値が変わった後、エディターを非表示にします。多くの場合このメソッドは以下のようになるでしょう。:</p>
+    <pre><code class="lang-js">CustomEditor.prototype.close = function() {
+  this.editorDiv.style.display = 'none';
+};</code></pre>
+    <p>このメソッドは値を返す必要はありません。</p>
+    <h4 id="focus-">focus()</h4>
+    <p>エディターにフォーカスを当てます。このメソッドはユーザーがほかのセルを選択してエディターを閉じようとしているときや、
+      エディターの値が有効でなくなった場合(と<code>allowInvalid</code>が<code>false</code>になった場合)に呼び出されます。
+      多くの場合このメソッドは以下のようになるでしょう。:</p>
+    <pre><code class="lang-js">CustomEditor.prototype.focus = function() {
+  this.editorInput.focus();
+};</code></pre>
+    <p>このメソッドは値を返す必要はありません。</p>
+    <h3 id="common-editor-properties">共通のエディタープロパティ</h3>
+    <p>下記のプロパティはすべて<code>this</code>オブジェクトを通してエディターインスタンスで利用可能です。(例.<code>this.instance</code>)
+    </p>
+    <h4 id="instance-object-handsontable-core-">'Object:Handsontable.Core'インスタンス</h4>
+    <p>エディターオブジェクトが属するHandsontableインスタンスはクラスコンストラクターを作成し、
+      エディターのライフサイクルのなかで作成後にその状態を変えることのできないオブジェクトにします。</p>
+    <h4 id="row-number-">row <code>Number</code></h4>
+    <p>アクティブセルの行番号です。<code>prepare()</code>メソッドの呼び出しの度更新されます。</p>
+    <h4 id="col-number-">col <code>Number</code></h4>
+    <p>アクティブセルの列番号です。<code>prepare()</code>メソッドの呼び出しの度更新されます。</p>
+    <h4 id="prop-string-">prop <code>String</code></h4>
+    <p>アクティブセルに紐づいたプロパティの名前です(もとのデータがオブジェクトの配列の場合のみ)。
+      <code>prepare()</code>メソッドの呼び出しの度更新されます。</p>
+    <h4 id="td-htmltablecellnode-">TD <code>HTMLTableCellNode</code></h4>
+    <p>アクティブセルのNodeオブジェクトです。<code>prepare()</code>メソッドの呼び出しの度更新されます。</p>
+    <h4 id="cellproperties-object-">cellProperties 'Object'</h4>
+    <p>アクティブセルのプロパティの代表となるオブジェクトです。<code>prepare()</code>メソッドの呼び出しの度更新されます。</p>
+    <h2 id="page-creating-custom-editor" name="creating-custom-editor">自分だけのエディターの作り方</h2>
+    <p>これで、Handsontableエディターの背後にある哲学を知ったので、自分でエディターを作る準備が整いました。
+        <code>BaseEditor</code>を継承して新しいエディタークラスを作成することで新しいエディターを最初から作成することも、
+        クラスを拡張してメソッドの一部だけをオーバーライドして既存のエディターを拡張したいだけでもどちらも概ね対応できるでしょう。</p>
+    <p>このチュートリアルでは、両方の方法を検討します。前者では、セルの値を変更するために<code>&lt;select&gt;</code>リストを使用する、
+        まったく新しい<code>SelectEditor</code>を作成します。
+        後者では、textareaの代わりにパスワード入力を表示するという点を除いて、通常の<code>TextEditor</code>まったく同じように機能する
+        <code>PasswordEditor</code>を作成します。</p>
+    <p>少し簡単なので、<code>PasswordEditor</code>から始めましょう。</p>
+    <h3 id="-passwordeditor-extending-an-existing-editor"><code>PasswordEditor</code> - 既存のエディターの拡張</h3>
+    <p><code>TextEditor</code>はHandsontableで最初から利用可能な最も複雑なエディターです。 内容に合わせてサイズが自動的に変更される
+        <code>&lt;textarea&gt;</code>が表示されます。<code>TextEditor</code>の機能を保持しながら、
+        <code>&lt;textarea&gt;</code>の代わりに<code>&lt;input type=&quot;password&quot; /&gt;</code>フィールドを表示する
+        <code>PasswordEditor</code>を作成します。</p>
+    <p>ご想像のとおり、<code>TextEditor</code>を継承した新しいエディタークラスを作成し、そのメソッドの一部を<code>PasswordEditor</code>に重ね書いて、
+        <code>&lt;textarea&gt;</code>を<code>input:password</code>に置き換える必要があります。
+        幸いなことに、textareaとpasswordの入力は同じAPIを持っているので、私たちがしなければならないのはHTML要素を作成する権限があるコードを置き換えることだけです。
+        <code>TextEditor</code>の<code>init()</code>メソッドを見ると、内部の
+        <code>createElements()</code>メソッドが呼び出されて、<code>&lt;textarea&gt;</code>ノードが作成され、
+        エディターの初期化中にDOMに追加されることに気付くでしょう。</p>
+    <p>コード</p>
+    <pre><code class="lang-js">var PasswordEditor = Handsontable.editors.TextEditor.prototype.extend();
+
+PasswordEditor.prototype.createElements = function () {
+  // もともとのcreateElementsメソッドを呼び出します
+  Handsontable.editors.TextEditor.prototype.createElements.apply(this, arguments);
+
+  // パスワード入力を作り関係のあるプロパティを変更します。
+  this.TEXTAREA = document.createElement('input');
+  this.TEXTAREA.setAttribute('type', 'password');
+  this.TEXTAREA.className = 'handsontableInput';
+  this.textareaStyle = this.TEXTAREA.style;
+  this.textareaStyle.width = 0;
+  this.textareaStyle.height = 0;
+
+  // textareaをパスワード入力で置き換えます
+  Handsontable.dom.empty(this.TEXTAREA_PARENT);
+  this.TEXTAREA_PARENT.appendChild(this.TEXTAREA);
+};</code></pre>
+    <p>これで新しいエディターが利用できるようになりました。早速適用してみましょう。:</p>
+    <pre><code class="lang-js">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      type: 'text'
+    },
+    {
+      editor: PasswordEditor
+      // 実際のエディタークラスを渡さずに'password'文字列を扱いたい場合は"Registering editor"セクションを見てください。
+    }
+  ]
+});</code></pre>
+    <p>ね、簡単でしょう？ほんの数行のコードで、すべてうまくいきます。
+      では、もっと複雑なことに挑戦してみましょう。新しいエディターを始めから作ってみましょう。</p>
+    <h3 id="-selecteditor-creating-editor-from-scratch"><code>SelectEditor</code> - ゼロからエディターを作る</h3>
+      <p>標準の<code>&lt;select&gt;</code>入力を利用してユーザーが事前定義されたオプションのリストからセルの値を選択できるようにする、
+          フル機能のエディターを作成します。追加機能として、現在の選択肢を
+          <kbd>↑</kbd>キーと<kbd>↓</kbd>キーで変更する機能を追加します。</p>
+      <p>やること:</p>
+      <ol>
+          <li><code>Handsontable.editors.BaseEditor</code>から継承する新しいクラスを作成すること。</li>
+          <li><code>&lt;select&gt;</code>入力を作成してDOMに追加する関数を追加すること。</li>
+          <li>セルプロパティに渡された配列を<code>&lt;select&gt;</code>のoptionに追加する関数を追加すること。</li>
+          <li>メソッドの実装：
+              <ul>
+                  <li><code>getValue()</code></li>
+                  <li><code>setValue()</code></li>
+                  <li><code>open()</code></li>
+                  <li><code>close()</code></li>
+                  <li><code>focus()</code></li>
+              </ul>
+          </li>
+          <li>デフォルトの<code>EditorManager</code>の動作を上書きして、<kbd>↑</kbd>キーと
+              <kbd>↓</kbd>キーを押してもエディターを閉じないで、代わりに現在選択されている値を変更すること。
+          </li>
+          <li>エディターの登録</li>
+      </ol>
+      <h4 id="creating-new-editor">エディターの作成</h4>
+      <p>最も簡単な部分でしょう。<code>BaseEditor</code>から継承した新しい関数クラスを返す<code>BaseEditor.prototype.extend()</code>
+          関数を呼び出すだけなのですから。</p>
+    <pre><code class="lang-js">var SelectEditor = Handsontable.editors.BaseEditor.prototype.extend();</code></pre>
+    <p>やること一つ目: <strong>おわり</strong></p>
+    <h4 id="creating-select-input-and-attaching-it-to-dom"><code>&lt;select&gt;</code>を作成してDOMに追加する
+      </h4>
+    <p><code>&lt;select&gt;</code>要素を作成してDOMに配置する関数を
+      格納できるメソッドは以下の3つです。</p>
+    <ul>
+      <li><code>init()</code>メソッド</li>
+      <li><code>prepare()</code>メソッド</li>
+      <li><code>open()</code>メソッド</li>
+    </ul>
+    <p>最善の解決策を選択するための鍵は、これらの各メソッドがいつ呼び出されるかを理解することです。</p>
+    <p><code>init()</code>メソッドは、
+      エディタークラスオブジェクトの作成中に呼び出されます。このメソッドはオブジェクトが作成されると、<code>EditorManager</code>が、
+      エディタークラスインスタンスを要求するたびにオブジェクトが再利用されるため、テーブルインスタンスごとに最大1つ発生します
+        (詳しくは<a href="http://en.wikipedia.org/wiki/Singleton_pattern">Singleton pattern</a>を参照)。</p>
+    <p><code>prepare()</code>メソッドは<code>editor</code>プロパティにこの特別なエディタークラスが設定されているセルを
+        ユーザーが選択するたびに呼び出されます。 そのため、列全体のエディターとして<code>SelectEditor</code>を設定した場合、この列の任意のセルを選択すると、
+        <code>SelectEditor</code>の<code>prepare()</code>メソッドが呼び出されます。
+        言い換えれば、このメソッドはテーブルの存在している間、特に大きなデータを扱うときに何百回も呼び出し得るのです。
+        また<code>prepare()</code>メソッドのもう1つの重要な側面はエディターを表示してはいけないということです（これは<code>open's</code>の仕事です）。
+        エディターの表示は、<kbd>ENTER</kbd>キー、<kbd>F2</kbd>キー、セルのダブルクリックなどのユーザーイベントによって発生するため、
+        <code>prepare()</code>を呼び出してから実際にエディターを表示するまでにはしばらく時間がかかります。
+        最高のユーザーエクスペリエンスを提供するためには、<code>prepare()</code>を
+        できるだけ早く完了する必要があります。</p>
+    <p><code>open()</code>メソッドはエディターを表示する必要があるときに呼び出されます。ほとんどの場合、このメソッドは
+        CSSの<code>display</code>プロパティを<code>block</code>に変更するか、似たようなことを実行します。ユーザーは
+        イベント（適切なキーを押したりセルをダブルクリックする）がトリガーされた直後にエディターが表示されることを期待しているので、
+        <code>open()</code>メソッドはできるだけ速く動作しなくてはなりません。</p>
+    <p>これらのことを踏まえて、<code>&lt;select&gt;</code>入力の作成するコードを置くための最も合理的な場所は
+        <code>init()</code>メソッドのどこかです。DOM操作はかなり高くつく操作である（リソース消費に関して）
+        と考えられているので、一度だけそのメソッドを実行して、エディターが生きている間は、
+        生成されたHTMLノードを再利用するのが最善です。</p>
+    <pre><code class="lang-js">SelectEditor.prototype.init = function() {
+  // ノードを生成して、生成したノードにCSSクラスを追加し非表示にします
+  this.select = document.createElement('SELECT');
+  Handsontable.dom.addClass(this.select, 'htSelectEditor');
+  this.select.style.display = 'none';
+
+  // テーブルを展開しているコンテナに、作ったノードを追加することでDOMにノードを追加します
+  this.instance.rootElement.appendChild(this.select);
+};</code></pre>
+    <br/>
+    <pre><code class="lang-css">.htSelectEditor {
+  padding: 5px 7px;
+  position: absolute;
+  /*
+   * この操作はWebKitのブラウザーで&#x3C;select&#x3E;の寸法の変更を可能にします
+   */
+  -webkit-appearance: menulist-button !important;
+}</code></pre>
+    <p>やること二つ目:<strong>おわり</strong></p>
+    <h4 id="populating-select-with-options"><code>&lt;select&gt;</code>の選択肢を充実させる</h4>
+    <p>前の手順では<code>&lt;select&gt;</code>入力を作りDOMに追加する関数を実装しました。
+      <code>&lt;option&gt;</code>要素を作成するようなコードを書いていないことにお気づきでしょう。
+      そのため、リストを表示すると空になります。</p>
+    <p>以下のようにオプションリストを定義できるようにしたいです。</p>
+    <pre><code class="lang-js">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      editor: SelectEditor,
+      selectOptions: ['option1', 'option2', 'option3']
+    }
+  ]
+});</code></pre>
+    <p><code>selectOptions</code>値を取得する（簡単な）方法はありません。'init'関数で実行した場合には、
+      たとえこの配列を取得したとしても、 リストに1回しかオプションを追加できません。
+      もし<code>SelectEditor</code>を使用して複数の列があり、それぞれに独自のオプションのリストがある場合はどうなるでしょう？
+      同じ列の2つのセルに異なるオプションリストがある可能性もあります（階層設定 - 覚えていますか？）
+      リストの項目を作成するコードには、より良い場所を見つける必要があることは明らかです。</p>
+    <p><code>prepare()</code>と<code>open()</code>の2つの場所があります。後者の方が実装が簡単ですが、
+      前述したように、
+      <code>selectOptions</code>に多数のオプションのリストが含まれている場合は、
+      <code>&lt;option&gt;</code>ノードを作成してDOMに接続するプロセスを経るため、時間がかかります。
+      <code>open()</code>はできるだけ高速に動作しなければなりません。したがって、<code>prepare()</code>は
+      この種の作業を行うにはうってつけな場所のようです。
+      覚えてほしいのは<code>prepare()</code>をオーバーライドするときは、<code>BaseEditor</code>の元のメソッドを、
+      常に呼び出すべきであるということです。
+      <code>BaseEditor.prototype.prepare()</code>は、他のエディターメソッドで使用される重要なプロパティを設定します。
+    </p>
+    <pre><code class="lang-javascript">// prepare()メソッドのoptionsを作成
+SelectEditor.prototype.prepare = function() {
+  // 親のメソッドの呼び出し
+  Handsontable.editors.BaseEditor.prototype.prepare.apply(this, arguments);
+
+  var selectOptions = this.cellProperties.selectOptions;
+  var options;
+
+  if (typeof selectOptions == 'function') {
+    options = this.prepareOptions(selectOptions(this.row,
+    this.col, this.prop))
+  } else {
+    options = this.prepareOptions(selectOptions);
+  }
+  Handsontable.dom.empty(this.select);
+
+  for (var option in options) {
+    if (options.hasOwnProperty(option)) {
+      var optionElement = document.createElement('OPTION');
+      optionElement.value = option;
+      Handsontable.dom.fastInnerHTML(optionElement, options[option]);
+      this.select.appendChild(optionElement);
+    }
+  }
+}; </code></pre>
+    <p><code>prepareOptions</code>の場所</p>
+    <pre><code class="lang-javascript">SelectEditor.prototype.prepareOptions = function(optionsToPrepare) {
+  var preparedOptions = {};
+
+  if (Handsontable.helper.isArray(optionsToPrepare)) {
+    for(var i = 0, len = optionsToPrepare.length; i < len; i++) {
+      preparedOptions[optionsToPrepare[i]] = optionsToPrepare[i];
+    }
+  } else if (typeof optionsToPrepare == 'object') {
+    preparedOptions = optionsToPrepare;
+  }
+
+  return preparedOptions;
+};</code></pre>
+    <p>やること三つ目:<strong>おわり</strong></p>
+    <h4 id="implementing-editor-specific-methods">エディター固有のメソッドを実装する</h4>
+    <p>ほとんどの作業は完了しました。では、あとはすべてのエディター特有のメソッドを実装するだけです。幸いなことに、
+      私たちのエディターは非常にシンプルなので、
+      これらのメソッドは数行のコードで済みます。</p>
+    <pre><code class="lang-javascript">SelectEditor.prototype.getValue = function() {
+  return this.select.value;
+};
+
+SelectEditor.prototype.setValue = function(value) {
+  this.select.value = value;
+};
+
+SelectEditor.prototype.open = function() {
+  var width = Handsontable.dom.outerWidth(this.TD);
+  var height = Handsontable.dom.outerHeight(this.TD);
+  var rootOffset = Handsontable.dom.offset(this.instance.rootElement);
+  var tdOffset = Handsontable.dom.offset(this.TD);
+
+  // selectの大きさをセルの大きさに合わせる
+  this.select.style.height = height + 'px';
+  this.select.style.minWidth = width + 'px';
+
+  // リストの位置をセルの位置に合わせる
+  this.select.style.top = tdOffset.top - rootOffset.top + 'px';
+  this.select.style.left = tdOffset.left - rootOffset.left + 'px';
+  this.select.style.margin = '0px';
+
+  // リストの表示
+  this.select.style.display = '';
+};
+
+SelectEditor.prototype.close = function() {
+  this.select.style.display = 'none';
+};</code></pre>
+    <p><code>getValue()</code>、<code>setValue()</code>および<code>close()</code>の実装は文字通り
+      <code>open()</code>には注意が必要です。まず最初にこの実装は
+      <code>prepare()</code>に置かれオプションにリストを追加する役目があります。
+      次に、リストを表示する前に、高さと
+      対応するセルのサイズと一致するように<code>height</code>と<code>min-width</code>最小幅を設定します。
+      それをしないとエディターはブラウザによって異なるサイズになります。
+      <code>&lt;select&gt;</code>の最大の高さを設定することもお勧めです。
+      最後に、<code>&lt;select&gt;</code>がテーブルコンテナの最後に追加されたので、
+      編集中のセルの上に表示されるようにその位置を変更する必要があります。
+      適切なセルの横にエディターを配置することも非常に合理的です。</p>
+    <p>やること四つ目:<strong>おわり</strong></p>
+    <p>ここまででエディターは使う準備ができています。コードをページのどこかに置き、<code>SelectEditor</code>
+       クラス関数を<code>editor</code>プロパティの値として渡してください。</p>
+    <pre><code class="lang-javascript">/*
+ * エディターのコードを置く場所
+ */
+var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {},
+    {
+      editor: SelectEditor,
+      selectOptions: ['option1', 'option2', 'option3']
+    }
+  ]
+});</code></pre>
+    <h4 id="use-kbd-↑-kbd-and-kbd-↓-kbd-to-change-selected-value"><kbd>↑</kbd>と
+      <kbd>↓</kbd>で選択値を変更する</h4>
+    <p>私たちのエディターは動作することはわかっていますが、もう1つ微調整を加えましょう。現在、エディターが開いているときにユーザーが
+      <kbd>↑</kbd>または<kbd>↓</kbd>を押すと、エディターが閉じて選択が1つのセルを上下に移動します。
+      上下の矢印キーを押して現在選択されている値を変更するほうがいいことではないでしょうか？具体的には、ユーザーはセルに移動して<kbd>ENTER</kbd>キーを押し、
+      目的の値を選択してもう一度<kbd>ENTER</kbd>キーを押して変更を保存できたらどうでしょうか？
+      マウスに手を置かずにテーブルを操作することが可能になれば、とてもいいものになるでしょう。
+      しかしデフォルトの動作を上書きなしにはここは突破できません。
+      結局のところ、エディターを閉じるタイミングを決定するのは<code>EditorManager</code>です。</p>
+    <p><code>EditorManager</code>インスタンスに直接アクセスすることはできません。しかし、
+      それでもその動作をオーバーライドできます。
+      <code>EditorManager</code>はキーボードイベントの処理を開始する前に、<code>beforeKeyDown</code>フックをトリガーします。
+      いずれかのリスニング関数が<code>event</code>オブジェクトに対して
+      <code>stopImmediatePropagation()</code>メソッドを呼び出した場合、<code>EditorManager</code>は
+      それ以降このイベントを処理しません。
+      したがって、<kbd>↑</kbd>または<kbd>↓</kbd>が押されたかどうかをチェックし、チェックされていたらイベント伝播を停止して、
+      <code>&lt;select&gt;</code>リストで現在選択されている値を変更する<code>beforeKeyDown</code>リスナー関数を
+         登録しなければなりません。</p>
+    <p>私たちが心に留めておく必要があることは私たちのエディターが開かれたとき、私たちのリスナーは動作するだけで後片付けをしないことです。
+      他のエディターのデフォルトの動作を、エディターが開かれていないときのように維持したいのです。
+      そのため、リスナーを登録する最も妥当な場所は<code>open()</code>メソッドと<code>close()</code>メソッドで、
+      メソッドには登録したリスナーを削除するコードを含める必要があります。</p>
+    <p>リスナー関数は次のようになります。</p>
+    <pre><code class="lang-javascript">var onBeforeKeyDown = function(event) {
+  var instance = this; // リスナー関数の位置は常にHandsontable.Coreインスタンスになります
+  var editor = instance.getActiveEditor();
+  var selectedIndex = editor.select.selectedIndex;
+
+  Handsontable.dom.enableImmediatePropagation(event);
+
+  switch (event.keyCode) {
+    case Handsontable.helper.keyCode.arrow_up:
+      var previousOption = editor.select.options[selectedIndex - 1];
+
+      if (previousOption) { // 以前の選択が存在するなら
+        editor.select.value = previousOption.value; // 選択したものにする
+      }
+
+      event.stopImmediatePropagation(); // EditorManagerのこのイベントを発火させないようにする
+      event.preventDefault(); // ブラウザーが上方向にスクロールしないようにする
+      break;
+
+    case Handsontable.helper.keyCode.arrow_down:
+      var nextOption = editor.select.options[selectedIndex + 1];
+
+      if (nextOption) { // 以前の選択が存在するなら
+        editor.select.value = nextOption.value; // 選択したものにする
+      }
+      event.stopImmediatePropagation(); // EditorManagerのこのイベントを発火させないようにする
+      event.preventDefault(); // ブラウザーが上方向にスクロールしないようにする
+      break;
+}</code></pre>
+    <p><code>onBeforeKeyDown()</code>の最初の2行が最も重要です。 まず第一に、リスナーでは
+      <code>this</code>は
+      このエディターのインスタンス<strong>ではなく</strong>、<code>Handsontable.Core</code>のインスタンスに設定されています。
+      作ったエディタークラスのインスタンスを取得するには、
+      アクティブなエディターを返す<code>getActiveEditor()</code>メソッドを呼び出す必要があります。</p>
+    <p>アクティブなエディターとは、<code>prepare()</code>メソッドが最後に呼び出されたエディターです。
+      たとえば、
+      <code>Handsontable.TextEditor</code>のエディターが設定されているセルを選択した場合、<code>getActiveEditor()</code>は、
+      このエディタークラスのオブジェクトを返します。
+      また、エディターが<code>Handsontable.DateEditor</code>で別の列にあるであろうセルを選択すると、
+      アクティブなエディターが変わり
+      <code>getActiveEditor()</code>は<code>DateEditor</code>クラスのオブジェクトを返すようになります。</p>
+    <p>コードの残りの部分はかなり明確になっているはずです。あとはリスナーを登録するだけです。</p>
+    <pre><code class="lang-javascript">SelectEditor.prototype.open = function() {
+  var width = Handsontable.dom.outerWidth(this.TD);
+  var height = Handsontable.dom.outerHeight(this.TD);
+  var rootOffset = Handsontable.dom.offset(this.instance.rootElement);
+  var tdOffset = Handsontable.dom.offset(this.TD);
+
+  this.select.style.height = height + 'px';
+  this.select.style.minWidth = width + 'px';
+  this.select.style.top = tdOffset.top - rootOffset.top + 'px';
+  this.select.style.left = tdOffset.left - rootOffset.left + 'px';
+  this.select.style.margin = '0px';
+  this.select.style.display = '';
+
+  // リスナーの登録
+  this.instance.addHook('beforeKeyDown', onBeforeKeyDown);
+};
+
+SelectEditor.prototype.close = function() {
+  this.select.style.display = 'none';
+  // リスナーの削除
+  this.instance.removeHook('beforeKeyDown', onBeforeKeyDown);
+};</code></pre>
+    <p>さらに、最近の変更（固定列、行、ヘッダーなどのオーバーレイの位置）のためにcss transformプロパティを設定する必要があります。
+      <code>Handsontable.dom</code>の<code>getCssTransform</code>と、
+      <code>resetCssTransform</code>を使用して正しい値を取得します。</p>
+    <pre><code class="lang-javascript">SelectEditor.prototype.open = function() {
+  var width = Handsontable.dom.outerWidth(this.TD);
+  // 重要 - グループレイアウトはパフォーマンスを向上させるためにまとめて読みこみます
+  var height = Handsontable.dom.outerHeight(this.TD);
+  var rootOffset = Handsontable.dom.offset(this.instance.rootElement);
+  var tdOffset = Handsontable.dom.offset(this.TD);
+  var editorSection = this.checkEditorSection();
+  var cssTransformOffset;
+
+  switch(editorSection) {
+    case 'top':
+      cssTransformOffset = Handsontable.dom.getCssTransform(this.instance.view.wt.wtScrollbars.vertical.clone.wtTable.holder.parentNode);
+      break;
+    case 'left':
+      cssTransformOffset = Handsontable.dom.getCssTransform(this.instance.view.wt.wtScrollbars.horizontal.clone.wtTable.holder.parentNode);
+      break;
+    case 'corner':
+      cssTransformOffset = Handsontable.dom.getCssTransform(this.instance.view.wt.wtScrollbars.corner.clone.wtTable.holder.parentNode);
+      break;
+  }
+  var selectStyle = this.select.style;
+
+  if (cssTransformOffset && cssTransformOffset !== -1) {
+    selectStyle[cssTransformOffset[0]] = cssTransformOffset[1];
+  } else {
+    Handsontable.dom.resetCssTransform(this.select);
+  }
+
+  selectStyle.height = height + 'px';
+  selectStyle.minWidth = width + 'px';
+  selectStyle.top = tdOffset.top - rootOffset.top + 'px';
+  selectStyle.left = tdOffset.left - rootOffset.left + 'px';
+  selectStyle.margin = '0px';
+  selectStyle.display = '';
+
+  this.instance.addHook('beforeKeyDown', onBeforeKeyDown);
+};
+
+SelectEditor.prototype.checkEditorSection = function() {
+  if (this.row < this.instance.getSettings().fixedRowsTop) {
+    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
+      return 'corner';
+    } else {
+      return 'top';
+    }
+  } else {
+    if (this.col < this.instance.getSettings().fixedColumnsLeft) {
+      return 'left';
+    }
+  }
+};
+</code></pre>
+    <p>ではうごかして試してみましょう！</p>
+    <h2 id="page-registering-an-editor" name="registering-an-editor">エディターを登録する</h2>
+    <p>エディターを作成するときには、この特別なエディタークラスを参照するエイリアスを割り当てることをお勧めします。
+      Handsontableはデフォルトで11のエイリアスを定義します：</p>
+    <ul>
+      <li><code>autocomplete</code> -> <code>Handsontable.editors.AutocompleteEditor</code></li>
+      <li><code>base</code> -> <code>Handsontable.editors.BaseEditor</code></li>
+      <li><code>checkbox</code> -> <code>Handsontable.editors.CheckboxEditor</code></li>
+      <li><code>date</code> -> <code>Handsontable.editors.DateEditor</code></li>
+      <li><code>dropdown</code> -> <code>Handsontable.editors.DropdownEditor</code></li>
+      <li><code>handsontable</code> -> <code>Handsontable.editors.HandsontableEditor</code></li>
+      <li><code>numeric</code> -> <code>Handsontable.editors.NumericEditor</code></li>
+      <li><code>password</code> -> <code>Handsontable.editors.PasswordEditor</code></li>
+      <li><code>select</code> -> <code>Handsontable.editors.SelectEditor</code></li>
+      <li><code>text</code> -> <code>Handsontable.editors.TextEditor</code></li>
+      <li><code>time</code> -> <code>Handsontable.editors.TimeEditor</code></li>
+    </ul>
+    <p>エイリアスは特定のセルの値を変更するときに使用するエディターを定義するための便利な方法をユーザーに提供します。
+      ユーザーは、どのクラスがエディターを表示するのか、どのクラスがあるのか、全く知る必要がありません。
+      さらに、あなたはテーブルを定義するコードを変更しなくてもエイリアスに関連付けられているクラスを変更できます。</p>
+    <p>新しくエイリアスを登録するには<code>Handsontable.editors.registerEditor()</code>関数を使います。 これは2つの引数を取ります。
+    </p>
+    <ul>
+      <li><code>editorName</code> - エディターを表す文字列</li>
+      <li><code>editorClass</code> - <code>editorName</code>によって表されるクラス</li>
+    </ul>
+    <p>もし<code>select</code>エイリアスに<code>SelectEditor</code>を登録したい場合は、次のように呼び出す必要があります。</p>
+    <pre><code class="lang-javascript">Handsontable.editors.registerEditor('select', SelectEditor);</code></pre>
+    <p>エイリアスは賢く選択してください。すでに登録されている名前でエディターを登録すると、ターゲットクラスは上書きされます。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.editors.registerEditor('text', MyNewTextEditor);
+
+// 'text'エイリアスは、Handsontable.editors.TextEditorではなく、MyNewTextEditorクラスを指すようになりました</code></pre>
+    <p>そのため、既存のエイリアスを意図的に上書きしたくない場合は、一意の名前にしてください。
+      名前の衝突の可能性を最小限に抑えるためには、エイリアスの頭にカスタム名（たとえば、GitHubユーザー名）を付けることをお勧めします。 
+      あなたが自分のエディターを公開したい場合、これは特に重要です。
+      自分のエディターを使用するユーザーが新しくエイリアスを登録しても知る由はないからです。</p>
+    <pre><code class="lang-javascript">Handsontable.editors.registerEditor('select', SelectEditor);
+
+// 誰かがすでにそのようなエイリアスを登録しているかもしれません</code></pre>
+    <pre><br><code class="lang-javascript">Handsontable.editors.registerEditor('my.select', SelectEditor);
+
+// こっちのほうがいいでしょう。</code></pre>
+    <h2 id="preparing-editor-for-publication">公開に向けてエディターを準備する</h2>
+    <p>あなたが自身のエディターを公開することを予定しているか、単にあなたのコードをきれいで清潔に保ちたいのであれば（私たち全員がそうしているように）、
+      コードを整理するのに役立つ3つのステップがあります。</p>
+    <h3 id="enclose-in-iife">IIFEで閉じる</h3>
+    <p>グローバル名前空間を汚染しないように、コードをモジュールに入れること。AMD、CommonJS、またはその他のモジュールパターンを使用できますが、
+        コードを分離する最も簡単な方法は、プレーンな即時呼び出し関数（IIFE:immediately invoked function expression）を使用することです。</p>
+    <pre><code class="lang-javascript">(function(Handsontable){
+  var CustomEditor = Handsontable.editors.BaseEditor.prototype.extend();
+
+  // ...残りのエディターコード
+
+})(Handsontable);</code></pre>
+    <p><code>Handsontable</code>名前空間を引数として渡すことは（グローバルに定義されているため）、
+      オプションで可能ですが、モジュール化と依存関係管理を容易にするために、
+      できるだけ少ないグローバルオブジェクトを使用することをお勧めします。</p>
+    <h3 id="add-editor-to-dedicated-namespace">専用の名前空間にエディターを追加する</h3>
+    <p>意図的に公開されない限り、IIFEで囲まれたコードに外部からアクセスすることはできません。
+      整理されたままにするには、<code>Handsontable.editors.registerEditor</code>メソッドを使用してエディターをエディターのコレクションに登録します。 
+      こうするとテーブル定義中にあなたのエディターを使用することができ、
+      他のユーザーはそのエディターを拡張したい場合に備えてあなたのエディターに簡単にアクセスすることができます。
+      </p>
+    <pre><code class="lang-javascript">(function(Handsontable){
+  var CustomEditor = Handsontable.editors.BaseEditor.prototype.extend();
+
+  // ...残りのエディターコード
+
+  // ここまで
+  Handsontable.editors.registerEditor('custom', CustomEditor);
+
+})(Handsontable);</code></pre>
+    <p>ここから、<code>CustomEditor</code>を次のように使用できます。</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      editor: Handsontable.editors.CustomEditor
+    }
+  ]
+}); </code></pre>
+    <p><code>CustomEditor</code>の拡張も簡単です。</p>
+    <pre><code class="lang-javascript">var AnotherEditor = Handsontable.editors.getEditor('custom').prototype.extend();</code></pre>
+    <p>名づける名前に制限はありませんが、既存のエディターを上書きしないように注意してください。
+        また、名前は一意にしてください。</p>
+    <h3 id="registering-an-alias">エイリアスを登録する</h3>
+    <p>最後の作業は、実際のクラス名を入力しなくてもユーザーが簡単に参照できるように、別名でエディターを登録することです。
+      詳細はエディターの登録をご覧ください。</p>
+    <p>まとめると、よく準備されたエディターは次のようになります。</p>
+    <pre><code class="lang-javascript">(function(Handsontable){
+  var CustomEditor = Handsontable.editors.BaseEditor.prototype.extend();
+
+  // ...残りのエディターコード
+
+  // エディターを専用の名前空間に置く
+  Handsontable.editors.CustomEditor = CustomEditor;
+
+  // エイリアスを登録
+  Handsontable.editors.registerEditor('theBestEditor', CustomEditor);
+
+})(Handsontable);</code></pre>
+<p>From now on, you can use <code>CustomEditor</code> like so:</p>
+<pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      editor: 'theBestEditor'
+    }
+  ]
+}); </code></pre>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/cell-editor.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+    </a>
+  </p>
+</div>
