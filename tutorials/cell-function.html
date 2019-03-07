@@ -1,0 +1,222 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>Handsontableの各セルには、3つの関連する関数があります。</p>
+    <ul>
+      <li>renderer</li>
+      <li>editor</li>
+      <li>validator</li>
+    </ul>
+    <p>これらの機能はそれぞれ、異なるセルの動作を担当します。それらを別々に定義することも、
+      <a href="#cell-type">セルの型</a>を使って3つすべてを一度に定義することもできます。
+      ここでは、前述の関数の目的を詳細に説明します。</p>
+    <h2 id="renderer">Renderer</h2>
+    <p>Handsontableはデータソースに格納されている値を直接表示しません。
+      代わりに、データソースからの値をテーブルセルに表示する必要があるたびに、<code>HTMLTableCellElement</code>型のテーブルセルオブジェクト（DOMノード）と、
+      他の必要な情報とともに、<code>renderer</code>関数に渡されます。</p>
+    <p><code>Renderer</code>は渡された値をセルオブジェクトのコンテンツとしてフォーマットし、配置することが期待されています。
+      <code>Renderer</code>はセルクラスリストを変更することもできます。それは、表示された値が無効であることをユーザーに知らせるために、
+      <code>htInvalid</code>クラスを追加できるということです。</p>
+    <h3 id="native-cell-renderers">ネイティブセルレンダラー</h3>
+    <p>Handsontableには、独自のレンダラーを作成するときに拡張できる5つの定義済みレンダラーが付属しています。</p>
+    <ul>
+      <li><code>TextRenderer</code></li>
+      <li><code>NumericRenderer</code></li>
+      <li><code>AutocompleteRenderer</code></li>
+      <li><code>CheckboxRenderer</code></li>
+      <li><code>PasswordRenderer</code></li>
+    </ul>
+    <p><code>TextRenderer</code>は、すべてのセルのデフォルトのレンダラーです。
+      セルを<em>読み取り専用</em>または<em>無効</em>としてマークするなどの処理を行うなど独自のレンダラーを作成する場合は、
+      このレンダラーを実行したいと思うでしょう。ただし、<code>TextRenderer</code>の呼び出しは必須ではありません。</p>
+    <h3 id="adding-event-listeners-in-cell-renderer-function">セルレンダラー関数のイベントリスナーの追加</h3>
+    <p>特定のユーザーアクションの後（つまり、ユーザーがセルの上にマウスポインタを置いた後）に任意の動作を追加したいとか、
+      高度なセルレンダラーを作成しているとき、イベントリスナーを直接<code>renderer</code>関数への引数としてテーブルセルノードに追加したくなるでしょう。
+      残念なことに、これはほとんどいつもあなたを悩ます原因になり、パフォーマンスの問題を引き起こすか、
+      間違ったセルに接続されているリスナーを持つ羽目になるでしょう。</p>
+    <p>これらはHandsontableが原因です</p>
+    <ul>
+      <li>セルごとに<code>renderer</code>関数を複数回呼び出す - ひとつのセルに基づいた同じイベントリスナーが複数コピーされる可能性があります。
+      </li>
+      <li>テーブルのスクロール中および新しい行と列の追加または削除中にテーブルセルノードを再利用 - 
+        イベントリスナーが誤ったセルに紐づく可能性があります。
+      </li>
+    </ul>
+    <p>セルレンダラーにイベントリスナーを紐づけることを決定する前に、
+      必要な<a href="/docs/<?js= version ?>/Hooks.html">Handsontableイベント</a>にないか確認してください。 
+      <em>Handsontableイベント</em>システムを使用するのがユーザーの操作に応答するための最も安全な方法です。</p>
+    <p>適切な<em>Handsontableイベント</em>が見つからなかった場合は、セルの内容をラッピング<code>
+      &lt;div&gt;</code>に入れて、イベントリスナーをラッパーに接続してからテーブルセルに入れます。</p>
+    <!--TODO: example-->
+    <h3 id="performance">パフォーマンス</h3>
+    <p>セルレンダラーは、テーブルをレンダリングするたびに、表示されるセルごとに個別に呼び出されます。
+      テーブルが存在する間は複数回レンダリングされる（テーブルスクロール後、テーブルソート後、セル編集後など）可能性があるため、
+      <code>renderer</code>関数はできるだけシンプルかつ高速に保つ必要があります。
+      特に大量のデータを扱うときはパフォーマンスが落ちるのでなおさらです。</p>
+    <h3 id="renerer-templates">Renerer templates</h3>
+    <!--TODO: write about cellProperty.rendererTemplate-->
+    <h2 id="editor">Editor</h2>
+    <p>セルエディターは最も複雑なセル関数です。
+      セル編集のしくみや自分のセルエディタの書き方を説明した[[別のページ|カスタムセルエディター]]を用意しました。</p>
+    <h2 id="validator">Validator</h2>
+    <p>セルバリデーターは関数か正規表現のどちらかです。セルが有効であると見なされるのは、
+      バリデーター関数が<code>callback</code>（<code>validator</code>の引数の1つとして渡される）を<code>true</code>として呼び出すか、
+      バリデーション正規表現<a
+        href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/RegExp/test">test()</a>
+      メソッドが<code>true</code>を返すときです。値の有効性は<code>callback</code>に渡される引数によってのみ決定されるため、
+      <code>validator</code>関数は同期または非同期にすることができます。</p>
+    <p><code>renderer</code>および<code>editor</code>関数とは反対に、<code>validator</code>関数は各セルに対して定義する必要はありません。
+      <code>validator</code>関数が定義されていない場合、セルの値は常に有効です。
+      </p>
+    <h2 id="cell-type">セルの型</h2>
+    <p>先ほど述べたように、すべてのテーブルセルには<code>renderer</code>、<code>editor</code>、そして必要に応じて<code>validator</code>
+      の関連付けられている関数が3つあります。多くの場合、これらの機能は互いに強く関連しています。
+      たとえば、セルに日付を保存する場合は、適切なフォーマット（<code>dd/mm/yyy</code>、<code>yyy-mm-dd</code>など）を使用して日付を表示するレンダラーを使用します。
+      また、デフォルトのテキスト入力の代わりにカレンダーを表示するエディターを使用すれば、ユーザーは簡単に正しい日付を選択できます。
+      最後に、ユーザーが入力した値が有効かどうかを確認したくなるでしょう。
+      </p>
+    <p>セルや列に対してこれらの関数を手で設定していくのは面倒なので、
+      Handsontableは設定を簡単にするために<em>セル型</em>を導入しました。</p>
+    <p>セルタイプは文字列<code>&quot;text&quot;</code>、<code>&quot;numeric&quot;</code>、<code>
+      &quot;date&quot;</code>で表されます。各文字列は、この型に関連付けられた関数に内部的にマッピングされています。例えば<code>
+      &quot;numeric&quot;</code>型は関数に関連付けられています。</p>
+    <ul>
+      <li><code>Handsontable.renderers.NumericRenderer</code></li>
+      <li><code>Handsontable.editors.TextEditor</code></li>
+      <li><code>Handsontable.validators.NumericValidator</code></li>
+    </ul>
+    <p>下のように書く代わりに</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      renderer: Handsontable.renderers.NumericRenderer,
+      editor: Handsontable.editors.TextEditor,
+      validator: Handsontable.validators.NumericValidator
+    }
+  ]
+});</code></pre>
+    <p>きれいに書くことができます</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      type: 'numeric'
+    }
+  ]
+});</code></pre>
+    <p>Handsontableは<code>type</code>が設定されているセルを見つけるとこの型がどのセル関数を参照しているかをチェックして使用します。
+      </p>
+    <h3 id="native-types">定義済みの型</h3>
+    <p>Handsontableは9つの型を定義済みです:</p>
+    <ul>
+      <li><code>text</code></li>
+      <li><code>numeric</code></li>
+      <li><code>date</code></li>
+      <li><code>checkbox</code></li>
+      <li><code>password</code></li>
+      <li><code>select</code></li>
+      <li><code>dropdown</code></li>
+      <li><code>autocomplete</code></li>
+      <li><code>handsontable</code></li>
+    </ul>
+    <p><code>text</code>のセル型がデフォルトの型です。</p>
+    <h3 id="precedence">優先権</h3>
+    <p><code>renderer</code>、<code>editor</code>、<code>validator</code>などのオプションと一緒に<code>type</code>オプションを定義することが可能です。
+      この例を見てみましょう。</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+  {
+    type: 'numeric',
+    validator: customValidator // このヴァリデーター関数はほかのところで定義されたものです
+  }
+]
+});</code></pre>
+    <p>列内のすべてのセルの<code>type</code>を<code>numeric</code>として定義しました。さらに、バリデーター関数を直接定義しました。
+      Handsontableでは、直接定義されたセル関数は常にセル型に関連付けられた関数よりも優先されるため、
+      上記の設定は次のものと同等です。</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      renderer: Handsontable.renderers.NumericRenderer,
+      editor: Handsontable.editors.TextEditor,
+      validator: customValidator
+    }
+  ]
+});</code></pre>
+    <p>型を使用して設定するもう1つの方法があります。</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  validator: customValidator, // このヴァリデーター関数はほかのところで定義されたものです
+  columns: [
+    {
+      type: 'password'
+    },
+    {}
+  ]
+});</code></pre>
+    <p><a
+      href="/docs/<?js= version ?>/tutorial-setting-options.html#page-config">階層設定
+      </a>を利用し、2つの列を持つテーブル定義して<code>validator</code>を<code>customValidator</code>関数に設定します。
+      最初の列の<code>type</code>を<code>password</code>に設定します。<code>Password</code>のセル型は、
+      バリデーター関数を定義していません：</p>
+    <pre><code class="lang-javascript">renderer: Handsontable.renderers.PasswordRenderer,
+editor: Handsontable.editors.PasswordEditor,
+validator: undefined</code></pre>
+    <p><code>type: &#39;password&#39;</code>は、<code>validator: customValidator</code>よりも最初の列のセルに対してより具体的な設定であるため、
+      <code>password</code>型に関連付けられたセル関数は、より高いレベルの設定で定義された関数よりも優先されます。 
+      したがって、同等の構成は次のとおりです。
+      </p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      renderer: Handsontable.renderers.PasswordRenderer,
+      editor: Handsontable.editors.PasswordEditor,
+      validator: undefined
+    }
+    {
+      renderer: Handsontable.renderers.TextRenderer, // textのセル型はデフォルトです
+      editor: Handsontable.editors.TextEditor, // textのセル型はデフォルトです
+      validator: customValidator
+    }
+  ]
+});</code></pre>
+    <h2 id="cell-functions-getters">Cell functions getters</h2>
+    <p>何らかの理由で、特定のセルの<code>renderer</code>、<code>editor</code>または<code>validator</code>
+      関数を取得する必要がある場合は、標準の<code>getCellMeta(row, col)</code>メソッドを使用して特定のセルのすべてのプロパティを取得してから、
+      次のようにセル関数を参照できます。</p>
+    <pre><code class="lang-javascript">var cellProperties = $('#container').handsontable('getCellMeta', 0, 0);
+// [0, 0]のセルのプロパティを取得
+cellProperties.renderer; // セルrendererを取得
+cellProperties.editor; // セルeditorを取得
+cellProperties.validator; // セルvalidatorを取得</code></pre>
+    <p>ただし、<code>getCellMeta()</code>はセルプロパティを「そのまま」返すので、
+      関数を直接定義するのではなくセル型を使用してセル関数を設定すると、
+      それらのセル関数は<code>undefined</code>になります。</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  columns: [
+    {
+      type: 'numeric'
+    }
+  ]
+});
+
+var cellProperties = hot.getCellMeta(0, 0); // [0, 0]のセルのプロパティを取得
+cellProperties.renderer; // undefined
+cellProperties.editor; // undefined
+cellProperties.validator; // undefined
+cellProperties.type; // "numeric"</code></pre>
+    <p>実際のセル関数を取得するには、適切な<em>cell function getter</em>を使用してください。</p>
+    <ul>
+      <li><code>getCellRenderer(row, col)</code></li>
+      <li><code>getCellEditor(row, col)</code></li>
+      <li><code>getCellValidator(row, col)</code></li>
+    </ul>
+    <p>セル関数が直接定義されているかセル型を使用しているかに関係なく、これらの関数は常に適切な値を返します。
+      </p>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/cell-function.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
