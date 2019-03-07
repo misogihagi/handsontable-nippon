@@ -1,0 +1,241 @@
+<div class="static-content">
+
+  <div class="index-list">
+
+    <ul>
+      <li><a href="#page-registering-cell-type">セル型を登録する</a></li>
+      <li><a href="#page-preview">組み込みおよびカスタムのセル型のプレビュー</a></li>
+      <li><a href="#page-anatomy">セル型の解剖</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container head-gap clearfix" name="registering-cell-type">
+    <h3 id="page-registering-cell-type">セル型を登録する</h3>
+    <p>カスタムのセル型を作成するときは、この特定の型定義を参照するエイリアスとして割り当てることをお勧めします。
+      Handsontableはデフォルトで9つのエイリアスを定義します：</p>
+    <ul>
+      <li><code>autocomplete</code> -> <code>Handsontable.cellTypes.autocomplete</code></li>
+      <li><code>checkbox</code> -> <code>Handsontable.cellTypes.checkbox</code></li>
+      <li><code>date</code> -> <code>Handsontable.cellTypes.date</code></li>
+      <li><code>dropdown</code> -> <code>Handsontable.cellTypes.dropdown</code></li>
+      <li><code>handsontable</code> -> <code>Handsontable.cellTypes.handsontable</code></li>
+      <li><code>numeric</code> -> <code>Handsontable.cellTypes.numeric</code></li>
+      <li><code>password</code> -> <code>Handsontable.cellTypes.password</code></li>
+      <li><code>text</code> -> <code>Handsontable.cellTypes.text</code></li>
+      <li><code>time</code> -> <code>Handsontable.cellTypes.time</code></li>
+    </ul>
+    <p>セルのプロパティを記述することで、エイリアスはユーザーにとってどのセル型を使用するべきかを決定する便利な手段になります。
+      ユーザーは、コードのどの部分がセルの値の表示、検証、または編集を担当しているのかを知る必要はなく、
+      関数があることさえ知る必要はありません。
+      さらに、セルプロパティを定義するコードを変更しなくても、
+      エイリアスに関連付けられたセルの動作を変更できます。
+      </p>
+    <p>独自のエイリアスを登録するには、<code>Handsontable.cellTypes.registerCellType()</code>関数を使用してください。これは2つの引数を取ります。
+    </p>
+    <ul>
+      <li><code>cellTypeName</code> - セル型オブジェクトを表す文字列</li>
+      <li><code>type</code> - <code>cellTypeName</code>で表される<code>editor</code>、<code>renderer</code>そして<code>validator</code>のキーを持つオブジェクト</li>
+    </ul>
+    <p>エイリアス<code>copyable-password</code>に<code>copyablePasswordType</code>を登録したい場合は、次のように呼び出す必要があります。</p>
+    <pre><code class="lang-javascript">Handsontable.cellTypes.registerCellType('copyable-password', {
+  editor: copyablePasswordEditor,
+  renderer: copyablePasswordRenderer,
+});</code></pre>
+    <p>エイリアスは賢く選択してください。 セル型をすでに登録されている名前で登録すると、目的の関数は上書きされます。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.cellTypes.registerCellType('password', {
+  editor: copyablePasswordEditor,
+  renderer: copyablePasswordRenderer,
+});
+
+// この'password'エイリアスはHandsontable.cellTypes.passwordではなく、新しく作成されたオブジェクトを指すようになりました。</code></pre>
+    <p>そのため、既存のエイリアスを意図的に上書きしたくない場合は、一意の名前にしてください。
+      名前の衝突の可能性を最小限に抑えるためには、エイリアスの頭にカスタム名（たとえば、GitHubユーザー名）を付けることをお勧めします。
+      あなたが自分のエディターを公開したい場合、これは特に重要です。
+      自分のエディターを使用するユーザーが新しくエイリアスを登録しても知る由はないからです。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.cellTypes.registerCellType('copyable-password', {
+  editor: copyablePasswordEditor,
+  renderer: copyablePasswordRenderer,
+});
+
+// 誰かがすでにそのようなエイリアスを登録しているかもしれません</code></pre>
+    <pre><br><code class="lang-javascript">Handsontable.cellTypes.registerCellType('my.copyable-password', {
+  editor: copyablePasswordEditor,
+  renderer: copyablePasswordRenderer,
+});
+
+// こっちのほうがいいでしょう。</code></pre>
+  <h3 id="using-an-alias">エイリアスを使う</h3>
+  <p>最後の作業は、登録されたエイリアスを使用することです。これにより、ユーザーは実際のセル型オブジェクトを取得する必要なく、簡単にそれを参照できます。
+    </p>
+  <p>まとめると、洗練されたセル型オブジェクトは次のようになります。</p>
+  <pre><code class="lang-javascript">(function(Handsontable){
+  var MyEditor = Handsontable.editors.TextEditor.prototype.extend();
+
+  function customRenderer(hotInstance, td, row, column, prop, value, cellProperties) {
+    // ...レンダラーの仕事
+  }
+
+  function customValidator(query, callback) {
+    // ...ヴァリデイターの仕事
+    callback(/* Pass `true` or `false` */);
+  }
+
+  // エイリアスの登録
+  Handsontable.cellTypes.registerCellType('my.custom', {
+    editor: MyEditor,
+    renderer: customRenderer,
+    validator: customValidator,
+    // Handsontableの設定に基づいたセル型を追加することができます
+    className: 'my-cell',
+    allowInvalid: true,
+    // `cellProperties`のなかのカスタムプロパティを追加することもできます
+    myCustomCellState: 'complete',
+  });
+
+})(Handsontable);</code></pre>
+  <p>これからは、セル定義をこのように使用できます。</p>
+  <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      type: 'my.custom'
+    }
+  ]
+}); </code></pre>
+  </div>
+  <div class="example-container clearfix" name="preview">
+    <h3 id="page-preview">組み込みおよびカスタムのセル型のプレビュー</h3>
+    <p>以下の例は、Handsontableで使用可能な組み込み済みのセル型
+      （つまり、セルレンダラーとエディターの組み合わせ）の一部を示しています。</p>
+    <ul>
+      <li>Text</li>
+      <li><a href="/docs/<?js= version ?>/demo-numeric.html">Numeric</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-checkbox.html">Checkbox</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-date.html">Date</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-select.html">Select</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-dropdown.html">Dropdown</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-autocomplete.html">Autocomplete</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-password.html">Password</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-handsontable.html">Handsontable in Handsontable</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-custom-renderers.html">Custom</a></li>
+    </ul>
+    <p>同じ例で、カスタムセルレンダラー、<code>yellowRenderer</code>と<code>greenRenderer</code>の宣言も示しています。
+      </p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var data = [
+            {id: 1, name: 'Ted', isActive: true, color: 'orange', date: '2015-01-01'},
+            {id: 2, name: 'John', isActive: false, color: 'black', date: null},
+            {id: 3, name: 'Al', isActive: true, color: 'red', date: null},
+            {id: 4, name: 'Ben', isActive: false, color: 'blue', date: null}
+          ],
+          container = document.getElementById('example1'),
+          hot1,
+          yellowRenderer,
+          greenRenderer;
+
+        yellowRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+          Handsontable.renderers.TextRenderer.apply(this, arguments);
+          td.style.backgroundColor = 'yellow';
+
+        };
+
+        greenRenderer = function(instance, td, row, col, prop, value, cellProperties) {
+          Handsontable.renderers.TextRenderer.apply(this, arguments);
+          td.style.backgroundColor = 'green';
+
+        };
+
+        hot1 = new Handsontable(container, {
+          data: data,
+          startRows: 5,
+          colHeaders: true,
+          minSpareRows: 1,
+          columns: [
+            {data: "id", type: 'text'},
+            // 'text'はデフォルトで実際に宣言する必要はありません
+            {data: "name", renderer: yellowRenderer},
+            // デフォルトの'text'セル型のレンダラーをyellowRendererにしています
+            {data: "isActive", type: 'checkbox'},
+            {data: "date", type: 'date', dateFormat: 'YYYY-MM-DD'},
+            {data: "color",
+              type: 'autocomplete',
+              source: ["yellow", "red", "orange", "green", "blue", "gray", "black", "white"]
+            }
+          ],
+          cell: [
+            {row: 1, col: 0, renderer: greenRenderer}
+          ],
+          cells: function (row, col, prop) {
+            if (row === 0 && col === 0) {
+              this.renderer = greenRenderer;
+            }
+          }
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-hap" name="anatomy">
+  <h3 id="page-anatomy">セル型の解剖</h3>
+  <p>セル型は、定義済みのセルプロパティのセットです。セル型は、セルにどのレンダラー、エディターまたはバリデーターを使うかを定義します。
+    それぞれの一致するセルにさまざまなセルのプロパティを定義することもできます。
+    </p>
+  <p>例</p>
+  <pre><code class="lang-js">columns: [{
+  type: &#x27;password&#x27;
+}]</code></pre>
+  <p>上と下は同じです</p>
+  <pre><code class="lang-js">columns: [{
+  editor: Handsontable.editors.PasswordEditor
+  renderer: Handsontable.renderers.PasswordRenderer,
+  copyable: false,
+}]</code></pre>
+  <p>カスタムのセル型を使うこともできます</p>
+  <pre><code class="lang-js">Handsontable.cellTypes.registerCellType('custom', {
+  renderer: Handsontable.renderers.TextRenderer,
+  className: 'my-cell',
+  readOnly: true,
+  myCustomProperty: 'foo'
+})</code></pre>
+  <p>Handsontableでの設定</p>
+  <pre><code class="lang-js">columns: [{
+  type: &#x27;custom&#x27;
+}]</code></pre>
+  <p>上と下は同じです</p>
+  <pre><code class="lang-js">columns: [{
+  editor: false,
+  renderer: Handsontable.renderers.TextRenderer,
+  className: 'my-cell',
+  readOnly: true,
+  myCustomProperty: 'foo'
+}]</code></pre>
+    <p>このマッピングは以下のファイルにあります
+      <a href="https://github.com/handsontable/handsontable/blob/master/src/cellTypes" target="_blank">src/cellTypes/</a>
+    </p>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/cell-types.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
