@@ -1,0 +1,374 @@
+<div class="static-content">
+
+  <script data-jsfiddle="common">
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }</script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-default">デフォルトのコンテキストメニュー</a></li>
+      <li><a href="#page-specific">特定のオプションを持つコンテキストメニュー</a></li>
+      <li><a href="#page-custom">完全カスタム設定のコンテキストメニュー</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="default">
+    <h3 id="page-default">デフォルトのコンテキストメニュー</h3>
+    <pコンテキストメニューの基本設定を実行するには、contextMenuオプションを<code>true</code>に設定するだけです。</p>
+    <p>バージョン<code>0.11</code>から、コンテキストメニューは行と列のヘッダーに対しても機能します。
+      行ヘッダーのコンテキストメニューを開くと、列オプションは無効になります。
+      同様に、列ヘッダーのコンテキストメニューを開くと、行オプションは無効になります。</p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+        var settings1 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true
+        };
+
+        var hot1 = new Handsontable(example1, settings1);</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="specific">
+    <h3  id="page-specific">特定のオプションを持つコンテキストメニュー</h3>
+    <p>contextMenuオプションを文字列のキーの配列として使用して、コンテキストメニューで使用可能なオプションを制限できます。</p>
+
+    <table class="static-data features-table">
+      <thead>
+      <tr>
+        <th>キー</th>
+        <th>目的</th>
+        <th>ほかの条件</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><code>row_above</code></td>
+        <td>行を上に挿入する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>row_below</code></td>
+        <td>行を下に挿入する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>col_left</code></td>
+        <td>行を左に挿入する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>col_right</code></td>
+        <td>行を右に挿入する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>---------</code></td>
+        <td>セパレーター</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>remove_row</code></td>
+        <td>行を削除する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>remove_col</code></td>
+        <td>列を削除する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>clear_column</code></td>
+        <td>列の値をクリアする</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>undo</code></td>
+        <td>元に戻す</td>
+        <td><a href="/docs/<?js= version ?>/UndoRedo.html">UndoRedo</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>redo</code></td>
+        <td>やり直す</td>
+        <td><a href="/docs/<?js= version ?>/UndoRedo.html">UndoRedo</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>make_read_only</code></td>
+        <td>読み取り専用にする</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>alignment</code></td>
+        <td>配置を設定する</td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><code>cut</code></td>
+        <td>切り取る</td>
+        <td><a href="/docs/<?js= version ?>/demo-copy-paste.html">CopyPaste</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>copy</code></td>
+        <td>コピーする</td>
+        <td><a href="/docs/<?js= version ?>/demo-copy-paste.html">CopyPaste</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>freeze_column</code></td>
+        <td>列を固定する</td>
+        <td><a href="/docs/<?js= version ?>/demo-freezing.html">ManualColumnFreeze</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>unfreeze_column</code></td>
+        <td>列の固定を解除する</td>
+        <td><a href="/docs/<?js= version ?>/demo-freezing.html">ManualColumnFreeze</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>borders</code></td>
+        <td>枠線の設定をする</td>
+        <td><a href="/docs/<?js= version ?>/demo-customizing-borders.html">CustomBorders</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>commentsAddEdit</code></td>
+        <td>コメントを追加編集する</td>
+        <td><a href="/docs/<?js= version ?>/demo-comments_.html">Comments</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>commentsRemove</code></td>
+        <td>コメントを削除する</td>
+        <td><a href="/docs/<?js= version ?>/demo-comments_.html">Comments</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>commentsReadOnly</code></td>
+        <td>コメントを読み取り専用にする</td>
+        <td><a href="/docs/<?js= version ?>/demo-comments_.html">Comments</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>mergeCells</code></td>
+        <td>セルを結合したり結合を解除する</td>
+        <td><a href="/docs/<?js= version ?>/demo-merged-cells.html">MergeCells</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>add_child</code></td>
+        <td>子の行を挿入する</td>
+        <td><a href="/docs/<?js= version ?>/demo-nested-rows.html">NestedRows</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>detach_from_parent</code></td>
+        <td>親の行と切り離す</td>
+        <td><a href="/docs/<?js= version ?>/demo-nested-rows.html">NestedRows</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>hidden_columns_hide</code></td>
+        <td>列を非表示にする</td>
+        <td><a href="/docs/<?js= version ?>/demo-hiding-columns.html">HiddenColumns</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>hidden_columns_show</code></td>
+        <td>非表示列を表示する</td>
+        <td><a href="/docs/<?js= version ?>/demo-hiding-columns.html">HiddenColumns</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>hidden_rows_hide</code></td>
+        <td>行を非表示にする</td>
+        <td><a href="/docs/<?js= version ?>/demo-hiding-rows.html">HiddenRows</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>hidden_rows_show</code></td>
+        <td>非表示行を表示する</td>
+        <td><a href="/docs/<?js= version ?>/demo-hiding-rows.html">HiddenRows</a>プラグインが有効になっていること</td>
+      </tr>
+
+      <tr>
+        <td><code>filter_by_condition</code></td>
+        <td>第一条件で要素をしぼる</td>
+        <td><a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>filter_operators</code></td>
+        <td>選択された要素を操作する</td>
+        <td><a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>filter_by_condition2</code></td>
+        <td>第二条件で要素をしぼる</td>
+        <td><a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>filter_by_value</code></td>
+        <td>値で要素をしぼる</td>
+        <td><a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a>プラグインが有効になっていること</td>
+      </tr>
+      <tr>
+        <td><code>filter_action_bar</code></td>
+        <td>バー要素を動作させる</td>
+        <td><a href="/docs/<?js= version ?>/demo-filtering.html">Filters</a>プラグインが有効になっていること</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot head-gap"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var example2 = document.getElementById('example2');
+        var settings2 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: ['row_above', 'row_below', 'remove_row']
+        };
+
+        var hot2 = new Handsontable(example2, settings2);</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="custom">
+    <h3 id="page-custom">完全カスタム設定のコンテキストメニュー</h3>
+    <p>この例は、以下の方法を示しています。</p>
+    <p>
+    <ul>
+      <li>すべてのオプションに共通のコールバックを追加</li>
+      <li>動的に無効にするオプション</li>
+      <li>定義済みオプションのカスタムテキストを設定</li>
+      <li>独自のカスタムオプションを追加する</li>
+      <li>特定のオプションにコールバックを追加する</li>
+    </ul>
+    </p>
+
+    <div data-jsfiddle="example3">
+      <div id="example3" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3">
+        var example3 = document.getElementById('example3');
+        var settings3 = {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: {
+            callback: function (key, selection, clickEvent) {
+              // すべてのオプションに共通のコールバックを追加
+              console.log(key, selection, clickEvent);
+            },
+            items: {
+              "row_above": {
+                disabled: function () { // `disabled` can be a boolean or a function
+                  // 最初の行がクリックされたら無効にする
+                  return this.getSelectedLast()[0] === 0; // `this` === hot3
+                }
+              },
+              "row_below": {
+                name: 'Click to add row below' // 定義済みオプションにカスタムテキスト設定する
+              },
+              "about": { // 独自のカスタムオプション
+                name: function () { // `name`は文字列か関数
+                  return '<b>Custom option</b>'; // NameはHTMLを含む
+                },
+                hidden: function () { // `hidden`は真偽値か関数
+                  // 最初の列がクリックされたら非表示にする
+                  return this.getSelectedLast()[1] == 0; // `this` === hot3
+                },
+                callback: function(key, selection, clickEvent) { // 特定のオプションのコールバック
+                  setTimeout(function() {
+                    alert('Hello world!'); // メニューが閉じた後アラートを出す（タイムアウトを伴う）
+                  }, 0);
+                }
+              },
+              "colors": { // 独自のカスタムオプション
+                name: 'Colors...',
+                submenu: {
+                  // このカスタムオプションはsubmenuのitemsを含む
+                  items: [
+                    {
+                      // キーは"parent_key:child_key"の形式でなければなりません
+                      key: 'colors:red',
+                      name: 'Red',
+                      callback: function(key, selection, clickEvent) {
+                        setTimeout(function() {
+                          alert('You clicked red!');
+                        }, 0);
+                      }
+                    },
+                    { key: 'colors:green', name: 'Green' },
+                    { key: 'colors:blue', name: 'Blue' }
+                  ]
+                }
+              },
+              "credits": { // 独自のカスタムプロパティ
+                // コンテキストメニューのカスタムレンダリング要素
+                renderer: function(hot, wrapper, row, col, prop, itemValue) {
+                  var elem = document.createElement('marquee');
+                  elem.style.cssText = 'background: lightgray;';
+                  elem.textContent = 'Brought to you by...';
+                  return elem;
+                },
+                disableSelection: true, // 選択したアイテムをマウスで強調表示しないようにする
+                isCommand: false // クリックでコマンドが実行されてメニューが閉じないようにする
+              }
+            }
+          }
+        };
+
+        var hot3 = new Handsontable(example3, settings3);</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/context-menu.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
