@@ -1,0 +1,30 @@
+<div class="static-content">
+  <div class="example-container clearfix">
+
+    <p>このプロジェクトへの参加は大歓迎です。バグを修正したり、新しい機能を提案したい場合は、
+      新しいプルリクエストを送ることができますが、最初に次の一般的なルールに従っていることを確認してください。</p>
+    <ol>
+      <li><a href="//goo.gl/forms/yuutGuN0RjsikVpM2" target="_blank">Contributor License Agreement</a>に署名して、コードへの変更を公開することを許可します。
+        </li>
+      <li>別のブランチで変更を加えます。これはマージプロセスをスピードアップします。</li>
+      <li>あなたのプルリクエストを常に `master`ではなく` Develop`ブランチにしてください。</li>
+      <li>`dist/`のファイルを編集しないでください（例： `handsontable.js`、` handsontable.css`、 `handsontable.full.js`、` handsontable.full.css`、`languages/all.js`）
+        および`languages/`（例：`en-US.js`、`pl-PL.js`）ディレクトリ。代わりに、`src/`ディレクトリ内のファイルを編集してから`npm run build`を使ってビルドしてください。
+        より多くの情報は
+        <a href="/<?js= version ?>/tutorial-custom-build.html">ここ</a>で見つけることができます。</li>
+      <li><strong>重要：</strong>変更した場合は、`test/e2e/`（エンドトゥーエンドテスト用）、`test/unit/`または`src/3rdparty/walkontable/test/spec/`に少なくとも1つのテストケースを追加してください。
+        それは私たちが問題を理解し、恒久措置であることの確認を助けるでしょう。
+        <a href="/<?js= version ?>/tutorial-testing.html">私たちのテストプロセスとは</a></li>
+      <li>コードを<code>npm run lint</code>を実行して<a href="https://ja.wikipedia.org/wiki/Lint">リント</a>してください。私たちの<a href="https://github.com/handsontable/handsontable/blob/master/.eslintrc" target="_blank">コーディングスタイル</a>は<a href="Airbnb JavaScript Style" target="_blank">Airbnb JavaScript Style</a>をもとにづいています。</li>
+      <li>すべての変更に詳細な説明を追加してください。</li>
+    </ol>
+    <p><strong>あなたのご参加お待ちしています!</strong></p>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/contributing.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
