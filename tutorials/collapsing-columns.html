@@ -1,0 +1,90 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#setup">セットアップと設定</a></li>
+      <li><a href="#example">例</a></li>
+    </ul>
+
+    <hr>
+
+    <h3 id="overview">概要</h3>
+    <p>
+      <i>Collapsible Columns</i>プラグインは、<code>colspan</code>プロパティが定義されたヘッダーで覆われた列を折りたたむことを可能にします。
+      <br/>
+      このプラグインは、（Nested Headersプラグインで作成された）「展開/折りたたみ」ボタンの複数列ヘッダーを追加します。
+      これらのボタンをクリックすると、すべての「子」ヘッダーが折りたたまれ（展開され）、最初のヘッダーが表示されたままになります。<br/>
+      <br/>
+      <strong>注:</strong>このプラグインが正しく動作するためには<a href="/docs/<?js= version ?>/demo-nested-headers.html">Nested Headers</a>プラグインと
+      <a href="/docs/<?js= version ?>/demo-hiding-columns.html">Hidden Columns</a>プラグインを有効にする必要があります。
+    </p>
+
+    <h3 id="setup">セットアップと設定</h3>
+    <p>
+      Collapsible Columnsプラグインを有効にするには、<code>collapsibleColumns</code>プロパティを次のいずれかに設定します。
+    </p>
+    <ul>
+      <li><code>true</code> - <i>すべての</i>複数列ヘッダーの機能が有効になります。（<code>colspan</code>属性が定義されているすべての列は[展開/折りたたみ]ボタンで拡張されます）</li>
+      <li>どのヘッダーに「展開/折りたたみ」ボタンを表示するかという情報を含むオブジェクトの配列。この場合のオブジェクトの構造は次のようになります。
+    <pre><code class="js">collapsibleColumns: [
+  {row: -4, col: 1, collapsible: true}, // 1列目の4段目（最初の表の行から数えて）のヘッダーにボタンを追加します。
+  {row: -3, col: 5, collapsible: true} // 5列目の3段目（最初の表の行から数えて）のヘッダーにボタンを追加します。
+]</code></pre>
+      </li>
+    </ul>
+
+
+    <h3 id="example">例</h3>
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(5,10),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenColumns: true,
+          colWidths: 60,
+          nestedHeaders: [
+            ['A', {label: 'B', colspan: 8}, 'C'],
+            ['D', {label: 'E', colspan: 4}, {label: 'F', colspan: 4}, 'G'],
+            ['H', {label: 'I', colspan: 2}, {label: 'J', colspan: 2}, {label: 'K', colspan: 2}, {label: 'L', colspan: 2}, 'M'],
+            ['N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W']
+          ],
+          collapsibleColumns: [
+            {row: -4, col: 1, collapsible: true},
+            {row: -3, col: 1, collapsible: true},
+            {row: -2, col: 1, collapsible: true},
+            {row: -2, col: 3, collapsible: true}
+          ]
+        });</script>
+    </div>
+
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/collapsing-columns.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
+
