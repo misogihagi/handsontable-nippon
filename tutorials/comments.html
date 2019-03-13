@@ -1,0 +1,106 @@
+<div class="static-content">
+
+  <script data-jsfiddle="common">
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }</script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#enable">プラグインを有効にする</a></li>
+      <li><a href="#context-menu">コンテキストメニューからコメントを追加する</a></li>
+      <li><a href="#preset-comments">プリセットコメントを設定する</a></li>
+      <li><a href="#api">API</a></li>
+      <li><a href="#example">実装例</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <p><i>Comments</i>プラグインを使用すると、Handsontableでコメントを簡単に追加、編集、削除できます。</p>
+
+    <h3 id="enable">プラグインを有効にする</h3>
+    <p>プラグインを使用するには、<code>comments</code>プロパティを<code>true</code>に設定する必要があります。
+      プラグインを有効にして、必要なすべてのコンテキストメニュー項目を追加します。
+      例えば：</p>
+    <pre><code class="javascript">let hot = new Handsontable(container, {
+  data: Handsontable.helper.createSpreadsheetData(10, 10),
+  comments: true
+});</code></pre>
+
+    <h3 id="context-menu">コンテキストメニューからコメントを追加する</h3>
+    <p>
+      プラグインを有効にすると、<a href="./demo-context-menu.html">コンテキストメニュー</a>に新しい項目が追加されます。
+    </p>
+    <ul>
+      <li>コメントを追加・編集</li>
+      <li>コメントを削除</li>
+      <li>読み取り専用コメント</li>
+    </ul>
+    <p>私はそれらのすべてがかなり見ればわかると思います。</p>
+
+    <h3 id="preset-comments">プリセットコメントを設定する</h3>
+    <p>テーブルにコメントを事前定義することもできます。コメントはテーブル/列/セルのメタデータオブジェクトに格納されているので、
+      その型の他のプロパティとして宣言できます。
+      <br>
+      例：</p>
+    <pre><code class="javascript">cell: [
+  {row: 1, col: 1, comment: {value: 'Hello world!'}}
+]</code></pre>
+    <p>この例では（1,1）のセルに"Hello world！"コメントを追加しています。</p>
+
+
+    <h3 id="api">API</h3>
+    <p>
+      APIを使用して、コメント関連の情報のほとんどを追加、削除、および修正することができます。詳しくは<a href="./Comments.html">コメント</a>を参照してください。
+    </p>
+
+    <h3 id="example">実装例</h3>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var container = document.getElementById('example1'),
+                hot1;
+
+        hot1 = new Handsontable(container, {
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true,
+          comments: true,
+          cell: [
+            {row: 1, col: 1, comment: {value: 'Some comment'}},
+            {row: 2, col: 2, comment: {value: 'More comments'}}
+          ]
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/comments.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
