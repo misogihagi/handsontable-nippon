@@ -1,0 +1,187 @@
+<div class="static-content">
+
+  <script type="text/javascript" data-jsfiddle="common">
+    function getCarData() {
+      return [
+        {car: "Mercedes A 160", year: 2017, available: true, comesInBlack: 'yes'},
+        {car: "Citroen C4 Coupe", year: 2018, available: false, comesInBlack: 'yes'},
+        {car: "Audi A4 Avant", year: 2019, available: true, comesInBlack: 'no'},
+        {car: "Opel Astra", year: 2020, available: false, comesInBlack: 'yes'},
+        {car: "BMW 320i Coupe", year: 2021, available: false, comesInBlack: 'no'}
+      ];
+    }</script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#default">チェックボックスのtrue/false値</a></li>
+      <li><a href="#template">チェックボックステンプレート</a></li>
+      <li><a href="#labels">チェックボックスラベル</a></li>
+    </ul>
+  </div>
+
+  <div>
+    <p>このセルのデータはチェックボックスとして表示され、チェックボックスをチェックすることで簡単に変更できます。
+      </p>
+    <p>チェックと解除は、マウスを使用するか、または<kbd>SPACE</kbd>キーを押して実行できます。
+      変更したいセルを選択して<kbd>SPACE</kbd>を押せば、複数のセルの状態を一度に変更できます。
+      </p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="default">チェックボックスのtrue/false値</h3>
+
+    <p>これは、列データに<code>true</code>または<code>false</code>の値があり、チェックボックスのみを表示したい場合のデフォルトの使用シナリオです。
+    </p>
+
+    <div data-jsfiddle="example1">
+        <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script type="text/javascript" data-jsfiddle="example1">
+        var example1 = document.getElementById('example1'),
+          hot1;
+
+        hot1 = new Handsontable(example1, {
+          data: getCarData(),
+          colHeaders: ['Car model', 'Year of manufacture', 'Available'],
+          columns: [
+            {
+              data: 'car'
+            },
+            {
+              data: 'year',
+              type: 'numeric'
+            },
+            {
+              data: 'available',
+              type: 'checkbox'
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap">
+    <h3 id="template">チェックボックステンプレート</h3>
+
+    <p><code>true</code>と<code>false</code>以外の値を使用したい場合は、
+      <code>checkedTemplate</code>と<code>uncheckedTemplate</code>を使用してこの情報を提供する必要があります。
+      Handsontableは適切なテンプレートを使ってデータを更新します。
+    </p>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var example2 = document.getElementById('example2');
+
+        var hot2 = new Handsontable(example2, {
+          data: getCarData(),
+          colHeaders: ['Car model', 'Year of manufacture', 'Comes in black'],
+          columns: [
+            {
+              data: 'car'
+            },
+            {
+              data: 'year',
+              type: 'numeric'
+            },
+            {
+              data: 'comesInBlack',
+              type: 'checkbox',
+              checkedTemplate: 'yes',
+              uncheckedTemplate: 'no'
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap">
+    <h3 id="labels">チェックボックスラベル</h3>
+
+    <p>
+      チェックボックスにラベルを追加したい場合は、<code>label</code>オプションを使用できます。
+      このオプションを使用すると、ラベルを挿入する場所（チェックボックス要素の前後）と、どのデータソースのラベルテキストを更新するかを宣言できます。
+    </p>
+
+    <div data-jsfiddle="example3">
+      <div id="example3" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3" title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3">
+        var example3 = document.getElementById('example3');
+
+        var hot3 = new Handsontable(example3, {
+          data: getCarData(),
+          colHeaders: ['Car model', 'Accepted', 'Comes in black'],
+          columns: [
+            {
+              data: 'car'
+            },
+            {
+              data: 'available',
+              type: 'checkbox',
+              label: {
+                position: 'after',
+                property: 'car' // Read value from row object
+              },
+            },
+            {
+              data: 'comesInBlack',
+              type: 'checkbox',
+              checkedTemplate: 'yes',
+              uncheckedTemplate: 'no',
+              label: {
+                position: 'before',
+                value: 'In black? '
+              },
+            },
+          ]
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/checkbox.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
