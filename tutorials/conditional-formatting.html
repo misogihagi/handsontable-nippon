@@ -1,0 +1,114 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>このデモでは、セル型のレンダラー機能を使用して条件付き書式を作成する方法を示します。</p>
+    <ol>
+      <li>最初の行は<strong>読み取り専用</strong>で、<strong
+        class="c-green">緑色の太字</strong>のテキストでフォーマットされています。
+      </li>
+      <li>日産の列のすべてのセルは<em>イタリック体</em>で書かれています</li>
+      <li>空のセルは<span style="background: silver">銀色</span>の背景を持ちます</li>
+      <li>負の数は<span class="c-red">赤</span>で書かれています。</li>
+    </ol>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot1 hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <style data-jsfiddle="common">
+        .make-me-red {
+          color: #f00;
+        }
+      </style>
+      <script data-jsfiddle="example1">
+        var data = [
+            ['', 'Tesla', 'Nissan', 'Toyota', 'Honda'],
+            ['2017', -5, '', 12, 13],
+            ['2018', '', -11, 14, 13],
+            ['2019', '', 15, -12, 'readOnly']
+          ],
+          container,
+          hot1;
+
+        function firstRowRenderer(instance, td, row, col, prop, value, cellProperties) {
+          Handsontable.renderers.TextRenderer.apply(this, arguments);
+          td.style.fontWeight = 'bold';
+          td.style.color = 'green';
+          td.style.background = '#CEC';
+        }
+
+        function negativeValueRenderer(instance, td, row, col, prop, value, cellProperties) {
+          Handsontable.renderers.TextRenderer.apply(this, arguments);
+
+          // 負の数の行なら
+          if (parseInt(value, 10) < 0) {
+            // "negative"クラス
+            td.className = 'make-me-red';
+          }
+
+          if (!value || value === '') {
+            td.style.background = '#EEE';
+          }
+          else {
+            if (value === 'Nissan') {
+              td.style.fontStyle = 'italic';
+            }
+            td.style.background = '';
+          }
+        }
+        // 関数を登録します
+        Handsontable.renderers.registerRenderer('negativeValueRenderer', negativeValueRenderer);
+
+        container = document.getElementById('example1');
+        hot1 = new Handsontable(container, {
+          data: data,
+          afterSelection: function (row, col, row2, col2) {
+            var meta = this.getCellMeta(row2, col2);
+
+            if (meta.readOnly) {
+              this.updateSettings({fillHandle: false});
+            }
+            else {
+              this.updateSettings({fillHandle: true});
+            }
+          },
+          cells: function (row, col) {
+            var cellProperties = {};
+            var data = this.instance.getData();
+
+            if (row === 0 || data[row] && data[row][col] === 'readOnly') {
+              cellProperties.readOnly = true; // 最初の行か'readOnly'テキストなら読み取り専用にする
+            }
+            if (row === 0) {
+              cellProperties.renderer = firstRowRenderer; // 直接関数を使う
+            }
+            else {
+              cellProperties.renderer = "negativeValueRenderer"; // 登録した関数から持ってくる
+            }
+
+            return cellProperties;
+          }
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/conditional-formatting.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
+
