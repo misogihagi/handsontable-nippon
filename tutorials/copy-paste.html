@@ -1,0 +1,173 @@
+<div class="static-content">
+  <div class="index-list">
+    <ul>
+      <li>
+          <a href="#copy-cut">コピー＆カット</a>
+          <ul>
+            <li><a href="#copy-cut-end-user-usage">エンドユーザーの使い方</a></li>
+            <li><a href="#copy-cut-context-menu">コンテキストメニュー</a></li>
+            <li><a href="#copy-cut-trigger-paste-programmatically">プログラムでコピー＆カットをトリガーする</a></li>
+            <li><a href="#copy-cut-hooks">フック</a></li>
+          </ul>
+        </li>
+      <li>
+        <a href="#paste">貼り付け</a>
+        <ul>
+          <li><a href="#paste-end-user-usage">エンドユーザーの使い方</a></li>
+          <li><a href="#paste-context-menu">コンテキストメニュー</a></li>
+          <li><a href="#paste-trigger-paste-programmatically">プログラムで貼り付けをトリガーする</a></li>
+          <li><a href="#paste-hooks">フック</a></li>
+        </ul>
+      </li>
+      <li><a href="#limitations">制限事項</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="copy-cut">コピー＆カット</h3>
+    <p>コピー＆カットアクションはHandsontableからシステムのクリップボードにデータをエクスポートすることを可能にします。
+      <i>CopyPaste</i>プラグインは<code>text/plain</code>と<code>text/html</code>のMIMEタイプとしてデータをコピーしてカットします。</p>
+
+    <h4 id="copy-cut-end-user-usage">エンドユーザーの使い方</h4>
+    <p>利用可能なキーボードショートカット：</p>
+    <ul>
+      <li><kbd>CTRL/CMD + C</kbd> - 最後に選択したセル範囲の内容をコピーします</li>
+      <li><kbd>CTRL/CMD + X</kbd> - 最後に選択したセル範囲の内容を切り取る</li>
+    </ul>
+    <p>ブラウザのツールバーで利用可能なオプション：</p>
+    <ul>
+      <li><code>編集 > コピー</code> - 最後に選択したセル範囲の内容をコピーします</li>
+      <li><code>編集 > 切り取り</code> - 最後に選択したセル範囲の内容を切り取る</li>
+    </ul>
+
+    <h4 id="copy-cut-context-menu">コンテキストメニュー</h4>
+    <p>コンテキストメニューが有効になっていると、デフォルトの項目が表示され、その中にコピーオプションと切り取りオプションがあります。</p>
+    <ul>
+      <li>コピー - 定義済みの<code>copy</code>キー</li>
+      <li>切り取り - 定義済みの<code>cut</code>キー</li>
+    </ul>
+    <p><a href="./demo-context-menu.html#page-custom">これらは他の定義済みアイテムと同じ方法で使用できます。</a>.
+      <code>document.execCommand()</code>によって実行されます。</p>
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2"><i class="fa fa-jsfiddle"></i> Edit</button>
+      </div>
+      <script data-jsfiddle="example2">
+        var container2 = document.getElementById('example2');
+        var hot2 = new Handsontable(container2, {
+          data: Handsontable.helper.createSpreadsheetData(5, 5),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: ['copy', 'cut'],
+        });
+      </script>
+    </div>
+
+    <h4 id="copy-cut-trigger-paste-programmatically">プログラムでコピー＆カットをトリガーする</h4>
+    <p>まず、コピーまたは切り取るセル範囲を選択する必要があります。</p>
+    <pre><code>hot.selectCell(0, 0);</code></pre>
+    <p>その後、次のいずれかのコマンドを使用できます。</p>
+    <ul>
+      <li><code>document.execCommand('copy')</code></li>
+      <li><code>document.execCommand('cut')</code></li>
+    </ul>
+    <p><i>CopyPaste</i>プラグインはブラウザの<code>cop</code>イベントと<code>cut</code>イベントを待ち受けるので、
+      それらが引っかかると、Handsontableは選択されたデータをシステムのクリップボードにコピーまたはカットします。</p>
+    <div data-jsfiddle="example1">
+      <p>
+        <button id="copy">Copy</button>
+        <button id="cut">Cut</button>
+      </p>
+      <div id="example1" class="hot"></div>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1"><i class="fa fa-jsfiddle"></i> Edit</button>
+      </div>
+      <script data-jsfiddle="example1">
+        var container = document.getElementById('example1');
+        var copyBtn = document.getElementById('copy');
+        var cutBtn = document.getElementById('cut');
+
+        var hot = new Handsontable(container, {
+          rowHeaders: true,
+          colHeaders: true,
+          data: Handsontable.helper.createSpreadsheetData(5, 5),
+          outsideClickDeselects: false,
+        });
+
+        hot.selectCell(0, 0);
+
+        Handsontable.dom.addEvent(copyBtn, 'click', function () {
+          document.execCommand('copy');
+        });
+
+        Handsontable.dom.addEvent(cutBtn, 'click', function () {
+          document.execCommand('cut');
+        });
+      </script>
+    </div>
+
+    <h4 id="copy-cut-hooks">フック</h4>
+    <p><i>CopyPaste</i>プラグインは、コピーまたは切り取り操作中にデータを操作するために次のフックを公開します。</p>
+    <ul>
+      <li><a href="./Hooks.html#event:beforeCopy"><i>beforeCopy</i></a></li>
+      <li><a href="./Hooks.html#event:afterCopy"><i>afterCopy</i></a></li>
+      <li><a href="./Hooks.html#event:beforeCut"><i>beforeCut</i></a></li>
+      <li><a href="./Hooks.html#event:afterCut"><i>afterCut</i></a></li>
+    </ul>
+    <p>それぞれのセクションで使用例を見つけることができます。</p>
+
+    <h3 id="paste">貼り付け</h3>
+    <p>貼り付け操作では、ユーザーのシステムのクリップボードを使用して外部ソースからデータをインポートできます。
+      <i>CopyPaste</i>はまずシステムのクリップボードで<code>text/html</code>を探します。見つからなかった場合は<code>text/plain</code>を探します。</p>
+
+    <h4 id="paste-end-user-usage">エンドユーザーの使い方</h4>
+    <p>利用可能なキーボードショートカット：</p>
+    <ul>
+      <li><kbd>CTRL/CMD + V</kbd> - 最後に選択したセル範囲に内容を貼り付ける</li>
+    </ul>
+    <p>ブラウザのツールバーで利用可能なオプション：</p>
+    <ul>
+      <li><code>編集 > 貼り付け</code> - 最後に選択したセル範囲に内容を貼り付けます</li>
+    </ul>
+
+    <h4 id="paste-context-menu">コンテキストメニュー</h4>
+    <p><a href="https://www.w3.org/TR/clipboard-apis/#privacy" rel="nofollow">セキュリティ上の理由から、最近のブラウザはシステムのクリップボードからの読み込みを許可していません。</a></p>
+
+    <h4 id="paste-trigger-paste-programmatically">プログラムで貼り付けをトリガーする</h4>
+    <p><a href="https://www.w3.org/TR/clipboard-apis/#privacy" rel="nofollow">セキュリティ上の理由から、最近のブラウザはシステムのクリップボードからの読み込みを許可していません。</a></p>
+
+    <h4 id="paste-hooks">フック</h4>
+    <p><i>CopyPaste</i>プラグインは、貼り付け操作中にデータを操作するために次のフックを公開します。</p>
+    <ul>
+      <li><a href="./Hooks.html#event:beforePaste"><i>beforePaste</i></a></li>
+      <li><a href="./Hooks.html#event:afterPaste"><i>afterPaste</i></a></li>
+    </ul>
+    <p>それぞれのセクションで使用例を見つけることができます。</p>
+
+    <h3 id="limitations">制限事項</h3>
+    <ol>
+      <li><i>CopyPaste</i>プラグインはセルの外観をコピー、切り取り、貼り付けしません。</li>
+      <li>Handsontableからコピーされたデータは常にプレーンテキストとして保存されます。
+        たとえば、チェックボックスをオンにすると、入力は<code>"true"</code>の値として保存されます。</li>
+      <li><code>document.execCommand</code>は、<code>MouseEvent</code>や<code>KeyboardEvent</code>などの即時実行イベント中にのみ呼び出すことができます。</li>
+      <li>Internet Explorerは<code>Text</code>mime-typeのみをサポートします。これは<code>text/plain</code>と同等です。</li>
+      <li>Internet Explorerは、ユーザーが<code>document.execCommand</code>を最初に呼び出そうとしたときに、許可/拒否を確認するウィンドウを表示します。 
+        残念ながら、ユーザーがシステムのクリップボードへのアクセスを許可しない場合、例外はスローされず、エンドユーザーに対して<code>コピー</code>および<code>切り取り</code>の操作は無効になります。
+        ブラウザのこの振る舞いについてもっと知りたい場合は
+        <a href="https://github.com/zenorocha/clipboard.js/issues/77" rel="nofollow">こちら</a></li>
+    </ol>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/copy-paste.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
+  
