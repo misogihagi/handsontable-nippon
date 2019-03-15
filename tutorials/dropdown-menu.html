@@ -1,0 +1,102 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#setup">クイックセットアップ</a></li>
+      <li><a href="#config">プラグインの設定</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="overview">概要</h3>
+    <p>
+      このプラグインはテーブルの列ヘッダに設定可能なドロップダウンメニューを追加することを可能にします。<br>
+      ドロップダウンメニューは<strong>コンテキストメニュー</strong>のように機能しますが、ヘッダーのボタンをクリックして起動します。
+    </p>
+
+    <h3 id="setup">クイックセットアップ</h3>
+    <p>
+      プラグインを有効にするには、Handsontableを初期化するときに<code>dropdownMenu</code>プロパティを<code>true</code>に設定するだけです。
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(3, 7),
+          colHeaders: true,
+          dropdownMenu: true
+        });</script>
+
+    </div>
+
+    <h3 id="config">プラグインの設定</h3>
+    <p>
+      デフォルトのドロップダウンの内容を<code>true</code>に設定することでドロップダウンを使用できますが、少しカスタマイズしたい場合は、カスタムのアクションリストを使用するように設定できます。
+      入力オプションのリファレンスについては、<a href="/docs/<?js= version ?>/demo-context-menu.html#page-specific">コンテキストメニューのデモ</a>を参照してください。
+    </p>
+
+    <div data-jsfiddle="example2">
+      <div>
+        <div id="example2" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var example2 = document.getElementById('example2');
+
+        var hot2 = new Handsontable(example2, {
+          data: Handsontable.helper.createSpreadsheetData(3, 7),
+          colHeaders: true,
+          dropdownMenu: [
+            'remove_col',
+            '---------',
+            'make_read_only',
+            '---------',
+            'alignment'
+          ]
+        });</script>
+
+    </div>
+
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/dropdown-menu.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
+
