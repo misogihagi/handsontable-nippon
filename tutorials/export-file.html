@@ -1,0 +1,291 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#how-it-works">使い方</a></li>
+      <li><a href="#methods">エクスポートとするメソッド</a></li>
+      <li><a href="#options">利用可能なオプション</a></li>
+      <li><a href="#examples">実例</a></li>
+    </ul>
+    <hr>
+
+    <h3 id="overview">概要</h3>
+    <p><i>ExportFile</i>プラグインを使用すると、テーブルの内容を<code>ファイル</code>、<code>blob</code>または<code>文字列</code>にエクスポートできます。<br>
+      プラグインは常に有効になっているので、追加の設定は必要ありません。詳しくは下の<a
+      href="#how-it-works"></a>使い方</a>を見てください。</p>
+
+    <h3 id="how-it-works">使い方</h3>
+    <p>このプラグインを使用すると、Handsontableから<code>CSV</code>ファイルにデータをエクスポートできます。</p>
+    <p>設定を完了するために使用できるメソッドのリストについては、<a href="#methods">利用可能なメソッド</a>を参照してください。</p>
+
+    <h3 id="methods">利用可能なメソッド</h3>
+    <p>プラグインはデータをエクスポートするために以下のメソッドが備わっています。</p>
+    <ul>
+      <li><a href="/docs/<?js= version ?>/ExportFile.html#downloadFile"><strong>downloadFile(format, options)</strong></a> -
+        ダウンロード可能なファイルをブラウザで直接生成できます。</li>
+      <li><a href="/docs/<?js= version ?>/ExportFile.html#exportAsBlob"><strong>exportAsBlob(format, options)</strong></a> -
+        JavaScript Blobオブジェクトをエクスポートできます。</li>
+      <li><a href="/docs/<?js= version ?>/ExportFile.html#exportAsString"><strong>exportAsString(format, options)</strong></a> - 
+        データを文字列としてエクスポートできます。</li>
+    </ul>
+    <p>それらはすべて同じ引数を受け入れます：</p>
+    <dl>
+      <dt>
+        <h4 class="name">format :<span class="type-signature type string">String</span>型</h4>
+        <p>これは事前定義された設定オブジェクトを準備するために必要です。 現在、<code>'csv'</code>のみ使用できます。</p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">options :<span class="type-signature type object">Object</span>型</h4>
+        <p>これはオプションの引数です。サポートされているオプションのセットが含まれており、事前定義された<code>CSV</code>設定を拡張します。
+          使用できるオプションの完全なリストについては、<a href="#options">利用可能なオプション</a>を参照してください。</p>
+      </dt>
+    </dl>
+
+    <h3 id="options">使用可能で高度なオプション</h3>
+    <p>以下に、サポートされているすべてのオプションがあります。</p>
+    <dl>
+      <dt>
+        <h4 class="name">bom :<span class="type-signature type boolean">Boolean</span>型</h4>
+        <p>BOM署名付きのデータをエクスポートできるようにします。</p>
+        <div class="notification info">
+          <strong>注意：</strong>このプロパティは、コンテンツの先頭にUTF-16BE BOM署名（<em>FE FF</em>）を付けます。
+          ブラウザは自動的に署名をUTF-8値（<em>EF BB BF</em>）に変換します。
+        </div>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>true</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">columnDelimiter :<span class="type-signature type string">String</span>型</h4>
+        <p>列区切り文字を指定できるようにします。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>','</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">columnHeaders :<span class="type-signature type boolean">Boolean</span>型</h4>
+        <p>列ヘッダー付きでデータをエクスポートできるようにします。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>false</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">exportHiddenColumns :<span class="type-signature type boolean">Boolean</span>型</h4>
+        <p>非表示列からデータをエクスポートできるようにします。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>false</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">exportHiddenRows :<span class="type-signature type boolean">Boolean</span>型</h4>
+        <p>非表示行からデータをエクスポートできるようにします。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>false</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">fileExtension :<span class="type-signature type string">String</span>型</h4>
+        <p>ファイル拡張子を指定できるようにします。</p>
+        <p><strong>downloadFile</strong>メソッドでこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>'csv'</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">filename :<span class="type-signature type string">String</span>型</h4>
+        <p>ファイル名を指定できるようにします。</p>
+        <p>定義済みのプレースホルダを使用できます。これは日付に置き換えられます。</p>
+        <p><strong>downloadFile</strong>メソッドでこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>'Handsontable [YYYY]-[MM]-[DD]'</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">mimeType :<span class="type-signature type string">String</span>型</h4>
+        <p>MIMEタイプを指定できるようにします。</p>
+        <p>このプロパティは、<strong>downloadFile</strong>メソッドおよび<strong>exportAsBlob</strong>メソッドで使用できます。</p>
+        <p>デフォルト値：<code>'text/csv'</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">range :<span class="type-signature type array">Array</span>型</h4>
+        <p>エクスポートするデータセットの範囲を指定できるようにします。数値の配列<code
+          >[startRow, startColumn, endRow, endColumn]</code>で表されます。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>'text/csv'</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">rowDelimiter :<span class="type-signature type string">String</span>型</h4>
+        <p>行区切り文字を指定できるようにします。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>'\r\n'</code></p>
+      </dt>
+    </dl>
+    <dl>
+      <dt>
+        <h4 class="name">rowHeaders :<span class="type-signature type boolean">Boolean</span>型</h4>
+        <p>行ヘッダーを付けてデータをエクスポートできるようにします。</p>
+        <p>すべての<a href="#methods">利用可能なメソッド</a>でこのプロパティを使用できます。</p>
+        <p>デフォルト値：<code>false</code></p>
+      </dt>
+    </dl>
+
+    <h3 id="examples">実例</h3>
+    <h4>ファイルにエクスポート</h4>
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+      <button id="export-file" class="intext-btn">Download CSV</button>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var container1 = document.getElementById('example1');
+        var hot1 = new Handsontable(container1, {
+          data: Handsontable.helper.createSpreadsheetData(7, 7),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenRows: { rows: [1, 3, 5], indicators: true },
+          hiddenColumns: { columns: [1, 3, 5], indicators: true }
+        });
+        var button1 = document.getElementById('export-file');
+        var exportPlugin1 = hot1.getPlugin('exportFile');
+
+        button1.addEventListener('click', function() {
+          exportPlugin1.downloadFile('csv', {
+            bom: false,
+            columnDelimiter: ',',
+            columnHeaders: false,
+            exportHiddenColumns: true,
+            exportHiddenRows: true,
+            fileExtension: 'csv',
+            filename: 'Handsontable-CSV-file_[YYYY]-[MM]-[DD]',
+            mimeType: 'text/csv',
+            rowDelimiter: '\r\n',
+            rowHeaders: true
+          });
+        });
+      </script>
+    </div>
+
+    <h4>JavaScript Blobオブジェクトでエクスポート</h4>
+    <div data-jsfiddle="example2">
+      <p>上記の例の結果を見るためにブラウザ開発者ツールでコンソールを開いてください。</p>
+      <div id="example2" class="hot"></div>
+      <button id="export-blob" class="intext-btn">Export as a Blob</button>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var container2 = document.getElementById('example2');
+        var hot2 = new Handsontable(container2, {
+          data: Handsontable.helper.createSpreadsheetData(7, 7),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenRows: { rows: [1, 3, 5], indicators: true },
+          hiddenColumns: { columns: [1, 3, 5], indicators: true }
+        });
+        var button2 = document.getElementById('export-blob');
+        var exportPlugin2 = hot2.getPlugin('exportFile');
+
+        button2.addEventListener('click', function() {
+          var exportedBlob = exportPlugin2.exportAsBlob('csv', {
+            bom: false,
+            columnDelimiter: ',',
+            columnHeaders: false,
+            exportHiddenColumns: true,
+            exportHiddenRows: true,
+            mimeType: 'text/csv',
+            rowDelimiter: '\r\n',
+            rowHeaders: true
+          });
+
+          console.log(exportedBlob);
+        });
+      </script>
+    </div>
+
+    <h4>文字列でエクスポート</h4>
+    <div data-jsfiddle="example3">
+      <p>上記の例の結果を見るためにブラウザ開発者ツールでコンソールを開いてください。</p>
+      <div id="example3" class="hot"></div>
+      <button id="export-string" class="intext-btn">Export as a string</button>
+    </div>
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3">
+        var container3 = document.getElementById('example3');
+        var hot3 = new Handsontable(container3, {
+          data: Handsontable.helper.createSpreadsheetData(7, 7),
+          colHeaders: true,
+          rowHeaders: true,
+          hiddenRows: { rows: [1, 3, 5], indicators: true },
+          hiddenColumns: { columns: [1, 3, 5], indicators: true }
+        });
+        var button3 = document.getElementById('export-string');
+        var exportPlugin3 = hot3.getPlugin('exportFile');
+
+        button3.addEventListener('click', function() {
+          var exportedString = exportPlugin3.exportAsString('csv', {
+              bom: false,
+              columnDelimiter: ',',
+              columnHeaders: false,
+              exportHiddenColumns: true,
+              exportHiddenRows: true,
+              rowDelimiter: '\r\n',
+              rowHeaders: true
+          });
+
+          console.log(exportedString);
+        });
+      </script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/export-file.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
