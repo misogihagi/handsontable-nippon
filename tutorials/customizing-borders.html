@@ -1,0 +1,94 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>カスタム枠線機能を有効にするには、<code>customBorders</code>オプションを設定します。
+      <code>true</code>に設定することも、事前定義された設定で配列として初期化することもできます。
+    </p>
+    <p>Handsontableを定義済みのカスタムな枠線で初期化するには、セル座標とボーダースタイルを配列の形式で指定します。
+      </p>
+    <ul>
+      <li>行と列を指定する: <code>{row: 2, col: 2, left: { /*...*/ }}</code>
+      </li>
+      <li>範囲を指定する: <code>{range: {from: {row: 1, col: 1}, to:{row: 3, col: 4}}, left: { /*...*/ }}</code>
+      </li>
+    </ul>
+    <p><strong>完全な例は以下：</strong></p>
+
+    <div data-jsfiddle="example1" class="scroll-container fixed-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var container = document.getElementById('example1'),
+          hot;
+
+        hot = Handsontable(container, {
+          data: Handsontable.helper.createSpreadsheetData(200, 20),
+          rowHeaders: true,
+          fixedColumnsLeft: 2,
+          fixedRowsTop: 2,
+          colHeaders: true,
+          customBorders: [
+            {
+              range: {
+                from: {
+                  row: 1,
+                  col: 1
+                },
+                to: {
+                  row: 3,
+                  col: 4
+                }
+              },
+              top: {
+                width: 2,
+                color: '#5292F7'
+              },
+              left: {
+                width: 2,
+                color: 'orange'
+              },
+              bottom: {
+                width: 2,
+                color: 'red'
+              },
+              right: {
+                width: 2,
+                color: 'magenta'
+              }
+            },
+            {
+              row: 2,
+              col: 2,
+              left: {
+                width: 2,
+                color: 'red'
+              },
+              right: {
+                width: 1,
+                color: 'green'
+              }
+            }]
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/customizing-borders.html" class="edit-doc" target="_blank">
+        このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+    </a>
+  </p>
+</div>
