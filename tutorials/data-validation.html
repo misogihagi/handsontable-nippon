@@ -1,0 +1,208 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-registering-validator">ヴァリデイターを登録する</a></li>
+      <li><a href="#page-full-featured-example">Full featured example</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container head-gap clearfix" name="registering-validator">
+    <h3 id="page-registering-validator">ヴァリデイターを登録する</h3>
+    <p>バリデーターを作成するときは、このバリデーター関数を参照するエイリアスとして割り当てることをお勧めします。
+      Handsontableはデフォルトで5つのエイリアスを定義します：</p>
+    <ul>
+      <li><code>autocomplete</code> -> <code>Handsontable.validators.AutocompleteValidator</code></li>
+      <li><code>date</code> -> <code>Handsontable.validators.DateValidator</code></li>
+      <li><code>dropdown</code> -> <code>Handsontable.validators.DropdownValidator</code></li>
+      <li><code>numeric</code> -> <code>Handsontable.validators.NumericValidator</code></li>
+      <li><code>time</code> -> <code>Handsontable.validators.TimeValidator</code></li>
+    </ul>
+    <p>エイリアスはバリデーターが呼び出されるときにどのバリデーターを使用するのかを定義するための便利な方法をユーザーに提供します。
+      ユーザーは、どのバリデーター関数がセルの値を検証するのか、どの関数があるのか、全く知る必要がありません。
+      さらに、テーブルを定義するコードを変更しなくても、エイリアスに関連付けられているバリデーター関数を変更できます。
+      </p>
+    <p>新しくエイリアスを登録するには<code>Handsontable.validators.registerValidator()</code>関数を使います。 これは2つの引数を取ります。
+    </p>
+    <ul>
+      <li><code>validatorName</code> - バリデーター関数を表す文字列</li>
+      <li><code>validator</code> - <code>validatorName</code>によって表されるクラス</li>
+    </ul>
+    <p>もし<code>credit-card</code>エイリアスに<code>creditCardValidator</code>を登録したい場合は、次のように呼び出す必要があります。</p>
+    <pre><code class="lang-javascript">Handsontable.validators.registerValidator('credit-card', creditCardValidator);</code></pre>
+    <p>エイリアスは賢く選択してください。すでに登録されている名前でバリデーターを登録すると、元の関数は上書きされます。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.validators.registerValidator('date', creditCardValidator);
+
+// 'date'エイリアスは、Handsontable.validators.DateValidatorではなく、`creditCardValidator`関数を指すようになりました</code></pre>
+    <p>そのため、既存のエイリアスを意図的に上書きしたくない場合は、一意の名前にしてください。 
+      名前の衝突の可能性を最小限に抑えるためには、エイリアスの頭にカスタム名（たとえば、GitHubユーザー名）を付けることをお勧めします。
+      あなたが自分のバリデーターを公開したい場合、これは特に重要です。
+      あなたのバリデーターを使用するユーザーが新しくエイリアスを登録しても知る由はないからです。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.validators.registerValidator('credit-card', creditCardValidator);
+
+// 誰かがすでにそのようなエイリアスを登録しているかもしれません</code></pre>
+    <pre><br><code class="lang-javascript">Handsontable.validators.registerValidator('my.credit-card', creditCardValidator);
+
+// こっちのほうがいいでしょう。</code></pre>
+    <h3 id="using-an-alias">エイリアスを使う</h3>
+    <p>最後の作業は、実際のバリデーター関数名を入力しなくてもユーザーが簡単に参照できるように、エイリアスを登録することです。
+      </p>
+    <p>まとめると、よく準備されたバリデーター関数は次のようになります。</p>
+    <pre><code class="lang-javascript">(function(Handsontable){
+  function customValidator(query, callback) {
+    // ...作成したバリデーター関数
+
+    callback(/* 作成したバリデーター関数に基づいて`true`か`false`を渡してください */);
+  }
+
+  // エイリアスの登録
+  Handsontable.validators.registerValidator('my.custom', customValidator);
+
+})(Handsontable);</code></pre>
+    <p>From now on, you can use <code>customValidator</code> like so:</p>
+    <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      validator: 'my.custom'
+    }
+  ]
+}); </code></pre>
+  </div>
+  <div class="example-container clearfix" name="full-featured-example">
+    <h3 id="page-full-featured-example">機能を網羅した例</h3>
+    <p>セルに対する同期または非同期の変更を簡単に検証するには、<strong>ヴァリデイター</strong>（を<a
+        href="/docs/<?js= version ?>/Options.html#validator">オプション</a>参照）
+      メソッドを使用します。
+      さらに制御が必要な場合は、<strong>beforeValidate</strong>および<strong>afterValidate</strong>プラグインフックが利用可能です（<a
+          href="/docs/<?js= version ?>/Hooks.html#event:beforeValidate">フック</a>）。
+      以下の例では、<code>email_validator_fn</code>は1000 ms後に解決される非同期バリデーターです。
+    </p>
+    <p>グリッドが有効ではない入力を受け入れるかどうかを定義するには、<strong>allowInvalid</strong>オプション（<a 
+      href="/docs/<?js= version ?>/Options.html#allowInvalid">オプション</a>を参照）を使用します。
+      入力を修正する必要がある場合（例えば、悪い単語を検閲する、最初の1文字が大文字かどうか）、<strong>beforeChange</strong>プラグインフックを使用してください（<a
+      href="/docs/<?js= version ?>/Hooks.html#event:beforeChange">フック</a>を参照）。
+    </p>
+    <p>
+      デフォルトでは、すべての無効なセルは<code>htInvalid</code>CSSクラスでマークされています。クラスを別のクラスに変更したい場合は、
+      基本的にHandsontableに<a href="/docs/<?js= version ?>/Options.html#invalidCellClassName">invalidCellClassName</a>オプションを追加できます。
+    <pre><code class="lang-js">// すべてのテーブル
+...
+invalidCellClassName: 'myInvalidClass',
+...
+
+// 特定の列
+...
+columns: [
+  {data: 'firstName', invalidCellClassName: 'myInvalidClass'},
+  {data: 'lastName', invalidCellClassName: 'myInvalidSecondClass'},
+  {data: 'address'},
+]
+...
+</code></pre>
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+
+      <p>コールバックコンソール：<code>[[row, col, oldValue, newValue], ...]</code></p>
+      <p>コールバックを見るために上記のグリッドを編集してください</p>
+      <p>
+        <b>注：</b>テーブルの変更は、変更された<b>すべて</b>のセルから<b>すべてのバリデーター</b>（同期と非同期の両方）を実行した後に適用されることに注意してください。
+      </p>
+
+
+      <pre id="example1console" class="console"></pre>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var people = [
+              {id: 1, name: {first: 'Joe', last: 'Fabiano'}, ip: '0.0.0.1', email: 'Joe.Fabiano@ex.com'},
+              {id: 2, name: {first: 'Fred', last: 'Wecler'}, ip: '0.0.0.1', email: 'Fred.Wecler@ex.com'},
+              {id: 3, name: {first: 'Steve', last: 'Wilson'}, ip: '0.0.0.1', email: 'Steve.Wilson@ex.com'},
+              {id: 4, name: {first: 'Maria', last: 'Fernandez'}, ip: '0.0.0.1', email: 'M.Fernandez@ex.com'},
+              {id: 5, name: {first: 'Pierre', last: 'Barbault'}, ip: '0.0.0.1', email: 'Pierre.Barbault@ex.com'},
+              {id: 6, name: {first: 'Nancy', last: 'Moore'}, ip: '0.0.0.1', email: 'Nancy.Moore@ex.com'},
+              {id: 7, name: {first: 'Barbara', last: 'MacDonald'}, ip: '0.0.0.1', email: 'B.MacDonald@ex.com'},
+              {id: 8, name: {first: 'Wilma', last: 'Williams'}, ip: '0.0.0.1', email: 'Wilma.Williams@ex.com'},
+              {id: 9, name: {first: 'Sasha', last: 'Silver'}, ip: '0.0.0.1', email: 'Sasha.Silver@ex.com'},
+              {id: 10, name: {first: 'Don', last: 'Pérignon'}, ip: '0.0.0.1', email: 'Don.Pérignon@ex.com'},
+              {id: 11, name: {first: 'Aaron', last: 'Kinley'}, ip: '0.0.0.1', email: 'Aaron.Kinley@ex.com'}
+            ],
+            example1 = document.getElementById('example1'),
+            example1console = document.getElementById('example1console'),
+            settings1,
+            ipValidatorRegexp,
+            emailValidator;
+
+        ipValidatorRegexp = /^(?:\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b|null)$/;
+        emailValidator = function (value, callback) {
+          setTimeout(function(){
+            if (/.+@.+/.test(value)) {
+              callback(true);
+            }
+            else {
+              callback(false);
+            }
+          }, 1000);
+        };
+
+        settings1 = {
+          data: people,
+          beforeChange: function (changes, source) {
+            for (var i = changes.length - 1; i >= 0; i--) {
+              // 単語"foo"受け入れない（インデックスiの変更を削除します）
+              if (changes[i][3] === 'foo') {
+                changes.splice(i, 1);
+              }
+              // 貼り付けられたセルのいずれかに"nuke"という単語が含まれている場合、拒否します
+              else if (changes[i][3] === 'nuke') {
+                return false;
+              }
+              // 1列目と2列目の最初の文字を大文字にする
+              else if ((changes[i][1] === 'name.first' || changes[i][1] === 'name.last') && changes[i][3].charAt(0)) {
+                changes[i][3] = changes[i][3].charAt(0).toUpperCase() + changes[i][3].slice(1);
+              }
+            }
+          },
+          afterChange: function (changes, source) {
+            if (source !== 'loadData') {
+              example1console.innerText = JSON.stringify(changes);
+            }
+          },
+          colHeaders: ['ID', 'First name', 'Last name', 'IP', 'E-mail'],
+          columns: [
+            {data: 'id', type: 'numeric'},
+            {data: 'name.first'},
+            {data: 'name.last'},
+            {data: 'ip', validator: ipValidatorRegexp, allowInvalid: true},
+            {data: 'email', validator: emailValidator, allowInvalid: false}
+          ]
+        };
+        var hot = new Handsontable(example1, settings1);</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/data-validation.html" class="edit-doc" target="_blank">
+        このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+    </a>
+  </p>
+</div>
