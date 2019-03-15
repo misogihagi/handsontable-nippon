@@ -1,0 +1,65 @@
+<div class="static-content">
+
+  <script data-jsfiddle="common">
+    function getCarData() {
+      return [
+        ["Tesla", 2017, "black", "black"],
+        ["Nissan", 2018, "blue", "blue"],
+        ["Chrysler", 2019, "yellow", "black"],
+        ["Volvo", 2020, "white", "gray"]
+      ];
+    }</script>
+
+  <div class="example-container clearfix">
+    <p>この例はドロップダウンの機能の使い方を示したものです。ドロップダウンは<a href="/docs/<?js= version ?>/demo-autocomplete.html">オートコンプリート</a>セル型に基づいています。
+      <code>autocomplete</code>セル型で使用されるすべてのオプションは<code>dropdown</code>にも適用されます。</p>
+    <p>内部的には、cell <code>{type: "dropdown"}</code>はcell <code>{type: "autocomplete", strict:
+      true, filter: false}</code>と同等です。したがって、<code>dropdown</code>は検索可能な<code>&lt;select&gt;</code>と考えることができます。</p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {},
+            {type: 'numeric'},
+            {
+              type: 'dropdown',
+              source: ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white']
+            },
+            {
+              type: 'dropdown',
+              source: ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white']
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/dropdown.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
