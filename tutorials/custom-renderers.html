@@ -1,0 +1,278 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-registering-renderer">レンダラーを登録する</a></li>
+      <li><a href="#page-cell">カスタムHTMLをセル内に表現する</a></li>
+      <li><a href="#page-header">カスタムHTMLをヘッダーに表現する</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container head-gap clearfix" name="registering-renderer">
+    <h3 id="page-registering-renderer">レンダラーを登録する</h3>
+    <p>レンダラーを作成するときは、この特定のレンダラー関数を参照するエイリアスとして割り当てることをお勧めします。
+      Handsontableはデフォルトで10個のエイリアスを定義します：</p>
+    <ul>
+      <li><code>autocomplete</code> -> <code>Handsontable.renderers.AutocompleteRenderer</code></li>
+      <li><code>base</code> -> <code>Handsontable.renderers.BaseRenderer</code></li>
+      <li><code>checkbox</code> -> <code>Handsontable.renderers.CheckboxRenderer</code></li>
+      <li><code>date</code> -> <code>Handsontable.renderers.DateRenderer</code></li>
+      <li><code>dropdown</code> -> <code>Handsontable.renderers.DropdownRenderer</code></li>
+      <li><code>html</code> -> <code>Handsontable.renderers.HtmlRenderer</code></li>
+      <li><code>numeric</code> -> <code>Handsontable.renderers.NumericRenderer</code></li>
+      <li><code>password</code> -> <code>Handsontable.renderers.PasswordRenderer</code></li>
+      <li><code>text</code> -> <code>Handsontable.renderers.TextRenderer</code></li>
+      <li><code>time</code> -> <code>Handsontable.renderers.TimeRenderer</code></li>
+    </ul>
+    <p>エイリアスは特定のセルの値を変更するときに使用するエディターを定義するための便利な方法をユーザーに提供します。
+      ユーザーは、どのクラスがエディターを表示するのか、どのクラスがあるのか、全く知る必要がありません。
+      さらに、あなたはテーブルを定義するコードを変更しなくてもエイリアスに関連付けられているクラスを変更できます。
+      </p>
+    <p>新しくエイリアスを登録するには<code>Handsontable.renderers.registerRenderer()</code>関数を使います。 これは2つの引数を取ります。
+    </p>
+    <ul>
+      <li><code>rendererName</code> - レンダラー関数を表す文字列</li>
+      <li><code>renderer</code> - <code>rendererName</code>で表されるレンダラー関数</li>
+    </ul>
+    <p>もし<code>asterix</code>エイリアスに<code>asterixDecoratorRenderer</code>を登録したい場合は、次のように呼び出す必要があります。</p>
+    <pre><code class="lang-javascript">Handsontable.renderers.registerRenderer('asterix', asterixDecoratorRenderer);</code></pre>
+    <p>エイリアスは賢く選択してください。すでに登録されている名前でレンダラーを登録すると、ターゲット関数は上書きされます。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.renderers.registerRenderer('text', asterixDecoratorRenderer);
+
+// 'text'エイリアスは、Handsontable.renderers.TextRendererではなく、`asterixDecoratorRenderer`関数を指すようになりました</code></pre>
+    <p>そのため、既存のエイリアスを意図的に上書きしたくない場合は、一意の名前にしてください。
+      名前の衝突の可能性を最小限に抑えるためには、エイリアスの頭にカスタム名（たとえば、GitHubユーザー名）を付けることをお勧めします。
+      あなたが自分のレンダラーを公開したい場合、これは特に重要です。
+      自分のレンダラーを使用するユーザーが新しくエイリアスを登録しても知る由はないからです。
+      </p>
+    <pre><code class="lang-javascript">Handsontable.renderers.registerRenderer('asterix', asterixDecoratorRenderer);
+
+// 誰かがすでにそのようなエイリアスを登録しているかもしれません</code></pre>
+    <pre><br><code class="lang-javascript">Handsontable.renderers.registerRenderer('my.asterix', asterixDecoratorRenderer);
+
+// こっちのほうがいいでしょう。</code></pre>
+  <h3 id="using-an-alias">エイリアスを使う</h3>
+  <p>最後の作業は、実際のレンダラー関数を使用しなくてもユーザーが簡単に参照できるように、別名でエディターを登録することです。
+    </p>
+  <p>まとめると、よく準備されたレンダラー関数は次のようになります。</p>
+  <pre><code class="lang-javascript">(function(Handsontable){
+  function customRenderer(hotInstance, td, row, column, prop, value, cellProperties) {
+    // テーブルセルにCSSクラスを追加/削除することを担当する `BaseRenderer`をオプションで含めます。
+    Handsontable.renderers.BaseRenderer.apply(this, arguments);
+
+    // ...作ったレンダラー
+  }
+
+  // エイリアスを登録
+  Handsontable.renderers.registerRenderer('my.custom', customRenderer);
+
+})(Handsontable);</code></pre>
+  <p>これからは、<code>customRenderer</code>を次のように使用できます。</p>
+  <pre><code class="lang-javascript">var hot = new Handsontable(document.getElementById('container'), {
+  data: someData,
+  columns: [
+    {
+      renderer: 'my.custom'
+    }
+  ]
+}); </code></pre>
+  </div>
+  <div class="example-container clearfix" name="cell">
+    <h3 id="page-cell">セル内でのカスタムHTML表現</h3>
+    <p>この例では、カスタムセルレンダラーを使用してセルにHTMLコンテンツを表示する方法を示します。
+      これは非常に強力な機能です。XSS攻撃に使用される可能性のあるHTMLコードをすべてエスケープすることを忘れないでください。
+      以下の設定では：</p>
+    <ul>
+      <li><strong>title</strong>列は、任意のHTMLを許可する組み込みのHTMLレンダラーを使用します。信頼できないソースを使用している場合、これは危険です。Handsontableユーザーはセルエディタを使って<code>&lt;script&gt;</code>や他の悪意のあるタグを入力できることに注意してください。</li>
+      <li><strong>description</strong>列もHTMLレンダラーを使用します（上記と同じ）</li>
+      <li><strong>comments</strong>列はカスタムレンダラー（<code>safeHtmlRenderer</code>）を使用します。特定のタグのみ許可されているため、これはユーザー入力に対して安全であるはずです。</li>
+      <li><strong>Cover</strong>列は画像のURLを文字列として受け取り、それをレンダラーで<code>&lt;img&gt;</code>に変換します。</li>
+    </ul>
+    <br/>
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          data = [
+            {
+              title: "<a href='http://www.amazon.com/Professional-JavaScript-Developers-Nicholas-Zakas/dp/1118026691'>Professional JavaScript for Web Developers</a>",
+              description: "This <a href='http://bit.ly/sM1bDf'>book</a> provides a developer-level introduction along with more advanced and useful features of <b>JavaScript</b>.",
+              comments: "I would rate it &#x2605;&#x2605;&#x2605;&#x2605;&#x2606;",
+              cover: "http://ecx.images-amazon.com/images/I/51bRhyVTVGL._SL50_.jpg"
+            },
+            {
+              title: "<a href='http://shop.oreilly.com/product/9780596517748.do'>JavaScript: The Good Parts</a>",
+              description: "This book provides a developer-level introduction along with <b>more advanced</b> and useful features of JavaScript.",
+              comments: "This is the book about JavaScript",
+              cover: "http://ecx.images-amazon.com/images/I/51gdVAEfPUL._SL50_.jpg"
+            },
+            {
+              title: "<a href='http://shop.oreilly.com/product/9780596805531.do'>JavaScript: The Definitive Guide</a>",
+              description: "<em>JavaScript: The Definitive Guide</em> provides a thorough description of the core <b>JavaScript</b> language and both the legacy and standard DOMs implemented in web browsers.",
+              comments: "I've never actually read it, but the <a href='http://shop.oreilly.com/product/9780596805531.do'>comments</a> are highly <strong>positive</strong>.",
+              cover: "http://ecx.images-amazon.com/images/I/51VFNL4T7kL._SL50_.jpg"
+            }
+          ],
+          container1,
+          hot1;
+
+        container1 = document.getElementById('example1');
+        hot1 = new Handsontable(container1, {
+          data: data,
+          colWidths: [200, 200, 200, 80],
+          colHeaders: ["Title", "Description", "Comments", "Cover"],
+          columns: [
+            {data: "title", renderer: "html"},
+            {data: "description", renderer: "html"},
+            {data: "comments", renderer: safeHtmlRenderer},
+            {data: "cover", renderer: coverRenderer}
+          ]
+        });
+
+        // 元々: Kevin van Zonneveld (http://kevin.vanzonneveld.net)
+        function strip_tags(input, allowed) {
+          var tags = /<\/?([a-z][a-z0-9]*)\b[^>]*>/gi,
+            commentsAndPhpTags = /<!--[\s\S]*?-->|<\?(?:php)?[\s\S]*?\?>/gi;
+
+          // 許可された引数が小文字のタグのみを含む文字列であることを確認してください（<a><b><c>）
+          allowed = (((allowed || "") + "").toLowerCase().match(/<[a-z][a-z0-9]*>/g) || []).join('');
+
+          return input.replace(commentsAndPhpTags, '').replace(tags, function ($0, $1) {
+            return allowed.indexOf('<' + $1.toLowerCase() + '>') > -1 ? $0 : '';
+          });
+        }
+
+        function safeHtmlRenderer(instance, td, row, col, prop, value, cellProperties) {
+          var escaped = Handsontable.helper.stringify(value);
+          escaped = strip_tags(escaped, '<em><b><strong><a><big>'); //XSSの脅威を避けるために特定のHTMLタグのみを許可するようにしてください（不要なHTML属性も削除する必要があります）。
+          td.innerHTML = escaped;
+
+          return td;
+        }
+
+        function coverRenderer (instance, td, row, col, prop, value, cellProperties) {
+          var escaped = Handsontable.helper.stringify(value),
+            img;
+
+          if (escaped.indexOf('http') === 0) {
+            img = document.createElement('IMG');
+            img.src = value;
+
+            Handsontable.dom.addEvent(img, 'mousedown', function (e){
+              e.preventDefault(); // 選択がぶれるのを防ぐ
+            });
+
+            Handsontable.dom.empty(td);
+            td.appendChild(img);
+          }
+          else {
+            // テキストで表示
+            Handsontable.renderers.TextRenderer.apply(this, arguments);
+          }
+
+          return td;
+        }</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="header">
+    <h3 id="page-header">カスタムHTMLをヘッダーに表現する</h3>
+
+    <p>HTMLを行と列のヘッダーに入れることもできます。以下のチェックボックスのように、DOM要素にイベントを添付する必要がある場合は、単にIDではなくクラス名で要素を識別するようにしてください。
+      これは、行ヘッダーと列ヘッダーがDOMツリー内で重複しており、id属性が一意である必要があるためです。
+      </p>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var
+          isChecked,
+          container2 = document.getElementById('example2'),
+          hot2;
+
+        hot2 = new Handsontable(container2, {
+          columns: [
+            {},
+            {renderer: customRenderer}
+          ],
+          colHeaders: function (col) {
+            var txt;
+
+            switch (col) {
+              case 0:
+                return '<b>Bold</b> and <em>Beautiful</em>';
+
+              case 1:
+                txt = "Some <input type='checkbox' class='checker' ";
+                txt += isChecked ? 'checked="checked"' : '';
+                txt += "> checkbox";
+
+                return txt;
+            }
+          }
+        });
+
+        function customRenderer(instance, td) {
+          Handsontable.renderers.TextRenderer.apply(this, arguments);
+
+          if (isChecked) {
+            td.style.backgroundColor = 'yellow';
+          }
+          else {
+            td.style.backgroundColor = 'white';
+          }
+
+          return td;
+        }
+
+        Handsontable.dom.addEvent(container2, 'mousedown', function (event) {
+          if (event.target.nodeName == 'INPUT' && event.target.className == 'checker') {
+            event.stopPropagation();
+          }
+        });
+
+        Handsontable.dom.addEvent(container2, 'mouseup', function (event) {
+          if (event.target.nodeName == 'INPUT' && event.target.className == 'checker') {
+            isChecked = !event.target.checked;
+            hot2.render();
+          }
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/custom-renderers.html" class="edit-doc" target="_blank">
+        このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+    </a>
+  </p>
+</div>
