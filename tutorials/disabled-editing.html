@@ -1,0 +1,130 @@
+<div class="static-content">
+
+  <script data-jsfiddle="common">
+    function getCarData() {
+      return [
+        {car: 'Tesla', year: 2017, chassis: 'black', bumper: 'black'},
+        {car: 'Nissan', year: 2018, chassis: 'blue', bumper: 'blue'},
+        {car: 'Chrysler', year: 2019, chassis: 'yellow', bumper: 'black'},
+        {car: 'Volvo', year: 2020, chassis: 'white', bumper: 'gray'}
+      ];
+    }</script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-columns">編集不可セル</a></li>
+      <li><a href="#page-cells">Non-editable specific cells</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="columns">
+    <h3>読み取り専用セル 対 編集不可セル</h3>
+    <p>編集不可のセルは、手動で値を変更できないという点を除けば、他のセルと同じように動作します。
+      それでも、データをコピーして貼り付けるか、ドラッグして入力することはできます。特別なCSSクラスは追加されていません。</p>
+
+    <h3 id="page-columns">編集不可列</h3>
+    <p>多くの場合、特定の列を編集不可に設定する必要があります。編集不可にしても基本的な動作は変わりません（編集を除く）。
+      キーボードナビゲーション、CTRL+C and CTRL+Vの機能、ドラッグして塗りつぶすなどの機能を引き続き使用できます。
+      </p>
+    <p>列を編集不可にするには、<code>columns</code>で宣言します。
+      <code>editor</code>の値を変える特別なレンダラー関数を定義することもできます。</p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          container1 = document.getElementById('example1'),
+          hot1;
+
+        hot1 = new Handsontable(container1, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              data: 'car',
+              editor: false
+            },
+            {
+              data: 'year',
+              editor: 'numeric'
+            },
+            {
+              data: 'chassis',
+              editor: 'text'
+            },
+            {
+              data: 'bumper',
+              editor: 'text'
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="cells">
+    <h3 id="page-cells">編集不可の特定セル</h3>
+    <p>次の例は、“Nissan”という単語を含む編集不可セルを含むテーブルを示しています。
+      セルのこのプロパティはオプションであり、Handsontableの設定で簡単に設定できます。</p>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var
+          container2 = document.getElementById('example2'),
+          hot2;
+
+        hot2 = new Handsontable(container2, {
+          data: getCarData(),
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color']
+        });
+        hot2.updateSettings({
+          cells: function (row, col, prop) {
+            var cellProperties = {};
+
+            if (hot2.getDataAtRowProp(row, prop) === 'Nissan') {
+              cellProperties.editor = false;
+            } else {
+              cellProperties.editor = 'text';
+            }
+
+            return cellProperties;
+          }
+        })</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/disabled-editing.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
