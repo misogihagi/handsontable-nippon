@@ -1,0 +1,65 @@
+<div class="static-content">
+  <div class="example-container clearfix">
+    <p>外部ボタンを使用して行と列を挿入したり削除する場合は、<strong><a href="/docs/<?js= version ?>/Core.html#alter">alter</a></strong>メソッドを使用できます。
+      プログラム上では、<strong><a href="/docs/<?js= version ?>/Core.html#selectCell">selectCell</a></strong>をセルを選択し、
+      <strong><a href="/docs/<?js= version ?>/Core.html#loadData">loadData</a></strong>関数で新しいデータをロードすることができます。以下のボタンはその実装です。
+    </p>
+    <p>
+      <button class="intext-btn" id="selectFirst">最初のセルを選択</button>
+      <button class="intext-btn" id="removeFirstColumn">最初の列を削除</button>
+      <button class="intext-btn" id="removeFirstRow">最初の行を削除</button>
+      <button class="intext-btn" id="resetState">リセット</button>
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <script data-jsfiddle="example1">
+        document.addEventListener("DOMContentLoaded", function() {
+          var data = [
+            ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+            ['2017', 10, 11, 12, 13, 15, 16],
+            ['2018', 10, 11, 12, 13, 15, 16],
+            ['2019', 10, 11, 12, 13, 15, 16],
+            ['2020', 10, 11, 12, 13, 15, 16],
+            ['2021', 10, 11, 12, 13, 15, 16]
+          ];
+          var container = document.getElementById('example1');
+          var selectFirst = document.getElementById('selectFirst');
+          var removeFirstRow = document.getElementById('removeFirstRow');
+          var removeFirstColumn = document.getElementById('removeFirstColumn');
+          var resetState = document.getElementById('resetState');
+          var hot = new Handsontable(container, {
+            rowHeaders: true,
+            colHeaders: true,
+            data: JSON.parse(JSON.stringify(data))
+          });
+
+          Handsontable.dom.addEvent(selectFirst, 'click', function () {
+            hot.selectCell(0, 0);
+          });
+
+          Handsontable.dom.addEvent(removeFirstRow, 'click', function () {
+            hot.alter('remove_row', 0);
+          });
+
+          Handsontable.dom.addEvent(removeFirstColumn, 'click', function () {
+            hot.alter('remove_col', 0);
+          });
+
+          Handsontable.dom.addEvent(resetState, 'click', function () {
+            hot.loadData(JSON.parse(JSON.stringify(data)));
+          });
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/custom-buttons.html" class="edit-doc" target="_blank">
+        このページの改善にご協力ください
+        日本語に問題がある場合          
+        Handsontableそのもの            
+    </a>
+  </p>
+</div>
