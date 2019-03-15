@@ -1,0 +1,98 @@
+<div class="static-content">
+
+  <div class="index-list">
+
+    <ul>
+      <li><a href="#page-tasks">NPMタスク</a></li>
+      <li><a href="#page-running">最初のビルドを実行する</a></li>
+      <li><a href="#page-customizing">カスタムパッケージを作成する</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="building">
+    <p>ビルドプロセスは、<a href="https://webpack.js.org/" target="_blank">Webpack</a>、<a href="https://babeljs.io/" target="_blank">Babel</a>および
+      <a href="https://github.com/handsontable/handsontable/blob/master/package.json" target="_blank">package.json</a>リストのnpmタスクを使用しています。
+    このプロセス中に、<code>src/*</code>ディレクトリにあるソースは出力ファイルに変換されます。</p>
+    <ul>
+      <li><code>./dist/handsontable.js</code></li>
+      <li><code>./dist/handsontable.css</code></li>
+      <li><code>./dist/handsontable.full.js</code></li>
+      <li><code>./dist/handsontable.full.css</code></li>
+      <li><code>./dist/handsontable.full.min.js</code></li>
+      <li><code>./dist/handsontable.full.min.css</code></li>
+      <li><code>./dist/languages/*</code></li>
+    </ul>
+    <p>distパッケージに関するより詳しい情報は<a href="https://github.com/handsontable/handsontable/blob/master/dist/README.md" target="_blank">ここ</a>にあります。
+      上記のファイルは絶対に変更しないで、<code>src/</code>ディレクトリを変更してから適切なビルドを実行することをお勧めします。
+      プルリクエストを行って変更内容をHandsontableに戻すには、これが特に重要です。
+      </p>
+  </div>
+
+  <div class="example-container clearfix" name="tasks">
+    <h3 id="page-tasks">NPMタスク</h3>
+    <p>現在、Handsontableをビルドするために以下のタスクが利用可能です。</p>
+    <ul>
+      <li>
+        <code>npm run test</code> - 以下のタスクをこの順番で実行します。
+        <ul>
+          <li><code>npm run lint</code> - ソースコードに適用された変更が<a href="https://github.com/handsontable/handsontable/blob/master/.eslintrc" target="_blank">私たちのコードスタイル</a>（
+            <a href="https://github.com/airbnb/javascript" target="_blank">Airbnb JavaScript Style</a>をもとにしている）で有効かどうかをチェックします。</li>
+          <li><code>npm run test:unit</code> - ノード環境でテストスイートを実行します。テストランナーとして<a href="https://facebook.github.io/jest/" target="_blank">Jest</a>を使います。</li>
+          <li><code>npm run test:handsontable</code> - JasmineテストスイートでHandsontable CEを単一ビルドし、<a href="https://github.com/GoogleChrome/puppeteer" target="_blank">Puppeteer</a>で実行します。</li>
+          <li><code>npm run test:e2e</code> - Jasmineテストスイートで単一ビルドし、生成されたバンドル<code>/dist/handsontable.js</code>を使用してPuppeteerで実行します。</li>
+          <li><code>npm run test:production</code> - Jasmineテストスイートで単一ビルドし、生成された圧縮バンドル<code>/dist/handsontable.full.min.js</code>を使用してPuppeteerで実行します。</li>
+        </ul>
+      </li>
+      <li>
+        <code>npm run build</code> - コードの品質チェックを行わずに単一のビルドを実行します。内部的に以下のタスクを実行します。
+        <ul>
+          <li><code>npm run build:commonjs</code> - ファイルを<code>CommonJS</code>形式に変換します。これらのファイルは後でNPMリポジトリーに公開されます。</li>
+          <li><code>npm run build:es</code> - ファイルを<code>import/export</code>形式に変換します。これらのファイルは後でNPMリポジトリーに公開されます。</li>
+          <li><code>npm run build:umd</code> - UMD（Universal Module Definition:クライアントでも、サーバーでも動かせるモジュールを定義するためのパターン）と互換性のあるバンドル（<code>dist/handsontable.js</code>、<code>dist/handsontable.css</code>、<code>dist/handsontable.full.js</code>および<code>dist/handsontable.full.css</code>）を作成します。</li>
+          <li><code>npm run build:umd.min</code> - UMD（Universal Module Definition）と互換性のある圧縮バンドル（<code>dist/handsontable.min.js</code>、<code>dist/handsontable.min.css</code>、<code>dist/handsontable.min.full.js</code>および<code>dist/handsontable.min.full.css</code>）を作成します。</li>
+          <li><code>npm run build:languages</code> - UMD（Universal Module Definition）と互換性のある言語セット（<code>dist/languages/de-DE.js</code>、<code>dist/languages/all.js</code>など）を含むバンドルを作成します。言語に関する詳しい情報は<a href="/docs/<?js= version ?>/tutorial-internationalization.html">こちら</a>にあります。</li>
+          <li><code>npm run build:languages.min</code> - UMD（Universal Module Definition）と互換性のある言語セット（<code>dist/languages/de-DE.min.js</code>、<code>dist/languages/all.min.js</code>など）を含む圧縮バンドルを作成します。言語に関する詳しい情報は<a href="/docs/<?js= version ?>/tutorial-internationalization.html">こちら</a>にあります。</li>
+        </ul>
+      </li>
+      <li><code>npm run watch</code> - ソースディレクトリの変更を監視し、変更が検知されたときにビルドを実行します。変更が検知されたときのリビルドを速くするために、ウォッチャーは圧縮せずにファイル作成タスクを起動します。</li>
+      </li>
+    </ul>
+  </div>
+  <div class="example-container clearfix" name="running">
+    <h3 id="page-running">最初のビルドを実行する</h3>
+    <p>独自のビルドを実行するには、以下の手順に従ってください。</p>
+    <ol>
+      <li>Node.jsをインストールします（Windows、Mac、Linuxで利用可能）。これにより、すべての依存関係を処理するNPM（Node Package Manager）もインストールされます。
+         Handsontableはビルドとテストのために<strong>Node.js >=8</strong>と<strong>npm >=5</strong>が必要です。
+      </li>
+      <li>ローカルディスクにHandsontableリポジトリのクローンを作成し、クローンを作成したディレクトリに移動します。</li>
+      <li><code>npm install</code>を実行して、<code>package.json</code>に定義されているすべての依存関係をダウンロードします。
+        依存関係は新しいディレクトリ<code>node_modules</code>にダウンロードされます。これはGitでは無視されます。
+      </li>
+      <li><strong>最初のビルドは<code>npm run build</code>を実行してください！</strong></li>
+    </ol>
+  </div>
+  <div class="example-container clearfix head-gap" name="customizing">
+    <h3 id="page-customizing">カスタムパッケージを作成する</h3>
+    <p>このプロセスにより、コアエンジンと選択したプラグインのみを含むカスタムパッケージを構築できます。
+      スプレッドシートの全体的な機能性のほんの一部しか必要としない場合や、
+      <a href="/docs/<?js= version ?>/tutorial-custom-plugin.html">カスタムプラグイン</a>をすでに構築していてそれをベースコードに組み込みたい場合は非常に便利です。
+      そのために<strong>hot-builder</strong>というツールを用意しました。hot-builderを全体で扱えるようにインストールするには、次のコマンドを実行します。</p>
+    <p><code>npm install hot-builder -g</code></p>
+    <p>それからHandsontableを実行します。</p>
+    <p><code>hot-builder build --output-dir hot-dist</code></p>
+    <p>端末に必要なプラグインをすべて選択して、Enterを押します。
+      それが正しく機能すれば、次のように表示されるはずです。</p>
+    <p><img width="822" height="164" src="/docs/<?js= version ?>/images/hot-builder-ui.png" alt="Creating a custom package" /></p>
+    <p>そしてモジュールを選択した後、次のように表示されるはずです。</p>
+    <p><img width="822" height="532" src="/docs/<?js= version ?>/images/hot-builder-results.png" alt="Creating a custom package" /></p>
+    <p>詳細は<a href="https://github.com/handsontable/hot-builder" target="_blank">プロジェクト</a>を参照してください。</p>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/custom-build.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
