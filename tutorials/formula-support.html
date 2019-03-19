@@ -1,0 +1,215 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#setup">クイックセットアップ</a></li>
+      <li><a href="#custom-variables">カスタム変数</a></li>
+      <li><a href="#advanced-example">高度な例</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <div data-alert class="alert-box secondary">
+      <strong>このプラグインはALPHAバージョンとしてマークされており、APIはまだ安定していません。</strong>
+    </div>
+
+    <h3 id="overview">概要</h3>
+    <p>
+      <i>Formulas</i>プラグインを使用すると、Handsontableは提供されたデータで定義された計算式を処理できます。
+
+      このプラグインは<a href="https://github.com/handsontable/formula.js">formula.js</a>のほとんどの関数を利用する<a
+      href="https://github.com/handsontable/formula-parser">formula-parser</a>ライブラリを使用しています。
+
+      <p><strong>特徴：</strong></p>
+      <ul>
+        <li>負または正の浮動小数点数または整数値;</li>
+        <li><code>+</code>, <code>-</code>, <code>/</code>, <code>*</code>, <code>%</code>, <code>^</code>などの算術演算;</li>
+        <li><code>AND()</code>, <code>OR()</code>, <code>NOT()</code>, <code>XOR()</code>などの論理演算;</li>
+        <li><code>=</code>, <code>></code>, <code>>=</code>, <code><</code>, <code><=</code>, <code><></code>などの比較演算;</li>
+        <li><code>PI()</code>, <code>E()</code>, <code>LN10()</code>, <code>LN2()</code>, <code>LOG10E()</code>, <code>LOG2E()</code>, <code>SQRT1_2()</code>, <code>SQRT2()</code>などのすべてのJavaScript Math定数;</li>
+        <li><code>#DIV/0!</code>, <code>#ERROR!</code>, <code>#VALUE!</code>, <code>#REF!</code>, <code>#NAME?</code>, <code>#N/A</code>, <code>#NUM!</code>のエラー表示;</li>
+        <li><code>&</code> (結合の場合。<code>=-(2&5)</code>は<code>-25</code>を返す)などの文字列操作;</li>
+        <li><a href="https://github.com/handsontable/formula.js">formula.js</a>で定義されているすべてのExcel式;</li>
+        <li><code>A1</code>, <code>$A1</code>, <code>A$1</code>, <code>$A$1</code>などの相対、絶対セル参照;</li>
+        <li><code>TRUE</code>, <code>FALSE</code>, <code>NULL</code>などの組み込み変数;</li>
+        <li>カスタム変数;</li>
+        <li>入れ子式;</li>
+        <li>動的更新。</li>
+      </ul>
+      <p><strong>既知の制限</strong></p>
+      <ul>
+        <li>フィルタリングや列の並べ替えはできません。</li>
+        <li>トリミング行では機能しません。</li>
+      </ul>
+    </p>
+
+    <h3 id="setup">クイックセットアップ</h3>
+    <p>
+      プラグインを有効にするには、<code>formulas</code>プロパティを<code>true</code>に設定する必要があります。編集値に依存するセルは動的に再計算されます。
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1" data-dont-display="true">
+        var data = [
+          ['=$B$2', "Maserati", "Mazda", "Mercedes", "Mini", "=A$1"],
+          [2009, 0, 2941, 4303, 354, 5814],
+          [2010, 5, 2905, 2867, '=SUM(A4,2,3)', '=$B1'],
+          [2011, 4, 2517, 4822, 552, 6127],
+          [2012, '=SUM(A2:A5)', '=SUM(B5,E3)', '=A2/B2', 12, 4151]
+        ];</script>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot1 = new Handsontable(example1, {
+          data: data,
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          formulas: true
+        });</script>
+    </div>
+
+    <h3 id="custom-variables">カスタム変数</h3>
+    <p>
+      あなたはあなたの計算式で使えるカスタム変数を渡すことができます。カスタム変数を設定するには、
+      キーと値のペアを持つオブジェクトを<code>formulas</code>プロパティに渡します。
+    </p>
+
+    <div data-jsfiddle="example2">
+      <div>
+        <div id="example2" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2" data-dont-display="true">
+        var data = [
+          ['Anderson', '92', '=IF(B1<RANGE_F, "F", IF(B1<RANGE_D, "D", IF(B1<RANGE_C, "C", IF(B1<RANGE_B, "B", "A"))))', '', '', '0-63', 'F'],
+          ['Bautista', '85', '=IF(B2<RANGE_F, "F", IF(B2<RANGE_D, "D", IF(B2<RANGE_C, "C", IF(B2<RANGE_B, "B", "A"))))', '', '', '64-72', 'D'],
+          ['Block', '96', '=IF(B3<RANGE_F, "F", IF(B3<RANGE_D, "D", IF(B3<RANGE_C, "C", IF(B3<RANGE_B, "B", "A"))))', '', '', '73-84', 'C'],
+          ['Burrows', '79', '=IF(B4<RANGE_F, "F", IF(B4<RANGE_D, "D", IF(B4<RANGE_C, "C", IF(B4<RANGE_B, "B", "A"))))', '', '', '85-94', 'B'],
+          ['Chandler', '82', '=IF(B5<RANGE_F, "F", IF(B5<RANGE_D, "D", IF(B5<RANGE_C, "C", IF(B5<RANGE_B, "B", "A"))))', '', '', '95-100', 'A'],
+          ['Colby', '95', '=IF(B6<RANGE_F, "F", IF(B6<RANGE_D, "D", IF(B6<RANGE_C, "C", IF(B6<RANGE_B, "B", "A"))))', '', '', '', ''],
+          ['Crosby', '90', '=IF(B7<RANGE_F, "F", IF(B7<RANGE_D, "D", IF(B7<RANGE_C, "C", IF(B7<RANGE_B, "B", "A"))))', '', '', '', ''],
+          ['Dove', '65', '=IF(B8<RANGE_F, "F", IF(B8<RANGE_D, "D", IF(B8<RANGE_C, "C", IF(B8<RANGE_B, "B", "A"))))', '', '', '', ''],
+        ];</script>
+      <script data-jsfiddle="example2">
+        var example2 = document.getElementById('example2');
+
+        var hot2 = new Handsontable(example2, {
+          data: data,
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          formulas: {
+            variables: {
+              RANGE_F: 64,
+              RANGE_D: 73,
+              RANGE_C: 85,
+              RANGE_B: 95,
+            }
+          },
+        });</script>
+    </div>
+
+    <h3 id="advanced-example">高度な例</h3>
+    <p>
+      高度な例では、入れ子になった式を管理する方法を示します。また、さまざまな種類の式の間に依存関係を設定する方法についても示します。
+    </p>
+
+    <div data-jsfiddle="example3">
+      <div>
+        <div id="example3" class="hot scroll-container"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3" data-dont-display="true">
+        var data = [
+          ['Example #1 (looking for particular words in a sentence)', '', '', '', '', '', '', ''],
+          ['Text', 'yellow', 'red', 'blue', 'green', 'pink', 'gray'],
+          ['Yellow dog on green grass', "=IF(ISNUMBER(SEARCH(B2, A3)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A3)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A3)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A3)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A3)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A3)), G2, '')"],
+          ['Gray sweater with blue stripes', "=IF(ISNUMBER(SEARCH(B2, A4)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A4)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A4)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A4)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A4)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A4)), G2, '')"],
+          ['A red sun on a pink horizon', "=IF(ISNUMBER(SEARCH(B2, A5)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A5)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A5)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A5)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A5)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A5)), G2, '')"],
+          ['Blue neon signs everywhere', "=IF(ISNUMBER(SEARCH(B2, A6)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A6)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A6)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A6)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A6)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A6)), G2, '')"],
+          ['Waves of blue and green', "=IF(ISNUMBER(SEARCH(B2, A7)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A7)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A7)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A7)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A7)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A7)), G2, '')"],
+          ['Hot pink socks and gray socks', "=IF(ISNUMBER(SEARCH(B2, A8)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A8)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A8)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A8)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A8)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A8)), G2, '')"],
+          ['Deep blue eyes', "=IF(ISNUMBER(SEARCH(B2, A9)), B2, '')", "=IF(ISNUMBER(SEARCH(C2, A9)), C2, '')", "=IF(ISNUMBER(SEARCH(D2, A9)), D2, '')", "=IF(ISNUMBER(SEARCH(E2, A9)), E2, '')", "=IF(ISNUMBER(SEARCH(F2, A9)), F2, '')", "=IF(ISNUMBER(SEARCH(G2, A9)), G2, '')"],
+          ['Count of colors', '=COUNTIF(B3:B9, B2)', '=COUNTIF(C3:C9, C2)', '=COUNTIF(D3:D9, D2)', '=COUNTIF(E3:E9, E2)', '=COUNTIF(F3:F9, F2)', '=COUNTIF(G3:G9, G2)', '="SUM: "&SUM(B10:G10)'],
+          ['', '', '', '', '', '', ''],
+          ['Example #2 (extracting domains from emails)', '', '', '', '', '', ''],
+          ['Name', 'Email', 'Email domain', '', '', ''],
+          ['Ann Chang', 'achang@gmailtr.com', '=RIGHT(B14, LEN(B14) - FIND(EMAIL_SPLITTER, B14))', '', '', '', ''],
+          ['Jan Siuk', 'jan@yahootr.com', '=RIGHT(B15, LEN(B15) - FIND(EMAIL_SPLITTER, B15))', '', '', '', ''],
+          ['Ken Siuk', 'ken@gmailtr.com', '=RIGHT(B16, LEN(B16) - FIND(EMAIL_SPLITTER, B16))', '', '', '', ''],
+          ['Marcin Kowalski', 'ken@gmailtr.pl', '=RIGHT(B17, LEN(B17) - FIND(EMAIL_SPLITTER, B17))', '', '', '', ''],
+        ];</script>
+      <script data-jsfiddle="example3">
+        var example3 = document.getElementById('example3');
+
+        var hot3 = new Handsontable(example3, {
+          data: data,
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          formulas: {
+            variables: {
+              EMAIL_SPLITTER: '@',
+            }
+          },
+          mergeCells: [
+            {row: 0, col: 0, rowspan: 1, colspan: 8},
+            {row: 11, col: 0, rowspan: 1, colspan: 8},
+          ],
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/formula-support.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合 
+      Handsontableそのもの 
+    </a>
+  </p>
+</div>
+
