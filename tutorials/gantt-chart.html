@@ -1,0 +1,216 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#setup">プラグイン設定</a></li>
+      <li><a href="#options">追加オプション</a></li>
+      <li><a href="#examples">実例</a></li>
+    </ul>
+
+    <hr>
+
+    <h3 id="overview">概要</h3>
+
+    <p>
+      <i>ganttChart</i>プラグインはHandsontableインスタンスを使ってガントチャートを作成することを可能にします。
+      データ配列または別のHandsontableインスタンスを使ってデータをあたえることができます。
+      チャートの時間は週と月に分けられます。 プラグインのAPIを使えば簡単に表示される年を設定することができます。
+    </p>
+
+    <h3 id="setup">プラグイン設定</h3>
+
+    <p>
+      チャートプラグインを設定する前に、まず依存関係を整理する必要があります。（<code>Hidden Columns</code>と<code>Column Headers</code>）<br>
+      プラグインを有効にするには、<code>ganttChart</code>プロパティをプラグインの設定をするオブジェクトに設定する必要があります。
+    </p>
+    <pre><code class="js">ganttChart: {
+  dataSource: data, // データソースに関する情報を含むオブジェクト（下記参照）
+  firstWeekDay: 'monday', // 週の最初の日を 'monday'または 'sunday'に設定
+  startYear: 2015 // 表示される年を指定した値に設定
+}</code></pre>
+
+    <p>
+      この例では、<code>data</code>オブジェクトは次のいずれかになります。
+    </p>
+    <ul>
+      <li>以下の形式で定義され、チャートのデータを含むオブジェクト。
+      <pre><code class="js">var data = [
+  {
+    startDate: '1/5/2015',
+    endDate: '1/20/2015',
+    additionalData: {label: 'Example label.', quantity: 'Four packs.'}
+  },
+  {
+    startDate: '1/11/2015',
+    endDate: '1/29/2015',
+    additionalData: {label: 'Another label.', quantity: 'One pack.'}
+  }
+];</code></pre>
+        ご覧のとおり、この場合のデータオブジェクトは<code>オブジェクト</code>の<code>配列</code>として表されます。<br>
+        各オブジェクトは、チャートの単一の「棒」を表します。チャート自体は日付に関連しているため（ある種のカレンダーを作成します）、
+        すべての情報は日付に基づいています。<br><br>
+        オブジェクトは、次のプロパティで構成されています。
+        <ul>
+          <li><code>startDate</code>: 「棒」の始めの日付</li>
+          <li><code>endDate</code>: 「棒」の終わりの日付</li>
+          <li><code>additionalData</code>: 「棒」に渡される追加のデータ。指定した時間範囲と結び付けたい情報。</li>
+        </ul>
+      </li>
+      <li>
+        他のHandsontableインスタンスのバインディング設定を含むオブジェクト
+        <pre><code class="js">var data = {
+  instance: source, // 他のHandsontableインスタンスへの参照
+  startDateColumn: 4, // データ範囲の開始日に関する情報を含む列のインデックス
+  endDateColumn: 5, // データ範囲の終了日に関する情報を含む列のインデックス
+  additionalData: { // チャートに渡される追加データに関する情報。この例では、
+    label: 0, // ラベルは最初の列に格納
+    quantity: 1 // 数量情報は2列目に格納
+  }
+}</code></pre>
+      </li>
+    </ul>
+
+    <h3 id="options">追加オプション</h3>
+    <p>
+      次のように呼び出して、チャートにできるテーブルの行にカスタムカラーを追加できます。
+      <pre><code class="js">hot.getPlugin('ganttChart').setRangeBarColors({
+  // 行ごとに陰影を付ける
+  0: ['#000', '#fff'], // 最初の配列要素は週全体の色、2番目は部分週の色です
+  2: ['#000', '#fff']
+});</code></pre>
+    </p>
+    <h3 id="examples">実例</h3>
+    <h4>データソースとしてのオブジェクト</h4>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot" style="overflow: hidden;"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+        var dataObj = [
+          {
+            startDate: '1/5/2015',
+            endDate: '1/20/2015',
+            additionalData: {label: 'Label 1'}
+          },
+          {
+            startDate: '1/11/2015',
+            endDate: '1/29/2015',
+            additionalData: {label: 'Label 2'}
+          },
+          {
+            startDate: '2/1/2015',
+            endDate: '2/26/2015',
+            additionalData: {label: 'Label 3'}
+          },
+          {
+            startDate: '2/15/2015',
+            endDate: '3/26/2015',
+            additionalData: {label: 'Label 4'}
+          }
+        ];
+
+        var hot = new Handsontable(example1, {
+          data: [],
+          hiddenColumns: true,
+          colHeaders: true,
+          ganttChart: {
+            dataSource: dataObj,
+            firstWeekDay: 'monday',
+            startYear: 2015
+          },
+          width: 600,
+          height: 165
+        });</script>
+    </div>
+
+    <h4>データソースになる他のインスタンス</h4>
+
+    <div data-jsfiddle="example2">
+      <div>
+        <div id="example2-source" class="hot"></div><br>
+        <div id="example2" class="hot" style="overflow: hidden;"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var example2 = document.getElementById('example2');
+        var sourceHot = document.getElementById('example2-source');
+
+        var hotSource = new Handsontable(sourceHot, {
+          data: [
+            ['Label 1', '01/12/2015', '01/20/2016'],
+            ['Label 2', '01/11/2015', '01/29/2015'],
+            ['Label 3', '01/15/2015', '02/20/2015'],
+            ['Label 4', '01/03/2015', '03/29/2015'],
+            ['Label 5', '04/05/2015', '04/20/2015'],
+            ['Label 6', '02/11/2015', '05/29/2015'],
+            ['Label 7', '02/15/2015', '03/20/2015'],
+            ['Label 8', '03/02/2015', '04/12/2015']
+          ],
+          columns: [
+            {title: 'Label', type: 'text'},
+            {title: 'Start Date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true},
+            {title: 'End Date', type: 'date', dateFormat: 'MM/DD/YYYY', correctFormat: true}
+          ]
+        });
+
+        var hot2 = new Handsontable(example2, {
+          data: [],
+          hiddenColumns: true,
+          colHeaders: true,
+          ganttChart: {
+            dataSource: {
+              instance: hotSource,
+              startDateColumn: 1,
+              endDateColumn: 2,
+              additionalData: {
+                label: 0
+              }
+            },
+            firstWeekDay: 'monday',
+            startYear: 2015
+          },
+          width: 600,
+          height: 255
+        });</script>
+    </div>
+
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/gantt-chart.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合 
+      Handsontableそのもの 
+    </a>
+  </p>
+</div>
+
