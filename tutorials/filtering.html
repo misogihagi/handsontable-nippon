@@ -1,0 +1,634 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#setup">クイックセットアップ</a></li>
+      <li><a href="#dropdown">カスタムドロップダウンメニュー</a></li>
+      <li><a href="#custom-implementations">カスタム実装</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="overview">概要</h3>
+    <p>
+      <i>Filters</i>プラグインを使用すると、事前定義された一連の条件を使用してテーブルの列のデータをフィルタリングできます。
+    </p>
+    <p>
+      このプラグインはフィルターされた行を非表示にするために<a href="/docs/<?js= version ?>/demo-trimming-rows.html">Trim Rows</a>プラグインを使います。
+      これらの行はまったくレンダリングされないため、テーブル全体のパフォーマンスには適しています。
+    </p>
+
+    <h3 id="setup">クイックセットアップ</h3>
+    <p>
+      プラグインを有効にするには、<code>filters</code>プロパティーを<code>true</code>に設定し、<a
+      href="/docs/<?js= version ?>/demo-dropdown-menu.html">dropdownMenu</a>プラグインを有効にして、フィルターの依存関係に従う必要があります。
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1" data-dont-display="true">
+        var dataObj = [
+          ['Lorem', 'ipsum', 'dolor', 'sit', '12/1/2015', 23],
+          ['adipiscing', 'elit', 'Ut', 'imperdiet', '5/12/2015', 6],
+          ['Pellentesque', 'vulputate', 'leo', 'semper', '10/23/2015', 26],
+          ['diam', 'et', 'malesuada', 'libero', '12/1/2014', 98],
+          ['orci', 'et', 'dignissim', 'hendrerit', '12/1/2016', 8.5]
+        ];</script>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: dataObj,
+          columns: [
+            {type: 'text'},
+            {type: 'text'},
+            {type: 'text'},
+            {type: 'text'},
+            {type: 'date', dateFormat: 'M/D/YYYY'},
+            {type: 'numeric'}
+          ],
+          colHeaders: true,
+          rowHeaders: true,
+          dropdownMenu: true,
+          filters: true
+        });</script>
+    </div>
+
+    <h3 id="dropdown">カスタムドロップダウンメニュー</h3>
+    <p>
+      ドロップダウンメニューで他の要素を非表示にしている間だけフィルターを表示するには、
+      設定で配列として表示される要素を渡します。
+    </p>
+
+    <div data-jsfiddle="example2">
+      <div>
+        <div id="example2" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2" data-dont-display="true">
+        var dataObj = [
+          ['Lorem', 'ipsum', 'dolor', 'sit', '12/1/2015', 23],
+          ['adipiscing', 'elit', 'Ut', 'imperdiet', '5/12/2015', 6],
+          ['Pellentesque', 'vulputate', 'leo', 'semper', '10/23/2015', 26],
+          ['diam', 'et', 'malesuada', 'libero', '12/1/2014', 98],
+          ['orci', 'et', 'dignissim', 'hendrerit', '12/1/2016', 8.5]
+        ];</script>
+      <script data-jsfiddle="example2">
+        var example1 = document.getElementById('example2');
+
+        var hot = new Handsontable(example2, {
+          data: dataObj,
+          columns: [
+            {type: 'text'},
+            {type: 'text'},
+            {type: 'text'},
+            {type: 'text'},
+            {type: 'date', dateFormat: 'M/D/YYYY'},
+            {type: 'numeric'}
+          ],
+          colHeaders: true,
+          rowHeaders: true,
+          filters: true,
+          dropdownMenu: ['filter_by_condition', 'filter_action_bar']
+        });</script>
+    </div>
+
+    <h3 id="custom-implementations">カスタム実装</h3>
+    <p>
+      以下の例はあなたのやりたいことが実装できるようにFilterプラグインを調整する方法の良い助けになるでしょう。
+      これには、UIコンポーネントのカスタマイズ、デフォルトの動作の変更、およびテーブルの外側からのフィルターの使用が含まれます。
+    </p>
+    <h4>入力したフィルターをかける</h4>
+    <p>
+      基本的な<code>input</code>要素を列の見出し（A、B、C…）の内側、列のラベルのすぐ下に配置しました。
+      見やすくするために、水平線で区切ります。データは入力時にフィルタリングされています -  200ミリ秒の遅れがあります。
+      フィルター要素は選択イベントから除外されているため、クリックしても列は選択されません。
+    </p>
+    <p>
+      このデモではHandsontable APIをかなりの程度使用しています。
+    </p>
+
+    <div data-jsfiddle="example3">
+      <div>
+        <div id="example3" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <style data-jsfiddle="common">
+        .handsontable.as-you-type-demo tr:first-child th {
+          vertical-align: bottom;
+        }
+
+        .handsontable.as-you-type-demo th > div.filterHeader {
+          border-top: 1px solid #CCC;
+        }
+
+        .handsontable.as-you-type-demo th > div.filterHeader > input {
+          width: calc(100% - 10px);
+          box-shadow: none;
+          border: 1px solid #CCC;
+          margin-top: 1px;
+        }
+      </style>
+      <script data-jsfiddle="example3" data-dont-display="true">
+        var dataObj = [
+          ['Lorem', 'ipsum', 'dolor', 'sit', '12/1/2015', 23],
+          ['adipiscing', 'elit', 'Ut', 'imperdiet', '5/12/2015', 6],
+          ['Pellentesque', 'vulputate', 'leo', 'semper', '10/23/2015', 26],
+          ['diam', 'et', 'malesuada', 'libero', '12/1/2014', 98],
+          ['orci', 'et', 'dignissim', 'hendrerit', '12/1/2016', 8.5]
+        ];</script>
+      <script data-jsfiddle="example3">
+
+      // `keydown`用のイベント。最後にキーが押された時間から200ミリ秒の遅延の後の状態を追加
+      var debounceFn = Handsontable.helper.debounce(function (colIndex, event) {
+        var filtersPlugin = hot.getPlugin('filters');
+
+        filtersPlugin.removeConditions(colIndex);
+        filtersPlugin.addCondition(colIndex, 'contains', [event.realTarget.value]);
+        filtersPlugin.filter();
+      }, 200);
+
+      var addEventListeners = function (input, colIndex) {
+        input.addEventListener('keydown', function(event) {
+          debounceFn(colIndex, event);
+        });
+      };
+
+      // ヘッダーで表示される要素の組み立て
+      var getInitializedElements = function(colIndex) {
+        var div = document.createElement('div');
+        var input = document.createElement('input');
+
+        div.className = 'filterHeader';
+
+        addEventListeners(input, colIndex);
+
+        div.appendChild(input);
+
+        return div;
+      };
+
+      // `afterGetColHeader`フックのヘッダーに要素を追加
+      var addInput = function(col, TH) {
+        // フックはnumber以外の値を返すことができます（例えば`columnSorting`プラグインはこれを使います）。
+        if (typeof col !== 'number') {
+          return col;
+        }
+
+        if (col >= 0 && TH.childElementCount < 2) {
+          TH.appendChild(getInitializedElements(col));
+        }
+      };
+
+      // 入力をクリックした後に列の選択を解除します。
+      var doNotSelectColumn = function (event, coords) {
+        if (coords.row === -1 && event.realTarget.nodeName === 'INPUT') {
+          event.stopImmediatePropagation();
+          this.deselectCell();
+        }
+      };
+
+      var hot = new Handsontable(document.getElementById('example3'), {
+        data: dataObj,
+        colHeaders: true,
+        rowHeaders: true,
+        className: 'as-you-type-demo',
+        filters: true,
+        colWidths: 100,
+        afterGetColHeader: addInput,
+        beforeOnCellMouseDown: doNotSelectColumn
+      });</script>
+    </div>
+
+    <h4>テーブルの外からフィルターする</h4>
+    <p>
+      外部Filterコンポーネントは、特定の列に値を渡すことによってメインテーブルを制御しています。
+      ほんの一部のコードだけがHandsontable API（<code>addConditionsByValue</code>、<code>filter</code>、<code>removeConditions</code>など）と連携しています。
+      非常に多くの<a href="https://ja.wikipedia.org/wiki/グルーコード">グルーコード</a>がFilterコンポーネント自体を処理します。
+    </p>
+    <p>
+      Filterコンポーネントの列を選択すると、テーブルの状態がリセットされることに注意してください。
+      この実装では一度に1つの列しかフィルターできません。
+    </p>
+
+    <div>
+      <div class="demo-container">
+        <div id="externalFilter">
+          <div class="demo-columnChoose">
+            <label>Choose Column: </label>
+            <select></select>
+          </div>
+
+          <div class="demo-filterSelect">
+            <div class="demo-controllers">
+              <div>
+                <input type="checkbox" id="filtersSelectAll" checked="true" />
+                <label for="filtersSelectAll">(Select all)</label>
+              </div>
+            </div>
+
+            <div class="demo-items"></div>
+          </div>
+
+          <div class="button-holder">
+            <div class="buttons">
+              <button class="green demo-apply">Apply filter</button>
+              <button class="demo-clear">Clear filter</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="example4" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example4" data-link="http://jsfiddle.net/vszLvxnL/1/">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example4" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <style data-jsfiddle="common">
+        #externalFilter {
+          display: none;
+          margin-left: 10px;
+          -ms-user-select: none; /* Internet Explorer/Edge */
+          user-select: none;
+          margin-bottom: 50px;
+        }
+
+        #externalFilter > .button-holder {
+          position: relative;
+        }
+
+        #externalFilter > .button-holder .buttons {
+          left: 5px;
+        }
+
+        #externalFilter > .demo-columnChoose,
+        #externalFilter > .demo-columnChoose > select,
+        #externalFilter > .demo-filterSelect {
+          width: 200px;
+        }
+
+        #externalFilter > .demo-columnChoose > select {
+          display: block;
+          margin: 2px 0px 10px 0px;
+        }
+
+        #externalFilter > .demo-filterSelect {
+          border: 1px solid #cccccc;
+          max-height: 200px;
+          overflow: auto;
+        }
+
+        #externalFilter > .demo-filterSelect > .demo-controllers {
+          font-weight: bold;
+          border-bottom: 1px solid #cccccc;
+          background-color: rgb(243, 243, 243);
+          padding: 2px 0px;
+        }
+
+        #externalFilter > .demo-filterSelect > .demo-controllers {
+          padding: 5px;
+        }
+
+        #externalFilter > .demo-filterSelect > .demo-items {
+          padding: 5px;
+        }
+
+        #externalFilter > .demo-filterSelect > .demo-items > .demo-item > label:before {
+          content: ' ';
+          white-space: pre;
+        }
+
+        #externalFilter > .button-holder {
+          margin-top: 10px;
+        }
+      </style>
+      <script data-jsfiddle="example4" data-dont-display="true">
+        var dataObj = [
+          ['Lorem', 'ipsum', 'dolor', 'sit', '12/1/2015', 23],
+          ['adipiscing', 'elit', 'Ut', 'imperdiet', '5/12/2015', 6],
+          ['Pellentesque', 'vulputate', 'leo', 'semper', '10/23/2015', 26],
+          ['diam', 'et', 'malesuada', 'libero', '12/1/2014', 98],
+          ['orci', 'et', 'dignissim', 'hendrerit', '12/1/2016', 8.5]
+        ];</script>
+      <script data-jsfiddle="example4">
+        const table = document.getElementById('example4');
+        const arrayEach = Handsontable.helper.arrayEach;
+        const curry = Handsontable.helper.curry;
+
+        class DOMHelper {
+          constructor(state, actions) {
+            this.state = state;
+            this.addConditionsByValue = actions.addConditionsByValue;
+            this.filter = actions.filter;
+            this.removeConditions = actions.removeConditions;
+
+            this.externalFilterUI = document.querySelector('#externalFilter');
+            this.selectAllUI = document.querySelector('#filtersSelectAll');
+            this.itemsContainerUI = this.externalFilterUI.querySelector('.demo-items');
+            this.chooseColumnUI = this.externalFilterUI.querySelector('.demo-columnChoose > select');
+            this.applyFilterUI = this.externalFilterUI.querySelector('.buttons > .demo-apply');
+            this.clearFilterUI = this.externalFilterUI.querySelector('.buttons > .demo-clear');
+            this.inputs = [];
+
+            this.fillSelectByColHeaders();
+            this.fillValueBoxByData();
+            this.initListeners();
+
+            this.externalFilterUI.style.display = 'block';
+          }
+
+          initListeners() {
+            this.chooseColumnUI.addEventListener('change', (event) => this.onSelectChanged(event));
+            this.applyFilterUI.addEventListener('click', () => this.onApplyFilterClicked());
+            this.clearFilterUI.addEventListener('click', () => this.onClearFilterClicked());
+            this.selectAllUI.addEventListener('click', () => this.onSelectAllClicked());
+          }
+
+          fillSelectByColHeaders () {
+            const colHeaders = this.state.getHeaders();
+
+            arrayEach(colHeaders, (colHeader, columnIndex) => {
+              const option = document.createElement('option');
+
+              option.text = colHeader;
+
+              if (columnIndex === this.state.getSelectedColumn()) {
+                option.selected = true;
+              }
+
+              this.chooseColumnUI.add(option);
+            });
+          }
+
+          fillValueBoxByData() {
+            arrayEach(this.state.getData(), (cellData, rowIndex) => {
+              const item = document.createElement('div');
+
+              item.className = 'demo-item';
+
+              const input = document.createElement('input');
+              const id = 'cellData' + '(' + this.state.getSelectedColumn()+ ',' + rowIndex + ')';
+
+              input.id = id;
+              input.type = 'checkbox';
+              input.name = 'cellData';
+              input.value = cellData;
+              input.checked = true;
+
+              input.addEventListener('change', (event) => this.onInputChange(event));
+
+              const label = document.createElement('label');
+
+              label.htmlFor = id;
+              label.innerText = cellData;
+
+              item.appendChild(input);
+              item.appendChild(label);
+              this.inputs.push(input);
+              this.itemsContainerUI.appendChild(item);
+            });
+          }
+
+          setSelectAllUIChecked(checked) {
+            if (this.selectAllUI.checked !== checked) {
+              this.selectAllUI.checked = checked;
+            }
+          }
+
+          clearElementChildren(element) {
+            while (element.firstChild) {
+              element.removeChild(element.firstChild);
+            }
+          }
+
+          onSelectChanged(event) {
+            this.removeConditions(this.state.getSelectedColumn());
+            this.filter();
+            this.state.setSelectedColumn(event.target.selectedIndex);
+
+            this.setSelectAllUIChecked(true);
+            this.clearElementChildren(this.itemsContainerUI);
+            this.fillValueBoxByData();
+          }
+
+          onInputChange(event) {
+            if (event.target.checked === false) {
+              this.state.addValuesToFilter(event.target.value);
+              this.setSelectAllUIChecked(false);
+
+            } else {
+              this.state.removeValuesForFilter(event.target.value);
+
+              if (this.state.allValuesChecked()) {
+                this.setSelectAllUIChecked(true);
+              }
+            }
+          }
+
+          onApplyFilterClicked() {
+            this.removeConditions(this.state.getSelectedColumn());
+            this.addConditionsByValue(this.state.getValuesToFilter(), this.state.getSelectedColumn());
+            this.filter();
+          }
+
+          onClearFilterClicked () {
+            this.removeConditions(this.state.getSelectedColumn());
+            this.state.removeValuesForFilter();
+            this.filter();
+
+            this.clearElementChildren(this.itemsContainerUI);
+            this.fillValueBoxByData();
+            this.setSelectAllUIChecked(true);
+          }
+
+          onSelectAllClicked() {
+            if (this.state.allValuesChecked()) {
+              this.state.addValuesToFilter();
+
+              arrayEach(this.inputs, function (inputDomElement) {
+                inputDomElement.checked = false;
+              });
+
+            } else {
+              this.state.removeValuesForFilter();
+
+              arrayEach(this.inputs, function (inputDomElement) {
+                inputDomElement.checked = true;
+              });
+            }
+          }
+        }
+
+        class State {
+          constructor(data, headers, selectedColumn = 0) {
+            this.selectedColumn = selectedColumn;
+            this.data = data;
+            this.headers = headers;
+
+            this.initStateForColumn();
+          }
+
+          initStateForColumn() {
+            this.dataAtCol = this.getUniqueDataAtCol(this.selectedColumn);
+            this.checkedValues = this.dataAtCol.length;
+            this.maxCheckedValues = this.dataAtCol.length;
+            this.valuesToFilter = [];
+          }
+
+          getHeaders() {
+            return this.headers;
+          }
+
+          getData() {
+            return this.dataAtCol;
+          }
+
+          getUniqueDataAtCol(column) {
+            const dataAtCol = this.getSourceDataAtCol(column);
+
+            return dataAtCol.filter((value, index, self) => self.indexOf(value) === index);
+          }
+
+          getSourceDataAtCol(column) {
+            return this.data.map((dataAtRow) => dataAtRow[column].toString());
+          }
+
+          setSelectedColumn(column) {
+            this.selectedColumn = column;
+            this.initStateForColumn();
+          }
+
+          getSelectedColumn() {
+            return this.selectedColumn;
+          }
+
+          getValuesToFilter() {
+            return this.valuesToFilter;
+          }
+
+          addValuesToFilter(value) {
+            if (value) {
+              this.valuesToFilter.push(value);
+              this.checkedValues -= 1;
+
+            } else {
+              this.valuesToFilter = Array.from(this.dataAtCol);
+              this.checkedValues = 0;
+            }
+          }
+
+          removeValuesForFilter(value) {
+            if (value) {
+              const indexOfRemovedElement = this.valuesToFilter.indexOf(value);
+
+              if (indexOfRemovedElement !== -1) {
+                this.valuesToFilter.splice(indexOfRemovedElement, 1);
+                this.checkedValues += 1;
+              }
+
+            } else {
+              this.valuesToFilter.length = 0;
+              this.checkedValues = this.maxCheckedValues;
+            }
+          }
+
+          allValuesChecked() {
+            return this.checkedValues === this.maxCheckedValues;
+          }
+        }
+
+        class Controller {
+          constructor(hotInstance, options = {}) {
+            const {addConditionsByValue, filter, removeConditions} = options;
+
+            this.hot = hotInstance;
+            this.state = new State(hotInstance.getSourceData(), hotInstance.getColHeader(), options.selectedColumn);
+            new DOMHelper(this.state, {addConditionsByValue, filter, removeConditions});
+          }
+        }
+
+        new Handsontable(table, {
+          data: dataObj,
+          colHeaders: true,
+          rowHeaders: true,
+          filters: true,
+          colWidths: 100,
+          editor: false,
+          fillHandle: false,
+          afterInit: function () {
+            const filtersPlugin = this.getPlugin('filters');
+
+            new Controller(this, {
+              selectedColumn: 0,
+              addConditionsByValue: curry((values, column) => {
+                arrayEach(values, (value) => filtersPlugin.addCondition(column, 'not_contains', [value]));
+              }),
+              filter: () => filtersPlugin.filter(),
+              removeConditions: (column) => filtersPlugin.removeConditions(column)
+            });
+          }
+        });</script>
+    </div>
+
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/filtering.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合 
+      Handsontableそのもの 
+    </a>
+  </p>
+</div>
