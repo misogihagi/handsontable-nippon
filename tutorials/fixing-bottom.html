@@ -1,0 +1,48 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p><code>fixedRowsBottom</code>オプションを使用して、テーブルの一番下の行を固定できます。このように、テーブルをスクロールしても、固定行はテーブルのコンテナの下端に留まります。
+    </p>
+    <p>以下の例は、2つの最下行が固定されている表を示しています。</p>
+
+    <strong id="positions"></strong>
+
+    <div data-jsfiddle="example" class="scroll-container fixed-container">
+      <div id="example" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example">
+        var
+        myData = Handsontable.helper.createSpreadsheetData(100, 50),
+        container = document.getElementById('example'),
+        hot;
+
+        hot = new Handsontable(container, {
+          data: myData,
+          rowHeaders: true,
+          colHeaders: true,
+          fixedRowsBottom: 2
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/fixing.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合 
+      Handsontableそのもの 
+    </a>
+  </p>
+</div>
+
