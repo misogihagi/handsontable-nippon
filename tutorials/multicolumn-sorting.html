@@ -1,0 +1,417 @@
+<meta charset=utf-8><div class="static-content">
+  <div class="index-list">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#basic-plugin-configuration">基本的なプラグインの設定</a></li>
+      <li><a href="#extended-plugin-configuration">拡張的なプラグイン設定</a></li>
+      <li><a href="#default-compare-functions">デフォルトの比較機能（さまざまな種類のデータのソート）</a></li>
+      <li><a href="#custom-compare-functions">カスタムの比較機能</a></li>
+      <li><a href="#column-options">特定の列のみのプラグインオプション</a></li>
+      <li><a href="#custom-sort-implementation">カスタムソートの実装</a></li>
+      <li><a href="#hooks">プラグインフック</a></li>
+      <li><a href="#api">プラグインAPI</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="overview">概要</h3>
+    <p>
+      列ソートプラグインは、データソースとHandsontableレンダリングモジュールの間のプロキシとして機能します。これは表示されている行のインデックス（「視覚のインデックス」と呼ばれる）を、データソース内の対応する行のインデックス（「物理インデックス」と呼ばれる）にマップしたり、その逆を行うことができます。これにより、データソースの内部構造を変更せずに、ユーザーに表示されている行の順序を変更できます。ソート操作は、使用するブラウザーやソートするデータセットのサイズに関係なく、<a href="https://ja.wikipedia.org/wiki/安定ソート">安定したソートアルゴリズム</a>を使用して実行されます。
+    </p>
+
+    <div data-alert class="alert-box info">
+      <strong><code>columnSorting</code>プラグインと<code>multiColumnSorting</code>プラグインの両方を同時に有効にしないでください。</strong>
+    </div>
+  </div>
+
+
+  <div class="example-container clearfix">
+    <h3 id="basic-plugin-configuration">基本的なプラグインの設定</h3>
+    <p>
+      プラグインを有効にする最も簡単な方法は、<code>multiColumnSorting</code>キーを<code>true</code>に設定することです。以下の例に示すように、<b><a href="#api">APIメソッド</a>を使用して</b><b>ヘッダーをクリックして</b>ソートすることができます。<code>ctrl/cmd</code>キーを押しながら複数の列見出しをクリックすると、クリックされた列がソートスタックに追加され、その結果、定義された順序で列がソートされます。さらに、デフォルトでは：
+    </p>
+
+    <p>
+    <ul>
+      <li>最初に列はソートされません</li>
+      <li>ソート標識は有効になります</li>
+      <li>空のセルはソートされません</li>
+      <li>sortメソッドはデフォルトのcompare関数を使います（それらについての詳細は<a href="#default-compare-functions">こちら</a>をご覧ください）。</li>
+    </ul>
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+
+      <script data-jsfiddle="example1" data-dont-display="true">
+        var arrayOfArrays = [
+          ["Tesla", "Model 3", "BlueStar", "USA", "★★★★"],
+          ["Tesla", "Model S", "WhiteStar", "USA", "★★★★★"],
+          ["Mitsubishi", "iMiEV", "", "Japan", "★★"],
+          ["Ford", "Focus EV", "", "USA", "★★"],
+          ["Mitsubishi", "iMiEV Sport", "", "Japan", "★★"],
+          ["Tesla", "Roadster", "DarkStar", "USA", "★★★★★"],
+          ["Volkswagen", "e-Golf","", "Germany", "★★"],
+          ["Volkswagen", "E-Up!", "", "Germany", "★★"],
+          ["Ford", "C-Max Energi", "", "USA", "★"],
+          ["BYD", "Denza", "", "China", "★★★"],
+          ["BYD", "e5", "", "China", "★★★"],
+          ["BYD", "e6", "", "China", "★★★★"]
+        ];
+      </script>
+
+      <script data-jsfiddle="example1">
+        var exampleContainer1 = document.getElementById('example1');
+
+        new Handsontable(exampleContainer1, {
+          data: arrayOfArrays,
+          colHeaders: ["Brand", "Model", "Code name", "Country of origin", "Rank"],
+          multiColumnSorting: true
+        });</script>
+    </div>
+  </div>
+
+
+  <div class="example-container clearfix">
+    <h3 id="extended-plugin-configuration">拡張的なプラグイン設定</h3>
+    <p>
+      <code>object</code>として設定を提供することでプラグインオプションをカスタマイズできます。設定可能なオプションは次のとおりです。
+    </p>
+    <p>
+    <ul>
+      <li><code>initialConfig</code> (<code>Array</code>), 一部の列の初期ソートステータスを決定します。以下のキーを含むオブジェクトのリスト
+        <ul>
+          <li><code>column</code> (<code>Number</code>), ソートされた列の視覚的なインデックスを決定します</li>
+          <li><code>sortOrder</code> (<code>String</code>), 列をソートする順序を決定します（取り得る値は<code>'asc'</code>と<code>'desc'</code>）</li>
+        </ul>
+      </li>
+      <li><code>indicator</code> (<code>Boolean</code>), 並べ替え順序の標識を表示するかどうかを定義します（並べ替え順序を指定する列ヘッダーの矢印アイコン）</li>
+      <li><code>sortEmptyCells</code> (<code>Boolean</code>), 空のセルをソート処理に含むかどうかを定義します</li>
+      <li><code>headerAction</code> (<code>Boolean</code>), ヘッダーをクリックしてテーブルをソートするかどうかを定義します</li>
+      <li><code>compareFunctionFactory</code> (<code>Function</code>), 比較関数ファクトリを定義します（<a href="#custom-compare-functions">このセクション</a>で詳しく説明します）</li>
+    </ul>
+    </p>
+
+    <p>
+      下記のプラグイン設定例を見てください。
+    </p>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+
+      <script data-jsfiddle="example2" data-dont-display="true">
+        var arrayOfArrays = [
+          ["Tesla", "Model 3", "BlueStar", "USA", "★★★★"],
+          ["Tesla", "Model S", "WhiteStar", "USA", "★★★★★"],
+          ["Mitsubishi", "iMiEV", "", "Japan", "★★"],
+          ["Ford", "Focus EV", "", "USA", "★★"],
+          ["Mitsubishi", "iMiEV Sport", "", "Japan", "★★"],
+          ["Tesla", "Roadster", "DarkStar", "USA", "★★★★★"],
+          ["Volkswagen", "e-Golf","", "Germany", "★★"],
+          ["Volkswagen", "E-Up!", "", "Germany", "★★"],
+          ["Ford", "C-Max Energi", "", "USA", "★"],
+          ["BYD", "Denza", "", "China", "★★★"],
+          ["BYD", "e5", "", "China", "★★★"],
+          ["BYD", "e6", "", "China", "★★★★"]
+        ];
+      </script>
+
+      <script data-jsfiddle="example2">
+        var exampleContainer2 = document.getElementById('example2');
+
+        new Handsontable(exampleContainer2, {
+          data: arrayOfArrays,
+          colHeaders: ["Brand", "Model", "Code name", "Country of origin", "Rank"],
+          multiColumnSorting: {
+            sortEmptyCells: true,
+            initialConfig: [{
+              column: 0,
+              sortOrder: 'asc'
+            }, {
+              column: 2,
+              sortOrder: 'desc'
+            }]
+          }
+        });</script>
+
+      <p>Handsontableのメイン設定の<code>multiColumnSorting</code>キーで定義されているオプションはテーブル全体に適用されることに注意してください。<a href="#column-options">このセクション</a>で説明するように、それらのほとんどは特定の列に設定することもできます。</p>
+    </div>
+
+    <div class="example-container clearfix">
+      <h3 id="default-compare-functions">デフォルトの比較機能（さまざまな種類のデータのソート）</h3>
+      <p>
+        ネイティブの<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort"><code>Array.sort</code></a>メソッドと同様に、私たちの内部ソートアルゴリズムは<b>compare関数</b>（コンパレータとも呼ばれます）を使用します。異なる種類のセル（<a href="/docs/<?js= version ?>/tutorial-cell-types.html"><code>日付、数値、テキスト</code></a>など）は異なる方法で処理されます。それぞれがそれぞれのデータ型をソートするための独自のコンパレータを持っています。
+      </p>
+      <p>その結果、さまざまな種類のデータが正しくソートされていることがわかります。下記の例でわかるように、<code>Handsontable</code>は単に列の宣言されたデータ型を必要とします。</p>
+
+      <div data-jsfiddle="example3">
+        <div id="example3" class="hot"></div>
+      </div>
+
+      <div class="codeLayout">
+        <div class="buttons">
+          <button class="jsFiddleLink" data-runfiddle="example3">
+            <i class="fa fa-jsfiddle"></i>
+            Edit
+          </button>
+          <button class="dump" name="dump" data-dump="#example3" data-instance="hot"
+                  title="Print current data source to console">
+            <i class="fa fa-terminal"></i>
+            Dump data to console
+          </button>
+        </div>
+
+        <script data-jsfiddle="example3" data-dont-display="true">
+          var arrayOfObjects = [
+            { brand: "Tesla", model: "Model 3", maxSpeed: 141, range: 215, seats: 5, price: 32750, productionDate: "06/29/2007" },
+            { brand: "Tesla", model: "Model S", maxSpeed: 139, range: 275, seats: 7, price: 71788, productionDate: "04/02/2012" },
+            { brand: "Mitsubishi", model: "iMiEV", maxSpeed: 81, range: 99, seats: 4, price: 31426.9, productionDate: "09/11/2009" },
+            { brand: "Ford", model: "Focus EV", maxSpeed: 85, range: 100, seats: 4, price: 12000, productionDate: "10/01/2011" },
+            { brand: "Mitsubishi", model: "iMiEV Sport", maxSpeed: 84, range: 124, seats: 4, price: 15000, productionDate: "05/11/2007" },
+            { brand: "Tesla", model: "Roadster", maxSpeed: 125, range: 244, seats: 2, price: 113904.5, productionDate: "02/17/2008" },
+            { brand: "Volkswagen", model: "e-Golf", maxSpeed: 87, range: 118, seats: 5, price: 33012, productionDate: "10/05/2011" },
+            { brand: "Volkswagen", model: "E-Up!", maxSpeed: 85, range: 80, seats: 3, price: 32258.75, productionDate: "11/09/2009" },
+            { brand: "Ford", model: "C-Max Energi", maxSpeed: 115, range: 18, seats: 5, price: 27120, productionDate: "11/25/2014" },
+            { brand: "BYD", model: "Denza", maxSpeed: 93, range: 157, seats: 5, price: 47600, productionDate: "10/01/2011" },
+            { brand: "BYD", model: "e5", maxSpeed: 93, range: 136, seats: 5, price: 22966.92, productionDate: "07/19/2015" },
+            { brand: "BYD", model: "e6", maxSpeed: 87, range: 199, seats: 5, price: 31440, productionDate: "06/22/2009" }
+          ];
+        </script>
+
+        <script data-jsfiddle="example3">
+          var exampleContainer3 = document.getElementById('example3');
+          new Handsontable(exampleContainer3, {
+            data: arrayOfObjects,
+            colHeaders: ["Brand", "Model", "Max speed<br>(in miles per hour)", "Range<br>(in miles)", "Seats", "Price", "Start of<br>production"],
+            columns: [{
+              data: 'brand' // 1st column is simple text, no special options here
+            }, {
+              data: 'model'// 2nd column is simple text, no special options here
+            }, {
+              data: 'maxSpeed',
+              type: 'numeric'
+            }, {
+              data: 'range',
+              type: 'numeric'
+            }, {
+              data: 'seats',
+              type: 'numeric'
+            }, {
+              data: 'price',
+              type: 'numeric',
+              numericFormat: {
+                pattern: '$ 0,0.00',
+                culture: 'en-US'
+              }
+            }, {
+              data: 'productionDate',
+              type: 'date',
+              dateFormat: 'MM/DD/YYYY',
+              correctFormat: true,
+              defaultDate: '01/01/1900'
+            }],
+            multiColumnSorting: true
+          });</script>
+      </div>
+
+      <div class="example-container clearfix">
+        <h3 id="custom-compare-functions">カスタムの比較機能</h3>
+        <p>
+          ソートアルゴリズムに独自の比較機能を提供することができます。この関数は、ネイティブの<code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Parameters">Array.sort</a></code>メソッドの引数と同じように見えます（<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort#Description">ここで説明を読んでください</a>）。<code>compareFunctionFactory</code>が設定で定義されているときにプラグインによって処理されます。我々がと呼ぶものは、<b>比較関数ファクトリ</b>と呼ぶものは、このキーの下に置かれなければなりません。ファクトリはパラメータ<code>sortOrder</code>と<code>columnMeta</code>を受け取り、比較関数を返します。
+        </p>
+        <p>カスタム比較関数ファクトリがどのようにふるまうかを示す以下の例を見てください。</p>
+
+        <pre><code class="lang-js">function compareFunctionFactory(sortOrder, columnMeta) {
+ return function comparator(value, nextValue) {
+   // -1、0、または1を返す値の比較
+ };
+};</code></pre>
+
+        <p>次のセクションでは、特定の列にどのように使用されるのかを説明します。</p>
+      </div>
+
+      <div class="example-container clearfix">
+        <h3 id="column-options">特定の列のみのプラグインオプション</h3>
+        <p>
+          <code>compareFunctionFactory</code>、<code>sortEmptyCells</code>、<code>headerAction</code>、<code>indicator</code>などのプラグインのオプションは、特定の列に対してのみ設定できます。これは<a href="/docs/<?js= version ?>/Options.html#columns">columns</a>オプションを使って行うことができます。以下の例は、標識を無効にして<b>最初の列の並べ替え操作を完全にブロックする方法</b>を示しています。
+        </p>
+
+        <div data-jsfiddle="example4">
+          <div id="example4" class="hot"></div>
+        </div>
+
+        <div class="codeLayout">
+          <div class="buttons">
+            <button class="jsFiddleLink" data-runfiddle="example4">
+              <i class="fa fa-jsfiddle"></i>
+              Edit
+            </button>
+            <button class="dump" name="dump" data-dump="#example4" data-instance="hot"
+                    title="Print current data source to console">
+              <i class="fa fa-terminal"></i>
+              Dump data to console
+            </button>
+          </div>
+
+          <script data-jsfiddle="example4" data-dont-display="true">
+            var arrayOfObjects = [
+              { brand: "Tesla", model: "Model 3", maxSpeed: 141, range: 215, seats: 5, price: 32750, productionDate: "06/29/2007" },
+              { brand: "Tesla", model: "Model S", maxSpeed: 139, range: 275, seats: 7, price: 71788, productionDate: "04/02/2012" },
+              { brand: "Mitsubishi", model: "iMiEV", maxSpeed: 81, range: 99, seats: 4, price: 31426.9, productionDate: "09/11/2009" },
+              { brand: "Ford", model: "Focus EV", maxSpeed: 85, range: 100, seats: 4, price: 12000, productionDate: "10/01/2011" },
+              { brand: "Mitsubishi", model: "iMiEV Sport", maxSpeed: 84, range: 124, seats: 4, price: 15000, productionDate: "05/11/2007" },
+              { brand: "Tesla", model: "Roadster", maxSpeed: 125, range: 244, seats: 2, price: 113904.5, productionDate: "02/17/2008" },
+              { brand: "Volkswagen", model: "e-Golf", maxSpeed: 87, range: 118, seats: 5, price: 33012, productionDate: "10/05/2011" },
+              { brand: "Volkswagen", model: "E-Up!", maxSpeed: 85, range: 80, seats: 3, price: 32258.75, productionDate: "11/09/2009" },
+              { brand: "Ford", model: "C-Max Energi", maxSpeed: 115, range: 18, seats: 5, price: 27120, productionDate: "11/25/2014" },
+              { brand: "BYD", model: "Denza", maxSpeed: 93, range: 157, seats: 5, price: 47600, productionDate: "10/01/2011" },
+              { brand: "BYD", model: "e5", maxSpeed: 93, range: 136, seats: 5, price: 22966.92, productionDate: "07/19/2015" },
+              { brand: "BYD", model: "e6", maxSpeed: 87, range: 199, seats: 5, price: 31440, productionDate: "06/22/2009" }
+            ];
+          </script>
+
+          <script data-jsfiddle="example4">
+            var exampleContainer4 = document.getElementById('example4');
+            new Handsontable(exampleContainer4, {
+              data: arrayOfObjects,
+              colHeaders: ["Brand<br><b>(non-sortable)</b>", "Model", "Max speed<br>(in miles per hour)", "Range<br>(in miles)", "Seats", "Price", "Start of<br>production"],
+              columns: [{
+                data: 'brand', // 1列目は普通のテキストで特別なオプションはない
+                multiColumnSorting: {
+                  indicator: false,
+                  headerAction: false,
+                  compareFunctionFactory: function compareFunctionFactory() {
+                    return function comparator() {
+                      return 0; // 最初に見える列はソートしない
+                    };
+                  }
+                }
+              }, {
+                data: 'model'// 2列目は普通のテキストで特別なオプションはない
+              }, {
+                data: 'maxSpeed',
+                type: 'numeric'
+              }, {
+                data: 'range',
+                type: 'numeric'
+              }, {
+                data: 'seats',
+                type: 'numeric'
+              }, {
+                data: 'price',
+                type: 'numeric',
+                numericFormat: {
+                  pattern: '$ 0,0.00',
+                  culture: 'en-US'
+                }
+              }, {
+                data: 'productionDate',
+                type: 'date',
+                dateFormat: 'MM/DD/YYYY',
+                correctFormat: true,
+                defaultDate: '01/01/1900'
+              }],
+              multiColumnSorting: true
+            });</script>
+        </div>
+
+        <div class="example-container clearfix">
+          <h3 id="custom-sort-implementation">カスタムソートの実装</h3>
+          <p>
+            プラグインは<code>setSortConfig</code>メソッドを公開しています。これは内部のソート状態を設定する目的で設計されています。このメソッドでは<b>データセットはソートされない</b>ことに注意してください。ただし、<code>isSorted</code>メソッドと<code>getSortConfig</code>メソッドは、事前に設定された設定に対応する結果を返します。カスタムソートを使用するには、次の操作を行います。
+          </p>
+            <ul>
+              <li><code>false</code>を返す<code>beforeColumnSort</code>フックのコールバックを作成します</li>
+              <li>データをソートします（例えば、サーバーサイドで）</li>
+              <li><code>setSortConfig</code>メソッドを使用してソートの内部状態を設定します</li>
+            </ul>
+          <p>
+            下記の記事のカスタムソートの実装を見てください。
+          </p>
+          <pre><code class="lang-js">beforeColumnSort: function(currentSortConfig, destinationSortConfigs) {
+  const columnSortPlugin = this.getPlugin('multiColumnSorting');
+
+  columnSortPlugin.setSortConfig(destinationSortConfigs);
+
+  // const newData = ... // 計算されたデータセット。つまりAJAX呼び出しから。
+
+  // this.loadData(newData); // 新しいデータセットをロードします。
+
+  return false; // デフォルトのソートアクションの禁止。
+}</code></pre>
+
+        </div>
+
+        <div class="example-container clearfix">
+          <h3 id="hooks">プラグインフック</h3>
+          <p>
+            プラグインには2つのフックがあります。
+          </p>
+          <p>
+          <ul>
+            <li>
+              <code><a href="/docs/<?js= version ?>/Hooks.html#event:beforeColumnSort">beforeColumnSort</a></code>は、名前が示すとおり、ソートの前に実行されます。つまり、コールバック内で<code>getSortConfig</code>メソッドによって取得された実際のソート設定は、フック呼び出しの前に保持されていたソート設定と同じになります。<code>beforeColumnSort</code>のコールバックは<code>false</code>を返し、テーブルのソートを中止します。その結果、<code>afterColumnSort</code>フックは呼び出されません。
+            </li>
+            <li>
+              <code><a href="/docs/<?js= version ?>/Hooks.html#event:afterColumnSort">afterColumnSort</a></code>は、<code>beforeColumnSort</code>フックのコールバックが<code>false</code>を返さない限り、常にソート後に実行されます。
+            </li>
+          </ul>
+          </p>
+          <p>
+            <code>clearSort</code>メソッドを使用するとき、または処理されない設定にしたときにもフックが実行されることに注意してください（有効性の確認は失敗します）。
+          </p>
+        </div>
+
+        <div class="example-container clearfix">
+          <h3 id="api">プラグインAPI</h3>
+          <p>プラグインによって公開されるメソッドのリスト：</p>
+          <p>
+          <ul>
+            <li><code><a href="/docs/<?js= version ?>/MultiColumnSorting.html#clearSort">clearSort</a></code></li>
+            <li><code><a href="/docs/<?js= version ?>/MultiColumnSorting.html#getSortConfig">getSortConfig</a></code></li>
+            <li><code><a href="/docs/<?js= version ?>/MultiColumnSorting.html#isSorted">isSorted</a></code></li>
+            <li><code><a href="/docs/<?js= version ?>/MultiColumnSorting.html#setSortConfig">setSortConfig</a></code></li>
+            <li><code><a href="/docs/<?js= version ?>/MultiColumnSorting.html#sort">sort</a></code></li>
+          </ul>
+          </p>
+        </div>
+
+        <p class="gap-top-xsmall">
+          <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/multicolumn-sorting.html" class="edit-doc" target="_blank">
+            このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+          </a>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
