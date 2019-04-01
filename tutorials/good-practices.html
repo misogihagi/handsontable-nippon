@@ -1,0 +1,97 @@
+<div class="static-content">
+
+  <div class="index-list">
+
+    <ul>
+      <li><a href="#page-javascript">JavaScriptの最適化</a></li>
+      <li><a href="#page-dom">DOMの最適化</a></li>
+      <li><a href="#page-css">CSSの最適化</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="page-javascript">JavaScriptの最適化</h3>
+    <ul>
+      <li>
+        <p><strong>数値を変換する：常に<code>parseInt(num, 10)</code>を使う</strong></p>
+        <p><code>"16"</code>を数値に変換する<a href="http://jsperf.com/number-vs-parseint-vs-plus/26" target="_blank">
+          http://jsperf.com/number-vs-parseint-vs-plus/26</a></p>
+        <p><code>"16px"</code>を数値に変換する<a href="http://jsperf.com/number-vs-parseint-vs-plus/25" target="_blank">
+          http://jsperf.com/number-vs-parseint-vs-plus/25</a></p>
+      </li>
+      <li>
+        <p><strong>階層設定オプション：<code>$.extend</code>ではなく<code>prototype</code>を使う</strong></p>
+        <p>この手法はどこにでも適用できるわけではありませんが、Handsontable階層設定パターン
+          （<code>options</code>コンストラクター -> <code>columns</code> -> <code>cells</code> -> <code>cellProperties</code>）
+          の優れた候補になります。</p>
+        <p>根拠：<a href="http://jsperf.com/extending-settings" target="_blank">http://jsperf.com/extending-settings</a></p>
+      </li>
+      <li>
+        <p><strong>カスタム関数はネイティブよりも高速になる可能性があります（例えば<code>forEach</code>）。</strong></p>
+        <p>JSPerfで実行されたテストによると、<code>forEach</code>のMDN<a 
+          href="https://developer.mozilla.org/en-US/docs/Glossary/Shim">シム</a>はネイティブ実装よりも最大5倍高速です。</p>
+        <p>根拠：<a href="http://jsperf.com/native-vs-implmented-0/5" target="_blank">
+          http://jsperf.com/native-vs-implmented-0/5</a></p>
+      </li>
+      <li>
+        <p><strong><code>forEach</code>と<code>filter</code>は<code>for</code>よりもはるかに遅くなります。</strong></p>
+        <p><code>for</code>は<code>forEach</code>より10倍速くなります。</p>
+        <p>根拠：<a href="http://jsperf.com/for-vs-foreach/49" target="_blank">http://jsperf.com/for-vs-foreach/49</a></p>
+      </li>
+      <li>
+        <p><strong><code>call</code>は<code>apply</code>より速くなります。</strong></p>
+        <p>根拠：<a href="http://jsperf.com/function-calls-direct-vs-apply-vs-call-vs-bind/33" target="_blank">
+          http://jsperf.com/function-calls-direct-vs-apply-vs-call-vs-bind/33</a></p>
+      </li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="page-dom">DOMの最適化</h3>
+    <ul>
+      <li>
+        <p><strong>ノードを空にする：常に<code>innerHTML = ''</code>より<code>removeNode()</code>
+          </strong></p>
+        <p>根拠：<a href="http://jsperf.com/jquery-html-vs-empty-vs-innerhtml/9" target="_blank">
+          http://jsperf.com/jquery-html-vs-empty-vs-innerhtml/9</a></p>
+      </li>
+      <li>
+        <p><strong>IDまたはタグを検索：<code>getElementById</code> or
+          <code>getElementsByTagName</code>を使う</strong></p></li>
+        <p>根拠：<a href="http://jsperf.com/id-vs-getelementbyid/3" target="_blank">
+          http://jsperf.com/id-vs-getelementbyid/3</a></p>
+      <li>
+        <p><strong>DOMを使用して最初の要素を取得：<code>getElementsByTagName('span')[0]</code>か
+          <code>firstChild</code>を使う</strong></p></li>
+        <p>根拠：<a href="http://jsperf.com/jquery-first-vs-first2/10" target="_blank">
+          http://jsperf.com/jquery-first-vs-first2/10</a></p>
+      <li>
+        <p><strong>テキスト要素を作成する：<code>createTextNode</code>は
+          <code>innerHTML</code>より何倍も高速になります。</strong></p></li>
+        <p>根拠：<a href="http://jsperf.com/creating-text-node/3" target="_blank">
+          http://jsperf.com/creating-text-node/3</a></p>
+      <li>
+        <p><strong>要素に子ノードがあるかどうかを確認：<code>if (DIV.firstChild)</code></strong></p></li>
+        <p>根拠：<a href="http://jsperf.com/empty-node-if-needed" target="_blank">
+          http://jsperf.com/empty-node-if-needed</a></p>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="page-css">CSSの最適化</h3>
+    <ul>
+      <li>
+        <p><strong><code>var style = element.style</code>をキャッシュしてスタイルを変更する</strong></p>
+        <p>根拠：<a href="http://jsperf.com/change-css-in-many-ways" target="_blank">
+          http://jsperf.com/change-css-in-many-ways</a></p>
+      </li>
+    </ul>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/good-practices.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
