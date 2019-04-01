@@ -1,0 +1,79 @@
+<div class="static-content">
+
+  <script>
+    // jsfiddleにjqueryを加える例
+    var jqueryImport = document.querySelector('script[src*="jquery.min.js"]');
+    jqueryImport.setAttribute('data-jsfiddle','common');</script>
+
+  <script data-jsfiddle="common">
+    function getData() {
+      return [
+        ['', 'Tesla', 'Nissan', 'Toyota', 'Honda', 'Mazda', 'Ford'],
+        ['2017', 10, 11, 12, 13, 15, 16],
+        ['2018', 10, 11, 12, 13, 15, 16],
+        ['2019', 10, 11, 12, 13, 15, 16],
+        ['2020', 10, 11, 12, 13, 15, 16],
+        ['2021', 10, 11, 12, 13, 15, 16]
+      ];
+    }</script>
+
+  <div class="example-container clearfix">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/jquery.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+    <p>
+      jQueryはDOM操作とイベント処理を容易にするライブラリです。<br><br>
+      HandsontableはjQueryと完全に互換性があります - 以下の小さな例は、
+      両者の統合が素早く直感的にわかることを示しています。
+      HandsontableをjQueryプラグインとして使用するには、基本的な準備をする必要があります。
+    <ul>
+      <li>Handsontableを読み込む前に、jQueryを読み込んでください。<br>
+          <code>
+  &lt;script src="handsontable/lib/jquery.min.js"&gt;&lt;/script&gt;<br>
+  &lt;script src="handsontable/dist/handsontable.full.js"&gt;&lt;/script&gt;<br>
+  &lt;link rel="stylesheet" media="screen" href="handsontable/dist/handsontable.full.css"&gt;<br>
+          </code>
+      </li>
+      <li>
+        以下のコード例のように、空のdivに対して<code>handsontable()</code>プラグインコンストラクタを実行します。
+      </li>
+    </ul>
+    </p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        // 新しいHandsontableインスタンスを作成する代わりに
+        // コンテナ要素を引数として渡し、
+        // jQuery DOMオブジェクトの.handsontableメソッドを呼び出すだけです。
+        var $container = $("#example1");
+
+        $container.handsontable({
+          data: getData(),
+          rowHeaders: true,
+          colHeaders: true,
+          contextMenu: true
+        });
+
+        // 下の方法では、名前として引数として渡すことでHandsontable APIメソッドにアクセスできます。
+        var hotInstance = $("#example1").handsontable('getInstance');</script>
+    </div>
+  </div>
+</div>
+
