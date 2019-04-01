@@ -1,0 +1,50 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>これらの機能を有効にするには、<code>manualColumnMove: true</code>と<code>manualRowMove: true</code>を設定します。</p>
+    <p>ドラッグ可能な移動ハンドルが表示されます。</p>
+    <ul>
+      <li>列ヘッダーの右</li>
+      <li>行ヘッダーの上</li>
+    </ul>
+
+    <div data-jsfiddle="example1" class="scroll-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          example1 = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(200, 20),
+          rowHeaders: true,
+          colHeaders: true,
+          colWidths: 100,
+          manualColumnMove: true,
+          manualRowMove: true
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/moving.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
+
