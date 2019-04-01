@@ -1,0 +1,122 @@
+<div class="static-content">
+
+  <script data-jsfiddle="common">
+    function getCarData() {
+      return [
+        ["Tesla", 2017, "black", "black"],
+        ["Nissan", 2018, "blue", "blue"],
+        ["Chrysler", 2019, "yellow", "black"],
+        ["Volvo", 2020, "white", "gray"]
+      ];
+    }</script>
+
+  <div class="example-container clearfix">
+    <p>このページでは、HandsontableのセルエディターとしてHandsontableを使用する方法を示します（<strong
+      >HOT-in-HOT</strong>とも呼ばれます）。</p>
+    <p><strong>HOT-in-HOTは、次のいずれかによって開きます。</strong></p>
+    <ul>
+      <li>セルが選択されている間に<kbd>F2</kbd>または<kbd>ENTER</kbd>キーを押す</li>
+      <li>三角形のアイコンをクリック</li>
+      <li>セルの内容がダブルクリックされた</li>
+    </ul>
+    <p>HOT-in-HOTが開いている間、HOT-in-HOTの上のテキストフィールドは常にフォーカスされたままです。</p>
+    <p><strong>HOT-in-HOTが開かれている間のキーボードバインディング</strong></p>
+    <ul>
+      <li><kbd>ESC</kbd> - エディタを閉じます（変更をキャンセル）</li>
+      <li><kbd>ENTER</kbd> - エディタを閉じ（変更を適用<sup>[1]</sup>）、メインHOT内の選択を下に（または<code>enterMoves</code>に従って）移動します</li>
+      <li><kbd>TAB</kbd> - ENTERキーのように振る舞いますが、メインのHOTの選択を右に（または<code>tabMoves</code>設定に従って）移動します</li>
+      <li><kbd>ARROW DOWN</kbd> - HOT-in-HOTの選択を下に移動します。最後の行が選択されていても効果はありません。</li>
+      <li><kbd>ARROW UP</kbd> - HOT-in-HOTの選択を上に移動します。 最初の行が選択されている場合は、選択を解除します。HOT-in-HOTの選択が解除された場合は、ENTERキーのように振る舞いますが、メインHOTの選択を上に移動します。</li>
+      <li><kbd>ARROW RIGTH</kbd> - テキストフィールド内のテキストカーソルを左に移動します。テキストカーソルが開始位置にあった場合は、ENTERキーのように動作しますが、メインHOT内の選択を左に移動します。</li>
+      <li><kbd>ARROW LEFT</kbd> - テキストフィールド内のテキストカーソルを右に移動します。テキストカーソルが最後の位置にあった場合は、TABキーとして機能します。</li>
+    </ul>
+    <p>エディタの外側、またはHOT-in-HOT内のセルの1つをマウスでクリックすると変更が適用されます。</p>
+    <p><strong>変更を適用</strong>[1]：HOT-in-HOTでハイライトまたはクリックしたセルの値は、メインHOTの新しいセル値として適用されます。HOT-in-HOT内のセルが選択されていない場合は、代わりにテキストフィールドの値が使用されます。</p>
+
+    <div  data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          carData = getCarData(),
+          container = document.getElementById('example1'),
+          manufacturerData,
+          colors,
+          color,
+          colorData = [],
+          hot;
+
+        manufacturerData = [
+          {name: 'BMW', country: 'Germany', owner: 'Bayerische Motoren Werke AG'},
+          {name: 'Chrysler', country: 'USA', owner: 'Chrysler Group LLC'},
+          {name: 'Nissan', country: 'Japan', owner: 'Nissan Motor Company Ltd'},
+          {name: 'Suzuki', country: 'Japan', owner: 'Suzuki Motor Corporation'},
+          {name: 'Toyota', country: 'Japan', owner: 'Toyota Motor Corporation'},
+          {name: 'Volvo', country: 'Sweden', owner: 'Zhejiang Geely Holding Group'}
+        ];
+        colors = ['yellow', 'red', 'orange', 'green', 'blue', 'gray', 'black', 'white'];
+
+        while (color = colors.shift()) {
+          colorData.push([
+            [color]
+          ]);
+        }
+
+        hot = new Handsontable(container, {
+          data: carData,
+          colHeaders: ['Car', 'Year', 'Chassis color', 'Bumper color'],
+          columns: [
+            {
+              type: 'handsontable',
+              handsontable: {
+                colHeaders: ['Marque', 'Country', 'Parent company'],
+                autoColumnSize: true,
+                data: manufacturerData,
+                getValue: function() {
+                	var selection = this.getSelectedLast();
+
+                  // 常にクリックされた行の製品名を取得します
+                  return this.getSourceDataAtRow(selection[0]).name;
+                },
+              }
+            },
+            {type: 'numeric'},
+            {
+              type: 'handsontable',
+              handsontable: {
+                colHeaders: false,
+                data: colorData
+              }
+            },
+            {
+              type: 'handsontable',
+              handsontable: {
+                colHeaders: false,
+                data: colorData
+              }
+            }
+          ]
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/handsontable.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
