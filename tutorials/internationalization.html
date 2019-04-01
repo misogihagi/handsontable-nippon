@@ -1,0 +1,432 @@
+<div class="static-content">
+  <script data-jsfiddle="common" src="/docs/<?js= version ?>/components/handsontable-pro/dist/languages/all.js"></script>
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#loading-language-files">準備された言語ファイルをロードする</a></li>
+      <li><a href="#demo">デモ</a></li>
+      <li><a href="#internalization-for-features">機能の国際化</a></li>
+      <li><a href="#available-languages">利用可能な言語</a></li>
+      <li><a href="#files-hierarchy">国際化に関連するすべての主要ファイルの階層</a></li>
+      <li><a href="#custom-languages">カスタム言語を作成する</a></li>
+      <li><a href="#custom-keys">翻訳でカスタムキーを使用する</a></li>
+      <li><a href="#static-properties">静的なHandsontableメソッドとプロパティ</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="overview">概要</h3>
+    <p>国際化は、Handsontableが特定の言語に翻訳するためにUIのテキストを変更することを簡単にしてくれます。
+      私たちは開発者に定義済みの言語（言語セットをロードして設定を変更することで適用できます）と、
+      既存の言語ファイルのテンプレートを使用して作成された独自の言語セットを使用する機能を提供します。
+    </p>
+  </div>
+
+  <div data-alert class="alert-box info">
+    <strong>私たちはHandsontableに新しい翻訳を追加するのを手伝ってくれる寄稿者を探しています。<a href="#custom-languages">もっと詳しく</a></strong>
+  </div>
+
+
+  <div class="example-container clearfix">
+    <h3 id="loading-language-files">準備された言語ファイルをロードする</h3>
+
+    <p>国際化機能を正しく使用するには、言語セットを読み込む必要があります。重要なのは、それらがHandsontableファイルの後に含まれているということです。
+      必要なファイルを入手することでそれを行うことができます（<a href="https://github.com/umdjs/umd">UMD標準</a>を使用して作成されています）。
+    </p>
+
+    <ol>
+      <li>
+        <p>HTMLファイル内の<code>/dist/languages</code>フォルダからロード</p>
+
+        <pre><code class="lang-html">&lt;script type="text/javascript" src="dist/handsontable.full.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="dist/languages/all.js"&gt;&lt;/script&gt;</code></pre>
+
+        <p>注：<code>/dist/languages</code>フォルダにあるファイルの圧縮バージョンを使用することもできます。</p>
+      </li>
+
+      <li>
+        <p>プロジェクトのルートの下のモジュールシステムで使用される<code>/languages</code>フォルダーからロード
+          以下の例はECMAScript 6でそれを使う方法を示しています（バンドラーかTypeScriptが必要）。</p>
+
+        <p>
+          Handsontable Pro Editionの場合:
+        </p>
+        <pre><code class="lang-js">import Handsontable from 'handsontable-pro';
+import 'handsontable-pro/languages/pl-PL';</code></pre>
+        <p>
+          Handsontable Community Editionの場合:
+        </p>
+        <pre><code class="lang-js">import Handsontable from 'handsontable';
+import 'handsontable/languages/pl-PL';</code></pre>
+      </li>
+    </ol>
+
+    <p>このように含まれている言語はファイルをロードした直後に使用する準備ができています。
+      Handsontableの他の言語固有のファイルおよび言語登録についての詳細は、<a href="#files-hierarchy">このセクション</a>にあります。
+    </p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="demo">デモ</h3>
+
+    <p>翻訳されたコンテキストメニューを表示するには、セルを右クリックしてください。Handsontableをロードした後に言語ファイルがロードされました。</p>
+
+    <div data-jsfiddle="example1">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1" data-dont-display="true">
+        var dataObj = [
+          ['Lorem', 'ipsum', 'dolor', 'sit', '12/1/2015', 23],
+          ['adipiscing', 'elit', 'Ut', 'imperdiet', '5/12/2015', 6],
+          ['Pellentesque', 'vulputate', 'leo', 'semper', '10/23/2015', 26],
+          ['diam', 'et', 'malesuada', 'libero', '12/1/2014', 98],
+          ['orci', 'et', 'dignissim', 'hendrerit', '12/1/2016', 8.5]
+        ];</script>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: dataObj,
+          contextMenu: true,
+          language: 'pl-PL'
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="internalization-for-features">機能の国際化</h3>
+    <p>以下に、国際化機能と翻訳できる機能のリストを示します。</p>
+    <ul>
+      <li>Dropdown menu</li>
+      <li>Filtering</li>
+      <li>Hiding columns</li>
+      <li>Hiding rows</li>
+      <li>Nesting rows</li>
+
+      <li>Comments</li>
+      <li>Context menu</li>
+      <li>Custom borders</li>
+      <li>Freezing</li>
+      <li>Merge cells</li>
+      <li>Read-only</li>
+    </ul>
+  </div>
+
+
+  <div class="example-container clearfix">
+    <h3 id="available-languages">利用可能な言語のリスト</h3>
+    <p>
+      デフォルトでは、HandsontableはUI要素のテキストを作成するために<b>English - United States</b>言語セット（<code>en-US</code
+      >コード）を使用します。ただし、<b>English - United States</b>言語セットは他の「非標準」言語ファイルと同じように使用でき、<code>en-US.js</code>ファイルは<code>/dist/languages</code>、<code
+      >/languages</code>および<code>/src/languages</code>フォルダーにあります。現在、私たちは追加の言語国別ファイルも配布しています。
+      <ul>
+        <li>
+          <code>de-DE.js</code> -> <b>ドイツ語 - ドイツ</b> (<code>de-DE</code>).
+        </li>
+        <li>
+          <code>de-CH.js</code> -> <b>ドイツ語 - スイス</b> (<code>de-CH</code>).
+        </li>
+        <li>
+          <code>es-MX.js</code> -> <b>スペイン語 - メキシコ</b> (<code>es-MX</code>).
+        </li>
+        <li>
+          <code>fr-FR.js</code> -> <b>フランス語 - フランス</b> (<code>fr-FR</code>).
+        </li>
+        <li>
+          <code>it-IT.js</code> -> <b>イタリア語 - イタリア</b> (<code>it-IT</code>).
+        </li>
+        <li>
+          <code>ja-JP.js</code> -> <b>日本語 - 日本</b> (<code>ja-JP</code>).
+        </li>
+        <li>
+          <code>ko-KR.js</code> -> <b>朝鮮語 - 大韓民国</b> (<code>ko-KR</code>).
+        </li>
+        <li>
+          <code>lv-LV.js</code> -> <b>ラトビア語 - ラトビア</b> (<code>lv-LV</code>).
+        </li>
+        <li>
+          <code>nb-NO.js</code> -> <b>ノルウェー語(ニーノシュク) - ノルウェー</b> (<code>nb-NO</code>).
+        </li>
+        <li>
+          <code>nl-NL.js</code> -> <b>オランダ語 - オランダ</b> (<code>nl-NL</code>).
+        </li>
+        <li>
+          <code>pl-PL.js</code> -> <b>ポーランド語 - ポーランド</b> (<code>pl-PL</code>).
+        </li>
+        <li>
+          <code>pt-BR.js</code> -> <b>ポルトガル語 - ブラジル</b> (<code>pt-BR</code>).
+        </li>
+        <li>
+          <code>ru-RU.js</code> -> <b>ロシア語 - ロシア連邦</b> (<code>ru-RU</code>).
+        </li>
+        <li>
+          <code>zh-CN.js</code> -> <b>中国語 - 中華人民共和国</b> (<code>zh-CN</code>).
+        </li>
+        <li>
+          <code>zh-TW.js</code> -> <b>中国語 - 中国台湾省（中華民国）</b> (<code>zh-TW</code>).
+        </li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="files-hierarchy">国際化に関連するすべての主要ファイルの階層</h3>
+    <p>
+      この段落内の情報は、主に新しい言語を追加したり、既存の言語を編集したい人々にとって有用です。
+      用意された言語を使用する簡単な方法は<a href="#loading-language-files">ここ</a>に記述されています。
+      以下で言及しているすべての変更は<a href="https://github.com/handsontable/handsontable">Handsontable CE</a>です。
+    </p>
+
+    <p><code>Handsontable CE</code>では、現在、言語ファイルとして扱うことができるファイルを含む3つのフォルダーがあります。</p>
+
+    <ul>
+      <li><code>/dist/languages</code>*</li>
+      <li><code>/languages</code>*</li>
+      <li><code>/src/i18n/languages</code></li>
+    </ul>
+
+    <p>最初の2つのフォルダからのファイルは、<a href="https://webpack.js.org/">webpack</a>によって<a href="https://github.com/umdjs/umd">UMD</a
+      >モジュールとしてビルドされます（次のnpmスクリプトを使って準備することができます：<code>build:languages</code>と<code>build:languages.min</code
+      >）。最後の<code>/src</code>ディレクトリには、<code>ES2015</code>規格を使用して作成されたモジュールが含まれています。
+    </p>
+
+    <p>
+      言語辞書を使用するには、言語セットを登録する必要があります。登録とは、<code>Handsontable.languages.registerLanguageDictionary</code
+      >メソッドを使用してHandsontable用に辞書をグローバルにロードするプロセスです。
+    </p>
+
+    <p>これらのディレクトリの一般的な目的は、以下の表にまとめられています。</p>
+
+    <table class="static-data features-table">
+      <thead>
+      <tr>
+        <th>名称</th>
+        <th><code>/dist/languages</code>および<code>/languages</code>フォルダー内のファイル</th>
+        <th><code>/src/i18n/languages</code>フォルダー内のファイル</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>使い方</td>
+        <td>別ファイルとして格納</td>
+        <td>Handsontable内部でライブラリの一部として使用（デフォルトの言語）</td>
+      </tr>
+      <tr>
+        <td>ファイルがどこから作られるか</td>
+        <td>ビルドプロセス中にwebpackによって作成され、Babelによって変換</td>
+        <td>手動で作成され、Babelによって<b>変換されることができる</b></td>
+      </tr>
+      <tr>
+        <td>言語登録</td>
+        <td>webpackのビルドプロセス中に適用</td>
+        <td>自動的に登録<b>されない</b></td>
+      </tr>
+      <tr>
+        <td>修正</td>
+        <td>自動的に作成されるので、編集<b>するべきではない</b></td>
+        <td>作成も編集も手動</td>
+      </tr>
+      </tbody>
+    </table>
+
+    <p>
+      <code>/dist/languages</code>フォルダ内のファイルは、<code>/languages</code>内にあるファイルのコピーですが、2つの違いがあります。
+      前者のフォルダには、追加のファイルの圧縮バージョンが含まれています。
+      また、<code>index.js</code>ファイルは含まれていません（<code>/languages</code>フォルダには、すべての言語を簡単にロードするために含まれています）。
+    </p>
+    <p>
+      これら両方のフォルダーには、すべての言語辞書を含む<code>all.js</code>ファイルが含まれています。
+    </p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="custom-languages">カスタム言語を作成する</h3>
+
+    <p>Handsontableに簡単に適用できるよう実装用のカスタム言語セットを作成したり、それらを共有したりすることができます。</p>
+
+    <h4>言語ファイル</h4>
+
+    <p>私たちのライブラリの成長するにあたってコミュニティが不可欠であるということは、私たちにとって本当に重要です。私たちは翻訳して共有することを応援しています!</p>
+    <p>追加の言語ファイルは、選択した言語コードに対応する名前で<ahref="https://github.com/handsontable/handsontable">Handsontable CE</a>リポジトリの<code
+      >src/i18n/languages</code>フォルダーに配置する必要があります（下記参照。例：<code>es-VE.js</code
+      >）。私たちに<a href="https://handsontable.com/docs/tutorial-contributing.html">プルリクエスト</a
+      >を送信することであなたの翻訳をHandsontableライブラリに組み込むことができます。重要なのは、変更が<code>/languages</code>および<code
+      >/dist/languages</code>ディレクトリに行われていないことです。私たちのリリースマスターは、ビルドプロセスでそこに置かれるファイルを生成します。その後、<
+      code>Handsontable Pro</code>の言語を使用できるようになります。
+    </p>
+    <p>
+      この段落の下部に、サンプル言語の完全なテンプレートがあります。私たちは
+      <a href="https://github.com/handsontable/handsontable/tree/master/src/i18n/languages/en-US.js"
+      >デフォルトの言語パック</a>に基づくようにしています。ファイル作成プロセスの一部を以下に説明します
+    </p>
+
+    <ol>
+      <li id="custom-languages-step1">
+        <p>ファイルは、<b>authors</b>（カンマで区切り、例：<i>Authors: Chris Wick, John Kyle</i>）、<b>"last updated" date</b
+          >（形式：<i>mmm dd, yyyy</i>、例：<i>Last updated: Jan 01, 2017</i>）と<b>description</b>を含むコメントで始まる必要があります。
+        </p>
+
+        <pre><code class="lang-js">/**
+* @preserve
+* Authors: Chris Wick, John Kyle
+* Last updated: Nov 15, 2017
+*
+* Description: Definition file for Spanish - Venezuela language-country.
+*/</code></pre>
+      </li>
+
+      <li id="custom-languages-step2">
+        <p>その後、翻訳に使用する辞書キーをインポートする必要があります。</p>
+        <pre><code>import * as C from '../constants';</code></pre>
+      </li>
+
+      <li id="custom-languages-step3">
+        <p>言語辞書オブジェクトには、<code>languageCode</code>キー（2つの小文字、ハイフン、2つの大文字。例：<i>languageCode: 'es-PY'</i
+          >）を含める必要があります。<code>languageCode</code>キーは<code>Handsontable</code
+          >の設定と翻訳に使用する辞書キーで使うlanguageプロパティで使用される言語コードを決定します。
+        </p>
+
+        <pre><code class="lang-js">const dictionary = {
+  languageCode: 'es-VE',
+  [C.CONTEXTMENU_ITEMS_ROW_ABOVE]: 'Insertar fila arriba',
+  ...
+}</code></pre>
+      </li>
+
+      <li id="custom-languages-step4">
+        <p>最後に、作成した辞書をデフォルトの出力先に配置します。</p>
+
+        <pre><code class="lang-js">export default dictionary;</code></pre>
+      </li>
+
+      <li id="custom-languages-step5">
+        <p>
+          簡単なサンプル言語の辞書は、以下の引用のようになります。<code>/languages</code>および<code>/dist/languages</code>フォルダーはビルドプロセスによって生成されます。<a
+          href="#loading-language-files">このセクション</a>に示すように、これらのローカライズ版のファイルを含めることができます。ロードした後、<code
+          >Handsontable</code>の言語設定を<code>es-VE</code>に変更することによってにその言語を使うことができます。
+        </p>
+
+        <pre><code class="lang-js">/**
+* @preserve
+* Authors: Chris Wick, John Kyle
+* Last updated: Nov 15, 2017
+*
+* Description: Definition file for Spanish - Venezuela language-country.
+*/
+import * as C from '../constants';
+
+const dictionary = {
+  languageCode: 'es-VE',
+  [C.CONTEXTMENU_ITEMS_ROW_ABOVE]: 'Insertar fila arriba',
+};
+
+export default dictionary;</code></pre>
+      </li>
+
+      <li id="custom-languages-step6">
+        <p><code>src/i18n/languages/index.js</code>ファイル内にすでに作成されているファイルをインポートして、下に示されているようにエクスポートします（キーはアルファベット順）。</p>
+        <pre><code class="diff"> import deCH from './de-CH';
+ import deDE from './de-DE';
+ import enUS from './en-US';
++import esVE from './es-VE';
+ import plPL from './pl-PL';
+
+ export {
+   deCH,
+   deDE,
+   enUS,
++  esVE,
+   plPL
+ };</code></pre>
+      </li>
+
+      <li id="custom-languages-step7">
+        <p>
+          東西！これで使用したり、他の人と共有できる言語を作成しました。作成された<a
+          href="https://handsontable.com/docs/tutorial-contributing.html">プルリクエスト</a>を受け入れるためにユーザーからの少なくとも5つのポジティブなフィードバックを待ちます。
+        </p>
+      </li>
+    </ol>
+
+    <h4>ローカル言語</h4>
+
+    <p>
+      <code>Handsontable</code>パッケージの一部ではない言語辞書を登録することができます。そのためには、次のセクションで簡単に説明されている<code
+      >Handsontable.languages.registerLanguageDictionary</code>静的メソッドと静的定数<code>Handsontable.languages.dictionaryKeys</code
+      >を使用します。
+    </p>
+
+    <pre><code class="lang-js">const C = Handsontable.languages.dictionaryKeys;
+
+Handsontable.languages.registerLanguageDictionary({
+  languageCode: 'morse',
+  // モールス信号に変換します
+  [C.FILTERS_BUTTONS_OK]: '--- -•-'
+});</code></pre>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="custom-keys">翻訳でカスタムキーを使用する</h3>
+
+    <p>
+      カスタムキーを含む言語辞書を登録できます。これらのエントリは他のキーと同じように使用できます。
+      そのため、事前定義済みの定数（<code>src/i18n/constants.js</code>ファイル内にあり、<code
+      >Handsontable.languages.dictionaryKeys</code>エイリアスからアクセスできるもの）を使用することに限定されません。
+    <pre><code class="lang-js">const enUSDictionary = Handsontable.languages.getLanguageDictionary('en-US');
+
+enUSDictionary.customKey = 'Hello world';
+
+Handsontable.languages.registerLanguageDictionary(enUSDictionary); // 再登録
+Handsontable.languages.getTranslatedPhrase('en-US', 'customKey'); // 'Hello world'</code></pre>
+    </p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="static-properties">静的なHandsontableメソッドとプロパティ</h3>
+
+    <p>Handsontableには、言語に関連するいくつかの静的メソッドとプロパティがあります。これらはグローバル<code
+      >Handsontable</code>変数の<code>languages</code>キーに格納されています。</p>
+
+    <h4>Handsontable.languages.getLanguageDictionary(languageCode: <code>String</code>)</h4>
+    <p>特定の言語コードの言語辞書を取得します。</p>
+    <p>返り値：<code>Object</code></p>
+
+    <h4>Handsontable.languages.getLanguagesDictionaries()</h4>
+    <p>登録されている言語辞書を取得します。</p>
+    <p>返り値：<code>Array</code></p>
+
+    <h4>Handsontable.languages.getTranslatedPhrase(languageCode: <code>String</code>, dictionaryKey: <code>String</code>, extraArguments: <code>Mixed</code>)</h4>
+    <p>指定された辞書キーのフレーズを取得します。</p>
+    <p>返り値：<code>Object</code></p>
+
+    <h4>Handsontable.languages.registerLanguageDictionary(languageCodeOrDictionary: <code>Mixed</code>, dictionary: <code>Object</code>)</h4>
+    <p>特定の言語コードの言語辞書を登録します。その後、それを使用することが可能になります。</p>
+    <p>返り値：<code>Object</code></p>
+
+    <h4>Handsontable.languages.dictionaryKeys</h4>
+    <p>辞書の定数です。</p>
+    <p>含み：<code>Object</code></p>
+  </div>
+
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/internationalization.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
