@@ -1,0 +1,47 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>現在Handsontableは基本的にiPad 4等のモバイル機器のみをサポートしています。
+      モバイルデバイスでHandsontableを見ている場合は、モバイルエディターと選択モードが自動的に有効になります。</p>
+    <p><strong>iPad 4でこのページを開き、以下のデモで遊んでください。</strong></p>
+
+    <div data-jsfiddle="example1" class="scroll-container ipad-container fixed-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: Handsontable.helper.createSpreadsheetData(50, 26),
+          rowHeaders: true,
+          colHeaders: true,
+          colWidths: 100,
+          fixedRowsTop: 2,
+          fixedColumnsLeft: 2
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/mobiles-and-tablets.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
+
