@@ -1,0 +1,145 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <p>Handsontableをインストールするには、次の手順に従います。</p>
+    <ol>
+      <li><a href="#page-install">インストール</a></li>
+      <li><a href="#page-create">作成</a></li>
+      <li><a href="#page-bind">初期化</a></li>
+      <li><a href="#page-alternative">代替インストール</a></li>
+    </ol>
+  </div>
+
+  <div class="example-container clearfix" name="install">
+    <h3 id="page-install">ステップ1：インストール</h3>
+
+    <div class="tabs-alternative">
+      <div class="tabs handsontable-switcher">
+        <div class="tab switch active">
+          <ul>
+            <li id="tab-pro" aria-selected="true" class="active">Handsontable Proをインストールする</li>
+            <li id="tab-ce" aria-selected="false">Community Editionをインストールする</li>
+          </ul>
+          <div class="tabs-content">
+            <div id="tab-content-pro" aria-hidden="false" class="content active">
+              <p>
+                Handsontable Proをインストールする方法は<a href="//handsontable.com/pro-download.html">たくさんあります</a
+                >が、<a href="https://www.npmjs.com/package/handsontable-pro" target="_blank">npm</a
+                >を使うことをお勧めします。 次のコマンドを入力するだけです。
+              </p>
+              <pre><code class="lang-bash">npm install handsontable-pro</code></pre>
+              <p>インストールプロセスが完了したら、このコードをHTMLファイルに埋め込んでください。</p>
+              <pre><code class="lang-html">&lt;script src="node_modules/handsontable-pro/dist/handsontable.full.min.js"&gt;&lt;/script&gt;
+&lt;link href="node_modules/handsontable-pro/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+              <p>あるいは、CDNを使用してください。</p>
+              <pre><code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/handsontable-pro@<?js= version ?>/dist/handsontable.full.min.js"&gt;&lt;/script&gt;&lt;link href="https://cdn.jsdelivr.net/npm/handsontable-pro@<?js= version ?>/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+            </div>
+            <div id="tab-content-ce" aria-hidden="true" class="content">
+              <p>
+                Handsontable CEをインストールする方法は<a href="//handsontable.com/ce-download.html">たくさんあります</a
+                >が、<a href="https://www.npmjs.com/package/handsontable" target="_blank"
+                >npm</a>を使うことをお勧めします。 次のコマンドを入力するだけです。
+                
+              </p>
+              <pre><code class="lang-bash">npm install handsontable</code></pre>
+              <p>インストールプロセスが完了したら、このコードをHTMLファイルに埋め込んでください。</p>
+              <pre><code class="lang-html">&lt;script src="node_modules/handsontable/dist/handsontable.full.min.js"&gt;&lt;/script&gt;
+&lt;link href="node_modules/handsontable/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+              <p>あるいは、CDNを使用してください。</p>
+              <pre><code class="lang-html">&lt;script src="https://cdn.jsdelivr.net/npm/handsontable@<?js= version ?>/dist/handsontable.full.min.js"&gt;&lt;/script&gt;&lt;link href="https://cdn.jsdelivr.net/npm/handsontable@<?js= version ?>/dist/handsontable.full.min.css" rel="stylesheet" media="screen"&gt;</code></pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="example-container clearfix" name="create">
+    <h3 id="page-create">ステップ2：作成</h3>
+    <p>
+      スプレッドシートに変換される空の<code>&lt;div&gt;</code
+      >要素を追加します。この要素に "example" IDを付けましょう。
+    </p>
+    <p>
+      <code>&lt;div id="example"&gt;&lt;/div&gt;</code>
+    </p>
+  </div>
+
+  <div class="example-container clearfix" name="bind">
+    <h3 id="page-bind">ステップ3：初期化</h3>
+    <p>次のステップでは、その<code>&lt;div id="example"&gt;</code
+      >要素への参照を渡し、それにサンプルデータを入力します。</p>
+    <pre><code class="lang-js">var data = [
+  ["", "Ford", "Tesla", "Toyota", "Honda"],
+  ["2017", 10, 11, 12, 13],
+  ["2018", 20, 11, 14, 13],
+  ["2019", 30, 15, 12, 13]
+];
+
+var container = document.getElementById('example');
+var hot = new Handsontable(container, {
+  data: data,
+  rowHeaders: true,
+  colHeaders: true,
+  filters: true,
+  dropdownMenu: true
+});</code></pre>
+  </div>
+
+  <div class="example-container clearfix" name="result">
+    <h3 id="page-result">ステップ4：結果</h3>
+    <p>これで、Handsontable Proが起動して使用可能になりました。</p>
+
+    <div data-jsfiddle="example">
+      <div id="example" class="hot"></div>
+    </div>
+
+    <script data-jsfiddle="example">
+      var data = [
+        ["", "Ford", "Tesla", "Toyota", "Honda"],
+        ["2017", 10, 11, 12, 13],
+        ["2018", 20, 11, 14, 13],
+        ["2019", 30, 15, 12, 13]
+      ];
+
+      var container = document.getElementById('example');
+      var hot = new Handsontable(container, {
+        data: data,
+        rowHeaders: true,
+        colHeaders: true,
+        filters: true,
+        dropdownMenu: true
+      });
+    </script>
+
+    <p>
+      データソースをバインドするだけでなく、
+      Handsontable Proで行われた変更を保存する方法を疑問に思っているでしょうか。詳細については、<a
+      href="/docs/<?js= version ?>/tutorial-data-binding.html">バインディングデータ</a>を参照してください。
+    </p>
+  </div>
+
+  <div class="example-container clearfix" name="alternative">
+    <h3 id="page-alternative">代替インストール</h3>
+    <p>利用可能なすべてのインストールオプションを<a
+      href="//handsontable.com/pro-download.html">Download Handsontable Pro</a>または<a href="//handsontable.com/ce-download.html">Download Handsontable CE</a>で見つけてください。
+    </p>
+  </div>
+
+  <div class="example-container clearfix" name="nextsteps">
+    <h3  id="page-next-steps">次のステップ</h3>
+    <ul>
+      <li><a href="/docs/<?js= version ?>/tutorial-data-sources.html">データソースを接続する方法</a></li>
+      <li><a href="/docs/<?js= version ?>/tutorial-load-and-save.html">データをロードして保存する方法</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-custom-renderers.html">セルまたはヘッダー内にカスタムHTMLを作成する方法</a></li>
+      <li><a href="/docs/<?js= version ?>/demo-data-validation.html">有効なデータにする方法</a></li>
+    </ul>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/quick-start.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
