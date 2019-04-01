@@ -1,0 +1,111 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#setup">クイックセットアップ</a></li>
+      <li><a href="#options">追加オプション</a></li>
+      <li><a href="#examples">例</a></li>
+      <li><a href="#api">APIの例</a></li>
+    </ul>
+
+    <hr>
+
+    <h3 id="overview">概要</h3>
+    <p>
+      <i>Hidden Columns</i>プラグインはテーブルから特定の列を非表示にすることを可能にします。
+      （これらの列はまだ描画されていることに注意してください - プラグインは単にCSSを使用して列を非表示にします）。
+    </p>
+
+    <h3 id="setup">クイックセットアップ</h3>
+    <p>
+      <code>hiddenColumns</code>パラメーターはオブジェクトを受け入れます。非表示にする列を指定するには、オブジェクトの<code>columns</code>プロパティを指定する必要があります。
+      これは、非表示にする必要がある列のインデックスを表す数値の配列として定義する必要があります。
+      <br><br>詳細については、<a href="#examples">例のセクション</a>を参照してください。
+    </p>
+
+    <h3 id="options">追加オプション</h3>
+    <p>
+      プラグインは、どの列が非表示になっているかをユーザーに通知するために、ヘッダーに非表示の列インジケーターを表示することを可能にします。<br>
+      それらを有効にするには、プラグインの設定オブジェクトの<code>indicators</code>プロパティを<code>true</code>に設定します。
+      <br><br>詳細については、<a href="#examples">例のセクション</a>を参照してください。
+    </p>
+    <p>
+      <code>copyPasteEnabled</code>を<code>true</code>または<code>false</code>に設定することで、コピー/貼り付け範囲の選択範囲を変更できます。
+      デフォルトでは、このプロパティは<code>true</code>に設定されています。<code>false</code>に設定すると、非表示列はコピー/貼り付けのためにスキップされます。
+    </p>
+    <p>
+      <code>hidden_columns_show</code>および<code>hidden_columns_hide</code>キーを使用して、<a
+      href="/docs/<?js= version ?>/demo-context-menu.html">コンテキストメニュー</a>から特定の列を直接表示または非表示にすることができます。
+      <br><br>詳細については、<a href="#examples">例のセクション</a>を参照してください。
+    </p>
+
+    <h3 id="examples">例</h3>
+    <div data-jsfiddle="example1">
+      <div>
+        <div id="example1" class="hot"></div>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit in jsFiddle
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example1 = document.getElementById('example1');
+
+        var hot = new Handsontable(example1, {
+          data: Handsontable.helper.createSpreadsheetData(5,12),
+          colHeaders: true,
+          rowHeaders: true,
+          contextMenu: true,
+          hiddenColumns: {
+            columns: [3, 5, 9],
+            indicators: true
+          }
+        });</script>
+    </div>
+
+    <h3 id="api">APIの例</h3>
+    <p>
+      呼び出すことによってプラグインインスタンスにアクセスすることができます
+    </p>
+    <pre><code class="js">var plugin = hot.getPlugin('hiddenColumns');</code></pre>
+    <p>
+      単一の列を非表示にするには、プラグインオブジェクトの<code>hideColumn</code>メソッドを呼び出します。
+    </p>
+    <pre><code class="js">plugin.hideColumn(4);</code></pre>
+    <p>
+      複数の列をトリミングするには、それらを<code>hideColumn</code>メソッドに引数として渡すか、
+      または<code>hideColumns</code>メソッドにインデックスの配列として渡します。
+    </p>
+    <pre><code class="js">plugin.hideColumn(0, 4, 6);
+// または
+plugin.hideColumns([0, 4, 6]);</code></pre>
+
+    <p>トリミングされた列を復元するには、以下の方法を使用してください。</p>
+    <pre><code class="js">plugin.showColumn(4);</code></pre><br>
+    <pre><code class="js">plugin.showColumn(0, 4, 6);</code></pre><br>
+    <pre><code class="js">plugin.showColumns([0, 4, 6]);</code></pre>
+
+    <p>
+      行った変更を確認するには、<code>hot.render();</code>を呼び出します。 テーブルを再レンダリングします。
+    </p>
+
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/hiding-columns.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
