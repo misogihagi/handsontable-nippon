@@ -1,0 +1,227 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <div class="notification warning dark-text"><strong>ご注意ください：</strong> この機能は開発の初期段階にあります。いくつかのプラグインやコアの機能では動作しないかもしれません。
+    製品用には準備ができていません。</div>
+
+    <ul>
+      <li><a href="#overview">概要</a></li>
+      <li><a href="#quick-setup">クイックセットアップ</a></li>
+      <li><a href="#data-source">データソースの準備</a></li>
+      <li><a href="#ui">ユーザーインターフェイス</a></li>
+      <!--<li><a href="#configuration">Additional plugin configuration</a></li>-->
+    </ul>
+
+    <h3 id="overview">概要</h3>
+    <p><strong><i>Nested Rows</i></strong>プラグインはHandsontableを新しい機能で拡張したものです - 2次元のデータテーブルに入れ子になった構造を表示します。</p>
+
+    <h3 id="quick-setup">クイックセットアップ</h3>
+    <p>プラグインを有効にするには、単に<code>nestedRows</code>プロパティを<code>true</code>に設定します。</p>
+
+    <pre><code class="lang-js hljs javascript">var hot = new Handsontable(container, {
+  data: sourceDataObject,
+  rowHeaders: true,
+  nestedRows: true,
+  contextMenu: true
+});</code></pre>
+
+    <p>
+      プラグインによって提供されるすべての機能を使用するには、<code>rowHeaders</code>（行ヘッダーを有効にする）と<code
+      >contextMenu</code>（Handsontableのコンテキストメニューを有効にする）を<code>true</code>に設定する必要があります。すると<i>折りたたみ</i>/<i>展開</i>ボタンが行ヘッダーに、行変更オプション（<i>行の追加</i>、<i>子の挿入</i>など）がコンテキストメニューに出現します。
+    </p>
+
+    <h3 id="data-source">データソースの準備</h3>
+    <p>
+      データソースは、<i>Nested Rows</i>プラグインで使用するために特定の構造を持つ必要があります。
+    </p>
+    <p>
+      データソースはプラグインのために<strong>オブジェクトの配列</strong>でなければなりません。配列内の各オブジェクトは、単一の<i>0レベル</i>のエントリを表します。 <i>0レベル</i>とは、他のエントリーの子ではないエントリーを意味します。<br>
+      エントリに子エントリがある場合は、それらを<i>オブジェクトの配列</i>として（再度）宣言する必要があります。それらを行に割り当てるには、親要素に<code>__children</code>プロパティを作成する必要があります。
+      <br><br>
+      この例を見てください：
+    </p>
+
+    <div data-jsfiddle="example1" class="scroll-container fixed-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var sourceDataObject = [
+                  {
+                    category: 'Best Rock Performance',
+                    artist: null,
+                    title: null,
+                    label: null,
+                    __children: [
+                      {
+                        title: 'Don\'t Wanna Fight',
+                        artist: 'Alabama Shakes',
+                        label: 'ATO Records'
+                      }, {
+                        title: 'What Kind Of Man',
+                        artist: 'Florence & The Machine',
+                        label: 'Republic'
+                      }, {
+                        title: 'Something From Nothing',
+                        artist: 'Foo Fighters',
+                        label: 'RCA Records'
+                      }, {
+                        title: 'Ex\'s & Oh\'s',
+                        artist: 'Elle King',
+                        label: 'RCA Records'
+                      }, {
+                        title: 'Moaning Lisa Smile',
+                        artist: 'Wolf Alice',
+                        label: 'RCA Records/Dirty Hit'
+                      }
+
+                    ]
+                  }, {
+                    category: 'Best Metal Performance',
+                    __children: [
+                      {
+                        title: 'Cirice',
+                        artist: 'Ghost',
+                        label: 'Loma Vista Recordings'
+                      }, {
+                        title: 'Identity',
+                        artist: 'August Burns Red',
+                        label: 'Fearless Records'
+                      }, {
+                        title: '512',
+                        artist: 'Lamb Of God',
+                        label: 'Epic Records'
+                      }, {
+                        title: 'Thank You',
+                        artist: 'Sevendust',
+                        label: '7Bros Records'
+                      }, {
+                        title: 'Custer',
+                        artist: 'Slipknot',
+                        label: 'Roadrunner Records'
+                      },]
+                  }, {
+                    category: 'Best Rock Song',
+                    __children: [
+                      {
+                        title: 'Don\'t Wanna Fight',
+                        artist: 'Alabama Shakes',
+                        label: 'ATO Records',
+                      }, {
+                        title: 'Ex\'s & Oh\'s',
+                        artist: 'Elle King',
+                        label: 'RCA Records',
+                      }, {
+                        title: 'Hold Back The River',
+                        artist: 'James Bay',
+                        label: 'Republic',
+                      }, {
+                        title: 'Lydia',
+                        artist: 'Highly Suspect',
+                        label: '300 Entertainment',
+                      }, {
+                        title: 'What Kind Of Man',
+                        artist: 'Florence & The Machine',
+                        label: 'Republic',
+                      }
+                    ]
+                  }, {
+                    category: 'Best Rock Album',
+                    __children: [
+                      {
+                        title: 'Drones',
+                        artist: 'Muse',
+                        label: 'Warner Bros. Records',
+                      }, {
+                        title: 'Chaos And The Calm',
+                        artist: 'James Bay',
+                        label: 'Republic',
+                      }, {
+                        title: 'Kintsugi',
+                        artist: 'Death Cab For Cutie',
+                        label: 'Atlantic',
+                      }, {
+                        title: 'Mister Asylum',
+                        artist: 'Highly Suspect',
+                        label: '300 Entertainment',
+                      }, {
+                        title: '.5: The Gray Chapter',
+                        artist: 'Slipknot',
+                        label: 'Roadrunner Records',
+                      }
+                    ]
+                  }],
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: sourceDataObject,
+          rowHeaders: true,
+          colHeaders: ['Category', 'Artist', 'Title', 'Album', 'Label'],
+          nestedRows: true,
+          contextMenu: true,
+        });</script>
+    </div>
+
+    <p>
+      上記の例では、2016年の「ロック」ジャンルのグラミー賞候補からなるデータオブジェクトを作成しました。ご覧のとおり、<i>0レベル</i>の各エントリはカテゴリを宣言し、子は候補を宣言します - それらは<code>__children</code>プロパティの下に割り当てられます。
+      <br><br>
+      言及するべきもう一つのこと - 配列の最初の<b>最初の</b>0レベルのオブジェクトはテーブルを正しく表示するためにすべてのカラムが定義されている必要があります。それらは<code>null</code>または<code>''</code>（空の文字列）として宣言できますが、どうあれ定義する必要があります。これは他のオブジェクトではオプションです。
+    </p>
+
+    <h3 id="ui">ユーザーインターフェース</h3>
+
+    <p><i>Nested Rows</i>プラグインのユーザーインターフェイスは、行ヘッダーとHandsontableのコンテキストメニューに配置されています。</p>
+
+    <h4>行ヘッダー</h4>
+    <p>
+      各<i>親</i>親<code>+</code>/<code>-</code>ボタンがあります。子行を縮小または拡大するために使用されます。<br><br>
+
+      さらに、子行のヘッダーにはより大きなインデントが与えられているため、ユーザーは子要素と親要素を明確に認識できます。
+    </p>
+
+    <h4>コンテキストメニュー</h4>
+    <p>
+      コンテキストメニューは、次のようなNested Rowsに関連するオプションを加えられました。
+    </p>
+    <ul>
+      <li>Insert child row</li>
+      <li>Detach from parent</li>
+    </ul>
+    <p>
+    さらに、「上に行を挿入」および「下に行を挿入」オプションは、ネストされたデータ構造で正しく機能するように変更されました。
+    </p>
+
+    <!--<h3 id="configuration">Additional plugin configuration examples</h3>-->
+    <!--<h4>Marking the <i>parents</i></h4>-->
+    <!--To mark the parents (for example, with a different colors) we窶冤l need to apply some css styling to the table.<br>-->
+    <!--The css class responsible for styling the parents is <code>.ht_nestingParent</code>. It窶冱 added to every <code>TH</code> element which represents the row header of the parent entry.-->
+    <!--<br><br>-->
+    <!--For example - if we want to mark all the cells in the parent row light grey, we can assign this style to the table:-->
+    <!--<pre><code>-->
+  <!--.handsontable .ht_nestingParent ~ TD {-->
+      <!--background-color: #f7f5f5;-->
+  <!--}-->
+    <!--</code></pre>-->
+    <!--You can see the effect in this example: <a href="http://jsfiddle.net/js_ziggle/fr86eLnL/2/">http://jsfiddle.net/js_ziggle/fr86eLnL/2/</a>.-->
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/nested-rows.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
