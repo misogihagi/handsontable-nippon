@@ -1,0 +1,131 @@
+<div class="static-content">
+
+<div class="index-list">
+  <p>このページでは、Handsontableの列の引き伸ばしを設定する方法を説明します。</p>
+  <ul>
+    <li><a href="#page-last">StretchH <code>last</code>列</a></li>
+    <li><a href="#page-stretch">StretchH <code>all</code>列</a></li>
+    <li><a href="#page-none">StretchH <code>none</code> (デフォルト)</a></li>
+  </ul>
+</div>
+
+<div class="example-container clearfix" name="last">
+  <h3 id="page-last">StretchH <code>last</code>列</h3>
+  <p>次の例では、コンテナの高さとCSSで<code>overflow: hidden</code
+    >のみを指定して垂直スクロールバー付きのテーブルを作成します。最後の列は<code
+    >stretchH: 'last'</code>オプションを使って引き伸ばされます。</p>
+
+  <div data-jsfiddle="example1" class="scroll-container">
+    <div id="example1" class="hot"></div>
+  </div>
+
+  <div class="codeLayout">
+    <div class="buttons">
+      <button class="jsFiddleLink" data-runfiddle="example1">
+        <i class="fa fa-jsfiddle"></i>
+        Edit
+      </button>
+      <button class="dump" name="dump" data-dump="#example1" data-instance="hot1"
+              title="Print current data source to console">
+        <i class="fa fa-terminal"></i>
+        Dump data to console
+      </button>
+    </div>
+    <script data-jsfiddle="example1">
+      var
+        container1 = document.getElementById('example1'),
+        hot1;
+
+      hot1 = new Handsontable(container1, {
+        data: Handsontable.helper.createSpreadsheetData(40, 6),
+        colWidths: 47,
+        rowHeaders: true,
+        colHeaders: true,
+        stretchH: 'last',
+        contextMenu: true
+      });</script>
+  </div>
+</div>
+
+<div class="example-container clearfix head-gap" name="stretch">
+  <h3 id="page-stretch">StretchH <code>all</code>列</h3>
+  <p>テーブルの内容がコンテナの幅ほど広くない場合、テーブルはコンテナの幅まで引き伸ばされます。
+    デフォルトの水平引き伸ばしモデルは、最後の列のみを引き伸ばします（<code
+     >stretchH: 'last'</code>オプションを使用）。</p>
+  <p>他の可能な引き伸ばしモードは<code>all</code>（すべての列を均等にストレッチする、以下の例で使用される）と<code
+    >none</code>（ストレッチではない）です。</p>
+
+  <div data-jsfiddle="example2" class="scroll-container">
+    <div id="example2" class="hot"></div>
+  </div>
+
+  <div class="codeLayout">
+    <div class="buttons">
+      <button class="jsFiddleLink" data-runfiddle="example2">
+        <i class="fa fa-jsfiddle"></i>
+        Edit
+      </button>
+      <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+              title="Print current data source to console">
+        <i class="fa fa-terminal"></i>
+        Dump data to console
+      </button>
+    </div>
+    <script data-jsfiddle="example2">
+      var
+        container2 = document.getElementById('example2'),
+        hot2;
+
+      hot3 = new Handsontable(container2, {
+        data: Handsontable.helper.createSpreadsheetData(40, 6),
+        colWidths: [47, 47, 47, 47, 47, 47, 47], // 数字か関数のみ
+        rowHeaders: true,
+        colHeaders: true,
+        stretchH: 'all',
+        contextMenu: true
+      });</script>
+  </div>
+</div>
+
+<div class="example-container clearfix head-gap" name="none">
+  <h3 id="page-none">StretchH <code>none</code>(デフォルト)</h3>
+
+  <div data-jsfiddle="example3" class="scroll-container">
+    <div id="example3" class="hot"></div>
+  </div>
+
+  <div class="codeLayout">
+    <div class="buttons">
+      <button class="jsFiddleLink" data-runfiddle="example3">
+        <i class="fa fa-jsfiddle"></i>
+        Edit
+      </button>
+      <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+              title="Print current data source to console">
+        <i class="fa fa-terminal"></i>
+        Dump data to console
+      </button>
+    </div>
+    <script data-jsfiddle="example3">
+      var
+        container3 = document.getElementById('example3'),
+        hot3;
+
+      hot3 = new Handsontable(container3, {
+        data: Handsontable.helper.createSpreadsheetData(40, 6),
+        colWidths: [47, 47, 47, 47, 47, 47, 47], // 数字か関数のみ
+        rowHeaders: true,
+        colHeaders: true,
+        stretchH: 'none', // デフォルトの設定なので実際はこのように宣言する必要はありません。
+        contextMenu: true
+      });</script>
+  </div>
+</div>
+<p class="gap-top-xsmall">
+  <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/stretching.html" class="edit-doc" target="_blank">
+    このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+  </a>
+</p>
+</div>
