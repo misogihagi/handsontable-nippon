@@ -1,0 +1,307 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <p>searchプラグインはHandsontable全体でデータを検索するための簡単なインターフェースを提供します。</p>
+    <p>最初に<code>search</code>オプションを<code>true</code>に設定してプラグインを有効にする必要があります。有効にすると、<code
+      >searchPlugin</code>は新しいメソッド<code>query(queryStr)</code>を公開します。<code
+      >queryStr</code>はテーブル内で検索する文字列です。 デフォルトでは、検索で大文字と小文字が区別されません。</p>
+    <p><code>query(queryStr, [callback], [queryMethod])</code
+      >メソッドは2つのことを行います。まず最初に、検索結果の配列を返します。すべての要素は3つのプロパティを含むオブジェクトです。</p>
+    <ul>
+      <li><code>row</code> &ndash; 値が見つかった行のインデックス</li>
+      <li><code>col</code> &ndash; 値が見つかった列のインデックス</li>
+      <li><code>data</code> &ndash; 見つかった値</li>
+    </ul>
+    <p>2番目に<code>query</code>が行うことは、各セルに<code>isSearchResult</code
+      >プロパティを設定することです。セルが検索結果に含まれている場合、その<code>isSearchResult</code>は<code>true</code
+      >に設定され、それ以外の場合、このプロパティは<code>false</code>に設定されます。</p>
+    <p>今やらなければいけないことは、検索入力リスナーの中で<code>query()</code>メソッドを使うことだけです。</p>
+    <h3>Search resultクラス</h3>
+    <p>デフォルトでは、<code>searchPlugin</code>は<code>isSearchResult</code>が<code>true</code
+       >であるすべてのセルに<code>htSearchResult</code>クラスを追加します。このクラスは<code
+      >searchResultClass</code>オプションを使って変更できます。</p>
+    <p>reslutクラスを変更したい場合は、<code
+      >var searchPlugin = hot.getPlugin('search'); searchPlugin.setSearchResultClass(className);</code>メソッドを使用できます。</p>
+    <h3>カスタムの<code>queryMethod</code></h3>
+    <p><code>queryMethod</code>は、<code>queryStr</code>がセルに格納されている値と一致するかどうかを判断します。それは2つの引数を取ります：<code
+      >queryStr</code>と<code>cellData</code>1つ目は<code>query()</code>メソッドに渡される文字列です。2番目は<code
+      >getDataAtCell()</code>によって返される値です。一致する場合、<code>queryMethod</code
+      >関数は<code>true</code>を返す必要があります。</p>
+    <p>デフォルトの<code>queryMethod</code>は非常に単純です。</p>
+    <pre>
+      <code class="lang-javascript">const DEFAULT_QUERY_METHOD = function(query, value) {
+    if (isUndefined(query) || query === null || !query.toLowerCase || query.length === 0) {
+      return false;
+    }
+    if (isUndefined(value) || value === null) {
+      return false;
+    }
+
+    return value.toString().toLowerCase().indexOf(query.toLowerCase()) !== -1;
+  };
+};
+      </code>
+    </pre>
+    <p><code>queryMethod</code>を変更したい場合は、<code>queryMethod</code>オプションを使用してください。<code
+      >queryMethod</code>を<code>query()</code>メソッドの3番目の引数として渡すこともできます。<code
+      >queryMethod</code>を変更するには、<code
+      >var searchPlugin = hot.getPlugin('search'); searchPlugin.setQueryMethod(myNewQueryMethod);</code>を使用します。</p>
+    <h3>カスタムの結果コールバック</h3>
+    <p><code>queryMethod</code>を呼び出した後、<code>searchPlugin</code>はすべてのセルに対して<code>
+      callback(instance, rowIndex, colIndex, cellData, testResult)</code>を呼び出します。</p>
+    <p><code>queryMethod</code>と同様に、<code>var searchPlugin = hot.getPlugin('search'); searchPlugin.setCallback(myNewCallbackFunction);</code
+      >を使用してこのコールバックをオーバーライドできます。または<code
+      >query()</code>メソッドの2番目の引数として<code>callback</code>を渡します。</p>
+    <p>デフォルトの<code>callback</code>は、<code>isSearchResult</code>プロパティの設定を担当します。</p>
+    <pre>
+      <code class="lang-javascript">const DEFAULT_CALLBACK = function(instance, row, col, data, testResult) {
+  instance.getCellMeta(row, col).isSearchResult = testResult;
+};
+      </code>
+    </pre>
+    <p>以下の例で理解しましょう。</p>
+    <ul>
+      <li><a href="#page-simplest-use-case">最も単純なユースケース</a></li>
+      <li><a href="#page-custom-search-result-class">カスタムsearch resultクラス</a></li>
+      <li><a href="#page-custom-query-method">queryメソッド</a></li>
+      <li><a href="#page-custom-callback">カスタムコールバック</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="simplest-use-case">
+    <a href="https://github.com/handsontable/-pro/edit/<?js= version ?>/tutorials/searching.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+    <h3 id="page-simplest-use-case">最も単純なユースケース</h3>
+
+    <div data-jsfiddle="example1">
+      <input id='search_field' type="search" placeholder="Search" />
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          data = [
+            ['Tesla', 2017, 'black', 'black'],
+            ['Nissan', 2018, 'blue', 'blue'],
+            ['Chrysler', 2019, 'yellow', 'black'],
+            ['Volvo', 2020, 'yellow', 'gray']
+          ],
+          example = document.getElementById('example1'),
+          searchFiled = document.getElementById('search_field'),
+          hot;
+
+        hot = new Handsontable(example, {
+          data: data,
+          colHeaders: true,
+          search: true
+        });
+
+        Handsontable.dom.addEvent(searchFiled, 'keyup', function (event) {
+          var search = hot.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+          hot.render();
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="custom-search-result-class">
+    <h3 id="page-custom-search-result-class">カスタムsearch resultクラス</h3>
+    <div data-jsfiddle="example2">
+      <input id='search_field2' type="search" placeholder="Search" />
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <style data-jsfiddle="example2">
+        .htCore td.customClass {
+          color: #f8f8ff;
+          background: #1E90FF;
+        }
+      </style>
+      <script data-jsfiddle="example2">
+        var
+          data = [
+            ["Tesla", 2017, "black", "black"],
+            ["Nissan", 2018, "blue", "blue"],
+            ["Chrysler", 2019, "yellow", "black"],
+            ["Volvo", 2020, "white", "gray"]
+          ],
+          example2 = document.getElementById("example2"),
+          hot2, searchFiled2;
+
+        hot2 = new Handsontable(example2,{
+          data: data,
+          colHeaders: true,
+          search: {
+            searchResultClass: 'customClass'
+          }
+        });
+        searchFiled2 = document.getElementById('search_field2');
+
+        Handsontable.dom.addEvent(searchFiled2, 'keyup', function (event) {
+          var search = hot2.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+          hot2.render();
+        });</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="custom-query-method">
+    <h3 id="page-custom-query-method">カスタムqueryメソッド</h3>
+
+    <div data-jsfiddle="example3">
+      <input id='search_field3' type="search" placeholder="Search" />
+      <div id="example3" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3">
+        var
+          data = [
+            ["Tesla", 2017, "black", "black"],
+            ["Nissan", 2018, "blue", "blue"],
+            ["Chrysler", 2019, "yellow", "black"],
+            ["Volvo", 2020, "white", "gray"]
+          ],
+          example3 = document.getElementById("example3"),
+          hot3, searchFiled3;
+
+        function onlyExactMatch(queryStr, value) {
+          return queryStr.toString() === value.toString();
+        };
+
+        hot3 = new Handsontable(example3,{
+          data: data,
+          colHeaders: true,
+          search: {
+            queryMethod: onlyExactMatch
+          }
+        });
+        searchFiled3 = document.getElementById('search_field3');
+
+        Handsontable.dom.addEvent(searchFiled3, 'keyup', function(event) {
+          var search = hot3.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+
+          hot3.render();
+        });</script>
+    </div>
+  </div>
+  <div class="example-container clearfix head-gap" name="custom-callback">
+    <h3 id="page-custom-callback">カスタムコールバック</h3>
+
+    <div data-jsfiddle="example4">
+      <input id='search_field4' type="search" placeholder="Search" />
+      <p><span id="resultCount">0</span> results</p>
+      <div id="example4" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example4">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example4" data-instance="hot4"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example4">
+        var
+          data = [
+            ["Tesla", 2017, "black", "black"],
+            ["Nissan", 2018, "blue", "blue"],
+            ["Chrysler", 2019, "yellow", "black"],
+            ["Volvo", 2020, "white", "gray"]
+          ],
+          example4 = document.getElementById("example4"),
+          hot4, searchFiled4, resultCount,
+          searchResultCount = 0;
+
+        function searchResultCounter(instance, row, col, value, result) {
+          const DEFAULT_CALLBACK = function(instance, row, col, data, testResult) {
+            instance.getCellMeta(row, col).isSearchResult = testResult;
+          };
+
+          DEFAULT_CALLBACK.apply(this, arguments);
+
+          if (result) {
+            searchResultCount++;
+          }
+        }
+
+        hot4 = new Handsontable(example4,{
+          data: data,
+          colHeaders: true,
+          search: {
+            callback: searchResultCounter
+          }
+        });
+        searchFiled4 = document.getElementById('search_field4');
+        resultCount = document.getElementById('resultCount');
+
+        Handsontable.dom.addEvent(searchFiled4, 'keyup', function(event) {
+          searchResultCount = 0;
+
+          var search = hot4.getPlugin('search');
+          var queryResult = search.query(this.value);
+
+          console.log(queryResult);
+          resultCount.innerText = searchResultCount.toString();
+          hot4.render();
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/searching.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
