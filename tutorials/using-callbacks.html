@@ -1,0 +1,303 @@
+<div class="static-content">
+
+  <div class="index-list">
+
+    <ul>
+      <li><a href="#page-callbacks">コールバック</a></li>
+      <li><a href="#page-source-definition"><code>source</code>引数の定義</a></li>
+      <li><a href="#page-beforeKeyDown"><code>beforeKeyDown</code>のユースケース</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="callbacks">
+    <h3 id="page-callbacks">コールバック</h3>
+    <p>このページはHandsontableで利用可能ないくつかのコールバックの使用法を示します。新しいコールバックを追加する必要がある場合は、<a
+      href="https://github.com/handsontable/handsontable/issues/new" target="_blank">issueを追加</a
+      >してください。このページでは、デフォルトで一部のコールバックがチェックされていることに注意してください。
+    </p>
+
+    <div data-jsfiddle="example1" class="part-left-container callbacks-container clearfix">
+      <div id="example1" class="hot"></div>
+      <div id="example1_events"></div>
+    </div>
+    <div class="clear-log">
+      <button onclick="$('#example1_events').empty()" class="intext-btn">Clear log</button>
+    </div>
+    <p><strong>ログに出力するイベントを選択してください。</strong></p>
+    <ul class="tight clearfix" id="hooksList">
+      <li><label><input type="checkbox" id="check_select_all"><strong>すべて選択</strong></label></li>
+    </ul>
+  </div>
+
+  <div class="codeLayout">
+    <div class="buttons">
+      <!--<button class="jsFiddleLink" data-runfiddle="example1">-->
+        <!--<i class="fa fa-jsfiddle"></i>-->
+        <!--Edit-->
+      <!--</button>-->
+      <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+              title="Print current data source to console">
+        <i class="fa fa-terminal"></i>
+        Dump data to console
+      </button>
+    </div>
+    <script data-jsfiddle="example1">
+      var
+        data = [
+          ['', 'Tesla', 'Mazda', 'Mercedes', 'Mini', 'Mitsubishi'],
+          ['2017', 0, 2941, 4303, 354, 5814],
+          ['2018', 3, 2905, 2867, 412, 5284],
+          ['2019', 4, 2517, 4822, 552, 6127],
+          ['2020', 2, 2422, 5399, 776, 4151]
+        ],
+        example1 = document.getElementById('example1'),
+        config,
+        $hooksList,
+        hooks,
+        hot;
+
+      config = {
+        data: data,
+        minRows: 5,
+        minCols: 6,
+        minSpareRows: 1,
+        autoWrapRow: true,
+        colHeaders: true,
+        contextMenu: true
+      };
+
+      $hooksList = $('#hooksList');
+      hooks = Handsontable.hooks.getRegistered();
+
+      hooks.forEach(function(hook) {
+        var checked = '';
+
+        if (hook === 'afterChange' || hook === 'afterSelection' || hook === 'afterCreateRow' || hook === 'afterRemoveRow' ||
+            hook === 'afterCreateCol' || hook === 'afterRemoveCol') {
+          checked = 'checked';
+        }
+        $hooksList.append('<li><label><input type="checkbox" ' + checked + ' id="check_' + hook + '"> ' + hook + '</label></li>');
+        config[hook] = function() {
+          log_events(hook, arguments);
+        }
+      });
+
+      var start = (new Date()).getTime();
+      var i = 0;
+      var timer;
+      var example1_events = document.getElementById("example1_events");
+
+      function log_events(event, data) {
+        if (document.getElementById('check_' + event).checked) {
+          var now = (new Date()).getTime(),
+            diff = now - start,
+            vals, str, div, text;
+
+          vals = [
+            i,
+              "@" + numbro(diff / 1000).format('0.000'),
+              "[" + event + "]"
+          ];
+
+          for (var d = 0; d < data.length; d++) {
+            try {
+              str = JSON.stringify(data[d]);
+            }
+            catch (e) {
+              str = data[d].toString(); // JSON.stringifyはHTMLノードへの循環参照を中断します
+            }
+
+            if (str === void 0) {
+              continue;
+            }
+
+            if (str.length > 20) {
+              str = Object.prototype.toString.call(data[d]);
+            }
+            if (d < data.length - 1) {
+              str += ',';
+            }
+            vals.push(str);
+          }
+
+          if (window.console) {
+            console.log(i,
+                "@" + numbro(diff / 1000).format('0.000'),
+                "[" + event + "]",
+              data);
+          }
+          div = document.createElement("DIV");
+          text = document.createTextNode(vals.join(" "));
+
+          div.appendChild(text);
+          example1_events.appendChild(div);
+          clearTimeout(timer);
+          timer = setTimeout(function() {
+            example1_events.scrollTop = example1_events.scrollHeight;
+          }, 10);
+
+          i++;
+        }
+      }
+
+      example1 = document.getElementById('example1');
+      hot = new Handsontable(example1,config);
+
+      $('#check_select_all').click(function () {
+        var state = this.checked;
+
+        $('#hooksList input[type=checkbox]').each(function () {
+          if (state === true) {
+            if (this.id === 'check_modifyRow') {
+              return; //ログ内のノイズが多すぎる
+            }
+          }
+          this.checked = state;
+        });
+      });
+
+      $('#hooksList input[type=checkbox]').click(function () {
+        if (!this.checked) {
+          document.getElementById('check_select_all').checked = false;
+        }
+      });</script>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="source-definition">
+    <h3 id="page-source-definition"><code>source</code>引数の定義</h3>
+    <p>フックのいくつかはHandsontable（Core）の内側から、そしていくつかはプラグインから引き起こされます。このことは言及する価値があります。状況によっては、コールバックがトリガーされた原因（Handsontable自体によって行われたのか、外部コードやユーザアクションによってトリガーされたのか）を知っておくと便利です。
+      そのため、Handsontableは重大な問題として、誰がアクションを起こしたのかを知らせる引数として<code
+      >source</code>を提供しています。<code
+      >source</code>を使えばあなたはその情報に基づいて追加の条件を作成することができます。
+    </p>
+    <p>
+      <code>source</code>引数はオプションです。以下の値を取ります。
+      <ul>
+        <li><code>auto</code> - Handsontableによって引き起こされるアクションとHandsontableに適用された設定と直接関係している根拠。
+          例えば、<code>minSpareRows</code>が0よりも大きくなると<code>afterCreateRow</code>はこれで起動されます。</li>
+        <li><code>edit</code> - データが変更された後（たとえば、編集後や<code>setData*</code>メソッドの使用など）にHandsontableによってトリガーされるアクション。</li>
+        <li><code>loadData</code> - <code>loadData</code>メソッドまたは<code>updateSettings({data: myData})</code>メソッド（<code>data</code>プロパティを含む）が呼び出された後にHandsontableによってトリガされるアクション。</li>
+        <li><code>populateFromArray</code> - データの生成を要求した後にHandsontableによってトリガーされるアクション。</li>
+        <li><code>spliceCol</code> - 列データの結合が完了した後にHandsontableによってトリガーされるアクション。</li>
+        <li><code>spliceRow</code> - 行データの結合が完了した後にHandsontableによってトリガーされるアクション。</li>
+        <li><code>timeValidate</code> - 時間ヴァリデイターが呼び出された後（たとえば編集後）にHandsontableによってトリガーされるアクション。</li>
+        <li><code>dateValidate</code> - 日付ヴァリデイターが呼び出された後（たとえば編集後）にHandsontableによってトリガーされるアクション。</li>
+        <li><code>validateCells</code> - 検証プロセスがトリガーされた後にHandsontableによってトリガーされるアクション。</li>
+        <li><code>Autofill.fill</code> - オートフィルプラグインによってトリガーされたアクション。</li>
+        <li><code>Autofill.fill</code> - オートフィルプラグインによってトリガーされたアクション。</li>
+        <li><code>ContextMenu.clearColumns</code> - 「列をクリア」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>ContextMenu.columnLeft</code> - 「列を左に挿入」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>ContextMenu.columnRight</code> - 「列を右に挿入」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>ContextMenu.removeColumn</code> - 「列の削除」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>ContextMenu.removeRow</code> - 「行の削除」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>ContextMenu.rowAbove</code> - 「行を上に挿入」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>ContextMenu.rowBelow</code> - 「行を下に挿入」がクリックされた後にContextMenuプラグインによってトリガーされるアクション。</li>
+        <li><code>CopyPaste.paste</code> - 値が貼り付けられた後にCopyPasteプラグインによってトリガーされるアクション。</li>
+        <li><code>ObserveChanges.change</code> - 変更が検出された後にObserveChangesプラグインによって引き起こされるアクション。</li>
+        <li><code>UndoRedo.redo</code> - 変更がやり直された後にUndoRedoプラグインによって引き起こされるアクション。</li>
+        <li><code>UndoRedo.undo</code> - 変更が元に戻された後にUndoRedoプラグインによってトリガーされるアクション。</li>
+        <li><code>GantChart.loadData</code> - データがロードされた後にGantChartプラグインによって引き起こされるアクション。</li>
+        <li><code>ColumnSummary.set</code> - 計算が完了した後にColumnSummaryプラグインによってトリガーされるアクション。</li>
+        <li><code>ColumnSummary.reset</code> - 計算がリセットされた後にColumnSummaryプラグインによってトリガーされるアクション。</li>
+      </ul>
+    </p>
+    <p>
+      <code>source</code>パラメータで動作するコールバックのリスト：
+      <ul>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:afterChange">afterChange</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:afterCreateCol">afterCreateCol</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:afterCreateRow">afterCreateRow<</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:afterSetDataAtCell">afterSetDataAtCell</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:afterSetDataAtRowProp">afterSetDataAtRowProp</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:afterValidate">afterValidate</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:beforeChange">beforeChange</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:beforeChangeRender">beforeChangeRender</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:beforeCreateCol">beforeCreateCol</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:beforeCreateRow">beforeCreateRow</a></li>
+        <li><a href="/docs/<?js= version ?>/Hooks.html#event:beforeValidate">beforeValidate</a></li>
+      </ul>
+    </p>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="beforeKeyDown">
+    <h3 id="page-beforeKeyDown"><code>beforeKeyDown</code>のユースケース</h3>
+    <p>次のデモは、<code>beforeKeyDown</code>コールバックを使用していくつかのキー割り当てを変更します。</p>
+    <ul>
+      <li>セル上で<kbd
+        >DELETE</kbd>または<kbd>BACKSPACE</kbd
+        >を押すと、セルが削除され、列の中でその下にあるすべてのセルが上に移動し、カーソル（は動かず）の前の下のセルの値（現在のセル内）にしたいとき。</li>
+      <li>セル（値は変更しない）内で<kbd>ENTER</kbd
+        >キーを押すと、このセルの下にある列のすべてのセル（現在のセルを含む）が1行下に移動し、カーソル（は動かずに）の下に空白のセルが表示させたいとき。</li>
+    </ul>
+    <div data-jsfiddle="example2" class="head-gap">
+      <div id="example2" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <!--<button class="jsFiddleLink" data-runfiddle="example2">-->
+          <!--<i class="fa fa-jsfiddle"></i>-->
+          <!--Edit-->
+        <!--</button>-->
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+        var data = [
+            ['Tesla', 2017, 'black', 'black'],
+            ['Nissan', 2018, 'blue', 'blue'],
+            ['Chrysler', 2019, 'yellow', 'black'],
+            ['Volvo', 2020, 'yellow', 'gray']
+          ],
+          container = document.getElementById("example2"),
+          lastChange = null,
+          hot;
+
+        hot = new Handsontable(container, {
+          data: data,
+          colHeaders: true,
+          rowHeaders: true,
+          minSpareRows: 1,
+          beforeChange: function (changes, source) {
+            lastChange = changes;
+          }
+        });
+
+        hot.updateSettings({
+            beforeKeyDown: function (e) {
+              var selection = hot.getSelected();
+
+              // BACKSPACEかDELETE
+              if (e.keyCode === 8 || e.keyCode === 46) {
+                e.stopImmediatePropagation();
+                // セルのデータを削除し上に上げる
+                hot.spliceCol(selection[1], selection[0], 1);
+                e.preventDefault();
+              }
+              // ENTER
+              else if (e.keyCode === 13) {
+                // 後の変更が単一のセルに影響し、その値が変更されなかった場合
+                if (lastChange && lastChange.length === 1 && lastChange[0][2] == lastChange[0][3]) {
+                  e.stopImmediatePropagation();
+                  hot.spliceCol(selection[1], selection[0], 0, ''); // add new cell
+                  hot.selectCell(selection[0], selection[1]); // select new cell
+                }
+              }
+
+              lastChange = null;
+            }
+          }
+        );</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/using-callbacks.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
