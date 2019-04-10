@@ -1,0 +1,102 @@
+<div class="static-content">
+
+  <div class="index-list">
+
+    <ul>
+      <li><a href="#page-options">セルオプションの紹介</a></li>
+      <li><a href="#page-config">階層設定とは?</a></li>
+      <li><a href="#page-cascading">階層設定モデル</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="page-options">セルオプションの紹介</h3>
+    <p>Handsontableコンストラクターに渡された<code>cell</code
+      >配列を使用して、任意のコンストラクターまたは列のオプションを特定のセル（行と列の組み合わせ）に対して上書きすることができます。例：</p>
+    <pre><code>var hot = new Handsontable(document.getElementById('example'), {
+  cell: [
+    {row: 0, col: 0, readOnly: true}
+  ]
+});</code></pre>
+    <p>またはHandsontableコンストラクターにセル関数プロパティを使用する。例：</p>
+    <pre><code>var hot = new Handsontable(document.getElementById('example'), {
+  cells: function (row, col, prop) {
+    var cellProperties = {}
+
+    if (row === 0 &#x26;&#x26; col === 0) {
+      cellProperties.readOnly = true;
+    }
+
+    return cellProperties;
+  }
+})</code></pre>
+  </div>
+
+  <div class="example-container clearfix head-gap">
+    <h3 id="page-config">階層設定とは?</h3>
+    <p>Handsontable 0.9以降、階層設定を使用しています。
+      これは、テーブル全体の設定オプションとその列および特定のセルをすばやく提供する方法です。</p>
+    <p>次の例を見てください。</p>
+    <pre><code>var hot = new Handsontable(document.getElementById('example'), {
+  readOnly: true,
+  columns: [
+    {readOnly: false},
+    {},
+    {}
+  ],
+  cells: function (row, col, prop) {
+    var cellProperties = {}
+
+    if (row === 0 &#x26;&#x26; col === 0) {
+      cellProperties.readOnly = true;
+    }
+
+    return cellProperties;
+  }
+});</code></pre>
+    <p>上記の書き方では、最初の列のTDを除いて、すべてのTDが読み取り専用になります。
+      一方左上隅のTDを除いて最初の列のTDは編集可能で、左上隅のTDは読み取り専用になります。</p>
+  </div>
+
+  <div class="example-container clearfix head-gap">
+    <h3 id="page-cascading">階層設定モデル</h3>
+    <p>階層設定モデルはプロトタイプの継承に基づいています。
+      これは、jQueryの拡張を使用した以前のモデルと比べてはるかに高速でメモリ効率がよくなります。それを自分で見てください：
+      <a href="http://jsperf.com/extending-settings" target="_blank">http://jsperf.com/extending-settings</a></p>
+    <ul>
+      <li>
+        <p><strong>コンストラクター</strong></p>
+        <p>第1レベルを使用して提供される設定オプション</p>
+        <pre><code class="lang-javascript">new Handsontable(document.getElementById('example'), {
+  option: 'value'
+});</code></pre>
+        <p>と<code>updateSettings</code>メソッド</p>
+      </li>
+      <li>
+        <p><strong>列</strong></p>
+        <p>第2レベルのオブジェクトを使用して提供される設定オプション</p>
+        <pre><code class="lang-javascript">new Handsontable(document.getElementById('example'), {
+  columns: {
+    option: 'value'
+  }
+});</code></pre>
+      </li>
+      <li>
+        <p><strong>セル</strong></p>
+        <p>第2レベルを使用して提供される設定オプション</p>
+<pre><code class="lang-javascript">new Handsontable(document.getElementById('example'), {
+  cells: function(row, col, prop) {
+
+  }
+});</code></pre>
+      </li>
+    </ul>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/setting-options.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
