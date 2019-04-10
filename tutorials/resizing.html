@@ -1,0 +1,51 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>これらの機能を有効にするには、<code>manualColumnResize: true</code>および<code>manualRowResize: true</code>を使用します。</p>
+    <p>ドラッグ可能なサイズ変更ハンドルが表示されます：</p>
+    <ul>
+      <li>列見出しの右側</li>
+      <li>行見出しの下部</li>
+    </ul>
+    <p>サイズ変更ハンドルをダブルクリックすると、自動的に行または列のサイズが調整されます。</p>
+    <p>選択した行または列に対して同時にサイズ変更が機能します。</p>
+    <div data-jsfiddle="example1" class="scroll-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var
+          container = document.getElementById('example1'),
+          hot;
+
+        hot = new Handsontable(container, {
+          data: Handsontable.helper.createSpreadsheetData(200, 10),
+          rowHeaders: true,
+          colHeaders: true,
+          colWidths: [45, 100, 160, 60, 80, 80, 80],
+          rowHeights: [50, 40, 100],
+          manualColumnResize: true,
+          manualRowResize: true
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/resizing.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
