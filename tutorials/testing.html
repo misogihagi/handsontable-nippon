@@ -1,0 +1,63 @@
+<div class="static-content">
+
+  <div class="index-list">
+
+    <ul>
+      <li><a href="#testing-in-browser">ブラウザ上のテスト</a></li>
+      <li><a href="#testing-with-npm-cli">NPMによるテスト（CLI）</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3 id="testing-in-browser">ブラウザ上のテスト</h3>
+    <p>ブラウザでJasmineのテストを実行するには、次のページにアクセスしてください。</p>
+    <ul>
+      <li><strong>&#60;YOUR_LOCALHOST_ADDRESS&#62;/test/E2ERunner.html</strong>
+        - Handsontableのエンドツーエンドのテストスイート（Handsontable ProとCEの両方で利用可能）
+      </li>
+      <li><strong>&#60;YOUR_LOCALHOST_ADDRESS&#62;/test/MobileRunner.html</strong>
+        - Handsontableのモバイルテストスイート（Handsontable CEでのみ利用可能）
+      </li>
+      <li><strong>&#60;YOUR_LOCALHOST_ADDRESS&#62;/src/3rdparty/walkontable/test/SpecRunner.html</strong>
+        - Walkontableのテストスイート（Handsontable CEでのみ利用可能）
+      </li>
+    </ul>
+  </div>
+  <div class="example-container clearfix">
+    <h3 id="testing-with-npm-cli">NPMによるテスト（CLI）</h3>
+    <p>
+      コマンドラインで（Puppeteerを使用して）Jasmineのテストを実行するには、まず<code>npm install</code>を実行して必要なすべての依存関係をインストールします。
+      <code>NPM</code>が必要なモジュールの取り出しを終えたら、テストの準備は完了です。
+    </p>
+    <p>Handsontable Proで利用可能なコマンド：</p>
+    <ul>
+      <li><code>npm test</code> - すべてのテストケース（Handsontable PROとHandsontable CE）を実行します。</li>
+      <li><code>npm test:e2e</code> - Handsontable PROのエンドツーエンドテストのみを実行します。</li>
+      <li><code>npm test:unit</code> - Handsontable PROユニットテストのみを実行します。</li>
+      <li><code>npm test:handsontable</code> - Handsontable CEのエンドツーエンドテストのみを実行します。</li>
+      <li><code>npm run test:e2e --testPathPattern=selection</code> - ファイル名&quot;selection&quot;に一致するエンドツーエンドのテストとスイートのみを実行します。</li>
+      <li><code>npm run test:unit --testPathPattern=array</code> - ファイル名&quot;array&quot;に一致するエンドツーエンドのテストとスイートのみを実行します。</li>
+      <li><code>npm run test:e2e.dump</code> - <code>test/E2ERunner.html</code>ファイルを生成します。これはブラウザ環境（Chrome、PhantomJSなど）で実行され、テストに合格したかどうかを確認できます。</li>
+      <li><code>npm run test:e2e.dump -- --watch</code> - テストファイルで検出されたすべての変更について<code>E2ERunner.html</code>ファイルを生成します。デバッグの企てに役立ちます。</li>
+    </ul>
+    <p>Handsontable CEで利用可能なコマンド：</p>
+    <ul>
+      <li><code>npm test</code> - すべてのテストケース（Handsontable CEとWalkontable）を実行します。</li>
+      <li><code>npm test:e2e</code> - Handsontableのエンドツーエンドテストのみを実行します。</li>
+      <li><code>npm test:unit</code> - Handsontableのユニットテストのみを実行します。</li>
+      <li><code>npm test:walkontable</code> - runs only Walkontable tests.</li>
+      <li><code>npm run test:e2e --testPathPattern=selection</code> - ファイル名&quot;selection&quot;に一致するエンドツーエンドのテストとスイートのみを実行します。</li>
+      <li><code>npm run test:unit --testPathPattern=array</code> - ファイル名&quot;array&quot;に一致するエンドツーエンドのテストとスイートのみを実行します。</li>
+      <li><code>npm run test:e2e.dump</code> - <code>test/E2ERunner.html</code>ファイルを生成します。これはブラウザ環境（Chrome、PhantomJSなど）で実行され、テストに合格したかどうかを確認できます。</li>
+      <li><code>npm run test:e2e.dump -- --watch</code> - テストファイルで検出されたすべての変更について<code>E2ERunner.html</code>ファイルを生成します。 デバッグの企てに役立ちます。</li>
+      <li><code>npm run test:mobile.dump</code> - <code>MobileRunner.html</code>を生成します。これはモバイルデバイスのブラウザ環境で実行され、テストに合格したかどうかを確認します。</li>
+    </ul>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/testing.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
