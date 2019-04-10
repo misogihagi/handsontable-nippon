@@ -1,0 +1,240 @@
+<div class="static-content">
+
+  <div class="index-list">
+    <ul>
+      <li><a href="#page-basic">基本構成</a></li>
+      <li><a href="#page-selecting">範囲を選択する</a></li>
+      <li><a href="#page-getting">選択した範囲からデータを取得する</a></li>
+      <li><a href="#page-modifying">選択したセルを修正する</a></li>
+      <li><a href="#page-styling">選択範囲のスタイルを変更する</a></li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix" name="default">
+    <h3 id="page-basic">基本構成</h3>
+    <p>
+      この機能を使用すると、スプレッドシート全体で単一のセルまたはセル範囲を選択できます。選択したセルの座標を簡単に取得して、セルの内容を消去または変更することができます。
+      
+    </p>
+    <p>
+      この機能はHandsontable Coreの一部です。
+    </p>
+    <p>
+      Macでは<kbd>CMD</kbd>、Windowsでは<kbd>CTRL</kbd>を使用して、連続しないセル範囲を選択します。
+    </p>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="selecting">
+    <h3  id="page-selecting">範囲を選択する</h3>
+    <p>このプラグインを使用できるモードはいくつかあります。単一のセル、ある範囲の隣接セル、および複数の範囲の隣接しないセルを選択します。
+      
+    </p>
+    <p><code>selectionMode</code>がとりうる値：</p>
+    <ul>
+      <li><code>single</code> - 選択できる単一のセル</li>
+      <li><code>range</code> - 単一範囲内の選択できる複数のセル</li>
+      <li><code>multiple</code> - 連続しない複数の選択できるセルの範囲</li>
+    </ul>
+
+    <div data-jsfiddle="example1">
+
+      <div>
+        <select id="selectOption" style="width: auto; margin-top: 16px;">
+          <option>Single selection</option>
+          <option>Range selection</option>
+          <option selected="selected">Multiple selection</option>
+        </select>
+      </div>
+
+      <div id="example1" class="hot head-gap"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot2"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+var example1 = document.getElementById('example1');
+var selectOption = document.getElementById('selectOption');
+var settings1 = {
+  data: Handsontable.helper.createSpreadsheetData(10, 10),
+  width: 650,
+  height: 272,
+  colWidths: 100,
+  rowHeights: 23,
+  rowHeaders: true,
+  colHeaders: true,
+  selectionMode: 'multiple', // 'single'、'range'または'multiple'
+};
+var hot1 = new Handsontable(example1, settings1);
+
+selectOption.addEventListener('change', function(event) {
+  var value = event.target.value;
+  var first = value.split(' ')[0].toLowerCase();
+
+  hot1.updateSettings({
+    selectionMode: first
+  });
+});</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="getting">
+    <h3  id="page-getting">選択した範囲からデータを取得する</h3>
+    <p>
+      選択したセルを配列の配列として取得するには、<code>getSelected()</code>メソッドまたは<code
+      >getSelectedRange()</code>メソッドを使用してください。
+    </p>
+
+    <div data-jsfiddle="example2">
+      <div id="example2" class="hot head-gap"></div>
+      <textarea style="margin: 16px 0 7px; width: 350px; height: 87px;" id="output"></textarea>
+      <div>
+        <button class="intext-btn" id="getButton">Get data</button>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example2">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example2" data-instance="hot3"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example2">
+var example2 = document.getElementById('example2');
+var output = document.getElementById('output');
+var getButton = document.getElementById('getButton');
+var settings2 = {
+  data: Handsontable.helper.createSpreadsheetData(10, 10),
+  width: 650,
+  height: 272,
+  colWidths: 100,
+  rowHeights: 23,
+  rowHeaders: true,
+  colHeaders: true,
+  outsideClickDeselects: false,
+  selectionMode: 'multiple', // 'single'、'range'か'multiple'
+};
+var hot2 = new Handsontable(example2, settings2);
+
+getButton.addEventListener('click', function(event) {
+  var selected = hot2.getSelected();
+  var data = [];
+
+  for (var i = 0; i < selected.length; i += 1) {
+    var item = selected[i];
+
+    data.push(hot2.getData.apply(hot2, item));
+  }
+
+  output.value = JSON.stringify(data);
+});</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="modifying">
+    <h3  id="page-modifying">選択したセルを修正する</h3>
+    <p>
+      選択したセルを削除、書式設定、またはその他の方法で変更することができます。
+      たとえば、以下のデモを使用して、値を変更したり、選択したすべてのセルにCSSクラスを追加したりできます。
+    </p>
+
+    <div data-jsfiddle="example3">
+      <div id="example3" class="hot head-gap"></div>
+      <div id="buttons" style="margin-top: 10px;">
+        <button class="intext-btn" id="setButton">Set data</button>
+        <button class="intext-btn" id="addButton">Add class</button>
+      </div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example3">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example3" data-instance="hot4"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example3">
+var example3 = document.getElementById('example3');
+var buttons = document.getElementById('buttons');
+var settings3 = {
+  data: Handsontable.helper.createSpreadsheetData(10, 10),
+  width: 650,
+  height: 272,
+  colWidths: 100,
+  rowHeights: 23,
+  rowHeaders: true,
+  colHeaders: true,
+  outsideClickDeselects: false,
+  selectionMode: 'multiple', // 'single'、'range'か'multiple'
+};
+var hot3 = new Handsontable(example3, settings3);
+
+buttons.addEventListener('click', function(event) {
+  var selected = hot3.getSelected();
+  var target = event.target.id;
+
+  for (var index = 0; index < selected.length; index += 1) {
+    var item = selected[index];
+    var startRow = Math.min(item[0], item[2]);
+    var endRow = Math.max(item[0], item[2]);
+    var startCol = Math.min(item[1], item[3]);
+    var endCol = Math.max(item[1], item[3]);
+
+    for (var rowIndex = startRow; rowIndex <= endRow; rowIndex += 1) {
+      for (var columnIndex = startCol; columnIndex <= endCol; columnIndex += 1) {
+        if (target === 'setButton') {
+          hot3.setDataAtCell(rowIndex, columnIndex, 'data changed');
+        }
+
+        if (target === 'addButton') {
+          hot3.setCellMeta(rowIndex, columnIndex, 'className', 'c-deeporange');
+        }
+      }
+    }
+  }
+
+  hot3.render();
+});</script>
+    </div>
+  </div>
+
+  <div class="example-container clearfix head-gap" name="styling">
+    <h3  id="page-styling">選択範囲のスタイルを変更する</h3>
+    <p>背景色はCSSスタイルを使って簡単に変更できます。メインの水色の背景色は、<code
+      >.area</code>クラスで定義されています。
+    </p>
+    <p>隣接していない選択の場合、各レベルを少し暗くする複数のクラスがあります。
+      これらのクラスは、<code>area-1</code>、<code>area-2</code>などと呼ばれます。
+    </p>
+    <p>
+      残念ながら、選択範囲の枠線の色を変更する簡単な方法はありません。
+    </p>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/selecting-ranges.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
