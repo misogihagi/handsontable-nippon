@@ -1,0 +1,63 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <p>
+      グリッドをスクロール可能にするには、Handsontableを保持しているコンテナに一定の幅と高さを設定し、コンテナのスタイルシートで<code
+      >overflow</code>プロパティを<code>hidden</code
+      >に設定します。その後、テーブルに十分な行または列が含まれていれば、それをスクロールできます。
+    </p>
+    <p>
+      Handsontableはテーブルの見える部分と固定量の行と列だけを表示します。この動作を定義する<code
+      >viewportColumnRenderingOffset</code>および<code>viewportRowRenderingOffset</code
+      >設定オプションを試すことで、アプリのパフォーマンスを向上させることができます。
+    </p>
+    <p>
+      全体的なスクロールパフォーマンスは、主に次の4つの要素によって決まります。
+    </p>
+    <ul>
+      <li>セルの量</li>
+      <li>カスタムレンダラーの量</li>
+      <li>使用中の機能（オプション）の量</li>
+      <li>エンドユーザーのマシンとブラウザのパフォーマンス</li>
+    </ul>
+    <p>
+      以下のこのデモは、100万セル（1000 x 1000）のテーブルを示しています。
+    </p>
+
+    <div data-jsfiddle="example1" class="scroll-container">
+      <div id="example1" class="hot"></div>
+    </div>
+
+    <div class="codeLayout">
+      <div class="buttons">
+        <button class="jsFiddleLink" data-runfiddle="example1">
+          <i class="fa fa-jsfiddle"></i>
+          Edit
+        </button>
+        <button class="dump" name="dump" data-dump="#example1" data-instance="hot"
+                title="Print current data source to console">
+          <i class="fa fa-terminal"></i>
+          Dump data to console
+        </button>
+      </div>
+      <script data-jsfiddle="example1">
+        var example = document.getElementById('example1');
+        var hot1 = new Handsontable(example, {
+          data: Handsontable.helper.createSpreadsheetData(1000, 1000),
+          width: 584,
+          height: 320,
+          colWidths: 100,
+          rowHeights: 23,
+          rowHeaders: true,
+          colHeaders: true
+        });</script>
+    </div>
+  </div>
+  <p class="gap-top-xsmall">
+    <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/scrolling.html" class="edit-doc" target="_blank">
+      このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+    </a>
+  </p>
+</div>
