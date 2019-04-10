@@ -1,0 +1,1321 @@
+<div class="static-content">
+
+  <div class="example-container clearfix">
+    <h3>6.2.2</h3>
+    <p>2018年12月19日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li>マウスイベントとタッチイベントの両方をサポートしているデバイスでマウス選択を使用できなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5669" target="_blank">#5669</a>)</li>
+      <li>行を削除した後にセルごとの有効情報がシフトされなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5674" target="_blank">#5674</a>)</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.2.1</h3>
+    <p>2018年12月12日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li><code>babel</code>を<code>7.x</code>に更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5398" target="_blank">#5398</a>)</li>
+      <li>新しい大きなデータセットで<code>updateSettings</code>または<code>loadData</code>を呼び出すとエラーが発生するというバグが修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5617" target="_blank">#5617</a>)</li>
+      <li>Androidデバイスのすべてのセル選択でモバイルキーボードが開くというバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5586" target="_blank">#5586</a>)</li>
+      <li>場合によって日付の検証が正しく機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5563" target="_blank">#5563</a>)</li>
+      <li>行を削除するときの<code>updateSettings</code>のパフォーマンスが低いという問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5561" target="_blank">#5561</a>)</li>
+      <li>貼り付けたデータでの不適切な`キャリッジリターン`シンボルの使用に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5477" target="_blank">#5477</a>)</li>
+      <li>typescript定義ファイルに欠けているメソッド、オプション、およびフックを追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5639" target="_blank">#5639</a>, <a href="https://github.com/handsontable/handsontable/issues/5590" target="_blank">#5590</a>)</li>
+      <li>CSSプロパティの割り当てを<code>0</code>から<code>'0'</code>に修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5291" target="_blank">#5291</a>)</li>
+      <li>オブジェクトベースのデータセットで作業しているときに、<code>autofill</code>機能が<code>mergeCells</code>プラグインで正しく機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5022" target="_blank">#5022</a>)</li>
+      <li><code>observeChanges</code>プラグインでメモリリークが発生する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4400" target="_blank">#4400</a>)</li>
+      <li>数値エディタで指数表記がサポートされていない問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/#2030" target="_blank">#2030</a>)</li>
+      <li><code>enterBeginsEditing</code>を<code>false</code>に設定すると、<code>ENTER</code>キーを使用して<code>checkbox</code>型セルの状態を変更できるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/#4162" target="_blank">#4162</a>)</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.2.0</h3>
+    <p>2018年11月14日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li>朝鮮語のサポートを追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5356" target="_blank">#5356</a>)</li>
+      <li>ラトビア語のサポートを追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5186" target="_blank">#5186</a>)</li>
+      <li><code>ColumnSorting</code>と<code>MultiColumnSorting</code>TypeScript定義ファイルを更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5545" target="_blank">#5545</a>, <a href="https://github.com/handsontable/handsontable/issues/5445" target="_blank">#5445</a>)</li>
+      <li><code>beforeRowMove</code>と<code>beforeColumnMove</code>のTypeScript定義を更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5416" target="_blank">#5416</a>)</li>
+      <li>選択とコンテキストメニューに関連するメソッドとフックに関するTypeScript定義を更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5307" target="_blank">#5307</a>)</li>
+      <li><code>0</code>をコピーするときにCopy/Pasteプラグインが正しく動作しない問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5544" target="_blank">#5544</a>)</li>
+      <li>不適切な<code>autoRowSize</code>計算に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5527" target="_blank">#5527</a>)</li>
+      <li>モバイル上のすべての選択でキーボードが開く問題を修正しました。(<a href="https://github.com/handsontable/handsontable/issues/5479" target="_blank">#5479</a>)</li>
+      <li><code>columnSorting</code>プラグインを<code>multiColumnSorting</code>プラグインで再利用できるようにリファクタリングしました。 (<a href="https://github.com/handsontable/handsontable/issues/5457" target="_blank">#5457</a>)</li>
+      <li><code>columnSorting</code>プラグインを使用するように<code>multiColumnSorting</code>プラグインをリファクタリングしました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/148" target="_blank">#148</a>)</li>
+      <li>新しい行を追加すると最初の行からデータが消去されるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/5446" target="_blank">#5446</a>)</li>
+      <li>日付型セルで`allowInvalid: false`オプションを使用するとテーブルが壊れるバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5419" target="_blank">#5419</a>)</li>
+      <li>列ヘッダー幅が正しく計算されない問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5359" target="_blank">#5359</a>)</li>
+      <li><code>hot-builder</code>を使ってHandsontable <code>3.0.0+</code>をビルドする際の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5287" target="_blank">#5287</a>)</li>
+      <li>列ヘッダーのコンテキストメニューを開くと列がソートされるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/4676" target="_blank">#4676</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/176" target="_blank">#176</a>)</li>
+      <li><code>merge</code>パッケージのセキュリティ問題を解決するためにJestを更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5564" target="_blank">#5564</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/179" target="_blank">#179</a>)</li>
+      <li>CIが頻繁に失敗する原因となっていたいくつかの不安定なテストを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5562" target="_blank">#5562</a>)</li>
+      <li>e2eテストを実行するときの<code>ERR_ADDRESS_INVALID</code>エラーを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5558" target="_blank">#5558</a>)</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.1.1</h3>
+    <p>2018年10月23日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li>コンテキストメニューの<code>copy</code>と<code>cut</code>のオプションが機能しなかったバグを修正しました。(<a href="https://github.com/handsontable/handsontable/issues/5535" target="_blank">#5535</a>)</li>
+      <li><code>package.json</code>の依存関係セクションから不要な<code>yarn</code>エントリを削除しました。</li>
+    </ul>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.1.0</h3>
+    <p>2018年10月23日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li><code>fixedRowsBottom</code>機能をHandsontable CEに移動しました。 (<a href="https://github.com/handsontable/handsontable/issues/5404" target="_blank">#5404</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/146" target="_blank">#146</a>)</li>
+      <li><i>Copy/Paste</i>プラグインに新しい機能を導入しました。バージョン<code>6.1.0</code>から、<code>text/plain</code>と共に<code>text/html</code>データ型をサポートします。この変更により、ユーザーがHandsontableからHTMLテーブルとしてデータをコピーできるようになることとは別に、プラグインに関連する複数のバグを修正することができるようになりました。
+        <ul>
+          <li>最初の行/列が<code>readOnly</code>として宣言されているとコピーできないというバグを修正しました。 (handsontable/handsontable#5392)</li>
+          <li> セルの以前の値がExcelから貼り付けられた場合に、セルエディタに不要な空行が含まれていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5330" target="_blank">#5330</a>)</li>
+          <li> 行ヘッダーをクリックした後に行からデータをコピーして貼り付ける際の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5300" target="_blank">#5300</a>)</li>
+          <li>Excel（バージョン<code>16</code>以下）から複数行を貼り付けることが正しく機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5277" target="_blank">#5277</a>)</li>
+          <li>行全体をExcelにコピーすると正しく動作しない問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5176" target="_blank">#5176</a>)</li>
+          <li>ExcelからHandsontableへのデータの貼り付けがSafariで機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5121" target="_blank">#5121</a>)</li>
+          <li> テーブルにデータを貼り付けた後の不適切なセル選択に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4849" target="_blank">#4849</a>)</li>
+          <li><code>afterSelectionEnd</code>コールバック内で<code>updateSettings</code>を使用した後にHandsontableがクラッシュする問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4837" target="_blank">#4837</a>)</li>
+          <li>二重引用符（ <code>""</code>）をテーブルに貼り付ける際の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4790" target="_blank">#4790</a>, <a href="https://github.com/handsontable/handsontable/issues/4003" target="_blank">#4003</a>)</li>
+          <li>空のセルをコピーして貼り付けることが正しく機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4725" target="_blank">#4725</a>)</li>
+          <li>IEでデータをコピーしてChrome/Firefoxに貼り付ける際の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4717" target="_blank">#4717</a>)</li>
+          <li>列全体のコピーと貼り付けが予想どおりに機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4456" target="_blank">#4456</a>)</li>
+          <li>複数行のコンテンツを単一のセルに貼り付ける際の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4308" target="_blank">#4308</a>)</li>
+        </ul></li>
+
+      <li>言語セットにイタリア語の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5407" target="_blank">#5407</a>)</li>
+      <li>言語セットにオランダ語の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5156" target="_blank">#5156</a>)</li>
+      <li>ヴューポートの外側のセルが編集されているときにセルエディターを開こうとするとエラーが発生するというバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5119" target="_blank">#5119</a>)</li>
+      <li><code>preventOverflow</code>オプションが有効になっているとセルエディターが正しくレンダリングされなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5073" target="_blank">#5073</a>)</li>
+      <li>セルをクリックするとテーブルコンテナーがスクロールしてしまうバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4656" target="_blank">#4656</a>)</li>
+      <li>行をソートおよび削除した後に<code>Undo</code>機能を使用しても正しく動作しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/3188" target="_blank">#3188</a>)</li>
+      <li><code>Filters</code>ドロップダウンメニューの内容が水平方向にスクロール可能であったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/151" target="_blank">#151</a>)</li>
+      <li>複数列の並べ替えが<code>Filters</code>プラグインで機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/149" target="_blank">#149</a>)</li>
+      <li>issueテンプレートのデフォルトのjsfiddleリンクでCDNを使用するように切り替えました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/154" target="_blank">#154</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/6.1.0" target="_blank">6.1.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.0.1</h3>
+    <p>2018年10月2日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li>新しい列を挿入するとエラーになるバグを修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/140" target="_blank">#140</a>, <a href="https://github.com/handsontable/handsontable/issues/5422" target="_blank">#5422</a>)</li>
+      <li>連続していない選択が複数のシナリオで適切に機能しなかった問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5427" target="_blank">#5427</a>)</li>
+      <li>新しく編集されたセルが以前に編集されたセルの背景を持っていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5402" target="_blank">#5402</a>)</li>
+      <li>テーブルの左上隅をクリックした後にエラーが発生していたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/144" target="_blank">#144</a>, <a href="https://github.com/handsontable/handsontable/issues/5434" target="_blank">#5434</a>)</li>
+      <li>新しい行を追加すると最初の行のデータが消去されるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/142" target="_blank">#142</a>, <a href="https://github.com/handsontable/handsontable/issues/5431" target="_blank">#5431</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/6.0.1" target="_blank">6.0.1</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>6.0.0</h3>
+    <p>2018年9月27日にリリース</p>
+    <p>このリリースには、<code>ColumnSorting</code>プラグインに対する変更のみが含まれています。変更に関する詳細な情報はプルリクエスト<a href="https://github.com/handsontable/handsontable/issues/5411" target="_blank">#5411</a>の説明と<a href="https://handsontable.com/docs/6.0.0/demo-sorting.html" target="_blank">私たちのドキュメント</a>にあります。</p>
+    <strong>大きな変更</strong>
+    <ul>
+      <li>Handsontable Pro用の新しい<code>MultiColumnSorting</code>プラグインとシームレスに連携するように、<code>ColumnSorting</code>プラグインの一部をリファクタリングして書き直しました。これにより、以前のバージョンのプラグインが抱えていた複数の問題を解決しました。<br>また、後方互換性のない変更がいくつか導入されました。
+        <ul>
+          <li>プラグインの設定項目（<code>sortIndicator</code>、<code>sortEmptyCells</code>、<code>sortFunction</code>など）は、プラグインの設定範囲に移動されました。</li>
+          <li>プラグインの初期化設定は、プラグイン設定の<code>initialConfig</code>プロパティに格納されています。</li>
+          <li><code>sortFunction</code>設定項目は<code>compareFunctionFactory</code>に変わり、比較関数を返すファクトリに変換されました（そして前述のようにプラグインの設定範囲に移動されました）。</li>
+          <li><code>sortIndicator</code>設定項目は<code>indicator</code>に名前が変更されました（そして前述のようにプラグインの設定範囲に移動されました）。</li>
+          <li><div>比較関数の構造が変更されました
+            <code style="white-space: pre;">
+              // これまで：
+              function numericSort(sortOrder, columnMeta) {
+              return function ([, value], [, nextValue]) {
+
+              // これから：
+              function numericSort(sortOrder, columnMeta) {
+              return function (value, nextValue) {
+            </code>
+          </div></li>
+          <li><div><code>sort</code>メソッドの引数が再編成されたため、ソート設定をオブジェクトとして受け入れます。
+            <code style="white-space: pre;">
+              hot.getPlugin('columnSorting').sort({ column: 0, sortOrder: 'asc' });
+            </code>
+          </div></li>
+          <li>いくつかのパブリックメソッドが書き直され、名前が変更され、プライベートメソッドに設定されました。
+            <ul>
+              <li><code>getNextOrderState</code></li>
+              <li><code>loadSortingState</code></li>
+              <li><code>saveSortingState</code></li>
+            </ul></li>
+          <li><code>beforeColumnSort</code>および<code>afterColumnSort</code>フックは、異なる一連の引数を受け取ります。 詳しくは、<a href="https://docs.handsontable.com/6.0.0/Hooks.html#event:beforeColumnSort" target="_blank">私たちの資料</a>を確認してください。</li>
+          <li><code>columnSorting</code>を定義して<code>updateSettings</code>メソッドを呼び出すと、新しいソート構成が設定されます。</li>
+        </ul>
+      </li>
+    </ul>
+    <strong>変更点</strong>
+    <p>上記の重大な変更とは別に、このリリースではソートプラグインにいくつかの追加の変更が加えられています。</p>
+    <ul>
+      <li>新しいプラグイン - <code>MultiColumnSorting</code>を追加しました。テーブルをソートするときに複数の列を使用できます。<br>CEの<code>ColumnSorting</code>と同様に機能しますが、複数の新しい機能が導入されています。この新機能に関する詳細な情報は<a href="https://docs.handsontable.com/6.0.0/demo-sorting.html" target="_blank">資料</a>とプルリクエスト<a href="https://github.com/handsontable/handsontable-pro/issues/101" target="_blank">#101</a>の説明にあります。</li>
+      <li>現在の並び変える時の標識を矢印の形に置き換えました。</li>
+      <li>ソート標識はデフォルトで表示されます。</li>
+      <li><code>headerAction</code>オプションを使用して、ヘッダーをクリックしてソートの動作を無効にする機能を追加しました。</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/6.0.0" target="_blank">6.0.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>5.0.2</h3>
+    <p>2018年9月12日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li>エディターのフォーカスがウィンドウをスクロールさせていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5220" target="_blank">#5220</a>)</li>
+      <li>塗りつぶしハンドルをダブルクリックするとセルが下ではなく左に向かっていっぱいになる問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5023" target="_blank">#5023</a>)</li>
+      <li>並べ替えて<code>setDataAtRowProp</code>メソッドを使用した後にセルを編集すると不適切な値が表示されるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/4289" target="_blank">#4289</a>)</li>
+      <li>別のHandsontableインスタンスで同様のセルを使用した後に<code>autocomplete</code>型のセルを編集する際の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/3374" target="_blank">#3374</a>)</li>
+      <li><code>AutoColumnSize</code>typescript定義ファイルのタイプミスを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5364" target="_blank">#5364</a>)</li>
+      <li>レンダリングする必要がある行数/列数の計算に関するバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5365" target="_blank">#5365</a>)</li>
+      <li>以前に折りたたまれた列を展開した後に列ヘッダーが正しくレンダリングされないというバグを修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/105" target="_blank">#105</a>)</li>
+      <li>ESLintの警告修正タスク(<a href="https://github.com/handsontable/handsontable-pro/issues/107" target="_blank">#107</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/137" target="_blank">#137</a>)を終了させました。これには以下の問題の解決を含みます。
+        <ul>
+          <li><code>arrow-parens</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/108" target="_blank">#108</a>)</li>
+          <li><code>eqeqeq</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/114" target="_blank">#114</a>)</li>
+          <li><code>no-extra-semi</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/115" target="_blank">#115</a>)</li>
+          <li><code>newline-per-chained-call</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/112" target="_blank">#112</a>)</li>
+          <li><code>linebreak-style</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/110" target="_blank">#110</a>)</li>
+          <li><code>no-constant-condition</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/113" target="_blank">#113</a>)</li>
+          <li><code>no-unused-vars</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/116" target="_blank">#116</a>)</li>
+          <li><code>prefer-template</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/119" target="_blank">#119</a>)</li>
+          <li><code>consistent-return</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/109" target="_blank">#109</a>)</li>
+          <li><code>object-curly-spacing</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/118" target="_blank">#118</a>)</li>
+          <li><code>prefer-arrow-callback</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/117" target="_blank">#117</a>)</li>
+          <li><code>max-depth</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/111" target="_blank">#111</a>)</li>
+          <li><code>prefer-spread</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/122" target="_blank">#122</a>)</li>
+          <li><code>prefer-const</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/125" target="_blank">#125</a>)</li>
+          <li><code>no-unneeded-ternary</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/126" target="_blank">#126</a>)</li>
+          <li><code>object-shorthand</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/121" target="_blank">#121</a>)</li>
+          <li><code>space-before-function-paren</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/124" target="_blank">#124</a>)</li>
+          <li><code>prefer-rest-params</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/127" target="_blank">#127</a>)</li>
+          <li><code>no-plusplus</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/123" target="_blank">#123</a>)</li>
+          <li><code>no-eq-null</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/120" target="_blank">#120</a>)</li>
+          <li><code>one-var</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/128" target="_blank">#128</a>)</li>
+          <li><code>no-var</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/129" target="_blank">#129</a>)</li>
+          <li><code>no-undef</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/130" target="_blank">#130</a>)</li>
+          <li><code>vars-on-top</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/131" target="_blank">#131</a>)</li>
+          <li><code>no-use-before-define</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/132" target="_blank">#132</a>)</li>
+          <li><code>no-restricted-properties</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/133" target="_blank">#133</a>)</li>
+          <li><code>no-restricted-syntax</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/134" target="_blank">#134</a>)</li>
+          <li><code>no-param-reassign</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/136" target="_blank">#136</a>)</li>
+          <li><code>no-shadow</code> (<a href="https://github.com/handsontable/handsontable-pro/issues/135" target="_blank">#135</a>)</li>
+        </ul>
+      </li>
+
+    </ul>
+
+    <p>対応するHandsontableのバージョンは<a href="https://github.com/handsontable/handsontable/releases/5.0.2" target="_blank">5.0.2</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>5.0.1</h3>
+    <p>2018年8月16日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li><code>Cmd + F</code> / <code>Ctrl + F</code>キーの組み合わせで複数選択モードが有効になっていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5302" target="_blank">#5302</a>)</li>
+      <li>typescript定義ファイルに<code>getRegistered</code>メソッドを追加しました。  (<a href="https://github.com/handsontable/handsontable/issues/5262" target="_blank">#5262</a>)</li>
+      <li><code>setBorders</code>メソッドを介してカスタムボーダーを非表示にすることができなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5240" target="_blank">#5240</a>)</li>
+      <li><code>handsontable</code>型のセルを複数回開くことに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5195" target="_blank">#5195</a>)</li>
+      <li>特定の状況で行の高さが矛盾する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4888" target="_blank">#4888</a>)</li>
+      <li>オートフィルの境界が選択中の境界と重なるバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4810" target="_blank">#4810</a>)</li>
+      <li>行ヘッダーが選択されているときに下方向キーを押してもテーブルがスクロールされないというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/3560" target="_blank">#3560</a>)</li>
+      <li>セル内チェックボックスを選択した後での列の計算に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/3437" target="_blank">#3437</a>)</li>
+      <li>typescriptに関する<code>README.md</code>エントリを更新しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/29" target="_blank">#29</a>)</li>
+      <li><code>filters.js</code>の不適切なリンクを変更しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/103" target="_blank">#103</a>)</li>
+      <li><code>fixedRowsBottom</code>の同期の問題に対するテストを追加しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/96" target="_blank">#96</a>)</li>
+      <li>テーブル下部の固定行が同期しなくなるバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/5163" target="_blank">#5163</a>)</li>
+    </ul>
+
+    <p>対応するHandsontableのバージョンは<a href="https://github.com/handsontable/handsontable/releases/5.0.1" target="_blank">5.0.1</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>5.0.0</h3>
+    <p>2018年7月11日にリリース</p>
+    <strong>大きな変更点</strong>
+    <ul>
+      <li>Custom Bordersプラグインをリファクタリングしました。APIメソッドが変わりました - <code>getBorders</code>、<code>setBorders</code>、<code>clearBorders</code>などの新しいメソッドが追加しました。オブジェクトの初期化設定は変更されておらず、以前のリリースと互換性があります。 (<a href="https://github.com/handsontable/handsontable/issues/5017" target="_blank">#5017</a>)</li>
+      <li>Handsontableの一部の色、カーソルスタイル、およびサイズを改善しました。 (<a href="https://github.com/handsontable/handsontable/issues/5170" target="_blank">#5170</a>)</li>
+    </ul>
+    <br>
+    <strong>変更点</strong>
+    <ul>
+      <li>セルに対して<code>contextmenu</code>イベントが呼び出されたときに<code>afterSelectionEnd</code>フックが発生しないという問題を修正しました。この修正により、2つの新しいフック（<code>afterOnCellContextMenu</code>、<code>beforeOnCellContextMenu</code>）が追加されました。 (<a href="https://github.com/handsontable/handsontable/issues/5201" target="_blank">#5201</a>, <a href="https://github.com/handsontable/handsontable/issues/5232" target="_blank">#5232</a>)</li>
+      <li>Fixed an issue related with minifying CSS files where the  property was incorrectly modified by <code>OptimizeCssAssetsPlugin</code>プラグインによって<code>z-index</code>プロパティが誤って変更されるというCSSファイルの縮小に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/87" target="_blank">#87</a>)</li>
+      <li><code>ColumnSorting</code>プラグインのコードの可読性を改善しました。 (<a href="https://github.com/handsontable/handsontable/issues/5228" target="_blank">#5228</a>) </li>
+      <li>列を移動した後、ソート標識が更新されなかった問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/3900" target="_blank">#3900</a>)</li>
+      <li>テーブルをCSVファイルにエクスポートするときにバイトオーダーマーク（BOM）を無効にする機能が追加しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/86" target="_blank">#86</a>)</li>
+    </ul>
+
+    <p>対応するHandsontableのバージョンは<a href="https://github.com/handsontable/handsontable/releases/5.0.0" target="_blank">5.0.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>4.0.0</h3>
+    <p>2018年6月13日にリリース</p>
+    <strong>大きな変更点</strong>
+    <ul>
+      <li>次の設定オプションのデフォルト値を変更しました。 (<a href="https://github.com/handsontable/handsontable/issues/5135" target="_blank">#5135</a>)
+        <ul>
+          <li><code>autoInsertRow</code> (これまで: <code>true</code>, これから: <code>false</code>)</li>
+          <li><code>autoWrapCol</code>  (これまで: <code>false</code>, これから: <code>true</code>)</li>
+          <li><code>autoWrapRow</code>   (これまで: <code>false</code>, これから: <code>true</code>)</li>
+        </ul>
+      </li>
+      <li>番号の依存関係を処理する<i>Numbro</i>を最新バージョンに更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5081" target="_blank">#5081</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/77" target="_blank">#77</a>)<br>
+        実装を正しく機能させるためには、<i>Numbro 2.x</i>互換の言語ファイルを更新する必要があります。<br><br>
+        詳細は、<a href="http://numbrojs.com/languages.html" target="_blank">Numbroのドキュメント</a>をご覧ください。
+      </li>
+    </ul>
+    <br>
+    <strong>変更点</strong>
+    <ul>
+      <li>言語設定に関するAPIドキュメントを更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/5099" target="_blank">#5099</a>)</li>
+      <li>Handsontableにノルウェー語の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4694" target="_blank">#4694</a>)</li>
+      <li>IME APIで、不要な最初の文字がエディタに残っていた問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4662" target="_blank">#4662</a>)</li>
+      <li>2つのエディターをアクティブにすることによって<code>allowInvalid</code>オプションを解除する方法があったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4551" target="_blank">#4551</a>)</li>
+      <li>列をソートした後の不完全なテーブルレンダリングに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4062" target="_blank">#4062</a>)</li>
+      <li>テーブル内のチェックボックスを使用した後のフィルタリングメニューの状態に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4780" target="_blank">#4780</a>, <a href="https://github.com/handsontable/handsontable-pro/issues/72" target="_blank">#72</a>)</li>
+    </ul>
+
+    <p>対応するHandsontableのバージョンは<a href="https://github.com/handsontable/handsontable/releases/4.0.0" target="_blank">4.0.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>3.0.0</h3>
+    <p>2018年5月16日にリリース</p>
+    <strong>大きな変更点</strong>
+    <p>The Column Sortingプラグインはリファクタリングの最初の段階を終えました。 (<a href="https://github.com/handsontable/handsontable/issues/5014" target="_blank">#5014</a>) これにより、次のことが大きく変わりました。</p>
+    <ul>
+      <li>メインインスタンスの<code>sort</code>機能をプラグインに移動しました</li>
+      <li><code>sortIndex</code>プロパティがHandsontableのメインインスタンスから削除しました</li>
+      <li><code>sortColumn</code>プロパティおよび<code>sortOrder</code>プロパティをメインインスタンスからプラグインに移動しました</li>
+      <li><code>sortOrder</code>プロパティは、真偽値（<code>true</code>、<code>false</code>、<code>undefined</code>）の代わりに文字列値（<code>asc</code>、<code>desc</code>、<code>none</code>）を受け入れるようになりました</li>
+    </ul>
+    <p>Gantt Chartプラグインは、そのAPIが表示していた他の年に、年に関連するデータを生成できるように、そのAPIをリファクタリングしました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/67" target="_blank">#67</a>) その過程で、あまり使われていなかったAPIメソッドのいくつかは非公開メソッドになりました。 APIの現在の状態についてはドキュメントを参照してください。</p>
+
+    <strong>変更点</strong>
+    <ul>
+      <li>Searchプラグインに欠けている型定義を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5039" target="_blank">#5039</a>)</li>
+      <li>中国語（CN、TW）の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/5007" target="_blank">#5007</a>, <a href="https://github.com/handsontable/handsontable/issues/4923" target="_blank">#4923</a>)</li>
+      <li>フランス語の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4777" target="_blank">#4777</a>)</li>
+      <li>スペイン語（MX）の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4900" target="_blank">#4900</a>)</li>
+      <li><code>updateSettings</code>メソッドの使用時にエラーが発生していた問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4988" target="_blank">#4988</a>)</li>
+      <li><code>minSpareCols</code>が<code>1</code>に設定されているときに<code>TAB</code>キーを使用するとデータが削除される問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4986" target="_blank">#4986</a>)</li>
+      <li>テーブルがページの下部で初期化されたときに、無限のフックループが作成されていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4961" target="_blank">#4961</a>)</li>
+      <li>CIの安定性に関するいくつかの問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4925" target="_blank">#4925</a>)</li>
+      <li>フィルタリングドロップダウンから不要な余白を削除しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/69" target="_blank">#69</a>)</li>
+      <li>Gantt Chartプラグインにオプションを追加しました。これにより、月の初めや終わりに不完全な週をスキップすることができます。 (<a href="https://github.com/handsontable/handsontable-pro/issues/65" target="_blank">#65</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/3.0.0" target="_blank">3.0.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>2.0.0</h3>
+    <p>2018年4月11日にリリース</p>
+    <strong>大きな変更点</strong>
+    <ul>
+      <li>SearchおよびCustom BordersプラグインをES6に書き換えました。 (<a href="https://github.com/handsontable/handsontable/issues/4892" target="_blank">#4892</a>, <a href="https://github.com/handsontable/handsontable/issues/4621" target="_blank">#4621</a>)</li>
+    </ul>
+    <p>
+      これらのプラグインは、メインのHandsontableインスタンスから利用できなくなります。それらは<code>hot.getPlugin('search')</code>や<code>hot.getPlugin('customBorders')</code>といった具合にして他のプラグインと同じようにアクセス可能です。
+    </p>
+
+    <strong>変更点</strong>
+    <ul>
+      <li>Context Menuプラグイン内でトリガーされる<code>beforeContextMenuShow</code>フックを追加しました。  (<a href="https://github.com/handsontable/handsontable/issues/4973" target="_blank">#4973</a>)</li>
+      <li>モバイルデバイスの選択ハンドルが消える問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4943" target="_blank">#4943</a>, <a href="https://github.com/handsontable/handsontable/issues/4936" target="_blank">#4936</a>)</li>
+      <li>携帯端末でセル内のリンクをクリックできない問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4570" target="_blank">#4570</a>)</li>
+      <li>フィルタリングが適用されているときに並びかえが機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4170" target="_blank">#4170</a>)</li>
+      <li>複数の列のヘッダーレベルが宣言されている場合に列全体を選択する問題を修正しました。Handsontable ProのNested Headersプラグインでよく見られます。 (<a href="https://github.com/handsontable/handsontable/issues/4951" target="_blank">#4951</a>)</li>
+      <li>コンテキストメニューが内容に対して狭すぎる問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4933" target="_blank">#4933</a>)</li>
+      <li>塗りつぶしハンドルの外観を変更しました。 (<a href="https://github.com/handsontable/handsontable/issues/4921" target="_blank">#4921</a>)</li>
+      <li>テーブルの一番下にある結合セルで<kbd>ENTER</kbd>キーを複数回押すと正しく機能しなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4915" target="_blank">#4915</a>)</li>
+      <li>列全体を選択するときの、ヘッダーの強調表示に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4875" target="_blank">#4875</a>)</li>
+      <li>結合セルの最初の行を削除するとエラーが発生することがあるバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/3473" target="_blank">#3473</a>)</li>
+      <li>ロシア語の翻訳を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4854" target="_blank">#4854</a>)</li>
+      <li>Handsontableエディターのヘッダーがテーブルセルと重なっていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4787" target="_blank">#4787</a>)</li>
+      <li><code>afterRowMove</code>フックが不適切なパラメータを返していた問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4444" target="_blank">#4444</a>)</li>
+      <li><code>afterCreateCol</code>フックが誤った<code>amount</code>パラメータを返していたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4210" target="_blank">#4210</a>)</li>
+      <li>配置および元に戻す/やり直し機能に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/3319" target="_blank">#3319</a>)</li>
+      <li>選択したセルと隣接していない選択を含む結合セル全体で、結合セルが強調表示されないという問題が修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/4860" target="_blank">#4860</a>)</li>
+      <li>issueテンプレートのjsfiddleリンクに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4983" target="_blank">#4983</a>)</li>
+      <li>プルリクエストテンプレートを更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/4957" target="_blank">#4957</a>)</li>
+      <li>IEの互換性のため<code>console.log</code>、<code>console.warn</code>などのためのヘルパーを追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4924" target="_blank">#4924</a>)</li>
+      <li>アップル製品の高解像度ディスプレイ上のChromeでテーブルをスクロールすると空のスペースが作成される問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4498" target="_blank">#4498</a>)</li>
+      <li>the dropdown menuプラグイン用に<code>beforeDropdownMenuShow</code>フックを追加しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/56" target="_blank">#56</a>)</li>
+      <li>ドロップダウンメニューが内容に対して狭くなる問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/49" target="_blank">#49</a>)</li>
+      <li>dropdown menuプラグインの元に戻す/やり直しのテストケースを追加しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/47" target="_blank">#47</a>)</li>
+      <li>ドロップダウンメニューのボタンのサイズが動的に更新されなかった問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/44" target="_blank">#44</a>)</li>
+      <li><code>beforeFilter</code>フックと<code>afterFilter</code>フックに追加のパラメータを追加しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/43" target="_blank">#43</a>)</li>
+      <li>issueテンプレートのjsfiddleリンクに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/58" target="_blank">#58</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/2.0.0" target="_blank">2.0.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.18.1</h3>
+    <p>2018年3月20日にリリース</p>
+    <strong>変更点</strong>
+    <ul>
+      <li>テーブルのオーバーレイの端に塗りつぶしハンドルが重複しているバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4920" target="_blank">CE#4920</a>)</li>
+      <li><code>MergeCells</code>クラスがドキュメントの<code>Core</code>の下に追加されていた問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4941" target="_blank">CE#4941</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/0.38.1" target="_blank">0.38.1</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.18.0</h3>
+    <p>2018年3月14日にリリース</p>
+
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li>モバイルエディターをリポジトリから削除しました。このバージョン以降は、モバイルデバイスを使用するときに標準のエディターが使用されます。 (<a href="https://github.com/handsontable/handsontable/issues/4911" target="_blank">CE#4911</a>)</li>
+    </ul>
+
+    <strong>変更点</strong>
+    <ul>
+      <li>テーブルの外側で宣言された結合セルが部分的にレンダリングされていたバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4887" target="_blank">CE#4887</a>)</li>
+      <li>モバイルデバイス用のテストを追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4868" target="_blank">CE#4868</a>)</li>
+      <li>モバイルデバイスでテーブルをスクロールしたときに行がレンダリングされていなかったバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4856" target="_blank">CE#4856</a>)</li>
+      <li>一貫していない選択機能のために欠けているAPIをいくつか追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4811" target="_blank">CE#4811</a>)</li>
+      <li><code>isObjectEquals</code>関数を<code>isObjectEqual</code>に変更しました。 (<a href="https://github.com/handsontable/handsontable/issues/4387" target="_blank">CE#4387</a>)</li>
+      <li>Microsoft Edgeでのスクロールに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4320" target="_blank">CE#4320</a>)</li>
+      <li><code>Backspace</code>キーと<code>Delete</code>キーを使用してテーブルからデータを削除するための適切な<code>source</code>引数値を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/3916">CE#3916</a>, <a href="https://github.com/handsontable/handsontable/issues/3539">CE#3539</a>)</li>
+      <li><code>beforeValueRender</code>フックに<code>cellProperties</code>引数を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4543" target="_blank">CE#4543</a>)</li>
+      <li>フィルタードロップダウンに整列されていない要素が含まれていた問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/33" target="_blank">#33</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/tag/0.38.0">0.38.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.17.0</h3>
+    <p>2018年3月1日にリリース</p>
+
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li><p>Merge CellsプラグインはES6に書き直され、完全にリファクタリングされました。<code>0.37.0</code>より前（Handsontable Proでは<code>1.17.0</code>）、Merge Cellsプラグインはメインインスタンスの<code>mergeCells</code>プロパティからアクセス可能でした。 リファクタリング後は、<code>hot.getPlugin('mergeCells')</code>を使用して他のすべてのプラグインと同じようにアクセスできます。 (<a href="https://github.com/handsontable/handsontable/issues/4214" target="_blank">#4214</a>, <a href="https://github.com/handsontable/handsontable/issues/4858" target="_blank">#4858</a>, <a href="https://github.com/handsontable/handsontable/issues/4870" target="_blank">#4870</a>)
+
+      <table>
+      <tr><td><b><code>0.37.0</code>より前</b></td><td><b><code>0.37.0</code>以後</b></td></tr>
+      <tr><td><code>hot.mergeCells</code></td><td><code>hot.getPlugin('mergeCells')</code></td></tr>
+      <tr><td><code>hot.mergeCells.mergedCellInfoCollection</code></td><td><code>hot.getPlugin('mergeCells').mergedCellsCollection.mergedCells</code></td></tr>
+      </table>
+
+      このアップデートでは、新しいAPI（詳細につきましてはドキュメントを参照）と4つの新しいフックが導入されています。
+
+      <ul>
+      <li><b>beforeMergeCells</b></li>
+      <li><b>afterMergeCells</b></li>
+      <li><b>beforeUnmergeCells</b></li>
+      <li><b>afterUnmergeCells</b></li>
+      </ul></p>
+      </li>
+      <li>結合されたセルは消去されるようになりました（<code>null</code>で埋められます）。左上隅のセルの値だけ残っていて、表示されている値になっています。 (<a href="https://github.com/handsontable/handsontable/issues/2958" target="_blank">#2958</a>)</li>
+    </ul>
+
+    <strong>変更点</strong>
+    <ul>
+      <li>Handsontable CEに追加されたテストに必要な<code>common.css</code>ファイルを追加しました。(<a href="https://github.com/handsontable/handsontable-pro/issues/40" target="_blank">#40</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/tag/0.37.0">0.37.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.16.0</h3>
+    <p>2018年2月16日にリリース</p>
+
+    <strong>大きな変更点:</strong>
+    <p>- <code>PersistentState</code>プラグインをES6に書き換えました。 (<a href="https://github.com/handsontable/handsontable/issues/4618" target="_blank">#4618</a>)
+      このバージョン以降、メインインスタンスからではなく（<code>hot.storage</code>オブジェクトは<code>hot.getPlugin('persistentState').storage</code>からアクセス可能になりました。）、通常のプラグイン（<code>hot.getPlugin('persistentState')</code>）のようにプラグインにアクセスできます。</p>
+    <p>- 隣接していないセルまたは範囲を選択するためのサポートを追加しました(<a href="https://github.com/handsontable/handsontable/issues/4708" target="_blank">#4708</a>)。それにともないいくつか変更を施しました - それらのいくつかは後方互換性がありません</p>
+    <b>New API</b>
+    <ul>
+      <li><code>hot.getSelectedLast()</code>は最後に選択されたレイヤーの座標（<code>[row, col, rowEnd, colEnd]</code>）を持つ配列を返します。この変更が行われる前は<code>hot.getSelected()</code>として動作します。</li>
+      <li><code>hot.getSelectedRangeLast()</code>はテーブルに適用された最後の選択座標を含む<code>CellRange</code>オブジェクトを返します。この変更が行われる前は<code>hot.getSelectedRange()</code>として動作します。</li>
+      <li><code>hot.alter('remove_row', [[1, 4], [10, 1]])</code>は連続していない行の削除をサポートします。行インデックスを渡す代わりに、最初の項目が行のインデックスで、2番目の項目が削除される行の数である配列の配列を渡すことができます。</li>
+      <li><code>hot.alter('remove_col', [[1, 4], [10, 1]])</code>は列以外上記と同じです。その新機能をサポートするのは、「削除」アクションだけです。</li>
+    </ul>
+    <b>後方互換性のない変更</b>
+    <ul>
+      <li><code>hot.getSelected()</code>はすべてのレイヤーの座標（<code>[[row, col, rowEnd, colEnd], [row, col, rowEnd, colEnd] ...]</code>）を持つ配列の配列を返します。</li>
+      <li><code>hot.getSelectedRange()</code>はすべてのレイヤーの座標（<code>[{CellRange}, {CellRange} ...]</code>）を持つ<code>CellRange</code>オブジェクトの配列を返します。</li>
+      <li>これまで<code>hot.selection.empty()</code>はでしたがこれからは<code>hot.emptySelectedCells()</code>になります</li>
+      <li>選択色の変更：<br>
+        - 境界, <code>#89aff9</code> -> <code>#4b89ff</code><br>
+        - 背景, <code>#b5d1ff</code> -> <code>#005eff</code><br>
+        - 現在の選択中の境界, <code>#5292f7</code> -> <code>#4b89ff</code>
+      </li>
+      <li><code>multiSelect</code>設定を削除し、<code>selectionMode: 'single'</code>に置き換えました。</li>
+      <li>新しい<code>selectionMode</code>オプションを追加しました。<code>'single'</code>（以前は<code>multiSelect: false</code>）、<code>'range'</code>（以前は<code>multiSelect: true</code>）、または<code>'multiple'</code>（新しい非連続モード）のいずれかに設定できます。</li>
+    </ul>
+    <b>後方互換性のある変更</b>
+    <ul>
+      <li><code>afterSelection</code><br>
+        - <i>これまで</i>: <code>afterSelection(row, column, rowEnd, columnEnd, preventScrolling)</code><br>
+        - <i>これから</i>: <code>afterSelection(row, column, rowEnd, columnEnd, preventScrolling, selectionLayerLevel)</code>
+      </li><li><code>afterSelectionByProp</code><br>
+      - <i>これまで</i>: <code>afterSelectionByProp(row, prop, rowEnd, propEnd, preventScrolling)</code><br>
+      - <i>これから</i>: <code>afterSelectionByProp(row, prop, rowEnd, propEnd, preventScrolling, selectionLayerLevel)</code>
+    </li><li><code>afterSelectionEnd</code><br>
+      - <i>これまで</i>: <code>afterSelectionEnd(row, column, rowEnd, columnEnd)</code><br>
+      - <i>これから</i>: <code>afterSelectionEnd(row, column, rowEnd, columnEnd, selectionLayerLevel)</code>
+    </li><li><code>afterSelectionEndByProp</code><br>
+      - <i>これまで</i>: <code>afterSelectionEndByProp(row, prop, rowEnd, propEnd)</code><br>
+      - <i>これから</i>: <code>afterSelectionEndByProp(row, prop, rowEnd, propEnd, selectionLayerLevel)</code>
+    </li>
+    </ul>
+    <p>
+      上記のすべてのフックに対して<code>selectionLayerLevel</code>引数を追加しました。<code>selectionLayerLevel</code>は、どの選択レイヤーが現在変更されているかを示す番号です。最初の選択では、この値は<code>0</code>になり、新しく追加されたレイヤーの数が増えます。
+    </p>
+
+    <strong>変更点</strong>
+    <ul>
+      <li>minRowsまたはminSpareRowsと一緒にフィルタを使用するときに不要な行が追加される問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/24" target="_blank">#24</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/tag/0.36.0">0.36.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.15.1</h3>
+    <p>2018年1月25日リリース</p>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li>特定のケースで言語ファイルが正しく生成されなかった問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/23" target="_blank">#23</a>)</li>
+      <li><code>trimRows</code>が有効になっている<code>afterValidate</code>フックの引数に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/11" target="_blank">#11</a>)</li>
+      <li><a href="https://en.wikipedia.org/wiki/ReDoS">ReDoS</a>の脆弱性のため、<code>moment</code>バージョンを更新しました。</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.35.1</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.15.0</h3>
+    <p>2017年12月6日にリリース</p>
+    <strong>新機能：</strong>
+    <p>
+      これからは、メッセージとUIの要素を特定の言語に翻訳できます。この新機能について<a href="https://docs.handsontable.com/tutorial-internationalization.html">詳しく知る</a>
+    </p>
+
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li>
+        このリリースで導入された多言語サポートに必要なネームスペースを解放するために、ロケールおよび言語関連の設定オプションの名前を変更しました。
+      </li>
+    </ul>
+    <p>
+      これまでは次のように定義されていました。
+    <pre><code class="lang-js">{
+  format: '0,0.00 $',
+  language: 'de-DE'
+}</code></pre>
+
+    これからはこのようになります。
+
+    <pre><code class="lang-js">{
+  numericFormat: {
+    pattern: '0,0.00 $',
+    culture: 'de-DE'
+  }
+}</code></pre>
+    より多くの見解のために私たちのドキュメンテーションを見てください。
+    <ul>
+      <li><a href="https://docs.handsontable.com/1.14.3/demo-numeric.html" target="_blank">バージョン1.14.3へ</a></li>
+      <li><a href="https://docs.handsontable.com/1.15.0/demo-numeric.html" target="_blank">バージョン1.15.0から</a></li>
+    </ul>
+    </p>
+
+    <strong>その他の変更点</strong>
+    <ul>
+      <li>不要な依存関係を削除しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/13" target="_blank">#13</a>)</li>
+      <li><code>Filters</code>プラグインのテストケースの問題を修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/12" target="_blank">#12</a>)</li>
+      <li>テーブルに多言語サポートを追加しました。詳細については、https://docs.handsontable.com/tutorial-internationalization.htmlをご覧ください。 (<a href="https://github.com/handsontable/handsontable-pro/issues/6" target="_blank">#6</a>)</li>
+      <li><code>GanttChart</code>プラグインに<code>weekHeaderGenerator</code>オプションを追加しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/19" target="_blank">#19</a>)</li>
+      <li>式がネストした座標で機能しないバグを修正しました。 (<a href="https://github.com/handsontable/handsontable-pro/issues/15" target="_blank">#15</a>)</li>
+    </ul>
+
+    <p>対応するHandsontable CEのバージョンは<a href="https://github.com/handsontable/handsontable/releases/tag/0.35.0">0.35.0</a>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.3</h3>
+    <p>2017年10月12日にリリース</p>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li>Gantt Chartプラグインに<code>allowSplitWeeks</code>オプションを追加しました（デフォルトは<code>true</code>）。 (<a href="https://github.com/handsontable/handsontable-pro/issues/2" target="_blank">#2</a>)</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.34.5</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.2</h3>
+    <p>2017年9月13日にリリース</p>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li><code>moment</code>インポートをあるべきところに追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4514" target="_blank">#4514</a>)</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.34.4</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.1</h3>
+    <p>2017年9月12日にリリース</p>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li>テーブルインスタンスが<code>destroy</code>時に兄弟を削除するという問題を修正しました。</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.34.3</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.14.0</h3>
+    <p>2017年9月12日にリリース</p>
+
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li><code>1.14.0</code>以降、<code>licenseKey</code>プロパティ下の設定オブジェクトに有効なHandsontable Proライセンスキーを渡す必要があります。有効なキーが提供されていない場合、Handsontableはテーブルの下に小さな通知を表示します。<br>
+        実装を見直して、設定に問題がないことを確認してください。</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.34.2</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.13.1</h3>
+    <p>2017年9月6日にリリース</p>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li>Filtersプラグインがテーブルの行を適切にトリミングしない問題を修正しました。</li>
+      <li>Trim Rowsプラグインのドキュメントを更新しました。</li>
+      <li>Filtersプラグインのドロップダウンコンポーネントが正しく更新されない問題を修正しました。</li>
+      <li><code>hot-table</code>が正しく初期化されていない問題を修正しました。</li>
+      <li>テーブルの外にカーソルを移動するとHandsontableがエラーを起こす問題を修正しました。</li>
+      <li><code>setDataAtCell</code>のTypeScript定義を更新しました。</li>
+      <li>Bootstrapの<code>css</code>ファイルを更新しました。</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.34.1</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.13.0</h3>
+    <p>2017年8月2日にリリース</p>
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li>これらのプラグインフックに渡される座標の種類を統一しました：<code>beforeGetCellMeta</code>、<code>afterGetCellMeta</code>、<code>afterSetCellMeta</code>。これからは<b>視覚的に</b>テーブル座標を操作するようになります（<code>getCellMeta</code>と<code>setCellMeta</code>メソッドも同様です）。フックコールバックを正しく使用するように更新してください。 (<a href="https://github.com/handsontable/handsontable/issues/4409" target="_blank">#4409</a>)</li>
+    </ul>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li>フィルターのドキュメントを更新しました。</li>
+      <li>あまりにも多くの引数が適用された条件があったときにFiltersプラグインがエラーを投げていた問題を修正しました。</li>
+      <li>Filtersプラグインに<code>EXP</code>式のサポートを追加しました。</li>
+      <li>条件の数がドロップダウンメニューの容量を超えたときに投げられる警告メッセージのテキストを変更しました。</li>
+      <li>フィルタードロップダウンメニューのチェックボックスの配置を修正しました。</li>
+      <li>不適切な名前の条件を追加するとFiltersプラグインがエラーを投げていた問題を修正しました。</li>
+      <li>Fixed a problem where the Filters plugin threw an error when using the  method while the Dropdown Menuプラグインが有効になっていないときに<code>disablePlugin</code>メソッドを使用するとFiltersプラグインがエラーを投げていた問題を修正しました。</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.34.0</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.12.0</h3>
+    <p>2017年7月11日にリリース</p>
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li>Copy/Pasteプラグインをリファクタリングし、ZeroClipboardの依存関係を削除しました。このバージョンにアップデートする前に、あなたの設定で期待通りに動作することを確認してください。</li>
+      <li>プラグインのAPIメソッドの一部が変更されました。詳細は<a href="https://github.com/handsontable/handsontable/issues/4358" target="_blank">GH#4358</a>をご覧ください。</li>
+    </ul>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li>カスタムビルドを実行するときにフィルターが壊れていたバグを修正しました。</li>
+      <li>npmが<code>package-lock.json</code>ファイルを誤って生成するための次善策を追加しました。</li>
+      <li>依存関係からZeroClipboardを削除しました。</li>
+      <li>異なる条件で追加操作できるようにFilters APIを拡張しました。</li>
+      <li>Handsontableの依存関係を更新しました。</li>
+      <li>メソッドのインポートが見つからない問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4367" target="_blank">#4367</a>)</li>
+      <li>コメントボックスを表示するための遅延をカスタマイズできるように、Commentsプラグインの新しい設定オプション（<code>displayDelay</code>）を追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4323" target="_blank">#4323</a>)</li>
+      <li>セルのグループで自動入力オプションを上方向に使用すると予期しない結果が生じる問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4298" target="_blank">#4298</a>)</li>
+      <li>Handsontableの依存関係を更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/4280" target="_blank">#4280</a>)</li>
+      <li>FirefoxとChromeのドロップダウンメニューの隙間の大きさが異なる問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/2832" target="_blank">#2832</a>)</li>
+      <li>HAndsontableのAPIに関わるメソッドのドキュメントをいくつか更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/4191" target="_blank">#4191</a>, <a href="https://github.com/handsontable/handsontable/issues/4032" target="_blank">#4032</a>, <a href="https://github.com/handsontable/handsontable/issues/3895" target="_blank">#3895</a>, <a href="https://github.com/handsontable/handsontable/issues/3876" target="_blank">#3876</a>, <a href="https://github.com/handsontable/handsontable/issues/3170" target="_blank">#3170</a>, <a href="https://github.com/handsontable/handsontable/issues/3025" target="_blank">#3025</a>, <a href="https://github.com/handsontable/handsontable/issues/2298" target="_blank">#2298</a>, <a href="https://github.com/handsontable/handsontable/issues/2259" target="_blank">#2259</a>)</li>
+      <li>テンプレートリテラル用のヘルパーを追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4354" target="_blank">#4354</a>)</li>
+      <li>ESlintのルールリストを更新しました。 (<a href="https://github.com/handsontable/handsontable/issues/4366" target="_blank">#4366</a>)</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.33.0</code>です。</p>
+  </div>
+
+  <div class="example-container clearfix">
+    <h3>1.11.0</h3>
+    <p>2017年5月31日にリリース</p>
+    <strong>大きな変更点:</strong>
+    <ul>
+      <li>TraceurからBabelへの移行。 (<a href="https://github.com/handsontable/handsontable/issues/4070" target="_blank">#4070</a>)</li>
+    </ul>
+    <p>
+      私たちは今、Babelを使ってコードを書き換えています。つまり、私たちは大きな変更を加えなければならなかったのです。このバージョンに移行する前に、実装を調整する必要があるかどうかを確認してください。
+    </p>
+    <ul>
+      <li>ブートストラップCSSファイルはHandsontableのデフォルトCSSにマージされました。</li>
+      <li><code>/plugins</code>ディレクトリが削除されました（"removeRowプラグイン"が含まれています）</li>
+      <li>いくつかのグローバル変数が再編成および、または削除されました。</li>
+    </ul>
+    <br><br>
+    <strong>ヴァリデイター</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+      <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+      <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+      <tr><td>Handsontable.DateValidator</td><td>Handsontable.validators.DateValidator</td></tr>
+      <tr><td>Handsontable.NumericValidator</td><td>Handsontable.validators.NumericValidator</td></tr>
+      <tr><td>Handsontable.TimeValidator</td><td>Handsontable.validators.TimeValidator</td></tr>
+    </table>
+
+    <strong>レンダラー</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+      <tr><td>Handsontable.AutocompleteRenderer</td><td>Handsontable.renderers.AutocompleteRenderer</td></tr>
+      <tr><td>Handsontable.BaseRenderer</td><td>Handsontable.renderers.BaseRenderer</td></tr>
+      <tr><td>Handsontable.CheckboxRenderer</td><td>Handsontable.renderers.CheckboxRenderer</td></tr>
+      <tr><td>Handsontable.HtmlRenderer</td><td>Handsontable.renderers.HtmlRenderer</td></tr>
+      <tr><td>Handsontable.NumericRenderer</td><td>Handsontable.renderers.NumericRenderer</td></tr>
+      <tr><td>Handsontable.PasswordRenderer</td><td>Handsontable.renderers.PasswordRenderer</td></tr>
+      <tr><td>Handsontable.TextRenderer</td><td>Handsontable.renderers.TextRenderer</td></tr>
+    </table>
+
+    <strong>セル型</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+      <tr><td>Handsontable.AutocompleteCell</td><td>Handsontable.cellTypes.autocomplete</td></tr>
+      <tr><td>Handsontable.CheckboxCell</td><td>Handsontable.cellTypes.checkbox</td></tr>
+      <tr><td>Handsontable.DateCell</td><td>Handsontable.cellTypes.date</td></tr>
+      <tr><td>Handsontable.DropdownCell</td><td>Handsontable.cellTypes.dropdown</td></tr>
+      <tr><td>Handsontable.HandsontableCell</td><td>Handsontable.cellTypes.handsontable</td></tr>
+      <tr><td>Handsontable.NumericCell</td><td>Handsontable.cellTypes.numeric</td></tr>
+      <tr><td>Handsontable.PasswordCell</td><td>Handsontable.cellTypes.password</td></tr>
+      <tr><td>Handsontable.TextCell</td><td>Handsontable.cellTypes.text</td></tr>
+      <tr><td>Handsontable.TimeCell</td><td>Handsontable.cellTypes.time</td></tr>
+    </table>
+
+    <strong>プラグイン</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+      <tr><td>Handsontable.CustomBorders</td><td>Handsontable.plugins.CustomBorders</td></tr>
+      <tr><td>Handsontable.MergeCells</td><td>Handsontable.plugins.MergeCells</td></tr>
+      <tr><td>Handsontable.Search</td><td>Handsontable.plugins.Search</td></tr>
+      <tr><td>Handsontable.UndoRedo</td><td>Handsontable.plugins.UndoRedo</td></tr>
+    </table>
+
+
+    <strong>ヘルパー</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+      <tr><td>Handsontable.Dom</td><td>Handsontable.dom</td></tr>
+    </table>
+
+    <strong>その他</strong><br>
+    <table>
+      <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+      <tr><td>Handsontable.EditorManager</td><td>(使用不可)</td></tr>
+      <tr><td>Handsontable.EditorState</td><td>(使用不可)</td></tr>
+      <tr><td>Handsontable.SearchCellDecorator</td><td>(使用不可)</td></tr>
+      <tr><td>Handsontable.TableView</td><td>(使用不可)</td></tr>
+      <tr><td>Handsontable.cellLookup</td><td>(使用不可)</td></tr>
+      <tr><td>Handsontable.eventManager</td><td>Handsontable.EventManager</td></tr>
+      <tr><td>Handsontable.utils</td><td>(使用不可)</td></tr>
+    </table>
+
+    <ul>
+      <li>カスタムのセル型の登録方法を変更しました。 (<a href="https://github.com/handsontable/handsontable/issues/4254" target="_blank">#4254</a>)</li>
+    </ul>
+    <p>
+      開発者にセルの動作と型を別々に登録する機能を提供するために、パブリックAPIを改良しました。
+      コードの保守性を高めるために、Handsontableの設定で登録済みエイリアスを使用することを強くお勧めします。
+    </p>
+    <p>
+      カスタムエディター/レンダラー/ヴァリデイターを追加する方法の例：
+    </p>
+  <pre><code class="lang-js">Handsontable.cellTypes.registerCellType('my-custom-select', {
+  editor: MyCustomSelectEditor,
+  renderer: MyCustomSelectRenderer,
+  validator: MyCustomSelectValidator,
+});
+
+Handsontable.validators.registerValidator('credit-card', function(query, callback) {
+  callback(/* 問い合わせの値に応じて `true`または` false`を渡します。 */);
+});
+
+new Handsontable(document.getElementById('element'), {
+  data: data,
+  columns: [{
+    data: 'id',
+    type: 'my-custom-select'
+  }, {
+    data: 'name',
+    renderer: 'my-custom-select'
+  }, {
+    data: 'cardNumber',
+    validator: 'credit-card'
+  }]
+})</code></pre>
+
+    <strong>変更点:</strong>
+    <ul>
+      <li><code>autoRowSize</code>設定オプションに関するドキュメントを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4267" target="_blank">#4267</a>)</li>
+      <li><code>cells</code>設定オプションに関するドキュメントを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4185" target="_blank">#4185</a>)</li>
+      <li><code>maxRows</code>機能に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4180" target="_blank">#4180</a>)</li>
+      <li><code>maxCols</code>機能に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4156" target="_blank">#4156</a>)</li>
+      <li>ドロップダウンに整数値を渡すとセルに無効のマークが付けられるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/4143" target="_blank">#4143</a>)</li>
+      <li>TypeScript定義をリポジトリに追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4112" target="_blank">#4112</a>)</li>
+      <liセル以外の要素で使用すると<code>getCoords</code>がエラーを起こすというバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4074" target="_blank">#4074</a>)</li>
+      <li>テーブルからコピーされたデータの最後に<b>改行</b>がなくなります。 (<a href="https://github.com/handsontable/handsontable/issues/3801" target="_blank">#3801</a>)</li>
+      <li>IE9+でのスクロールに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/2350" target="_blank">#2350</a>)</li>
+      <li>マウスホイールイベントのリスナーの誤った変数を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4255" target="_blank">#4255</a>)</li>
+      <li>存在しないセルのメタデータの定義に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4024" target="_blank">#4024</a>)</li>
+    </ul>
+    <p>対応するHandsontable CEのバージョンは<code>0.32.0</code>です。</p>
+
+  </div>
+
+    <div class="example-container clearfix">
+        <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/release-notes.html"
+           class="edit-doc" target="_blank">
+            Edit this page
+        </a>
+        <div class="example-container clearfix">
+          <h3>1.11.0-beta2</h3>
+          <p>2017年5月24日にリリース</p>
+          <strong>大きな変更点:</strong>
+          <ul>
+            <li>カスタムセル型の登録方法を変更しました。 (<a href="https://github.com/handsontable/handsontable/issues/4254" target="_blank">#4254</a>)</li>
+          </ul>
+          <p>
+            あなたがすでにbeta1リリースから知っているように、私たちはTraceurからBabelへ移行しました。
+            コードを標準化する必要があるため、内部プロジェクトでHandsontableグローバル変数の使用を中止することにしました。
+            その結果、カスタムエディター、バリデーター、レンダラー、そしてそれらを「セル型」のように組み合わせる方法を変更しました。
+            このbeta2リリースでは、開発者がセルの動作と型を別々に登録することができるようにパブリックAPIを改良しました。コードの保守性を高めるために、Handsontable設定で登録済みエイリアスを使用することを強くお勧めします。
+          </p>
+          <p>
+            カスタムエディター/レンダラー/バリデーターを追加する方法の例：
+          </p>
+      <pre><code class="lang-js">Handsontable.cellTypes.registerCellType('my-custom-select', {
+  editor: MyCustomSelectEditor,
+  renderer: MyCustomSelectRenderer,
+  validator: MyCustomSelectValidator,
+});
+
+Handsontable.validators.registerValidator('credit-card', function(query, callback) {
+  callback(/* 問い合わせの値に応じて `true`または` false`を渡します。 */);
+});
+
+new Handsontable(document.getElementById('element'), {
+  data: data,
+  columns: [{
+    data: 'id',
+    type: 'my-custom-select'
+  }, {
+    data: 'name',
+    renderer: 'my-custom-select'
+  }, {
+    data: 'cardNumber',
+    validator: 'credit-card'
+  }]
+})</code></pre>
+
+          <strong>変更点:</strong>
+          <ul>
+            <li>マウスホイールイベントのリスナーの誤った変数を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4255" target="_blank">#4255</a>)</li>
+            <li>存在しないセルのセルメタデータの定義に関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4024" target="_blank">#4024</a>)</li>
+          </ul>
+          <p>対応するHandsontable CEのバージョンは<code>0.32.0-beta2</code>です。</p>
+
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.11.0-beta1</h3>
+            <p>2017年5月17日にリリース</p>
+            <strong>大きな変更点:</strong>
+            <ul>
+                <li>TraceurからBabelへの移行。 (<a href="https://github.com/handsontable/handsontable/issues/4070" target="_blank">#4070</a>)</li>
+            </ul>
+            <p>
+                私たちは今、コードをの生成にBabelを使っています。つまり、私たちは大きな変更を加えなければならなかったのです。このバージョンに移行する前に、実装を調整する必要があるかどうかを確認してください。</p>
+            <ul>
+                <li>ブートストラップCSSファイルはHandsontableのデフォルトCSSに組み込まれました。</li>
+                <li><code>/plugins</code>ディレクトリを削除しました（ "removeRowプラグイン"が含まれています）</li>
+                <li>いくつかのグローバル変数が再編成されたり削除されたりしました。</li>
+            </ul>
+            <br><br>
+            <strong>ヴァリデイター</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+                <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+                <tr><td>Handsontable.AutocompleteValidator</td><td>Handsontable.validators.AutocompleteValidator</td></tr>
+                <tr><td>Handsontable.DateValidator</td><td>Handsontable.validators.DateValidator</td></tr>
+                <tr><td>Handsontable.NumericValidator</td><td>Handsontable.validators.NumericValidator</td></tr>
+                <tr><td>Handsontable.TimeValidator</td><td>Handsontable.validators.TimeValidator</td></tr>
+            </table>
+
+            <strong>レンダラー</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+                <tr><td>Handsontable.AutocompleteRenderer</td><td>Handsontable.renderers.AutocompleteRenderer</td></tr>
+                <tr><td>Handsontable.BaseRenderer</td><td>Handsontable.renderers.BaseRenderer</td></tr>
+                <tr><td>Handsontable.CheckboxRenderer</td><td>Handsontable.renderers.CheckboxRenderer</td></tr>
+                <tr><td>Handsontable.HtmlRenderer</td><td>Handsontable.renderers.HtmlRenderer</td></tr>
+                <tr><td>Handsontable.NumericRenderer</td><td>Handsontable.renderers.NumericRenderer</td></tr>
+                <tr><td>Handsontable.PasswordRenderer</td><td>Handsontable.renderers.PasswordRenderer</td></tr>
+                <tr><td>Handsontable.TextRenderer</td><td>Handsontable.renderers.TextRenderer</td></tr>
+            </table>
+
+            <strong>セル型</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+                <tr><td>Handsontable.AutocompleteCell</td><td>Handsontable.cellTypes.autocomplete</td></tr>
+                <tr><td>Handsontable.CheckboxCell</td><td>Handsontable.cellTypes.checkbox</td></tr>
+                <tr><td>Handsontable.DateCell</td><td>Handsontable.cellTypes.date</td></tr>
+                <tr><td>Handsontable.DropdownCell</td><td>Handsontable.cellTypes.dropdown</td></tr>
+                <tr><td>Handsontable.HandsontableCell</td><td>Handsontable.cellTypes.handsontable</td></tr>
+                <tr><td>Handsontable.NumericCell</td><td>Handsontable.cellTypes.numeric</td></tr>
+                <tr><td>Handsontable.PasswordCell</td><td>Handsontable.cellTypes.password</td></tr>
+                <tr><td>Handsontable.TextCell</td><td>Handsontable.cellTypes.text</td></tr>
+                <tr><td>Handsontable.TimeCell</td><td>Handsontable.cellTypes.time</td></tr>
+            </table>
+
+            <strong>プラグイン</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+                <tr><td>Handsontable.CustomBorders</td><td>Handsontable.plugins.CustomBorders</td></tr>
+                <tr><td>Handsontable.MergeCells</td><td>Handsontable.plugins.MergeCells</td></tr>
+                <tr><td>Handsontable.Search</td><td>Handsontable.plugins.Search</td></tr>
+                <tr><td>Handsontable.UndoRedo</td><td>Handsontable.plugins.UndoRedo</td></tr>
+            </table>
+
+
+            <strong>ヘルパー</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+                <tr><td>Handsontable.Dom</td><td>Handsontable.dom</td></tr>
+            </table>
+
+            <strong>その他</strong><br>
+            <table>
+                <tr style="font-weight: bold; background: #f7f7f7;"><td>過去</td><td>現在</td></tr>
+                <tr><td>Handsontable.EditorManager</td><td>(利用不可)</td></tr>
+                <tr><td>Handsontable.EditorState</td><td>(利用不可)</td></tr>
+                <tr><td>Handsontable.SearchCellDecorator</td><td>(利用不可)</td></tr>
+                <tr><td>Handsontable.TableView</td><td>(利用不可)</td></tr>
+                <tr><td>Handsontable.cellLookup</td><td>(利用不可)</td></tr>
+                <tr><td>Handsontable.eventManager</td><td>Handsontable.EventManager</td></tr>
+                <tr><td>Handsontable.utils</td><td>(利用不可)</td></tr>
+            </table>
+
+            <strong>Handsontable CEの変更点：</strong>
+            <ul>
+                <li><code>cells</code>の設定オプションに関するドキュメントを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4185" target="_blank">#4185</a>)</li>
+                <li><code>maxRows</code>機能の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4180" target="_blank">#4180</a>)</li>
+                <li><code>maxCols</code>機能の問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4156" target="_blank">#4156</a>)</li>
+                <li>ドロップダウンに整数値を渡すとセルに無効のマークが付けられるというバグが修正されました。 (<a href="https://github.com/handsontable/handsontable/issues/4143" target="_blank">#4143</a>)</li>
+                <li>TypeScript定義をリポジトリに追加しました。 (<a href="https://github.com/handsontable/handsontable/issues/4112" target="_blank">#4112</a>)</li>
+                <li>セル以外の要素で使用すると<code>getCoords</code>がエラーを投げるというバグを修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/4074" target="_blank">#4074</a>)</li>
+                <li>テーブルからコピーされたデータの最後に<b>改行</b>がなくなります。 (<a href="https://github.com/handsontable/handsontable/issues/3801" target="_blank">#3801</a>)</li>
+                <li>IE9+でのスクロールに関する問題を修正しました。 (<a href="https://github.com/handsontable/handsontable/issues/2350" target="_blank">#2350</a>)</li>
+            </ul>
+
+            <strong>Handsontable Proの変更点：</strong>
+            <ul>
+                <li><code>ESC</code>キーがフィルタリングメニューで機能しなかった問題を修正しました。</li>
+            </ul>
+
+            <p>対応するHandsontable CEのバージョンは<code>0.32.0-beta1</code>です。</p>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.10.1</h3>
+            <p>2017年3月7日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li><code>nestedHeaders</code>プラグインを使用したときに列のタイトルが切り捨てられる問題を修正しました。 </li>
+                <li>入れ子になったヘッダーの<code>collapseAll</code>メソッドに関する問題を修正しました。</li>
+                <li>Handsontable CEを<code>0.31.1</code>に更新しました。</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.10.0</h3>
+            <p>2017年2月14日にリリース</p>
+            <strong>後方互換性のない変更</strong>
+            <ul>
+                <li>プラグインフックによって提供される<code>source</code>プロパティの可能な値を変更しました。 <a href="https://github.com/handsontable/handsontable/issues/4017#issuecomment-277200985" target="_blank">重大な変更についての詳細は、この問題のissueページを参照してください。</a> (<a href="https://github.com/handsontable/handsontable/issues/4017" target="_blank">#4017</a>)</li>
+            </ul>
+            <strong>変更点</strong>
+            <ul>
+                <li><code>hot-formula-parser</code>の依存関係を更新しました。</li>
+                <li>Handsontable CEに関する修正をいくつか追加しました。</li>
+                <li>`grunt test-pro`が正しく動作していなかったバグを修正しました。</li>
+                <li>Handsontable CEのバージョンを `0.31.0`に更新しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.9.1</h3>
+            <p>2017年1月17日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li><code>fixedRowsBottom</code>が有効になっているときの値のコピー/貼り付けに関する問題を修正しました。</li>
+                <li>Handsontableのバージョンを<code>0.30.1</code>に更新しました。</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.9.0</h3>
+            <p>2017年1月11日にリリース</p>
+            <strong>大きな変更点</strong>
+            <ul>
+                <li><b>AutoFill</b>プラグインをリファクタリングしたため、APIにいくつかの大きな変更が加えられました。あなたの実装が以前の<code>autoFill</code>構造体を使っているなら、それがすべて期待通りに動くかどうかチェックしてください。 (<a href="https://github.com/handsontable/handsontable/issues/3257" target="_blank">#3257</a>)</li>
+                <li><code>setCellMeta</code>メソッドは、<i>視覚的な</i>行と列のインデックスで機能するように変更されました。<code>getCellMeta</code>メソッドも同様です。あなたの実装がそれを利用するならば、あなたがそれを微調整する必要があるかどうかチェックしてください（特に<code>columnSorting</code>、<code>manualRowMove</code>および<code>manualColumnMove</code>プラグインで問題を引き起こすかもしれません）。</li>
+            </ul>
+            <strong>変更点</strong>
+            <ul>
+                <li>Fixed issues with manipulating the data structure with the <code>columnSummary</code>プラグインが有効の際データ構造を操作する問題を修正しました。</li>
+                <li>maxRowsオプションに関するPro版のテストを追加しました。</li>
+                <li><code>master</code>とは異なるHandsontableブランチでProバージョンをビルドする際の問題を修正しました</li>
+                <li>Handsontableをバージョン<code>0.29.0</code>に更新しました。</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.8.2</h3>
+            <p>2016年12月21日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li>長いヘッダーラベルが<code>nestedHeaders</code>プラグインで切り取られたときの問題を修正しました。</li>
+                <li><code>hiddenRows</code>プラグインを使用する際の選択とキーボードナビゲーションに関する問題を修正しました。</li>
+                <li>Handsontableのバージョンを<code>0.29.2</code>に更新しました。</li>
+            </ul>
+        </div>
+
+        <div class="example-container clearfix">
+            <h3>1.8.1</h3>
+            <p>2016年12月13日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li><code>columnSummary</code>プラグインをリファクタリングし、プラグイン設定にカスタム機能を提供できる機能を導入しました。</li>
+                <li>Handsontableのバージョンを<code>0.29.1</code>に更新しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.8.0</h3>
+            <p>2016年11月8日にリリース</p>
+            <strong>大きな変更点</strong>
+            <ul>
+                <li>新しいセルプロパティ<code>allowHtml</code>を追加しました。これを<code>true</code>に設定すると、<code>autocomplete</code>と<code>dropdown</code>セルはHTML要素を正しくレンダリングすることができます（以前のように）。ただし、これを<code
+                    >false</code>に設定した場合、HTMLはレンダリングされません。この変更は、HandsontableのXSSの脆弱性を軽減するためのものです。</li>
+                <li>Commentsプラグインをリファクタリングしました。これにより、APIと見た目に変更が行われました。私たちのドキュメントを見て、あなたの実装に変更を加える必要があるかどうか確認してください。特に<code
+                    >allowHtml</code>プロパティのデフォルトは** false **なので、実装でそれを指定する必要があるかどうかを確認してください。</li>
+            </ul>
+
+            <strong>変更点</strong>
+            <ul>
+                <li>macOS Sierraでのテストに関する問題を修正しました。</li>
+                <li>セルに<code>=</code>を入力するとエラーが発生する問題を修正しました。</li>
+                <li>式に対する無効文字の検証を調整しました。</li>
+                <li><code>fixedRowsBottom</code>オプションの更新に関する問題を修正しました。</li>
+                <li>Handsontableを最新バージョンに更新しました。(<code>0.29.0</code>)</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.4</h3>
+            <p>2016年10月13日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li>Handsontableを最新バージョンに更新しました。(<code>0.28.4</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.3</h3>
+            <p>2016年10月5日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li>Handsontableを最新バージョンに更新しました。(<code>0.28.3</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.2</h3>
+            <p>2016年10月4日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+                <li>最初の列を非表示にするとその境界も非表示になる問題を修正しました。</li>
+                <li>Handsontableを最新バージョンに更新しました。(0.28.2)</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.1</h3>
+            <p>2016年9月29日にリリース</p>
+            <strong>変更点</strong>
+            <ul>
+              <li><code>bower.json</code>に<code>hot-formula-parser</code>依存関係を追加しました。</li>
+              <li>Gantt Chartプラグインの<code>firstWeekDay</code>機能を修正しました。</li>
+              <li>Gantt Chartプラグインの範囲バーを年間で作成できない問題を修正しました。</li>
+              <li>Nested Headersプラグインのヘッダー選択に関する問題を修正しました。</li>
+              <li>FormulasとColumn Sortingプラグインが一緒に使用されている問題を修正しました。</li>
+              <li>Handsontableを最新バージョンに更新しました。(<code>0.28.1</code>)</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.7.0</h3>
+            <p>2016年9月15日にリリース</p>
+            <strong>大きな変更点</strong>
+            <br>
+            <ul>
+                <li>このリリースでは新しい機能が導入されました  - 式 (現在はアルファ版ですから、安定するとは限りません)。これにより大きな変更が加わります。例えば、<code
+                    >afterCreateRow</code>と<code>afterCreateCol</code>は引数の型が変更になりました（3番目の引数は<code>boolean</code>でしたが、現在は<code>string</code>にする必要があります）。プラグインの詳細については、ドキュメントを参照してください。<a href="http://docs.handsontable.com/demo-formula-support.html">http://docs.handsontable.com/demo-formula-support.html</a></li>
+                <li>ユーザーが一度に複数の列を移動できるように、Manual Column Moveプラグインをリファクタリングしました。これにより、後方互換性のない変更が行われました。たとえば、
+                    <code>beforeColumnMove</code>フックと<code>afterColumnMove</code>フックの引数が変更されました。</li>
+            </ul>
+            <p>このバージョンに更新した後、実装に変更が必要かどうかを確認してください。</p>
+            <strong>変更点</strong>
+            <ul>
+                <li>新しいプラグイン - Nested Rows。現在はアルファ版であり、安定して動かない可能性があります。Handsontableに入れ子になったデータ構造を提供し、グループ内のデータを操作することを可能にします。より多くの情報は私たちのドキュメントで見つけることができます：<a
+                    href="http://docs.handsontable.com/demo-nested-rows.html">http://docs.handsontable.com/demo-nested-rows.html</a>.</li>
+                <li>不足している依存関係を<code>bower.json</code>に追加しました。</li>
+                <li>Handsontableを最新バージョンに更新しました。(<code>0.28.0</code>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.6.0</h3>
+            <p>2016年9月2日にリリース</p>
+            <strong>大きな変更点</strong>
+            <br>
+            <ul>
+                <li>ユーザーが一度に複数の行を移動できるように、Manual Row Moveプラグインをリファクタリングしました。これにより、後方互換性のない変更が行われました。
+                    例えば、 `beforeRowMove`と`afterRowMove`フックは引数が変更されました。このバージョンに更新した後、実装に変更が必要かどうかを確認してください。</li>
+                <li>追加のデフォルトの列/行ヘッダースタイルを追加しました - 選択したセルに対応する列と行ヘッダーはより暗い背景でレンダリングされます。Handsontableの実装をスタイリングするときは、この点に留意してください。</li>
+            </ul>
+            <strong>変更点</strong>
+            <ul>
+                <li>ドロップダウンメニューとフィルターの両方を使用した場合のパフォーマンスの問題を修正しました。</li>
+                <li>Hidden RowsプラグインにリファクタリングされたManual Row Moveプラグインのサポートを追加しました。</li>
+                <li>Handsontableを最新バージョンの0.27.0に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.27.0" target="_blank">変更点を見る</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.5.1</h3>
+            <p>2016年7月27日にリリース</p>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li>GanttChartプラグインのレンダリングパフォーマンスを改善しました。</li>
+                <li>Handsontableを最新バージョンの0.26.1に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.26.1" target="_blank">変更点を見る</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.5.0</h3>
+            <p>2016年6月27日にリリース</p>
+            <strong>後方互換性のない変更</strong>
+            <br>
+            <ul>
+                <li>コア依存関係の1つを変更しました。<a href="https://github.com/adamwdraper/Numeral-js" target="_blank">Numeral.js</a>の代わりに<a href="https://github.com/foretagsplatsen/numbro" target="_blank">Numbro</a>を使用しています。依存関係を独自に含める場合は、設定を更新してください。 (<a href="https://github.com/handsontable/handsontable/issues/3487" target="_blank">3487</a>)</li>
+                <li>Handsontableを最新バージョンの0.26.0に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.26.0" target="_blank">変更点を見る</a>).</li>
+            </ul>
+            <br>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li><code>Filter by value</code>の項目の上にマウスを移動するとエラーが発生するバグを修正しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.4.1</h3>
+            <p>2016年6月6日にリリース</p>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li>hiddenRowsおよびhiddenColumnsに関する問題を修正しました。.</li>
+                <li>新機能：FilteringプラグインにSelect AllとClearオプションを追加しました。</li>
+                <li>空白セルのフィルタリングに関する問題を修正しました。</li>
+                <li>Handsontableを最新バージョンの0.25.1に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.25.1" target="_blank">変更点を見る</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.4.0</h3>
+            <p>2016年5月25日にリリース</p>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li>nestedHeadersプラグインの選択に関する問題を修正しました。</li>
+                <li>新機能：コンテキストメニューに "表示"と"列を非表示"を追加しました。</li>
+                <li>Handsontableを最新バージョンの0.25.0に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.25.0" target="_blank">変更点を見る</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.4</h3>
+            <p>2016年4月28日にリリース</p>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li>Handsontableを最新バージョンの0.24.3に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.3" target="_blank">変更点を見る</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.3</h3>
+            <p>2016年4月11日にリリース</p>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li><code>afterFilter</code>フックを追加しました。</li>
+                <li>"Filter by Value"セクションの<code>input</code>を<code>keyup</code>に置き換えました。</li>
+                <li><kbd>ESC</kbd>キーが機能しない問題を修正しました。</li>
+                <li>ノード環境のサポートを追加しました。</li>
+                <li>Handsontableを最新バージョンの0.24.2に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.2" target="_blank">変更点を見る</a>).</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.2</h3>
+            <p>2016年3月18日にリリース</p>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li><code>handsontable.full.js</code>ビルドが使えるように更新しました。<code>1.3.1</code>の<code>.full</code>ビルドは日付と時刻のセルに関して大きな問題を抱えていました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+          <h3>1.3.1</h3>
+          <p>2016年3月16日にリリース</p>
+          <strong>変更点</strong>
+          <br>
+          <ul>
+            <li>Handsontableを最新バージョンの0.24.1に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.1" target="_blank">変更点を見る</a>).</li>
+          </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.3.0</h3>
+            <p>2016年3月15日にリリース</p>
+            <strong>後方互換性のない変更</strong>
+            <br>
+            <ul>
+                <li>Handsontableを最新バージョンの0.24.0に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.24.0" target="_blank">変更点を見る</a>).</li>
+                <li>Filtersプラグインの目に見える変化：filtersメニューに新しいセクションが追加されました（Filter by Value）。</li>
+            </ul>
+            <br>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li>manualColumnMoveとhiddenColumnsを有効にしたときに列に空の値が表示される問題を修正しました。</li>
+                <li>ドロップダウンメニューボタンをクリックすると時々ページが更新される問題を修正しました。</li>
+                <li>"filter by value"コンポーネントを追加して、フィルター機能を拡張しました。</li>
+                <li>フィルタリングを元に戻す/やり直す機能を追加しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.2.0</h3>
+            <p>2016年2月19日にリリース</p>
+            <strong>後方互換性のない変更</strong>
+            <br>
+            <ul>
+                <li>Handsontableを最新バージョンの0.23.0に更新しました。 (<a href="https://github.com/handsontable/handsontable/releases/tag/0.23.0" target="_blank">変更点を見る</a>)</li>
+            </ul>
+            <br>
+            <strong>変更点</strong>
+            <br>
+            <ul>
+                <li>データの更新に必要な時間を短縮するために、Gantt Chartプラグインに非同期呼び出しを追加しました。</li>
+                <li>主にコンテキストメニュー、ドロップダウンメニューのUI処理を改善しました。</li>
+                <li>結果がない場合、Filter Dataプラグインはテーブルを小さくしなくなりました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.1.1</h3>
+            <p>2016年2月4日にリリース</p>
+            <ul>
+                <li><code>beforeFilter</code>フックを追加することでサーバーサイドのフィルタリングを設定できるようにしました。</li>
+                <li><code>updateSettings</code>メソッドを正しく使用するために、Gantt Chartプラグインにセルメタキャッシュを追加しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.1.0</h3>
+            <p>2016年2月3日にリリース</p>
+            <ul>
+                <li>
+                    <strong>後方互換性のない変更</strong>
+                    <br>
+                    Handsontableを最新バージョンの0.22.0に更新しました。
+                </li>
+                <li>最後の列が非表示になっている状態で行を選択するときのエラーを修正しました。</li>
+                <li>GanttChartプラグインのメモリリークの問題を修正しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.0.0</h3>
+            <p>2016年1月20日にリリース</p>
+            <ul>
+                <li>
+                    <strong>後方互換性のない変更</strong>
+                    <br>
+                    <code>afterValidate</code>フックは、<i>論理的な</i>インデックスの代わりに<i>視覚的な</i>行インデックスを提供します。たとえば、テーブルのソート後に最初の行が7番目の行になった場合、<code>afterValidate</code>フックは行インデックスとして<code>6</code>を提供します。
+
+                    <i>視覚的な</i>行を<i>論理的な</i>に変換するには、<code>columnSorting</code>プラグインの<code>translateRow</code>メソッドを使用できます (<a href="https://github.com/handsontable/handsontable/issues/3132" target="_blank">#3132</a>).
+                    <pre><code class="lang-js">var logicalRow = hotInstance.getPlugin('columnSorting').translateRow(row);</code></pre>
+                </li>
+                <li>行数がテーブル内の行数を超えるデータセットを貼り付けても何も起こらなかった問題を修正しました。</li>
+                <li>ドロップダウンメニューとサブメニューの配置に関する問題を修正しました。</li>
+                <li>固定行のフィルタリングに関する問題を修正しました。</li>
+                <li>すべての行を除外した後にフィルターオプションが見つからない問題を修正しました。</li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.0.0-beta3</h3>
+            <p>2016年1月11日にリリース</p>
+            <ul>
+                <li>オブジェクトベースのデータセットがHandsontableインスタンスに提供されたときに計算結果を更新していなかった<code>columnSummary</code>プラグインに関する問題を修正しました。
+                </li>
+                <li>上位レベルのヘッダーにドロップダウンヘッダーボタンを表示しないようにしました（たとえば、nested headersプラグインを使用する場合）。
+                </li>
+            </ul>
+        </div>
+        <div class="example-container clearfix">
+            <h3>1.0.0-beta2</h3>
+            <p>2016年1月8日にリリース</p>
+            <ul>
+                <li>（<code>collapsibleColumns</code>プラグインを使用して）列を折りたたんだ後に列が選択される問題を修正しました。
+                </li>
+                <li>スクロールできるテーブルで<code>fixedRowsBottom</code>が正しく動作しない問題を修正しました。
+                </li>
+                <li>
+                    Filtersプラグインの間違った位置の問題を修正しました。
+                </li>
+                <li>
+                    <code>nestedHeaders</code>プラグインの列選択の問題を修正しました。
+                </li>
+            </ul>
+        </div>
+    </div>
+    <p class="gap-top-xsmall">
+      <a href="https://github.com/handsontable/docs/edit/<?js= version ?>/tutorials/release-notes.html" class="edit-doc" target="_blank">
+        このページの改善にご協力ください
+      日本語に問題がある場合          
+      Handsontableそのもの            
+      </a>
+    </p>
+</div>
